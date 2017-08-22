@@ -11,31 +11,22 @@
 
 
 
-<title>About R Markdown</title>
+<title>Slides</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<link href="site_libs/bootstrap-3.3.5/css/bootstrap.min.css" rel="stylesheet" />
+<link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/default.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
+<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
+<link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
-<style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
-<script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
-}
-</script>
 
 
 
@@ -161,6 +152,101 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -171,22 +257,33 @@ $(document).ready(function () {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">My Website</a>
+      <a class="navbar-brand" href="index.html">STAT 495</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">Home</a>
+  <a href="slides.html">Slides</a>
 </li>
 <li>
-  <a href="1-example.html">Viridis Colors</a>
+  <a href="problem_sets.html">Problem Sets</a>
 </li>
 <li>
-  <a href="3-inline.html">Terrain Colors</a>
+  <a href="syllabus.html">Syllabus</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        
+        <li>
+  <a href="https://stat495-fall-2017.slack.com/">
+    <span class="fa fa-slack fa-lg"></span>
+     
+  </a>
+</li>
+<li>
+  <a href="https://github.com/rudeboybert/STAT495">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
       </ul>
     </div><!--/.nav-collapse -->
   </div><!--/.container -->
@@ -196,38 +293,47 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">About R Markdown</h1>
+<h1 class="title toc-ignore">Slides</h1>
+<h4 class="date"><em>Last updated on 2017-08-21</em></h4>
 
 </div>
 
 
-<style type="text/css">
-.title {
-  display: none;
-}
-
-#getting-started img {
-  margin-right: 10px;
-}
-
-</style>
-<div class="row" style="padding-top: 30px;">
-<div class="col-sm-6">
-<h1 id="r-markdown"><strong>R Markdown</strong></h1>
-<h3 id="dynamic-documents-for-r" style="padding-top: 0px;"><em>Dynamic Documents for R</em></h3>
-<p>R Markdown is an authoring format that enables easy creation of dynamic documents, presentations, and reports from R. It combines the core syntax of <a href="https://daringfireball.net/projects/markdown/">markdown</a> (an easy to write plain text format) with embedded R code chunks that are run so their output can be included in the final document.</p>
-<p>R Markdown documents are fully reproducible (they can be automatically regenerated whenever underlying R code or data changes).</p>
-<p>R Markdown has many available output formats including <a href="http://rmarkdown.rstudio.com/html_document_format.html">HTML</a>, <a href="http://rmarkdown.rstudio.com/pdf_document_format.html">PDF</a>, <a href="http://rmarkdown.rstudio.com/word_document_format.html">MS Word</a>, <a href="http://rmarkdown.rstudio.com/beamer_presentation_format.html">Beamer</a>, <a href="http://rmarkdown.rstudio.com/ioslides_presentation_format.html">HTML5 slides</a>, <a href="http://rmarkdown.rstudio.com/tufte_handout_format.html">Tufte handouts</a>, <a href="https://bookdown.org">books</a>, <a href="http://rmarkdown.rstudio.com/flexdashboard/">dashboards</a>, and <a href="http://rmarkdown.rstudio.com/rmarkdown_websites.html">websites</a>.</p>
+<hr />
+<div id="hello-world" class="section level1">
+<h1>2. Hello world</h1>
+<div id="testing-wed-96" class="section level2">
+<h2>2.1 Testing (Wed 9/6)</h2>
+<div id="insert-title" class="section level3 unnumbered">
+<h3>Insert Title</h3>
+<hr />
 </div>
-<div class="col-sm-6">
-
-<div class="figure">
-<img src="images/RMarkdownOutputFormats.png" />
-
+</div>
+</div>
+<div id="introductory-remarks" class="section level1">
+<h1>1. Introductory remarks</h1>
+<div id="syllabus-tue-95" class="section level2">
+<h2>1.1 Syllabus (Tue 9/5)</h2>
+<div id="testing-1" class="section level3 unnumbered">
+<h3>Testing 1</h3>
+<center>
+<img src="images/tools.png" alt="Drawing" style="width: 200px;"/>
+</center>
+</div>
+<div id="testing-2" class="section level3 unnumbered">
+<h3>Testing 2</h3>
+<ul>
+<li>Hello</li>
+<li>World</li>
+</ul>
+</div>
+</div>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 

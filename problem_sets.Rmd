@@ -1,6 +1,5 @@
 ---
-title: "More colors"
-output: html_document
+title: "Problem Sets"
 ---
 
 ```{r include = FALSE}

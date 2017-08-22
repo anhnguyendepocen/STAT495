@@ -1,0 +1,41 @@
+---
+title: "Slides"
+date: "Last updated on `r Sys.Date()`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE)
+library(tidyverse)
+```
+
+
+
+
+***
+
+# 2. Hello world
+
+## 2.1 Testing (Wed 9/6)
+
+### Insert Title {-}
+
+
+
+
+
+
+***
+
+# 1. Introductory remarks
+
+## 1.1 Syllabus (Tue 9/5)
+
+### Testing 1 {-}
+
+<center><img src="images/tools.png" alt="Drawing" style="width: 200px;"/></center>
+
+
+### Testing 2 {-}
+
+* Hello
+* World

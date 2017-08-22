@@ -2,3 +2,8 @@
 .Rhistory
 .RData
 .Ruserdata
+.sass-cache/*
+_site/*
+*_cache/
+*_files/
+*.DS_Store
