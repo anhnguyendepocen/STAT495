@@ -2,7 +2,7 @@
 title: "Syllabus"
 ---
 
-# Basic information
+## Basic information
 
 * **Instructor:** [Albert Y. Kim](https://rudeboybert.github.io/) - Lecturer of Statistics
 * **~~Email:~~** ~~[aykim@amherst.edu](aykim@amherst.edu)~~ **Slack team**: <a target="_blank" class="page-link" href="https://stat495-fall-2017.slack.com/"> stat495-fall-2017.slack.com</a>
@@ -10,26 +10,30 @@ title: "Syllabus"
     + Please only ~~email~~ Slack message me with administrative and briefer questions as I prefer addressing more substantive questions in person.
 * **Class Location/Time:**
     + M 9:00-9:50 and Tu/Th 8:30-9:50 in Merrill Science Center 131.
-    + You do not need to inform me of absences. Please consult your peers for what you missed.
-* **Office Hours:** TBA
-    + Or by appointment
-
+    + <!--You do not need to inform me of absences. Please consult your peers for what you missed.-->
+* **Office Hours:** Converse Hall 316
+    + M 1:00-4:00 and Th 2:00-5:00.
+    + Or by appointment.
+    + Late changes to office hours will be posted on Slack.
 
     
-# Course Description and Objectives
+## Course Description and Objectives
 
 
 
-# Topic Schedule
+
+## Topic Schedule
 
 
 
-# Materials
+## Materials
+
+There is no required textbook to purchase.
+
+
+## Evaluation
 
 
 
-# Evaluation
+## Academic Accommodations for Disabilities
 
-
-
-# Academic Accommodations for Disabilities
