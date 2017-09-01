@@ -1,13 +1,317 @@
 ---
-title: "Advanced Data Analysis"
+title: "STAT/MATH 495: Advanced Data Analysis"
+author: "Albert Y. Kim"
 date: "Last updated on `r Sys.Date()`"
 output:
   html_document:
-    toc: false
+    toc: true
+    toc_depth: 1
+    toc_float: true
 ---
+
+<style>
+h1{font-weight: 400;}
+</style>
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE)
+library(tidyverse)
+library(broom)
+library(knitr)
+library(modelr)
+library(lubridate)
+library(Quandl)
+library(forcats)
 ```
 
-Welcome to the homepage for Amherst College MATH 495 Advanced Data Analysis (Fall 2017).
+```{r, eval=FALSE, echo=FALSE}
+rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), output_file = "slides.html")
+```
+
+
+
+<!--
+***
+
+
+
+# 1.2 Kaggle
+
+## Today: Thu 9/7
+
+* Go over syllabus
+* Introduce Kaggle
+
+## Toolbox
+
+1. `R`: `tidyverse` and the pipe operator `%>%`
+1. DataCamp
+1. Kaggle
+
+
+
+## Tool 1: `tidyverse`
+
+`tidyverse` is a set of packages that work in harmony because they share common data representations and API design. 
+
+```{r, eval=FALSE}
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+Read more on [RStudio's Blog](https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/).
+
+
+
+## `tidyverse` Core Packages
+
+These get loaded when you run `library(tidyverse)`
+
+> * `ggplot2` for data visualisation.
+> * `dplyr` for data manipulation.
+> * `tidyr` for data tidying.
+> * `readr` for data import.
+> * `purrr` for functional programming.
+> * `tibble` for tibbles, a modern re-imagining of data frames.
+
+
+
+## `tidyverse` Non-Core Packages
+
+These get installed with `tidyverse`
+
+> * `hms` for times.
+> * `stringr` for strings.
+> * `lubridate` for date/times.
+> * `forcats` for factors.
+
+
+
+## `tidyverse` Data Import Packages
+
+These get installed with `tidyverse`
+
+> * `DBI` for databases.
+> * `haven` for SPSS, SAS and Stata files.
+> * `httr` for web apis.
+> * `jsonlite` for JSON.
+> * `readxl` for .xls and .xlsx files.
+> * `rvest` for web scraping.
+> * `xml2` for XML.
+
+
+
+## `tidyverse` Modelling Packages
+
+These get installed with `tidyverse`
+
+> * `modelr` for simple modelling within a pipeline
+> * `broom` for turning models into tidy data
+
+
+
+## Tool 2: DataCamp
+
+* Browser-based interactive tool for learning R/python
+* Interface is like RStudio: wrapper around R console
+* You all have access to [ALL courses](https://www.datacamp.com/courses/) for free for the semester!
+
+
+
+## DataCamp 
+
+If you are new to...
+
+* `ggplot2`: Package for Data Visualization, do Data Visualization with ggplot2 [(Part 1)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1), [(Part 2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-2), and [(Part 3)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-part-3)
+* `dplyr`: Package for Data Manipulation, do [Data Manipulation in R with dplyr](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial) and [Joining Data in R with dplyr](https://www.datacamp.com/courses/joining-data-in-r-with-dplyr).
+* R Markdown: Creating reproducible reports do [Reporting with R Markdown](https://www.datacamp.com/courses/reporting-with-r-markdown)
+
+
+
+## Tool 3: Kaggle
+
+* Baby's first Kaggle competition entry!
+* Tutorial on their most popular competition for beginners [Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic).
+
+
+
+## Titanic Data
+
+For $i=1,\ldots,n$ passengers
+
+* ID variable: `PassengerId`
+* Outcome variable $y_i$: `Survived` (binary)
+* 10 Predictors/covariates $\vec{X}_i$ i.e. information about the passenger: `Pclass`, `Name`, `Sex`, `Age`, `SibSp`, `Parch`, `Ticket`, `Fare`, `Cabin`, `Embarked`. 
+
+
+
+## Models for Predicting Survival:
+
+Naïve models: Use no information about the passenger, i.e. no covariates
+
+1. Everyone dies: Predict
+    + `Survived == 0`
+1. Everyone lives: Predict
+    + `Survived == 1`
+1. Flip a weighted coin. Predict
+    + `Survived == 1` with probability $p$
+    + `Survived == 0` with probability $1-p$
+
+
+## Models for Predicting Survival:
+
+* Instead, let's use some information about the passengers: `Sex`? 
+* Our model: Predict:
+    + `Survived == 1` if `Sex == "female"`
+    + `Survived == 0` if `Sex == "male"`
+
+
+
+## Outline of Competition
+
+Chalk talk i.e. see your lecture notes. 
+
+
+
+## Titanic Data
+
+Load CSV's into R:
+
+```{r, message=FALSE}
+# library(tidyverse)
+# gender_submission <- readr::read_csv("assets/Titanic/gender_submission.csv")
+# test <- readr::read_csv("assets/Titanic/test.csv")
+# train <- readr::read_csv("assets/Titanic/train.csv")
+```
+
+* You may need to change your directory path.
+* `readr::` just indicates the function is from the `readr` package. Use for disambiguation.
+
+
+
+## Training Set
+
+The binary outcome varible `Survived` is included.
+
+```{r}
+# glimpse(train)
+```
+
+
+## Test Set
+
+`Survived` is now **NOT** included. There are 418 rows (passengers) you need to predict.
+
+```{r}
+# glimpse(test)
+```
+
+
+## Submission Example
+
+This is what you submit: 418 rows with
+
+> * the ID variable `PassengerId`
+> * your **predicted** outcome variable `Survived`
+
+```{r}
+# glimpse(gender_submission)
+```
+
+
+## Submission Example
+
+You can write to CSV via:
+
+```{r, eval=FALSE}
+# gender_submission %>% readr::write_csv("assets/Titanic/submission.csv")
+```
+
+
+## Submission Example
+
+After submitting to Kaggle, you can see your ranking.
+-->
+
+
+
+
+
+***
+
+
+
+# 1.1 Syllabus and background
+
+## Today: Tue 9/5
+
+* Go over syllabus
+* Introduce Kaggle
+
+
+## What is statistical/machine learning?
+</br>
+<center><img src="images/data_science_3.png" alt="Drawing" style="width: 400px;"/></center>
+</br>
+
+## What is statistical/machine learning?
+
+* In Feb 2016, I agonized over title of course: "Statistical Learning" vs "Machine Learning"
+* In Summer 2016: Ben Baumer at Smith posed:
+* *"Instead of obsessing over Venn diagrams of what topics are within the domains of which disciplines, I ask instead..."*
+* *"... What if we blew up math, stats, CS, and all their legacies and started over? What would this field look like?"*
+* New moniker: Machine learning... taught from a statistician's perspective
+
+
+## Definitions
+
+* Arthur Samuel (1959): Machine learning is the subfield of computer science that gives computers the ability to learn without being explicitly programmed.
+* Me: Prediction
+
+
+## Examples:
+
+* [Self-Driving Vehicles](https://www.wired.com/2016/10/ubers-self-driving-truck-makes-first-delivery-50000-beers/)
+* Netflix recommendations
+* Simple linear regression
+
+
+## Background
+
+* In the past, lots and lots of mathmatical science pre-requisites: algorithms, probability, linear algebra, etc.
+* Brought to you from folks at Stanford in 2001: <center><img src="images/ESL.jpg" alt="Drawing" style="width: 200px;"/></center>
+
+
+## Book
+
+* New model: flatter pre-requisite structure. That means we'll have a few digressions for probability, linear algebra, etc.
+* Brought to you from folks at Stanford (again) in 2013: <center><img src="images/ISLR.jpg" alt="Drawing" style="width: 200px;"/></center>
+* Book is still much like beta version of software:
+     + New, exciting, and cutting edge but...
+     + Lots bugs
+
+
+## Toolbox
+
+<center><img src="images/tools.png" alt="Drawing" style="width: 200px;"/></center>
+
+* [R vs Python](https://www.google.com/search?q=r+vs+python). A hammer vs a screwdriver
+* Argument for R: Wickham's [Tidy tools manifesto](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html)
+    + Reuse existing data structures: Consistency across packages e.g. `ggplot2`, `dplyr`, `modelr`
+    + Design for humans: Bottleneck in most data analysis is thinking time, not computing time. i.e. avoid **premature optimization**
+    
+
+## Cornerstone of Course
+
+Final Project: Kaggle (rhymes with haggle)
+[competition](https://www.kaggle.com/competitions).
+
+
+## Sampling
+
+<center><img src="images/target-population.jpg" alt="Drawing" style="width: 600px;"/></center>
+    
+
+## Resampling
+
+<center><img src="images/resample.jpg" alt="Drawing" style="width: 600px;"/></center>

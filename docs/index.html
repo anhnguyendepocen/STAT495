@@ -9,9 +9,10 @@
 <meta name="generator" content="pandoc" />
 
 
+<meta name="author" content="Albert Y. Kim" />
 
 
-<title>Advanced Data Analysis</title>
+<title>STAT/MATH 495: Advanced Data Analysis</title>
 
 <script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -19,11 +20,29 @@
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
 <script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+<script type="text/javascript">
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
+}
+</script>
 
 
 
@@ -149,6 +168,101 @@ $(document).ready(function () {
 
 
 
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
@@ -164,10 +278,7 @@ $(document).ready(function () {
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="slides.html">Slides</a>
-</li>
-<li>
-  <a href="problem_sets.html">Problem Sets</a>
+  <a href="https://github.com/2017-09-Amherst-STAT495">GitHub Org</a>
 </li>
 <li>
   <a href="syllabus.html">Syllabus</a>
@@ -195,16 +306,328 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Advanced Data Analysis</h1>
+<h1 class="title toc-ignore">STAT/MATH 495: Advanced Data Analysis</h1>
+<h4 class="author"><em>Albert Y. Kim</em></h4>
 <h4 class="date"><em>Last updated on 2017-09-01</em></h4>
 
 </div>
 
 
-<p>Welcome to the homepage for Amherst College MATH 495 Advanced Data Analysis (Fall 2017).</p>
+<style>
+h1{font-weight: 400;}
+</style>
+<!--
+***
 
 
 
+# 1.2 Kaggle
+
+## Today: Thu 9/7
+
+* Go over syllabus
+* Introduce Kaggle
+
+## Toolbox
+
+1. `R`: `tidyverse` and the pipe operator `%>%`
+1. DataCamp
+1. Kaggle
+
+
+
+## Tool 1: `tidyverse`
+
+`tidyverse` is a set of packages that work in harmony because they share common data representations and API design. 
+
+
+```r
+install.packages("tidyverse")
+library(tidyverse)
+```
+
+Read more on [RStudio's Blog](https://blog.rstudio.org/2016/09/15/tidyverse-1-0-0/).
+
+
+
+## `tidyverse` Core Packages
+
+These get loaded when you run `library(tidyverse)`
+
+> * `ggplot2` for data visualisation.
+> * `dplyr` for data manipulation.
+> * `tidyr` for data tidying.
+> * `readr` for data import.
+> * `purrr` for functional programming.
+> * `tibble` for tibbles, a modern re-imagining of data frames.
+
+
+
+## `tidyverse` Non-Core Packages
+
+These get installed with `tidyverse`
+
+> * `hms` for times.
+> * `stringr` for strings.
+> * `lubridate` for date/times.
+> * `forcats` for factors.
+
+
+
+## `tidyverse` Data Import Packages
+
+These get installed with `tidyverse`
+
+> * `DBI` for databases.
+> * `haven` for SPSS, SAS and Stata files.
+> * `httr` for web apis.
+> * `jsonlite` for JSON.
+> * `readxl` for .xls and .xlsx files.
+> * `rvest` for web scraping.
+> * `xml2` for XML.
+
+
+
+## `tidyverse` Modelling Packages
+
+These get installed with `tidyverse`
+
+> * `modelr` for simple modelling within a pipeline
+> * `broom` for turning models into tidy data
+
+
+
+## Tool 2: DataCamp
+
+* Browser-based interactive tool for learning R/python
+* Interface is like RStudio: wrapper around R console
+* You all have access to [ALL courses](https://www.datacamp.com/courses/) for free for the semester!
+
+
+
+## DataCamp 
+
+If you are new to...
+
+* `ggplot2`: Package for Data Visualization, do Data Visualization with ggplot2 [(Part 1)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-1), [(Part 2)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-2), and [(Part 3)](https://www.datacamp.com/courses/data-visualization-with-ggplot2-part-3)
+* `dplyr`: Package for Data Manipulation, do [Data Manipulation in R with dplyr](https://www.datacamp.com/courses/dplyr-data-manipulation-r-tutorial) and [Joining Data in R with dplyr](https://www.datacamp.com/courses/joining-data-in-r-with-dplyr).
+* R Markdown: Creating reproducible reports do [Reporting with R Markdown](https://www.datacamp.com/courses/reporting-with-r-markdown)
+
+
+
+## Tool 3: Kaggle
+
+* Baby's first Kaggle competition entry!
+* Tutorial on their most popular competition for beginners [Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic).
+
+
+
+## Titanic Data
+
+For $i=1,\ldots,n$ passengers
+
+* ID variable: `PassengerId`
+* Outcome variable $y_i$: `Survived` (binary)
+* 10 Predictors/covariates $\vec{X}_i$ i.e. information about the passenger: `Pclass`, `Name`, `Sex`, `Age`, `SibSp`, `Parch`, `Ticket`, `Fare`, `Cabin`, `Embarked`. 
+
+
+
+## Models for Predicting Survival:
+
+Naïve models: Use no information about the passenger, i.e. no covariates
+
+1. Everyone dies: Predict
+    + `Survived == 0`
+1. Everyone lives: Predict
+    + `Survived == 1`
+1. Flip a weighted coin. Predict
+    + `Survived == 1` with probability $p$
+    + `Survived == 0` with probability $1-p$
+
+
+## Models for Predicting Survival:
+
+* Instead, let's use some information about the passengers: `Sex`? 
+* Our model: Predict:
+    + `Survived == 1` if `Sex == "female"`
+    + `Survived == 0` if `Sex == "male"`
+
+
+
+## Outline of Competition
+
+Chalk talk i.e. see your lecture notes. 
+
+
+
+## Titanic Data
+
+Load CSV's into R:
+
+
+```r
+# library(tidyverse)
+# gender_submission <- readr::read_csv("assets/Titanic/gender_submission.csv")
+# test <- readr::read_csv("assets/Titanic/test.csv")
+# train <- readr::read_csv("assets/Titanic/train.csv")
+```
+
+* You may need to change your directory path.
+* `readr::` just indicates the function is from the `readr` package. Use for disambiguation.
+
+
+
+## Training Set
+
+The binary outcome varible `Survived` is included.
+
+
+```r
+# glimpse(train)
+```
+
+
+## Test Set
+
+`Survived` is now **NOT** included. There are 418 rows (passengers) you need to predict.
+
+
+```r
+# glimpse(test)
+```
+
+
+## Submission Example
+
+This is what you submit: 418 rows with
+
+> * the ID variable `PassengerId`
+> * your **predicted** outcome variable `Survived`
+
+
+```r
+# glimpse(gender_submission)
+```
+
+
+## Submission Example
+
+You can write to CSV via:
+
+
+```r
+# gender_submission %>% readr::write_csv("assets/Titanic/submission.csv")
+```
+
+
+## Submission Example
+
+After submitting to Kaggle, you can see your ranking.
+-->
+<hr />
+<div id="syllabus-and-background" class="section level1">
+<h1>1.1 Syllabus and background</h1>
+<div id="today-tue-95" class="section level2">
+<h2>Today: Tue 9/5</h2>
+<ul>
+<li>Go over syllabus</li>
+<li>Introduce Kaggle</li>
+</ul>
+</div>
+<div id="what-is-statisticalmachine-learning" class="section level2">
+<h2>What is statistical/machine learning?</h2>
+</br>
+<center>
+<img src="images/data_science_3.png" alt="Drawing" style="width: 400px;"/>
+</center>
+<p></br></p>
+</div>
+<div id="what-is-statisticalmachine-learning-1" class="section level2">
+<h2>What is statistical/machine learning?</h2>
+<ul>
+<li>In Feb 2016, I agonized over title of course: “Statistical Learning” vs “Machine Learning”</li>
+<li>In Summer 2016: Ben Baumer at Smith posed:</li>
+<li><em>“Instead of obsessing over Venn diagrams of what topics are within the domains of which disciplines, I ask instead…”</em></li>
+<li><em>“… What if we blew up math, stats, CS, and all their legacies and started over? What would this field look like?”</em></li>
+<li>New moniker: Machine learning… taught from a statistician’s perspective</li>
+</ul>
+</div>
+<div id="definitions" class="section level2">
+<h2>Definitions</h2>
+<ul>
+<li>Arthur Samuel (1959): Machine learning is the subfield of computer science that gives computers the ability to learn without being explicitly programmed.</li>
+<li>Me: Prediction</li>
+</ul>
+</div>
+<div id="examples" class="section level2">
+<h2>Examples:</h2>
+<ul>
+<li><a href="https://www.wired.com/2016/10/ubers-self-driving-truck-makes-first-delivery-50000-beers/">Self-Driving Vehicles</a></li>
+<li>Netflix recommendations</li>
+<li>Simple linear regression</li>
+</ul>
+</div>
+<div id="background" class="section level2">
+<h2>Background</h2>
+<ul>
+<li>In the past, lots and lots of mathmatical science pre-requisites: algorithms, probability, linear algebra, etc.</li>
+<li>Brought to you from folks at Stanford in 2001:
+<center>
+<img src="images/ESL.jpg" alt="Drawing" style="width: 200px;"/>
+</center></li>
+</ul>
+</div>
+<div id="book" class="section level2">
+<h2>Book</h2>
+<ul>
+<li>New model: flatter pre-requisite structure. That means we’ll have a few digressions for probability, linear algebra, etc.</li>
+<li>Brought to you from folks at Stanford (again) in 2013:
+<center>
+<img src="images/ISLR.jpg" alt="Drawing" style="width: 200px;"/>
+</center></li>
+<li>Book is still much like beta version of software:
+<ul>
+<li>New, exciting, and cutting edge but…</li>
+<li>Lots bugs</li>
+</ul></li>
+</ul>
+</div>
+<div id="toolbox" class="section level2">
+<h2>Toolbox</h2>
+<center>
+<img src="images/tools.png" alt="Drawing" style="width: 200px;"/>
+</center>
+<ul>
+<li><a href="https://www.google.com/search?q=r+vs+python">R vs Python</a>. A hammer vs a screwdriver</li>
+<li>Argument for R: Wickham’s <a href="https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html">Tidy tools manifesto</a>
+<ul>
+<li>Reuse existing data structures: Consistency across packages e.g. <code>ggplot2</code>, <code>dplyr</code>, <code>modelr</code></li>
+<li>Design for humans: Bottleneck in most data analysis is thinking time, not computing time. i.e. avoid <strong>premature optimization</strong></li>
+</ul></li>
+</ul>
+</div>
+<div id="cornerstone-of-course" class="section level2">
+<h2>Cornerstone of Course</h2>
+<p>Final Project: Kaggle (rhymes with haggle) <a href="https://www.kaggle.com/competitions">competition</a>.</p>
+</div>
+<div id="sampling" class="section level2">
+<h2>Sampling</h2>
+<center>
+<img src="images/target-population.jpg" alt="Drawing" style="width: 600px;"/>
+</center>
+</div>
+<div id="resampling" class="section level2">
+<h2>Resampling</h2>
+<center>
+<img src="images/resample.jpg" alt="Drawing" style="width: 600px;"/>
+</center>
+</div>
+</div>
+
+
+
+</div>
+</div>
 
 </div>
 

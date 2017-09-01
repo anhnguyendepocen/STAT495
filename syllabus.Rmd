@@ -8,6 +8,10 @@ output:
       collapsed: false
 ---
 
+<style>
+h1{font-weight: 400;}
+</style>
+
 # Basic information
 
 * **Course title:** STAT/MATH 495 - Advanced Data Analysis
@@ -52,8 +56,8 @@ around the use of GitHub.
     
 # Topic Schedule
 
-Roughly speaking we will cover the following topics (a more detailed outline can be found
-[here](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true)):
+Roughly speaking we will cover the following topics. A more detailed outline can be found
+[here](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true).
 
 1. Background
     * The humble model: $y = f(\vec{x}) + \epsilon$
@@ -72,6 +76,10 @@ Roughly speaking we will cover the following topics (a more detailed outline can
 1. Regularization/shrinkage methods
     * Ridge regression
     * LASSO
+1. Other methods
+    * Boosting and bagging
+    * Random forests
+    * Neural nets
 1. Unsupervised learning (time permitting)
     * Principal components analysis
     * k-Means Clustering
@@ -150,12 +158,12 @@ cases if documentation is provided (e.g. a dean's note):
     prior notice is given. In such cases, rescheduled exams must be taken
     *before* the rest of the class.
 
+
 ## 4. Group Final Project 35%
 
 Much of this course is a build up to the final project, which is a capstone 
 experience synthesizing everything you've learned over the course of the 
-semester. You will be participating in a Kaggle competition: <a target="_blank" class="page-link"
-href="https://www.kaggle.com/competitions">https://www.kaggle.com/competitions</a>.
+semester. You will be participating in a Kaggle competition.
 
 
 

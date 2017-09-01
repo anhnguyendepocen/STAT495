@@ -3,18 +3,16 @@ output_dir: "docs"
 output:
   html_document:
     toc: true
-    toc_float: true
     toc_depth: 2
+    toc_float: true
     theme: cosmo
-    highlight: tango
+    highlight: textmate
     df_print: paged
 navbar:
   title: "STAT495"
   left:
-    - text: "Slides"
-      href: slides.html
-    - text: "Problem Sets"
-      href: problem_sets.html
+    - text: "GitHub Org"
+      href: https://github.com/2017-09-Amherst-STAT495
     - text: "Syllabus"
       href: syllabus.html
   right:
