@@ -162,7 +162,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2",
+      selectors: "h1,h2,h3",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
@@ -171,7 +171,7 @@ $(document).ready(function ()  {
       ignoreSelector: ".toc-ignore",
       scrollTo: 0
     };
-    options.showAndHide = true;
+    options.showAndHide = false;
     options.smoothScroll = true;
 
     // tocify
@@ -234,6 +234,12 @@ div.tocify {
   border-radius: 0px;
 }
 
+.tocify-subheader {
+  display: inline;
+}
+.tocify-subheader .tocify-item {
+  font-size: 0.95em;
+}
 
 </style>
 
@@ -298,43 +304,128 @@ div.tocify {
 </div>
 
 
-<div id="basic-information" class="section level2">
-<h2>Basic information</h2>
+<div id="basic-information" class="section level1">
+<h1>Basic information</h1>
 <ul>
-<li><strong>Instructor:</strong> <a href="https://rudeboybert.github.io/">Albert Y. Kim</a> - Lecturer of Statistics</li>
-<li><strong><del>Email:</del></strong> <del><a href="aykim@amherst.edu" class="uri">aykim@amherst.edu</a></del> <strong>Slack team</strong>: <a target="_blank" class="page-link" href="https://stat495-fall-2017.slack.com/"> stat495-fall-2017.slack.com</a>
+<li><strong>Course title:</strong> STAT/MATH 495 - Advanced Data Analysis</li>
+<li><strong>Instructor:</strong> <a href="https://rudeboybert.rbind.io/">Albert Y. Kim</a> - Lecturer of Statistics</li>
+<li><strong><del>Email:</del> Slack team</strong>: <a target="_blank" class="page-link" href="https://stat495-fall-2017.slack.com/">stat495-fall-2017.slack.com</a>
 <ul>
 <li>I will respond to <del>emails</del> Slack messages within 24h, but not during weekends.</li>
-<li>Please only <del>email</del> Slack message me with administrative and briefer questions as I prefer addressing more substantive questions in person.</li>
+<li>Please only Slack message me with administrative and briefer questions as I prefer addressing more substantive questions in person.</li>
 </ul></li>
-<li><strong>Class Location/Time:</strong>
+<li><strong>Meeting locations/times:</strong>
 <ul>
-<li>M 9:00-9:50 and Tu/Th 8:30-9:50 in Merrill Science Center 131.</li>
-<li><!--You do not need to inform me of absences. Please consult your peers for what you missed.--></li>
+<li><strong>Lectures</strong>: M 9:00-9:50 and Tu/Th 8:30-9:50 in Merrill Science Center 131.</li>
+<li><strong>Office hours</strong>: M 1:00-4:00 and Th 2:00-5:00 (or by appointment) in Converse Hall 316. Late changes to office hours will be posted on Slack.</li>
+<li><strong>Drop-in tutoring</strong>: TBA</li>
 </ul></li>
-<li><strong>Office Hours:</strong> Converse Hall 316
+<li><strong>Important dates:</strong></li>
+</ul>
+<hr />
+</div>
+<div id="course-description" class="section level1">
+<h1>Course Description</h1>
 <ul>
-<li>M 1:00-4:00 and Th 2:00-5:00.</li>
-<li>Or by appointment.</li>
-<li>Late changes to office hours will be posted on Slack.</li>
+<li><strong>Official course description</strong>: On <a href="https://www.amherst.edu/academiclife/departments/courses/1718F/STAT/STAT-495-1718F">Amherst College Webpage</a></li>
+<li><strong>Unofficial course description</strong>: A course on the theoretical underpinnings of machine learning. Fundamental concepts of machine learning, such as crossvalidation and the bias-variance tradeoff, will be viewed through both statistical and mathematical lenses. As much of the coursework will center around participation in <a href="https://www.kaggle.com/">Kaggle competitions</a>, there will be greater emphasis on supervised learning techniques including regression, smoothing methods, classification, and regularization/shrinkage methods. To this end, there will be a large computational component to the course, in particular the use of tools for data visualization, data wrangling, and data modeling. Furthermore, to encourage engagement with the open-source statistics, data science, and machine learning communities, work and collaboration will center around the use of GitHub.</li>
+</ul>
+<hr />
+</div>
+<div id="topic-schedule" class="section level1">
+<h1>Topic Schedule</h1>
+<p>Roughly speaking we will cover the following topics (a more detailed outline can be found <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&amp;single=true">here</a>):</p>
+<ol style="list-style-type: decimal">
+<li>Background
+<ul>
+<li>The humble model: <span class="math inline">\(y = f(\vec{x}) + \epsilon\)</span></li>
+<li>Sampling</li>
+<li>Crossvalidation</li>
+</ul></li>
+<li>Continuous outcome
+<ul>
+<li>Regression for prediction</li>
+<li>Splines</li>
+<li>LOESS smoother</li>
+</ul></li>
+<li>Bias-variance tradeoff</li>
+<li>Categorical outcome AKA classification
+<ul>
+<li>Logistic regression for prediction</li>
+<li>ROC curves</li>
+<li>k-Nearest Neighbors</li>
+<li>Classification and regression trees (CART)</li>
+</ul></li>
+<li>Regularization/shrinkage methods
+<ul>
+<li>Ridge regression</li>
+<li>LASSO</li>
+</ul></li>
+<li>Unsupervised learning
+<ul>
+<li>Principal components analysis</li>
+<li>k-Means Clustering</li>
+</ul></li>
+</ol>
+<hr />
+</div>
+<div id="materials" class="section level1">
+<h1>Materials</h1>
+<p>We will use chiefly use two freely available textbooks:</p>
+<ol style="list-style-type: decimal">
+<li><a href="http://www-bcf.usc.edu/~gareth/ISL/">“An Introduction to Statistical Learning”</a> by James, Witten, Hastie, and Tibshirani.</li>
+<li><a href="https://web.stanford.edu/~hastie/CASI/">“Computer Age Statistical Inference”</a> by Efron and Tibshirani</li>
+</ol>
+<p>Hard copies of these books will be made available on reserve in the Merrill Science Library.</p>
+<hr />
+</div>
+<div id="evaluation" class="section level1">
+<h1>Evaluation</h1>
+<p>There are four components to your final grade: problem sets, 3 midterms, engagement, and the final project.</p>
+<div id="weekly-problem-sets-10" class="section level2">
+<h2>1. Weekly Problem Sets 10%</h2>
+<p>The weekly problem sets in this class should be viewed as low-stakes opportunities to develop one’s machine learning toolbox and receive feedback on the progress of one’s learning, instead of evaluative tools used by the instructor to assign grades. To reinforce this thinking, each homework is worth only a nominal portion of the final grade. However, not making an honest effort on the homeworks will ultimately hurt you for your (individual) final project.</p>
+<p>Collaboration on the homeworks is highly encouraged as in many situations learning is best done in groups. However you must submit your own answers and not simple rewordings of another’s work. Furthermore, <strong>all collaborations must be explicitly acknowledged at the top of your submissions</strong>.</p>
+<ul>
+<li>Assigned/due on Tuesdays.</li>
+<li>Lowest two scores dropped.</li>
+<li>No email submissions will be accepted; ask a classmate to print it for you.</li>
+<li>No extensions for any problem sets will be granted.</li>
+</ul>
+</div>
+<div id="engagement-10" class="section level2">
+<h2>2. Engagement 10%</h2>
+<p>It is difficult to explicit codify what constitutes “an engaged student”, so instead I present the following rough principle I will follow: <strong>you’ll only get out of this class as much as you put in</strong>. Some examples of behavior counter to this principle:</p>
+<ul>
+<li>Merely attending lectures and not participating in discussions.</li>
+<li>Leveraging previous experience in other settings to coast through this course.</li>
+<li>Not coming to office hours when the situation warrants it.</li>
+<li>Submitting homework that has code or content that is copied from (or only slightly modified versions of) your peers’ work, going against the philosophy of the homeworks being opportunities for practice and feedback, rather than as items to be graded on.</li>
+</ul>
+</div>
+<div id="three-midterms-45" class="section level2">
+<h2>3. Three Midterms 45%</h2>
+<ul>
+<li>Two in-class and one during finals week.</li>
+<li>Midterm dates: TBA</li>
+<li>All midterms are cumulative.</li>
+<li>There is no extra-credit work to improve midterm scores after the fact.</li>
+<li>There will be no make-up nor rescheduled midterms, except in the following cases if documentation is provided (e.g. a dean’s note):
+<ul>
+<li>serious illness or death in the family.</li>
+<li>athletic commitments, religious obligations, and job interviews if prior notice is given. In such cases, rescheduled exams must be taken <em>before</em> the rest of the class.</li>
 </ul></li>
 </ul>
 </div>
-<div id="course-description-and-objectives" class="section level2">
-<h2>Course Description and Objectives</h2>
+<div id="group-final-project-35" class="section level2">
+<h2>4. Group Final Project 35%</h2>
+<p>Much of this course is a build up to the final project, which is a capstone experience synthesizing everything you’ve learned over the course of the semester. You will be participating in a Kaggle competition: <a target="_blank" class="page-link"
+href="https://www.kaggle.com/competitions">https://www.kaggle.com/competitions</a>.</p>
+<hr />
 </div>
-<div id="topic-schedule" class="section level2">
-<h2>Topic Schedule</h2>
 </div>
-<div id="materials" class="section level2">
-<h2>Materials</h2>
-<p>There is no required textbook to purchase.</p>
-</div>
-<div id="evaluation" class="section level2">
-<h2>Evaluation</h2>
-</div>
-<div id="academic-accommodations-for-disabilities" class="section level2">
-<h2>Academic Accommodations for Disabilities</h2>
+<div id="academic-accommodations-for-disabilities" class="section level1">
+<h1>Academic Accommodations for Disabilities</h1>
 </div>
 
 
