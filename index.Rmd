@@ -149,12 +149,32 @@ After submitting to Kaggle, you can see your ranking.
 -->
 
 
+
+
+
+
+
+# 1.2 More on Kaggle
+
+## Today: Thu 9/7
+
+* Refresher on Slack notifications
+* GitHub organization
+    + Ensure you can view the class GitHub organization by clicking "GitHub Org" on the left of the nav bar.
+    + If your full name and/or a recent picture are not visible [here](https://github.com/orgs/2017-09-Amherst-STAT495/people), please update your GitHub profile.
+
+
+
+***
+
+
+
 # Problem set 0
 
-* Set up Git/GitHub to interface with RStudio on your computer by reading
+* Set up Git/GitHub to interface with RStudio on your computer by reading and following along to
 Chapters 1-15 of ["Happy Git and GitHub for the
 useR"](http://happygitwithr.com/)
-* Please do this by Thursday 9/7's lecture. If start spinning your wheels, don't
+* Please do this by Thursday 9/7's lecture. If you start spinning your wheels, don't
 panic! I'll have office hours on Thursday 2-5pm to help out if you are stuck.
 
 
@@ -179,7 +199,6 @@ panic! I'll have office hours on Thursday 2-5pm to help out if you are stuck.
 
 * <http://rudeboybert.rbind.io/>
 * [Personal interests](http://rudeboybert.github.io/personal/personal.html)
-
 
 
 ## What is machine learning?
