@@ -332,6 +332,7 @@ After submitting to Kaggle, you can see your ranking.
 1. Sharing code:
     1. in-line using `
     1. Code blocks using ``` and shift+enter
+1. File drag and drop
 -->
 
 * Chalk talk: 1.1 Slack
