@@ -517,8 +517,17 @@ You can write to CSV via:
 ## Submission Example
 
 After submitting to Kaggle, you can see your ranking.
+
+## Sampling
+
+<center><img src="images/target-population.jpg" alt="Drawing" style="width: 600px;"/></center>
+    
+
+## Resampling
+
+<center><img src="images/resample.jpg" alt="Drawing" style="width: 600px;"/></center>
+
 -->
-<hr />
 <div id="syllabus-and-background" class="section level1">
 <h1>1.1 Syllabus and background</h1>
 <div id="today-tue-95" class="section level2">
@@ -526,101 +535,113 @@ After submitting to Kaggle, you can see your ranking.
 <ul>
 <li>Albert’s background</li>
 <li>Go over syllabus</li>
-<li>Set up our infrastructure
-<ul>
-<li>Introduction to Slack</li>
-<li>Set up GitHub account</li>
-<li>Introduction to Kaggle</li>
-</ul></li>
+<li>Setting up infrastructure
+<ol style="list-style-type: decimal">
+<li>Intro to Slack</li>
+<li>Intro to Kaggle</li>
+<li>Intro to GitHub</li>
+</ol></li>
 </ul>
 </div>
-<div id="what-is-statisticalmachine-learning" class="section level2">
-<h2>What is statistical/machine learning?</h2>
+<div id="your-instructor" class="section level2">
+<h2>Your instructor</h2>
+<ul>
+<li><a href="http://rudeboybert.rbind.io/" class="uri">http://rudeboybert.rbind.io/</a></li>
+<li><a href="http://rudeboybert.github.io/personal/personal.html">Personal interests</a></li>
+</ul>
+</div>
+<div id="what-is-machine-learning" class="section level2">
+<h2>What is machine learning?</h2>
 </br>
 <center>
-<img src="images/data_science_3.png" alt="Drawing" style="width: 400px;"/>
+<img src="images/data_science_3.png" alt="Drawing" style="width: 300px;"/>
 </center>
 <p></br></p>
 </div>
-<div id="what-is-statisticalmachine-learning-1" class="section level2">
-<h2>What is statistical/machine learning?</h2>
+<div id="my-philosophy" class="section level2">
+<h2>My philosophy</h2>
+<blockquote>
 <ul>
-<li>In Feb 2016, I agonized over title of course: “Statistical Learning” vs “Machine Learning”</li>
-<li>In Summer 2016: Ben Baumer at Smith posed:</li>
-<li><em>“Instead of obsessing over Venn diagrams of what topics are within the domains of which disciplines, I ask instead…”</em></li>
-<li><em>“… What if we blew up math, stats, CS, and all their legacies and started over? What would this field look like?”</em></li>
-<li>New moniker: Machine learning… taught from a statistician’s perspective</li>
+<li><strong>Question</strong> What is the difference between statistics, data science, and machine learning?</li>
+<li><strong>Answer</strong> Ben Baumer at Smith posed: “Instead of obsessing over Venn diagrams of what topics are within the domains of which disciplines, I ask instead”: What if we blew up math, stats, CS, and all their legacies and started over? What would this field look like/be called?&quot;</li>
 </ul>
+</blockquote>
 </div>
 <div id="definitions" class="section level2">
 <h2>Definitions</h2>
 <ul>
 <li>Arthur Samuel (1959): Machine learning is the subfield of computer science that gives computers the ability to learn without being explicitly programmed.</li>
-<li>Me: Prediction</li>
-</ul>
-</div>
-<div id="examples" class="section level2">
-<h2>Examples:</h2>
+<li>Albert Y. Kim (2017): Prediction. Examples:
 <ul>
 <li><a href="https://www.wired.com/2016/10/ubers-self-driving-truck-makes-first-delivery-50000-beers/">Self-Driving Vehicles</a></li>
-<li>Netflix recommendations</li>
-<li>Simple linear regression</li>
-</ul>
-</div>
-<div id="background" class="section level2">
-<h2>Background</h2>
-<ul>
-<li>In the past, lots and lots of mathmatical science pre-requisites: algorithms, probability, linear algebra, etc.</li>
-<li>Brought to you from folks at Stanford in 2001:
-<center>
-<img src="images/ESL.jpg" alt="Drawing" style="width: 200px;"/>
-</center></li>
-</ul>
-</div>
-<div id="book" class="section level2">
-<h2>Book</h2>
-<ul>
-<li>New model: flatter pre-requisite structure. That means we’ll have a few digressions for probability, linear algebra, etc.</li>
-<li>Brought to you from folks at Stanford (again) in 2013:
-<center>
-<img src="images/ISLR.jpg" alt="Drawing" style="width: 200px;"/>
-</center></li>
-<li>Book is still much like beta version of software:
-<ul>
-<li>New, exciting, and cutting edge but…</li>
-<li>Lots bugs</li>
+<li><a href="https://www.netflix.com/browse">Netflix</a> recommendations</li>
+<li>Simple linear regression <em>for prediction</em> and <em>not for explanation</em></li>
 </ul></li>
 </ul>
 </div>
-<div id="toolbox" class="section level2">
-<h2>Toolbox</h2>
-<center>
-<img src="images/tools.png" alt="Drawing" style="width: 200px;"/>
-</center>
+<div id="syllabus" class="section level2">
+<h2>Syllabus</h2>
+<p><a href="syllabus.html">Syllabus</a> discussion.</p>
+</div>
+<div id="toolbox-tidyverse" class="section level2">
+<h2>Toolbox: <code>tidyverse</code></h2>
+<p><img src="images/tidyverse.png" alt="Drawing" style="width: 800px;"/></p>
+</div>
+<div id="setting-up-infrastructure" class="section level2">
+<h2>Setting up infrastructure</h2>
+<ol style="list-style-type: decimal">
+<li>Intro to Slack</li>
+<li>Intro to Kaggle</li>
+<li>Intro to GitHub</li>
+</ol>
+</div>
+<div id="intro-to-slack" class="section level2">
+<h2>Intro to Slack</h2>
 <ul>
-<li><a href="https://www.google.com/search?q=r+vs+python">R vs Python</a>. A hammer vs a screwdriver</li>
-<li>Argument for R: Wickham’s <a href="https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html">Tidy tools manifesto</a>
-<ul>
-<li>Reuse existing data structures: Consistency across packages e.g. <code>ggplot2</code>, <code>dplyr</code>, <code>modelr</code></li>
-<li>Design for humans: Bottleneck in most data analysis is thinking time, not computing time. i.e. avoid <strong>premature optimization</strong></li>
-</ul></li>
+<li>Slack is a medium for communication that has many pros (and some cons)</li>
+<li>I require you to use Slack via the <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjozOvx_Y3WAhVl2oMKHdz6Ah4QFgg4MAE&amp;url=https%3A%2F%2Fslack.com%2Fdownloads&amp;usg=AFQjCNE7uGzHZDcaF6EAiagPKQyd6pqz1Q">Desktop App</a></li>
+<li>Student <a href="https://docs.google.com/spreadsheets/d/1UZmhutoc17ZoWqf6jX9-m_8Ewvw6amVu__X0MMqlbEU">feedback</a></li>
 </ul>
 </div>
-<div id="cornerstone-of-course" class="section level2">
-<h2>Cornerstone of Course</h2>
-<p>Final Project: Kaggle (rhymes with haggle) <a href="https://www.kaggle.com/competitions">competition</a>.</p>
+<div id="tech-time" class="section level2">
+<h2>Tech time</h2>
+<ul>
+<li>Make sure you’ve completed the <a href="https://docs.google.com/forms/d/17tNYB4VqEfXvxvNvIhVvb5OmsTldXQ19OdCYUyYzvl0/edit">intro survey</a></li>
+<li>Install the Slack <a href="https://www.google.com/url?sa=t&amp;rct=j&amp;q=&amp;esrc=s&amp;source=web&amp;cd=2&amp;cad=rja&amp;uact=8&amp;ved=0ahUKEwjozOvx_Y3WAhVl2oMKHdz6Ah4QFgg4MAE&amp;url=https%3A%2F%2Fslack.com%2Fdownloads&amp;usg=AFQjCNE7uGzHZDcaF6EAiagPKQyd6pqz1Q">Desktop App</a></li>
+<li>GitHub
+<ul>
+<li>If you don’t have a <a href="https://github.com/">GitHub.com</a> account already, create one.</li>
+<li>Update your name and post a <em>recent</em> profile picture.</li>
+</ul></li>
+<li>Take a break</li>
+</ul>
 </div>
-<div id="sampling" class="section level2">
-<h2>Sampling</h2>
-<center>
-<img src="images/target-population.jpg" alt="Drawing" style="width: 600px;"/>
-</center>
+<div id="slack" class="section level2">
+<h2>Slack</h2>
+<ul>
+<li>Chalk talk: 1.1 Slack</li>
+<li>Exercise:
+<ul>
+<li>Send me your GitHub login via direct message (DM)</li>
+<li>Practice sending code to a group via DM</li>
+</ul></li>
+<li>Key for Slack success: Setting notifications</li>
+</ul>
 </div>
-<div id="resampling" class="section level2">
-<h2>Resampling</h2>
-<center>
-<img src="images/resample.jpg" alt="Drawing" style="width: 600px;"/>
-</center>
+<div id="intro-to-kaggle" class="section level2">
+<h2>Intro to Kaggle</h2>
+<ul>
+<li>Baby’s first Kaggle competition: <a href="https://www.kaggle.com/c/titanic">Titanic</a></li>
+<li>Chalk talk: 1.1 Kaggle</li>
+</ul>
+</div>
+<div id="intro-to-github" class="section level2">
+<h2>Intro to GitHub</h2>
+<ul>
+<li>My GitHub profile: <a href="https://github.com/rudeboybert"><code>rudeboybert</code></a></li>
+<li>Example: <code>ggplot2</code> <a href="https://github.com/tidyverse/ggplot2">source code</a></li>
+<li>Problem Set 0 due on Thursday: Setting it up on your computer by reading Chapters 1-15 of <a href="http://happygitwithr.com/">“Happy Git and GitHub for the useR”</a></li>
+</ul>
 </div>
 </div>
 

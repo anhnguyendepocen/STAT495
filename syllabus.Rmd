@@ -50,7 +50,7 @@ around the use of GitHub.
     1. Synthesize what you've learned in your statistics, data science, mathematics, and computer science courses in a less structured setting than a typical course.
     1. Learn to communicate empathetically when doing group work.
     1. Develop your presentation skills and ability to think on your feet.
-    1. Implement the ideas behind ["minimum viable products"](https://en.wikipedia.org/wiki/Lean_startup#Definitions) into your workflow.
+    1. Implement the ideas behind a ["minimum viable product"](https://en.wikipedia.org/wiki/Lean_startup#Definitions) into your workflow.
     1. Empower yourselves to actively participate in the open-source code/data ecosystem, necessitating understanding of GitHub pull requests.
 
 

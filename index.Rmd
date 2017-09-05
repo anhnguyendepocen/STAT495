@@ -232,85 +232,6 @@ You can write to CSV via:
 ## Submission Example
 
 After submitting to Kaggle, you can see your ranking.
--->
-
-
-
-
-
-***
-
-
-
-# 1.1 Syllabus and background
-
-## Today: Tue 9/5
-
-* Albert's background
-* Go over syllabus
-* Set up our infrastructure
-    + Introduction to Slack
-    + Set up GitHub account
-    + Introduction to Kaggle
-
-
-## What is statistical/machine learning?
-</br>
-<center><img src="images/data_science_3.png" alt="Drawing" style="width: 400px;"/></center>
-</br>
-
-## What is statistical/machine learning?
-
-* In Feb 2016, I agonized over title of course: "Statistical Learning" vs "Machine Learning"
-* In Summer 2016: Ben Baumer at Smith posed:
-* *"Instead of obsessing over Venn diagrams of what topics are within the domains of which disciplines, I ask instead..."*
-* *"... What if we blew up math, stats, CS, and all their legacies and started over? What would this field look like?"*
-* New moniker: Machine learning... taught from a statistician's perspective
-
-
-## Definitions
-
-* Arthur Samuel (1959): Machine learning is the subfield of computer science that gives computers the ability to learn without being explicitly programmed.
-* Me: Prediction
-
-
-## Examples:
-
-* [Self-Driving Vehicles](https://www.wired.com/2016/10/ubers-self-driving-truck-makes-first-delivery-50000-beers/)
-* Netflix recommendations
-* Simple linear regression
-
-
-## Background
-
-* In the past, lots and lots of mathmatical science pre-requisites: algorithms, probability, linear algebra, etc.
-* Brought to you from folks at Stanford in 2001: <center><img src="images/ESL.jpg" alt="Drawing" style="width: 200px;"/></center>
-
-
-## Book
-
-* New model: flatter pre-requisite structure. That means we'll have a few digressions for probability, linear algebra, etc.
-* Brought to you from folks at Stanford (again) in 2013: <center><img src="images/ISLR.jpg" alt="Drawing" style="width: 200px;"/></center>
-* Book is still much like beta version of software:
-     + New, exciting, and cutting edge but...
-     + Lots bugs
-
-
-## Toolbox
-
-<center><img src="images/tools.png" alt="Drawing" style="width: 200px;"/></center>
-
-* [R vs Python](https://www.google.com/search?q=r+vs+python). A hammer vs a screwdriver
-* Argument for R: Wickham's [Tidy tools manifesto](https://cran.r-project.org/web/packages/tidyverse/vignettes/manifesto.html)
-    + Reuse existing data structures: Consistency across packages e.g. `ggplot2`, `dplyr`, `modelr`
-    + Design for humans: Bottleneck in most data analysis is thinking time, not computing time. i.e. avoid **premature optimization**
-    
-
-## Cornerstone of Course
-
-Final Project: Kaggle (rhymes with haggle)
-[competition](https://www.kaggle.com/competitions).
-
 
 ## Sampling
 
@@ -320,3 +241,116 @@ Final Project: Kaggle (rhymes with haggle)
 ## Resampling
 
 <center><img src="images/resample.jpg" alt="Drawing" style="width: 600px;"/></center>
+
+-->
+
+
+
+
+
+# 1.1 Syllabus and background
+
+## Today: Tue 9/5
+
+* Albert's background
+* Go over syllabus
+* Setting up infrastructure
+    1. Intro to Slack
+    1. Intro to Kaggle
+    1. Intro to GitHub
+
+
+## Your instructor
+
+* <http://rudeboybert.rbind.io/>
+* [Personal interests](http://rudeboybert.github.io/personal/personal.html)
+
+
+
+## What is machine learning?
+
+</br>
+<center><img src="images/data_science_3.png" alt="Drawing" style="width: 300px;"/></center>
+</br>
+
+
+## My philosophy
+
+> * **Question** What is the difference between statistics, data science, and machine learning?
+> * **Answer** Ben Baumer at Smith posed: "Instead of obsessing over Venn diagrams of what topics are within the domains of which disciplines, I ask instead": What if we blew up math, stats, CS, and all their legacies and started over? What would this field look like/be called?"
+
+
+## Definitions
+
+* Arthur Samuel (1959): Machine learning is the subfield of computer science that gives computers the ability to learn without being explicitly programmed.
+* Albert Y. Kim (2017): Prediction. Examples:
+    + [Self-Driving Vehicles](https://www.wired.com/2016/10/ubers-self-driving-truck-makes-first-delivery-50000-beers/)
+    + [Netflix](https://www.netflix.com/browse) recommendations
+    + Simple linear regression *for prediction* and *not for explanation*
+
+
+## Syllabus
+
+[Syllabus](syllabus.html) discussion.
+
+
+## Toolbox: `tidyverse`
+
+<img src="images/tidyverse.png" alt="Drawing" style="width: 800px;"/>
+
+    
+## Setting up infrastructure
+
+1. Intro to Slack
+1. Intro to Kaggle
+1. Intro to GitHub
+
+
+## Intro to Slack
+
+* Slack is a medium for communication that has many pros (and some cons)
+* I require you to use Slack via the [Desktop App](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwjozOvx_Y3WAhVl2oMKHdz6Ah4QFgg4MAE&url=https%3A%2F%2Fslack.com%2Fdownloads&usg=AFQjCNE7uGzHZDcaF6EAiagPKQyd6pqz1Q)
+* Student [feedback](https://docs.google.com/spreadsheets/d/1UZmhutoc17ZoWqf6jX9-m_8Ewvw6amVu__X0MMqlbEU)
+
+
+## Tech time
+
+* Make sure you've completed the [intro survey](https://docs.google.com/forms/d/17tNYB4VqEfXvxvNvIhVvb5OmsTldXQ19OdCYUyYzvl0/edit)
+* Install the Slack [Desktop App](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwjozOvx_Y3WAhVl2oMKHdz6Ah4QFgg4MAE&url=https%3A%2F%2Fslack.com%2Fdownloads&usg=AFQjCNE7uGzHZDcaF6EAiagPKQyd6pqz1Q)
+* GitHub
+    + If you don't have a [GitHub.com](https://github.com/) account already, create one.
+    + Update your name and post a *recent* profile picture.
+* Take a break
+
+
+## Slack
+
+* Chalk talk: 1.1 Slack
+* Exercise: 
+    + Send me your GitHub login via direct message (DM)
+    + Practice sending code to a group via DM
+* Key for Slack success: Setting notifications
+
+
+## Intro to Kaggle
+
+* Baby's first Kaggle competition: [Titanic](https://www.kaggle.com/c/titanic)
+* Chalk talk: 1.1 Kaggle
+
+
+## Intro to GitHub
+
+* My GitHub profile: [`rudeboybert`](https://github.com/rudeboybert)
+* Example: `ggplot2` [source code](https://github.com/tidyverse/ggplot2)
+* Problem Set 0 due on Thursday: Setting it up on your computer by reading Chapters 1-15 of ["Happy Git and GitHub for the useR"](http://happygitwithr.com/)
+
+
+
+
+
+
+
+
+
+
+
