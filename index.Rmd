@@ -20,7 +20,6 @@ library(broom)
 library(knitr)
 library(modelr)
 library(lubridate)
-library(Quandl)
 library(forcats)
 ```
 
@@ -309,14 +308,14 @@ After submitting to Kaggle, you can see your ranking.
 ## Intro to Slack
 
 * Slack is a medium for communication that has many pros (and some cons)
-* I require you to use Slack via the [Desktop App](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwjozOvx_Y3WAhVl2oMKHdz6Ah4QFgg4MAE&url=https%3A%2F%2Fslack.com%2Fdownloads&usg=AFQjCNE7uGzHZDcaF6EAiagPKQyd6pqz1Q)
+* I require you to use Slack via the [Desktop App](https://slack.com/downloads/)
 * Student [feedback](https://docs.google.com/spreadsheets/d/1UZmhutoc17ZoWqf6jX9-m_8Ewvw6amVu__X0MMqlbEU)
 
 
 ## Tech time
 
 * Make sure you've completed the [intro survey](https://docs.google.com/forms/d/17tNYB4VqEfXvxvNvIhVvb5OmsTldXQ19OdCYUyYzvl0/edit)
-* Install the Slack [Desktop App](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=2&cad=rja&uact=8&ved=0ahUKEwjozOvx_Y3WAhVl2oMKHdz6Ah4QFgg4MAE&url=https%3A%2F%2Fslack.com%2Fdownloads&usg=AFQjCNE7uGzHZDcaF6EAiagPKQyd6pqz1Q)
+* Install the Slack [Desktop App](https://slack.com/downloads/)
 * GitHub
     + If you don't have a [GitHub.com](https://github.com/) account already, create one.
     + Update your name and post a *recent* profile picture.
@@ -325,10 +324,20 @@ After submitting to Kaggle, you can see your ranking.
 
 ## Slack
 
+<!--
+1. Slack team
+1. Slack channel
+1. Direct messages: individual, group, to yourself
+1. Mentions
+1. Sharing code:
+    1. in-line using `
+    1. Code blocks using ``` and shift+enter
+-->
+
 * Chalk talk: 1.1 Slack
 * Exercise: 
     + Send me your GitHub login via direct message (DM)
-    + Practice sending code to a group via DM
+    + Practice sending group DM with seatmates
 * Key for Slack success: Setting notifications
 
 
