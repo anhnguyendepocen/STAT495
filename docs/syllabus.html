@@ -285,16 +285,10 @@ div.tocify {
         <li>
   <a href="https://github.com/2017-09-Amherst-STAT495">GitHub Org</a>
 </li>
-<li>
-  <a href="syllabus.html">Syllabus</a>
-</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <li>
-  <a href="https://stat495-fall-2017.slack.com/">
-    <span class="fa fa-slack fa-lg"></span>
-     
-  </a>
+  <a href="syllabus.html">Syllabus</a>
 </li>
 <li>
   <a href="https://github.com/rudeboybert/STAT495">
@@ -324,15 +318,12 @@ h1{font-weight: 400;}
 <ul>
 <li><strong>Course title:</strong> STAT/MATH 495 - Advanced Data Analysis</li>
 <li><strong>Instructor:</strong> <a href="https://rudeboybert.rbind.io/">Albert Y. Kim</a> - Lecturer of Statistics</li>
-<li><strong><del>Email:</del> Slack team</strong>: <a target="_blank" class="page-link" href="https://stat495-fall-2017.slack.com/">stat495-fall-2017.slack.com</a>
-<ul>
-<li>I will respond to <del>emails</del> Slack messages within 24h, but not during weekends.</li>
-<li>Please only Slack message me with administrative and briefer questions as I prefer addressing more substantive questions in person.</li>
-</ul></li>
+<li><strong><del>Email:</del> Slack team</strong>: <a target="_blank" class="page-link" href="https://stat495-fall-2017.slack.com/">stat495-fall-2017.slack.com</a>. I will respond to <del>emails</del> Slack messages within 24h, but not during weekends. Please only Slack me with administrative and briefer questions as I prefer having more substantive conversations in person.</li>
 <li><strong>Meeting locations/times:</strong>
 <ul>
 <li><strong>Lectures</strong>: M 9:00-9:50 and Tu/Th 8:30-9:50 in Merrill Science Center 131.</li>
-<li><strong>Office hours</strong>: M 1:00-4:00 and Th 2:00-5:00 (or by appointment) in Converse Hall 316. Late changes to office hours will be posted on Slack.</li>
+<li><strong>Office hours</strong>: M 1:00-4:00 and W 2:00-5:00 in <a href="https://www.google.com/maps/place/Amherst+College+Converse+Hall/@42.3722517,-72.5207872,17z/data=!4m5!3m4!1s0x0:0x63162cb2397551a2!8m2!3d42.3723643!4d-72.5184167">Converse Hall 316</a> (or by appointment).<br />
+Late changes to office hours will be posted on Slack.</li>
 <li><strong>Drop-in tutoring</strong>: TBA</li>
 </ul></li>
 <li><strong>Important dates:</strong></li>
@@ -344,16 +335,48 @@ h1{font-weight: 400;}
 <ul>
 <li><strong>Official course description</strong>: On <a href="https://www.amherst.edu/academiclife/departments/courses/1718F/STAT/STAT-495-1718F">Amherst College Webpage</a></li>
 <li><strong>Unofficial course description</strong>: A course on the theoretical underpinnings of machine learning. Fundamental concepts of machine learning, such as crossvalidation and the bias-variance tradeoff, will be viewed through both statistical and mathematical lenses. As much of the coursework will center around participation in <a href="https://www.kaggle.com/">Kaggle competitions</a>, there will be greater emphasis on supervised learning techniques including regression, smoothing methods, classification, and regularization/shrinkage methods. To this end, there will be a large computational component to the course, in particular the use of tools for data visualization, data wrangling, and data modeling. Furthermore, to encourage engagement with the open-source statistics, data science, and machine learning communities, work and collaboration will center around the use of GitHub.</li>
+<li><strong>Objectives</strong>: This semester you will
+<ol style="list-style-type: decimal">
+<li>Synthesize what you’ve learned in your statistics, data science, mathematics, and computer science courses in a less structured setting than a typical course.</li>
+<li>Learn to communicate empathetically when doing group work.</li>
+<li>Develop your presentation skills and ability to think on your feet.</li>
+<li>Implement the ideas behind <a href="https://en.wikipedia.org/wiki/Lean_startup#Definitions">“minimum viable products”</a> into your workflow.</li>
+<li>Empower yourselves to actively participate in the open-source code/data ecosystem, necessitating understanding of GitHub pull requests.</li>
+</ol></li>
 </ul>
 <hr />
 </div>
-<div id="topic-schedule" class="section level1">
-<h1>Topic Schedule</h1>
+<div id="lectures" class="section level1">
+<h1>Lectures</h1>
+<ul>
+<li>A typical lecture will consist of some balance of:
+<ul>
+<li>“Chalk talk”: Old-school talks on the blackboard where we’ll either
+<ul>
+<li>Prime the discussion for the day</li>
+<li>Give an “executive summary” or a “bird’s eye view” of a topic</li>
+<li>Go over more theoretical content</li>
+</ul></li>
+<li>“Tech time”: Unstructured time for you to either
+<ul>
+<li>Read digital content</li>
+<li>Work with your seatmates on in-class exercises</li>
+<li>Start problem sets</li>
+</ul></li>
+</ul></li>
+<li>The flow of the lecture notes will follow the notes on the <a href="index.html">welcome page</a> of the course.</li>
+</ul>
+<div id="attendance-policy" class="section level2">
+<h2>Attendance policy</h2>
+<p>I do not take explicit attendance, so there is no need to inform me of the occasional absences. That being said, abuse of this policy will eventually catch up to you (see <a href="#engagement">Engagement</a> below).</p>
+</div>
+<div id="lecture-schedule" class="section level2">
+<h2>Lecture schedule</h2>
 <p>Roughly speaking we will cover the following topics. A more detailed outline can be found <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&amp;single=true">here</a>.</p>
 <ol style="list-style-type: decimal">
 <li>Background
 <ul>
-<li>The humble model: <span class="math inline">\(y = f(\vec{x}) + \epsilon\)</span></li>
+<li>Modeling at its simplest: <span class="math inline">\(y = f(\vec{x}) + \epsilon\)</span></li>
 <li>Sampling</li>
 <li>Crossvalidation</li>
 </ul></li>
@@ -390,62 +413,77 @@ h1{font-weight: 400;}
 </ol>
 <hr />
 </div>
+</div>
 <div id="materials" class="section level1">
 <h1>Materials</h1>
-<p>We will use chiefly use two freely available textbooks:</p>
+<p>We will use chiefly use the following available textbooks:</p>
 <ol style="list-style-type: decimal">
+<li><a href="http://happygitwithr.com/">“Happy Git and GitHub for the useR”</a> by Jenny Bryan.</li>
 <li><a href="http://www-bcf.usc.edu/~gareth/ISL/">“An Introduction to Statistical Learning”</a> by James, Witten, Hastie, and Tibshirani.</li>
-<li><a href="https://web.stanford.edu/~hastie/CASI/">“Computer Age Statistical Inference”</a> by Efron and Tibshirani</li>
+<li><a href="https://web.stanford.edu/~hastie/CASI/">“Computer Age Statistical Inference”</a> by Efron and Tibshirani.</li>
 </ol>
-<p>Hard copies of these books will be made available on reserve in the Merrill Science Library.</p>
 <hr />
 </div>
 <div id="evaluation" class="section level1">
 <h1>Evaluation</h1>
-<p>There are four components to your final grade: problem sets, 3 midterms, engagement, and the final project.</p>
-<div id="weekly-problem-sets-10" class="section level2">
-<h2>1. Weekly Problem Sets 10%</h2>
-<p>The weekly problem sets in this class should be viewed as low-stakes opportunities to develop one’s machine learning toolbox and receive feedback on the progress of one’s learning, instead of evaluative tools used by the instructor to assign grades. To reinforce this thinking, each homework is worth only a nominal portion of the final grade. However, not making an honest effort on the homeworks will ultimately hurt you for your (individual) final project.</p>
-<p>Collaboration on the homeworks is highly encouraged as in many situations learning is best done in groups. However you must submit your own answers and not simple rewordings of another’s work. Furthermore, <strong>all collaborations must be explicitly acknowledged at the top of your submissions</strong>.</p>
+<div id="group-final-project-30" class="section level2">
+<h2>Group Final Project 30%</h2>
+<p>Much of this course is a build up to the final project. You will be participating in a Kaggle competition.</p>
 <ul>
-<li>Assigned/due on Tuesdays.</li>
+<li>All groups members are expected to contribute and a system will be put in place to hold your group peers accountable for their work.</li>
+<li>As per the Amherst College Student Code of Conduct’s statement on <a href="https://www.amherst.edu/offices/student-affairs/community-standards/intellectual-responsibility-and-plagiarism">intellectual responbisility and plagiarism</a> <strong>all external sources must be cited in your submissions</strong>.</li>
+<li>More details and examples will be posted later in the semester.</li>
+</ul>
+</div>
+<div id="weekly-problem-sets-20" class="section level2">
+<h2>Weekly Problem Sets 20%</h2>
+<p>The problem sets in this class should be viewed as low-stakes opportunities to practice, instead of evaluative tools used by the instructor to assign grades.</p>
+<ul>
+<li>Basic structure:
+<ol style="list-style-type: decimal">
+<li>You will be randomly assigned into pairs.</li>
+<li>You will complete the problem set and submit it via GitHub pull request.</li>
+<li>On the due date, I will pick a certain number of teams at random to present their findings.</li>
+<li>You will have the option of updating your submissions.</li>
+</ol></li>
+<li>Policy on collaboration:
+<ul>
+<li>While I encourage you to discuss problem sets with your peers, you must submit your own answers and not simple rewordings of another’s work.</li>
+<li>As per the Amherst College Student Code of Conduct’s statement on <a href="https://www.amherst.edu/offices/student-affairs/community-standards/intellectual-responsibility-and-plagiarism">intellectual responbisility and plagiarism</a> <strong>all collaborations must be explicitly acknowledged in your submissions</strong>.</li>
+</ul></li>
 <li>Lowest two scores dropped.</li>
-<li>No email submissions will be accepted; ask a classmate to print it for you.</li>
-<li>No extensions for any problem sets will be granted.</li>
+<li>No extensions for problem sets will be granted.</li>
 </ul>
 </div>
-<div id="engagement-10" class="section level2">
-<h2>2. Engagement 10%</h2>
-<p>It is difficult to explicit codify what constitutes “an engaged student”, so instead I present the following rough principle I will follow: <strong>you’ll only get out of this class as much as you put in</strong>. Some examples of behavior counter to this principle:</p>
+<div id="three-midterms-40" class="section level2">
+<h2>Three Midterms 40%</h2>
+<p>There will be three midterms: two during the semester, one during finals week (dates TBA).</p>
 <ul>
-<li>Merely attending lectures and not participating in discussions.</li>
-<li>Leveraging previous experience in other settings to coast through this course.</li>
-<li>Not coming to office hours when the situation warrants it.</li>
-<li>Submitting homework that has code or content that is copied from (or only slightly modified versions of) your peers’ work, going against the philosophy of the homeworks being opportunities for practice and feedback, rather than as items to be graded on.</li>
-</ul>
-</div>
-<div id="three-midterms-45" class="section level2">
-<h2>3. Three Midterms 45%</h2>
-<ul>
-<li>Two in-class and one during finals week.</li>
-<li>Midterm dates: TBA</li>
+<li>Two highest scores are weighted 15% each, lowest is weighted 10%.</li>
 <li>All midterms are cumulative.</li>
-<li>There is no extra-credit work to improve midterm scores after the fact.</li>
 <li>There will be no make-up nor rescheduled midterms, except in the following cases if documentation is provided (e.g. a dean’s note):
 <ul>
 <li>serious illness or death in the family.</li>
-<li>athletic commitments, religious obligations, and job interviews if prior notice is given. In such cases, rescheduled exams must be taken <em>before</em> the rest of the class.</li>
+<li>athletic commitments, religious obligations, and job interviews if prior notice is given. In such cases, rescheduled exams must be taken <em>after</em> the rest of the class.</li>
 </ul></li>
+<li>There will be no extra-credit work to improve midterm scores after the fact.</li>
 </ul>
 </div>
-<div id="group-final-project-35" class="section level2">
-<h2>4. Group Final Project 35%</h2>
-<p>Much of this course is a build up to the final project, which is a capstone experience synthesizing everything you’ve learned over the course of the semester. You will be participating in a Kaggle competition.</p>
+<div id="engagement" class="section level2">
+<h2>Engagement 10%</h2>
+<p>It is difficult to explicit codify what constitutes “an engaged student,” so instead I present the following rough principle I will follow: <em>you’ll only get out of this class as much as you put in</em>. Some examples of behavior counter to this principle:</p>
+<ul>
+<li>Not participating in in-class exercises.</li>
+<li>Engaging so little with me, either in class or during office hours, that I don’t know what your voice sounds like.</li>
+<li>Submitting a problem set that has code or content that is copied from or is only a slightly modified version of your peers’ work.</li>
+</ul>
 <hr />
 </div>
 </div>
-<div id="academic-accommodations-for-disabilities" class="section level1">
-<h1>Academic Accommodations for Disabilities</h1>
+<div id="inclusion-and-accessibility" class="section level1">
+<h1>Inclusion and Accessibility</h1>
+<p>I strive to make this course welcoming to all students. If you would like to discuss your learning needs with me, please schedule a meeting. I look forward to working with you to understand and support your academic success.</p>
+<p>In particular, if you have a documented disability that requires accommodations, you will need to register with Accessibility Services for coordination of your academic accommodations. You can reach them via email at <a href="mailto:accessibility@amherst.edu">accessibility@amherst.edu</a>, or via phone at 413.542.2337. Once you have your accommodations in place, I will be glad to meet with you privately during my office hours or at another agreed upon time to discuss the best implementation of your accommodations.</p>
 </div>
 
 

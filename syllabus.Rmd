@@ -16,12 +16,11 @@ h1{font-weight: 400;}
 
 * **Course title:** STAT/MATH 495 - Advanced Data Analysis
 * **Instructor:** [Albert Y. Kim](https://rudeboybert.rbind.io/) - Lecturer of Statistics
-* **~~Email:~~ Slack team**: <a target="_blank" class="page-link" href="https://stat495-fall-2017.slack.com/">stat495-fall-2017.slack.com</a>
-    + I will respond to ~~emails~~ Slack messages within 24h, but not during weekends.
-    + Please only Slack message me with administrative and briefer questions as I prefer addressing more substantive questions in person.
+* **~~Email:~~ Slack team**: <a target="_blank" class="page-link" href="https://stat495-fall-2017.slack.com/">stat495-fall-2017.slack.com</a>. I will respond to ~~emails~~ Slack messages within 24h, but not during weekends. Please only Slack me with administrative and briefer questions as I prefer having more substantive conversations in person.
 * **Meeting locations/times:**
     + **Lectures**: M 9:00-9:50 and Tu/Th 8:30-9:50 in Merrill Science Center 131.
-    + **Office hours**: M 1:00-4:00 and Th 2:00-5:00 (or by appointment) in Converse Hall 316. Late changes to office hours will be posted on Slack.
+    + **Office hours**: M 1:00-4:00 and W 2:00-5:00 in [Converse Hall 316](https://www.google.com/maps/place/Amherst+College+Converse+Hall/@42.3722517,-72.5207872,17z/data=!4m5!3m4!1s0x0:0x63162cb2397551a2!8m2!3d42.3723643!4d-72.5184167) (or by appointment).  
+    Late changes to office hours will be posted on Slack.
     + **Drop-in tutoring**: TBA
 * **Important dates:**
 
@@ -47,6 +46,12 @@ the use of tools for data visualization, data wrangling, and data modeling.
 Furthermore, to encourage engagement with the open-source statistics, data
 science, and machine learning communities, work and collaboration will center
 around the use of GitHub.
+* **Objectives**: This semester you will
+    1. Synthesize what you've learned in your statistics, data science, mathematics, and computer science courses in a less structured setting than a typical course.
+    1. Learn to communicate empathetically when doing group work.
+    1. Develop your presentation skills and ability to think on your feet.
+    1. Implement the ideas behind ["minimum viable products"](https://en.wikipedia.org/wiki/Lean_startup#Definitions) into your workflow.
+    1. Empower yourselves to actively participate in the open-source code/data ecosystem, necessitating understanding of GitHub pull requests.
 
 
 
@@ -54,13 +59,31 @@ around the use of GitHub.
 
 
     
-# Topic Schedule
+# Lectures
+
+* A typical lecture will consist of some balance of:
+    * "Chalk talk": Old-school talks on the blackboard where we'll either
+        + Prime the discussion for the day
+        + Give an "executive summary" or a "bird's eye view" of a topic
+        + Go over more theoretical content
+    * "Tech time": Unstructured time for you to either
+        + Read digital content
+          + Work with your seatmates on in-class exercises
+          + Start problem sets
+* The flow of the lecture notes will follow the notes on the [welcome page](index.html) of the course.   
+
+
+## Attendance policy
+
+I do not take explicit attendance, so there is no need to inform me of the occasional absences. That being said, abuse of this policy will eventually catch up to you (see [Engagement](#engagement) below). 
+
+## Lecture schedule
 
 Roughly speaking we will cover the following topics. A more detailed outline can be found
 [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true).
 
 1. Background
-    * The humble model: $y = f(\vec{x}) + \epsilon$
+    * Modeling at its simplest: $y = f(\vec{x}) + \epsilon$
     * Sampling
     * Crossvalidation
 1. Continuous outcome
@@ -92,12 +115,11 @@ Roughly speaking we will cover the following topics. A more detailed outline can
     
 # Materials
 
-We will use chiefly use two freely available textbooks:
+We will use chiefly use the following available textbooks:
 
+1. ["Happy Git and GitHub for the useR"](http://happygitwithr.com/) by Jenny Bryan.
 1. ["An Introduction to Statistical Learning"](http://www-bcf.usc.edu/~gareth/ISL/) by James, Witten, Hastie, and Tibshirani.
-1. ["Computer Age Statistical Inference"](https://web.stanford.edu/~hastie/CASI/) by Efron and Tibshirani
-
-Hard copies of these books will be made available on reserve in the Merrill Science Library. 
+1. ["Computer Age Statistical Inference"](https://web.stanford.edu/~hastie/CASI/) by Efron and Tibshirani.
 
 
 
@@ -107,63 +129,62 @@ Hard copies of these books will be made available on reserve in the Merrill Scie
 
 # Evaluation
 
-There are four components to your final grade: problem sets, 3 midterms, engagement,
-and the final project.
+## Group Final Project 30%
 
-## 1. Weekly Problem Sets 10%
+Much of this course is a build up to the final project. You will be
+participating in a Kaggle competition.
 
-The weekly problem sets in this class should be viewed as low-stakes
-opportunities to develop one's machine learning toolbox and receive feedback on
-the progress of one's learning, instead of evaluative tools used by the
-instructor to assign grades. To reinforce this thinking, each homework is worth
-only a nominal portion of the final grade. However, not making an honest effort
-on the homeworks will ultimately hurt you for your (individual) final project.
+* All groups members are expected to contribute and a system will be put in
+place to hold your group peers accountable for their work.
+* As per the Amherst College Student Code of Conduct's statement on
+[intellectual responbisility and plagiarism](https://www.amherst.edu/offices/student-affairs/community-standards/intellectual-responsibility-and-plagiarism) **all external sources must be cited in your submissions**.
+* More details and examples will be posted later in the semester.
 
-Collaboration on the homeworks is highly encouraged as in many situations 
-learning is best done in groups. However you must submit your own answers and
-not simple rewordings of another's work. Furthermore, **all collaborations must
-be explicitly acknowledged at the top of your submissions**.
 
-* Assigned/due on Tuesdays.
+## Weekly Problem Sets 20%
+
+The problem sets in this class should be viewed as low-stakes opportunities to
+practice, instead of evaluative tools used by the instructor to assign grades.
+
+* Basic structure:
+    1. You will be randomly assigned into pairs.
+    1. You will complete the problem set and submit it via GitHub pull request.
+    1. On the due date, I will pick a certain number of teams at random to present their findings.
+    1. You will have the option of updating your submissions.
+* Policy on collaboration:
+    + While I encourage you to discuss problem sets with your peers, you must submit
+your own answers and not simple rewordings of another's work.
+    + As per the Amherst College Student Code of Conduct's statement on [intellectual responbisility and plagiarism](https://www.amherst.edu/offices/student-affairs/community-standards/intellectual-responsibility-and-plagiarism) **all collaborations must be explicitly acknowledged in your submissions**.
 * Lowest two scores dropped.
-* No email submissions will be accepted; ask a classmate to print it for you.
-* No extensions for any problem sets will be granted. 
-
-## 2. Engagement 10%
-
-It is difficult to explicit codify what constitutes "an engaged student", so 
-instead I present the following rough principle I will follow: **you'll only get
-out of this class as much as you put in**. Some examples of behavior counter to this
-principle:
-
-* Merely attending lectures and not participating in discussions.
-* Leveraging previous experience in other settings to coast through this course.
-* Not coming to office hours when the situation warrants it. 
-* Submitting homework that has code or content that is copied from (or only
-slightly modified versions of) your peers' work, going against the philosophy of
-the homeworks being opportunities for practice and feedback, rather than as items 
-to be graded on.
+* No extensions for problem sets will be granted. 
 
 
-## 3. Three Midterms 45%
+## Three Midterms 40%
 
-* Two in-class and one during finals week.
-* Midterm dates: TBA
+There will be three midterms: two during the semester, one during finals week (dates TBA).
+
+* Two highest scores are weighted 15% each, lowest is weighted 10%. 
 * All midterms are cumulative.
-* There is no extra-credit work to improve midterm scores after the fact.
 * There will be no make-up nor rescheduled midterms, except in the following
 cases if documentation is provided (e.g. a dean's note):
     + serious illness or death in the family.
     + athletic commitments, religious obligations, and job interviews if
     prior notice is given. In such cases, rescheduled exams must be taken
-    *before* the rest of the class.
+    *after* the rest of the class.
+* There will be no extra-credit work to improve midterm scores after the fact.
 
+## Engagement 10% {#engagement}
 
-## 4. Group Final Project 35%
+It is difficult to explicit codify what constitutes "an engaged student," so 
+instead I present the following rough principle I will follow: *you'll only get
+out of this class as much as you put in*. Some examples of behavior counter to
+this principle:
 
-Much of this course is a build up to the final project, which is a capstone 
-experience synthesizing everything you've learned over the course of the 
-semester. You will be participating in a Kaggle competition.
+* Not participating in in-class exercises.
+* Engaging so little with me, either in class or during office hours, that I
+don't know what your voice sounds like.
+* Submitting a problem set that has code or content that is copied from or is
+only a slightly modified version of your peers' work.
 
 
 
@@ -171,5 +192,16 @@ semester. You will be participating in a Kaggle competition.
 
 
     
-# Academic Accommodations for Disabilities
-
+# Inclusion and Accessibility
+ 
+I strive to make this course welcoming to all students. If you would like to
+discuss your learning needs with me, please schedule a meeting. I look forward
+to working with you to understand and support your academic success.
+ 
+In particular, if you have a documented disability that requires accommodations,
+you will need to register with Accessibility Services for coordination of your
+academic accommodations. You can reach them via email at
+<accessibility@amherst.edu>, or via phone at 413.542.2337. Once you have your
+accommodations in place, I will be glad to meet with you privately during my
+office hours or at another agreed upon time to discuss the best implementation
+of your accommodations.

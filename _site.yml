@@ -13,10 +13,8 @@ navbar:
   left:
     - text: "GitHub Org"
       href: https://github.com/2017-09-Amherst-STAT495
+  right:
     - text: "Syllabus"
       href: syllabus.html
-  right:
-    - icon: fa-slack fa-lg
-      href: https://stat495-fall-2017.slack.com/
     - icon: fa-github fa-lg
       href: https://github.com/rudeboybert/STAT495

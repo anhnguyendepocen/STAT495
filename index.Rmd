@@ -25,6 +25,7 @@ library(forcats)
 ```
 
 ```{r, eval=FALSE, echo=FALSE}
+# Run this separately to have slide output:
 rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), output_file = "slides.html")
 ```
 
@@ -245,8 +246,12 @@ After submitting to Kaggle, you can see your ranking.
 
 ## Today: Tue 9/5
 
+* Albert's background
 * Go over syllabus
-* Introduce Kaggle
+* Set up our infrastructure
+    + Introduction to Slack
+    + Set up GitHub account
+    + Introduction to Kaggle
 
 
 ## What is statistical/machine learning?
