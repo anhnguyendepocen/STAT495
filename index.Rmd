@@ -179,9 +179,42 @@ After submitting to Kaggle, you can see your ranking.
     + [Problem set submissions process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process) 
 * Chalk talk: 1.2 GitHub pull requests
 
-##
+## Kaggle data
 
+* Run the code block below to load/inspect the [Titanic data](https://www.kaggle.com/c/titanic/data) from Kaggle (which I've uploaded to the course webpage)
+* Chalk talk: 1.2 Kaggle data
 
+```{r, eval=FALSE}
+library(tidyverse)
+train <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/train.csv")
+test <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/test.csv")
+submission <- read_csv("https://rudeboybert.github.io/STAT495/static/Titanic/gender_submission.csv")
+
+glimpse(train)
+glimpse(test)
+glimpse(submission)
+
+View(train)
+View(test)
+View(submission)
+```
+
+## Who is predicted to survive?
+
+The predictions are based on the sex of the passengers.
+
+```{r, eval=FALSE}
+test %>% 
+  left_join(submission, by="PassengerId") %>% 
+  select(PassengerId, Sex, Survived)
+```
+
+## Today
+
+* Questions:
+    1. What is the "scoring" mechanism for this Kaggle competition?
+    1. What score does the above "model" yield for the `train`ing data?
+* Start problem set 1
 
 
 ***

@@ -459,8 +459,42 @@ After submitting to Kaggle, you can see your ranking.
 <li>Chalk talk: 1.2 GitHub pull requests</li>
 </ul>
 </div>
-<div id="section" class="section level2">
-<h2></h2>
+<div id="kaggle-data" class="section level2">
+<h2>Kaggle data</h2>
+<ul>
+<li>Run the code block below to load/inspect the <a href="https://www.kaggle.com/c/titanic/data">Titanic data</a> from Kaggle (which I’ve uploaded to the course webpage)</li>
+<li>Chalk talk: 1.2 Kaggle data</li>
+</ul>
+<pre class="r"><code>library(tidyverse)
+train &lt;- read_csv(&quot;https://rudeboybert.github.io/STAT495/static/Titanic/train.csv&quot;)
+test &lt;- read_csv(&quot;https://rudeboybert.github.io/STAT495/static/Titanic/test.csv&quot;)
+submission &lt;- read_csv(&quot;https://rudeboybert.github.io/STAT495/static/Titanic/gender_submission.csv&quot;)
+
+glimpse(train)
+glimpse(test)
+glimpse(submission)
+
+View(train)
+View(test)
+View(submission)</code></pre>
+</div>
+<div id="who-is-predicted-to-survive" class="section level2">
+<h2>Who is predicted to survive?</h2>
+<p>The predictions are based on the sex of the passengers.</p>
+<pre class="r"><code>test %&gt;% 
+  left_join(submission, by=&quot;PassengerId&quot;) %&gt;% 
+  select(PassengerId, Sex, Survived)</code></pre>
+</div>
+<div id="today" class="section level2">
+<h2>Today</h2>
+<ul>
+<li>Questions:
+<ol style="list-style-type: decimal">
+<li>What is the “scoring” mechanism for this Kaggle competition?</li>
+<li>What score does the above “model” yield for the <code>train</code>ing data?</li>
+</ol></li>
+<li>Start problem set 1</li>
+</ul>
 <hr />
 </div>
 </div>
