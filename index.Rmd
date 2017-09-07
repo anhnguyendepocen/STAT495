@@ -28,6 +28,19 @@ library(forcats)
 rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), output_file = "slides.html")
 ```
 
+<!--
+
+
+***
+
+# 1.3 
+
+## Today: Mon 9/11
+
+* Posted midterm, topic schedule, finalized. READ IT
+
+--> 
+
 
 
 ***
