@@ -28,18 +28,20 @@ library(forcats)
 rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), output_file = "slides.html")
 ```
 
-<!--
 
 
 ***
 
-# 1.3 
+
+# 1.3 Sampling/resampling
 
 ## Today: Mon 9/11
 
-* Posted midterm, topic schedule, finalized. READ IT
-
---> 
+* Syllabus has been finalized, so read it!
+    + Midterm dates
+    + Andrew Kim's tutoring hours
+* As a class we'll all perform a pull request for PS01
+* The role of sampling and resampling in machine learning
 
 
 
@@ -67,11 +69,14 @@ Baby's first Kaggle competition and GitHub pull request! Specifically the [Titan
     + This problem set is only about getting used to the process, not about anything substantive. 
     + You don't have to fit actual model for now, but feel free to if you want. Don't even worry about how good your predictions are, just focus on getting a score.
     + Do not [spin your wheels](https://youtu.be/VrS14wLmVhY?t=12s)! If you are stuck, take a breather, and consult others.
+* **Note added 9/7 1:30pm**: There is an error in `PS01.Rmd`; replace line 4 of `PS01.Rmd` so that it reads:
 
+```
+date: "2017-09-07"
+```
 
 
 ***
-
 
 
 # 1.2 Getting used to infrastructure
