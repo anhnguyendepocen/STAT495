@@ -310,129 +310,32 @@ div.tocify {
 <style>
 h1{font-weight: 400;}
 </style>
-<!--
-***
-
-## Tool 3: Kaggle
-
-* Baby's first Kaggle competition entry!
-* Tutorial on their most popular competition for beginners [Titanic: Machine Learning from Disaster](https://www.kaggle.com/c/titanic).
-
-
-
-## Titanic Data
-
-For $i=1,\ldots,n$ passengers
-
-* ID variable: `PassengerId`
-* Outcome variable $y_i$: `Survived` (binary)
-* 10 Predictors/covariates $\vec{X}_i$ i.e. information about the passenger: `Pclass`, `Name`, `Sex`, `Age`, `SibSp`, `Parch`, `Ticket`, `Fare`, `Cabin`, `Embarked`. 
-
-
-
-## Models for Predicting Survival:
-
-Naïve models: Use no information about the passenger, i.e. no covariates
-
-1. Everyone dies: Predict
-    + `Survived == 0`
-1. Everyone lives: Predict
-    + `Survived == 1`
-1. Flip a weighted coin. Predict
-    + `Survived == 1` with probability $p$
-    + `Survived == 0` with probability $1-p$
-
-
-## Models for Predicting Survival:
-
-* Instead, let's use some information about the passengers: `Sex`? 
-* Our model: Predict:
-    + `Survived == 1` if `Sex == "female"`
-    + `Survived == 0` if `Sex == "male"`
-
-
-
-## Outline of Competition
-
-Chalk talk i.e. see your lecture notes. 
-
-
-
-## Titanic Data
-
-Load CSV's into R:
-
-
-```r
-# library(tidyverse)
-# gender_submission <- readr::read_csv("assets/Titanic/gender_submission.csv")
-# test <- readr::read_csv("assets/Titanic/test.csv")
-# train <- readr::read_csv("assets/Titanic/train.csv")
-```
-
-* You may need to change your directory path.
-* `readr::` just indicates the function is from the `readr` package. Use for disambiguation.
-
-
-
-## Training Set
-
-The binary outcome varible `Survived` is included.
-
-
-```r
-# glimpse(train)
-```
-
-
-## Test Set
-
-`Survived` is now **NOT** included. There are 418 rows (passengers) you need to predict.
-
-
-```r
-# glimpse(test)
-```
-
-
-## Submission Example
-
-This is what you submit: 418 rows with
-
-> * the ID variable `PassengerId`
-> * your **predicted** outcome variable `Survived`
-
-
-```r
-# glimpse(gender_submission)
-```
-
-
-## Submission Example
-
-You can write to CSV via:
-
-
-```r
-# gender_submission %>% readr::write_csv("assets/Titanic/submission.csv")
-```
-
-
-## Submission Example
-
-After submitting to Kaggle, you can see your ranking.
-
-## Sampling
-
-<center><img src="images/target-population.jpg" alt="Drawing" style="width: 600px;"/></center>
-    
-
-## Resampling
-
-<center><img src="images/resample.jpg" alt="Drawing" style="width: 600px;"/></center>
-
--->
 <hr />
+<div id="problem-set-1" class="section level1">
+<h1>Problem Set 1</h1>
+<p><img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 300px;"/></p>
+<p>Baby’s first Kaggle competition and GitHub pull request! Specifically the <a href="https://www.kaggle.com/c/titanic">Titanic: Machine Learning from Disaster</a> competition. You will be submitting predictions on who survived/died amongst the passengers randomly assigned to the <em>test set</em> and viewing your Kaggle leaderboard score.</p>
+<ul>
+<li>Assigned: Thu 9/7</li>
+<li>Due: Mon 9/11 9:00am</li>
+<li>Teams: Individual</li>
+<li>Deliverables: A ready to submit <em>pull request</em> to the <a href="https://github.com/2017-09-Amherst-STAT495/PS01">PS01 repo</a>, in other words complete only <a href="https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process">steps 1-5</a> of the problem set submission process. However, you will all be submitting/making the pull request (step 6) at the same time as a group in lecture. The following files should be modified/added from the original
+<ol style="list-style-type: decimal">
+<li><code>PS01.Rmd</code>: This should be well-commented and <strong>completely reproducible</strong>. In other words, if someone else takes this repo, they should be able to reproduce your work with one click of the mouse. This necessitates taking an empathetic view of other users.</li>
+<li><code>PS01.html</code>: The output of <code>PS01.Rmd</code></li>
+<li><code>submission.csv</code>: Your predictions of who survives based on something other than sex. Current set to match <code>gender_submissions.csv</code> on Kaggle.</li>
+<li><code>screen_shot.png</code> or <code>screen_shot.jpg</code>: A screenshot of your Kaggle ranking. Be sure to “clean” your browsers.</li>
+<li>Any other necessary files.</li>
+</ol></li>
+<li>Tips:
+<ul>
+<li>This problem set is only about getting used to the process, not about anything substantive.</li>
+<li>You don’t have to fit actual model for now, but feel free to if you want. Don’t even worry about how good your predictions are, just focus on getting a score.</li>
+<li>Do not <a href="https://youtu.be/VrS14wLmVhY?t=12s">spin your wheels</a>! If you are stuck, take a breather, and consult others.</li>
+</ul></li>
+</ul>
+<hr />
+</div>
 <div id="getting-used-to-infrastructure" class="section level1">
 <h1>1.2 Getting used to infrastructure</h1>
 <div id="today-thu-97" class="section level2">
@@ -497,31 +400,6 @@ View(submission)</code></pre>
 </ul>
 <hr />
 </div>
-</div>
-<div id="problem-set-1" class="section level1">
-<h1>Problem Set 1</h1>
-<p><img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 300px;"/></p>
-<p>Baby’s first Kaggle competition and GitHub pull request! Specifically the <a href="https://www.kaggle.com/c/titanic">Titanic: Machine Learning from Disaster</a> competition. You will be submitting predictions on who survived/died amongst the passengers randomly assigned to the <em>test set</em> and viewing your Kaggle leaderboard score.</p>
-<ul>
-<li>Assigned: Thu 9/7</li>
-<li>Due: Mon 9/11 9:00am</li>
-<li>Teams: Individual</li>
-<li>Deliverables: A ready to submit <em>pull request</em> to the <a href="https://github.com/2017-09-Amherst-STAT495/PS01">PS01 repo</a>, in other words complete only <a href="https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process">steps 1-5</a> of the problem set submission process. However, you will all be submitting/making the pull request (step 6) at the same time as a group in lecture. The following files should be modified/added from the original
-<ol style="list-style-type: decimal">
-<li><code>PS01.Rmd</code>: This should be well-commented and <strong>completely reproducible</strong>. In other words, if someone else takes this repo, they should be able to reproduce your work with one click of the mouse. This necessitates taking an empathetic view of other users.</li>
-<li><code>PS01.html</code>: The output of <code>PS01.Rmd</code></li>
-<li><code>submission.csv</code>: Your predictions of who survives based on something other than sex. Current set to match <code>gender_submissions.csv</code> on Kaggle.</li>
-<li><code>screen_shot.png</code> or <code>screen_shot.jpg</code>: A screenshot of your Kaggle ranking. Be sure to “clean” your browsers.</li>
-<li>Any other necessary files.</li>
-</ol></li>
-<li>Tips:
-<ul>
-<li>This problem set is only about getting used to the process, not about anything substantive.</li>
-<li>You don’t have to fit actual model for now, but feel free to if you want. Don’t even worry about how good your predictions are, just focus on getting a score.</li>
-<li>Do not <a href="https://youtu.be/VrS14wLmVhY?t=12s">spin your wheels</a>! If you are stuck, take a breather, and consult others.</li>
-</ul></li>
-</ul>
-<hr />
 </div>
 <div id="problem-set-0" class="section level1">
 <h1>Problem Set 0</h1>
