@@ -160,10 +160,27 @@ After submitting to Kaggle, you can see your ranking.
 
 
 
-# Problem Set 1
 
-* Assigned:
-* Due: 
+# 1.2 Getting used to infrastructure
+
+## Today: Thu 9/7
+
+* Refresher on Slack notifications
+* GitHub organization for the course: Where problem sets will be distributed/submitted
+    + Ensure you can access the GitHub organization by clicking "GitHub Org" above.
+    + If BOTH your full name and/or a recent picture are not visible [here](https://github.com/orgs/2017-09-Amherst-STAT495/people), please update your GitHub profile.
+* GitHub pull request theory
+* Kaggle competition
+
+## GitHub pull request theory
+
+* Open the following in two separate tabs
+    + [Problem set 1](https://github.com/2017-09-Amherst-STAT495/PS01)
+    + [Problem set submissions process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process) 
+* Chalk talk: 1.2 GitHub pull requests
+
+##
+
 
 
 
@@ -171,15 +188,28 @@ After submitting to Kaggle, you can see your ranking.
 
 
 
+# Problem Set 1
 
-# 1.2 More on Kaggle
+<img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 300px;"/>
 
-## Today: Thu 9/7
 
-* Refresher on Slack notifications
-* GitHub organizations
-    + Ensure you can access the GitHub organization by clicking "GitHub Org" above.
-    + If BOTH your full name and/or a recent picture are not visible [here](https://github.com/orgs/2017-09-Amherst-STAT495/people), please update your GitHub profile.
+Baby's first Kaggle competition and GitHub pull request! Specifically the [Titanic: Machine Learning from Disaster](<https://www.kaggle.com/c/titanic>) competition. You will be submitting predictions on who survived/died amongst the passengers randomly assigned to the *test set* and viewing your Kaggle leaderboard score.
+
+* Assigned: Thu 9/7
+* Due: Mon 9/11 9:00am
+* Teams: Individual
+* Deliverables: A ready to submit *pull request* to the [PS01 repo](https://github.com/2017-09-Amherst-STAT495/PS01), in other words complete only [steps 1-5](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process) of the problem set submission process. However, you will all be submitting/making the pull request (step 6) at the same time as a group in lecture. The following files should be modified/added from the original
+    1. `PS01.Rmd`: This should be well-commented and **completely reproducible**. In other words, if someone else takes this repo, they should be able to reproduce your work with one click of the mouse. This necessitates taking an empathetic view of other users.
+    1. `PS01.html`: The output of `PS01.Rmd`
+    1. `submission.csv`: Your predictions of who survives based on something other than sex. Current set to match `gender_submissions.csv` on Kaggle.
+    1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking. Be sure to "clean" your browsers.
+    1. Any other necessary files.
+* Tips:
+    + This problem set is only about getting used to the process, not about anything substantive. 
+    + You don't have to fit actual model for now, but feel free to if you want. Don't even worry about how good your predictions are, just focus on getting a score.
+    + Do not [spin your wheels](https://youtu.be/VrS14wLmVhY?t=12s)! If you are stuck, take a breather, and consult others.
+
+
 
 
 
