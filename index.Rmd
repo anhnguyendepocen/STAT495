@@ -37,10 +37,11 @@ rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), outpu
 
 ## Today: Mon 9/11
 
-* Syllabus has been finalized, so read it!
+* Syllabus has been finalized, so please read it. I will politely decline to answer questions that are answered on the syllabus :)
     + Midterm dates
-    + Andrew Kim's tutoring hours
-* As a class we'll all perform a pull request for PS01
+    + Andrew Kim's tutoring hours: Mondays 6pm-8pm starting today.
+* All future Problem Sets will be assigned/due/presented on Tuesdays
+* Perform pull request for PS01 *as a class*
 * The role of sampling and resampling in machine learning
 
 
