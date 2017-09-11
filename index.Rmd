@@ -66,7 +66,7 @@ Topics:
 * Modeling for supervised learning
 * (If time) Sampling and resampling
 
-<!--
+
 ## Chalk talk
 
 * 1.3 Supervised vs unsupervised
@@ -101,7 +101,7 @@ Colin Woodard's idea of 11 Nations of North America:
 * For tomorrow (Tuesday), watch the following 9m49s video:
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/bESJ81dyYro" frameborder="0" allowfullscreen></iframe>
--->
+
 
 
 ***
