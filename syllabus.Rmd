@@ -12,7 +12,7 @@ output:
 h1{font-weight: 400;}
 </style>
 
-# Basic information
+# Basic information {#basicinfo}
 
 * **Course title:** STAT/MATH 495 - Advanced Data Analysis
 * **Instructor:** [Albert Y. Kim](https://rudeboybert.rbind.io/) - Lecturer of Statistics
@@ -23,6 +23,9 @@ h1{font-weight: 400;}
     Late changes to office hours will be posted on Slack.
     + **StatFellow Office Hours**: Andrew Kim (`akim17` on Slack): M 6:00-8:00pm in Seeley Mudd 205.
 * **Important dates:**
+    + Midterm I: Th 10/5
+    + Midterm II: Th 11/9
+    + Midterm III: Exam week
 
 
 
@@ -70,7 +73,7 @@ around the use of GitHub.
         + Read digital content
           + Work with your seatmates on in-class exercises
           + Start problem sets
-* The flow of the lecture notes will follow the notes on the [welcome page](index.html) of the course.   
+* The flow of the lecture notes will follow the [main page](index.html) of the course.   
 
 
 ## Attendance policy
@@ -146,6 +149,7 @@ place to hold your group peers accountable for their work.
 The problem sets in this class should be viewed as low-stakes opportunities to
 practice, instead of evaluative tools used by the instructor to assign grades.
 
+* All problem sets assigned/due/presented on Tuesdays 
 * Basic structure:
     1. You will be randomly assigned into pairs.
     1. You will complete the problem set and submit it via GitHub pull request.
@@ -161,7 +165,7 @@ your own answers and not simple rewordings of another's work.
 
 ## Three Midterms 40%
 
-There will be three midterms: two during the semester, one during finals week (dates TBA).
+There will be three midterms: two during the semester, one during finals week (dates posted under [Basic information](#basicinfo)).
 
 * Two highest scores are weighted 15% each, lowest is weighted 10%. 
 * All midterms are cumulative.

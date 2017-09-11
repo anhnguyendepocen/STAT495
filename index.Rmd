@@ -5,7 +5,7 @@ date: "Last updated on `r Sys.Date()`"
 output:
   html_document:
     toc: true
-    toc_depth: 1
+    toc_depth: 2
     toc_float: true
 ---
 
@@ -29,31 +29,88 @@ rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), outpu
 ```
 
 
+<!--
+
+# Problem set 2
+
+<img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 250px;"/>
+
+Baby's first Kaggle competition and GitHub pull request! Specifically the [Titanic: Machine Learning from Disaster](<https://www.kaggle.com/c/titanic>) competition. You will be submitting predictions on who survived/died amongst the passengers randomly assigned to the *test set* and viewing your Kaggle leaderboard score.
+
+* Assigned: Thu 9/7
+* Due: Mon 9/11 9:00am
+* Make sure your full name and photo are visible [here](https://github.com/orgs/2017-09-Amherst-STAT495/people).
+-->
+
 
 ***
 
 
-# 1.3 Sampling/resampling
+# 1.3 Intro to modeling
 
 ## Today: Mon 9/11
 
-* Syllabus has been finalized, so please read it. I will politely decline to answer questions that are answered on the syllabus :)
-    + Midterm dates
-    + Andrew Kim's tutoring hours: Mondays 6pm-8pm starting today.
-* All future Problem Sets will be assigned/due/presented on Tuesdays
-* Perform pull request for PS01 *as a class*
-* The role of sampling and resampling in machine learning
+Announcements:
 
+* Math/stat table for lunch 12-1:30 Terrace Room A, Valentine
+* Syllabus has been finalized, so please read it:
+    + Midterm dates
+    + Andrew's tutoring hours: Mondays 6pm-8pm in Seeley Mudd 205 starting today
+    + All problem sets assigned/due/presented on Tuesdays
+* Perform pull request for PS01 *as a class*
+* For tomorrow, watch 9m49s video linked below.
+
+Topics:
+
+* Supervised vs unsupervised learning
+* Modeling for supervised learning
+* (If time) Sampling and resampling
+
+<!--
+## Chalk talk
+
+* 1.3 Supervised vs unsupervised
+
+
+## Example of unsupervised learning
+
+Colin Woodard's idea of 11 Nations of North America:
+
+<img src="http://emerald.tufts.edu/alumni/magazine/fall2013/images/features/upinarms-map-large.jpg" alt="Drawing" style="width: 600px;"/>
+
+
+## Chalk talk
+
+* 1.3 Model for supervised learning
+
+
+## POTUS 45 on models
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Teaching my students to separate systematic model component from irreducible error component when fitting for outcome variable <a href="https://t.co/7jzuqEHTdp">pic.twitter.com/7jzuqEHTdp</a></p>&mdash; Albert Y. Kim (@rudeboybert) <a href="https://twitter.com/rudeboybert/status/834395069444661249">February 22, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+## Chalk talk
+
+* 1.3 Income example
+* 1.3 Most common example in Amherst stats courses
+
+## Next steps
+
+* Early on we keep things simple: univariate $\vec{x}$ so that we visualize easily
+* For tomorrow (Tuesday), watch the following 9m49s video:
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/bESJ81dyYro" frameborder="0" allowfullscreen></iframe>
+-->
 
 
 ***
 
 
 
-# Problem Set 1
+# Problem set 2
 
-<img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 300px;"/>
-
+<img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 250px;"/>
 
 Baby's first Kaggle competition and GitHub pull request! Specifically the [Titanic: Machine Learning from Disaster](<https://www.kaggle.com/c/titanic>) competition. You will be submitting predictions on who survived/died amongst the passengers randomly assigned to the *test set* and viewing your Kaggle leaderboard score.
 
@@ -84,10 +141,15 @@ date: "2017-09-07"
 
 ## Today: Thu 9/7
 
+Announcements:
+
 * Refresher on Slack notifications
 * GitHub organization for the course: Where problem sets will be distributed/submitted
     + Ensure you can access the GitHub organization by clicking "GitHub Org" above.
     + If BOTH your full name and/or a recent picture are not visible [here](https://github.com/orgs/2017-09-Amherst-STAT495/people), please update your GitHub profile.
+
+Topics:
+
 * GitHub pull request theory
 * Kaggle competition
 
@@ -128,7 +190,7 @@ test %>%
   select(PassengerId, Sex, Survived)
 ```
 
-## Today
+## Tech time
 
 * Questions:
     1. What is the "scoring" mechanism for this Kaggle competition?
