@@ -37,18 +37,8 @@ set.seed(76)
 sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 ```
 
-<!--
 
-# Problem set 2
 
-<img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 250px;"/>
-
-Baby's first Kaggle competition and GitHub pull request! Specifically the [Titanic: Machine Learning from Disaster](<https://www.kaggle.com/c/titanic>) competition. You will be submitting predictions on who survived/died amongst the passengers randomly assigned to the *test set* and viewing your Kaggle leaderboard score.
-
-* Assigned: Thu 9/7
-* Due: Mon 9/11 9:00am
-* Make sure your full name and photo are visible [here](https://github.com/orgs/2017-09-Amherst-STAT495/people).
--->
 
 ***
 
