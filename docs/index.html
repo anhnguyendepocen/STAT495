@@ -178,7 +178,7 @@ $(document).ready(function ()  {
 
     // establish options
     var options = {
-      selectors: "h1,h2",
+      selectors: "h1",
       theme: "bootstrap3",
       context: '.toc-content',
       hashGenerator: function (text) {
@@ -329,8 +329,91 @@ Baby's first Kaggle competition and GitHub pull request! Specifically the [Titan
 <h2>Today: Tue 9/12</h2>
 <p>Announcements: New office hours location: Seeley Mudd 208 (lounge)</p>
 </div>
-<div id="section" class="section level2">
-<h2></h2>
+<div id="chalk-talk" class="section level2">
+<h2>Chalk talk</h2>
+<ul>
+<li>Analogy of what we are doing</li>
+</ul>
+</div>
+<div id="splines" class="section level2">
+<h2>Splines</h2>
+<p>Splines are <em>piecewise cubic polynomials with smoothness constraints</em>. The code corresponding to the video at the end of <a href="https://rudeboybert.github.io/STAT495/#13_intro_to_modeling">Lecture 1.3</a> is below.</p>
+<pre class="r"><code>library(tidyverse)
+library(broom)
+# Load some pre-computed data
+load(url(&quot;https://github.com/rudeboybert/STAT495/blob/master/static/splines.RData?raw=true&quot;))
+
+# Here is a wacky function f(x)
+f &lt;- function(x){
+  f_x &lt;- 0.2*x^11*(10*(1-x))^6+10*(10*x)^3*(1-x)^10
+  return(f_x)
+}
+
+# For 500 equally spaced values of x between 0 &amp; 1, let&#39;s compute and plot f(x) in red.
+# Recall that f(x) is the systematic component, or &quot;the signal&quot;
+values &lt;- data_frame(
+  x = seq(from=0, to=1, length=500),
+  f_x = f(x)
+)
+values %&gt;% 
+  ggplot(aes(x=x)) +
+  stat_function(fun = f, col=&quot;red&quot;, size=1)
+
+# We now add the unsystematic error component epsilon to f(x) i.e. the noise, to
+# obtain our y&#39;s, and hence our observed points in black (x, y)
+values &lt;- values %&gt;% 
+  mutate(
+    epsilon = rnorm(500, 0, sd = 2),
+    y = f_x + epsilon
+  )
+values %&gt;% 
+  ggplot(aes(x=x)) +
+  stat_function(fun = f, col=&quot;red&quot;, size=1) +
+  geom_point(aes(y=y))
+
+# But remember in real life, we won&#39;t know the red curve! If we did, then why
+# are we doing any of this? All we observe are the black points. Let&#39;s &quot;pretend&quot;
+# like we don&#39;t know what the red curve is!
+values %&gt;% 
+  ggplot(aes(x=x)) +
+  geom_point(aes(y=y))
+
+# We now fit a &#39;smoothing spline&#39;. Think of it as a piece of string with a
+# specified amount of flexibility, where the flexibility is controlled by the
+# &quot;degrees of freedom&quot; df. This blue curve is a &quot;guess/estimate&quot; of the red
+# curve f(x), which recall, we are pretending we don&#39;t know. Also observe how we
+# use the broom::augment() function to convert the output of smooth.spline to
+# tidy data frame format.
+smooth.spline(values$x, values$y, df=5) %&gt;%
+  broom::augment() %&gt;% 
+  ggplot(aes(x=x)) +
+  geom_point(aes(y=y)) +
+  geom_line(aes(y=.fitted), col=&quot;blue&quot;, size=1)
+  
+# Play around with the df argument in smooth.spline() above.
+
+# Now let&#39;s compare smoothing splines using four different values of the degrees
+# of freedom in a plot I precomputed. Which do you think is best? 
+multiple_df
+
+# I would say that df=10 roughly is best. df=2 is not quite flexible enough,
+# where as df=50 seems to no longer fitting to signal (the true function f) and
+# is now fitting to noise. In other words, it is overfitting to this particular
+# data set.
+multiple_df + 
+  stat_function(fun = f, col=&quot;red&quot;, size=1)
+
+# Exercise. Here are a set of points from a different f(x) and epsilon. With
+# your finger trace what you think the true f(x) function looks like. In other
+# words, separate the signal from the noise!&quot;
+exercise
+
+# Let&#39;s fit a spline with 25 degrees of freedom. How close is this to the truth?
+fitted
+
+# Ready? Here is the truth! How close were you? Note the noise is normal with mean 0 
+# and sd = 12!
+truth</code></pre>
 <hr />
 </div>
 </div>
@@ -356,7 +439,8 @@ Baby's first Kaggle competition and GitHub pull request! Specifically the [Titan
 <li>Argue why you chose the model you did.</li>
 </ul></li>
 <li><code>PS02.html</code>: The output of <code>PS02.Rmd</code>. This will be the presentation file for a randomly chosen set of groups on Tue 9/19.</li>
-<li><code>submission.csv</code>: Your predictions of who survives based on something other than sex. Current set to match <code>gender_submissions.csv</code> on Kaggle.</li>
+<li><code>README.md</code>: Change <code>rudeboybert</code> in the URL to the GitHub ID of the team leader so that you can open your team’s version of <code>PS02.html</code> in a browser on Tuesday morning.</li>
+<li><code>submission.csv</code></li>
 <li><code>screen_shot.png</code> or <code>screen_shot.jpg</code>: A screenshot of your Kaggle ranking.</li>
 </ol></li>
 <li>Tips:
@@ -390,7 +474,7 @@ Baby's first Kaggle competition and GitHub pull request! Specifically the [Titan
 <li>(If time) Sampling and resampling</li>
 </ul>
 </div>
-<div id="chalk-talk" class="section level2">
+<div id="chalk-talk-1" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Supervised vs unsupervised</li>
@@ -401,7 +485,7 @@ Baby's first Kaggle competition and GitHub pull request! Specifically the [Titan
 <p>Colin Woodard’s idea of 11 Nations of North America:</p>
 <p><img src="http://emerald.tufts.edu/alumni/magazine/fall2013/images/features/upinarms-map-large.jpg" alt="Drawing" style="width: 600px;"/></p>
 </div>
-<div id="chalk-talk-1" class="section level2">
+<div id="chalk-talk-2" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Model for supervised learning</li>
@@ -417,7 +501,7 @@ Teaching my students to separate systematic model component from irreducible err
 </blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-<div id="chalk-talk-2" class="section level2">
+<div id="chalk-talk-3" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Income example</li>
