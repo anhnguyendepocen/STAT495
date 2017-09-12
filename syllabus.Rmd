@@ -19,7 +19,7 @@ h1{font-weight: 400;}
 * **~~Email:~~ Slack team**: <a target="_blank" class="page-link" href="https://stat495-fall-2017.slack.com/">stat495-fall-2017.slack.com</a>. I will respond to ~~emails~~ Slack messages within 24h, but not during weekends. Please only Slack me with administrative and briefer questions as I prefer having more substantive conversations in person.
 * **Meeting locations/times:**
     + **Lectures**: M 9:00-9:50 and Tu/Th 8:30-9:50 in Merrill Science Center 131.
-    + **Office hours**: M 1:00-4:00 and W 2:00-5:00 in [Converse Hall 316](https://www.google.com/maps/place/Amherst+College+Converse+Hall/@42.3722517,-72.5207872,17z/data=!4m5!3m4!1s0x0:0x63162cb2397551a2!8m2!3d42.3723643!4d-72.5184167) (or by appointment).  
+    + **Office hours**: M 1:00-4:00 and W 2:00-5:00 in ~~Converse Hall 316~~ Seeley Mudd 208 (conference room in lounge), or by appointment. 
     Late changes to office hours will be posted on Slack.
     + **StatFellow Office Hours**: Andrew Kim (`akim17` on Slack): M 6:00-8:00pm in Seeley Mudd 205.
 * **Important dates:**
