@@ -448,7 +448,28 @@ truth</code></pre>
 <li>Again, do not worry about your score. This problem set is more about process more than outcome.</li>
 <li>Do not <a href="https://youtu.be/VrS14wLmVhY?t=12s">spin your wheels</a>!</li>
 </ul></li>
+<li>Hints:</li>
 </ul>
+<pre class="r"><code>library(tidyverse)
+library(broom)
+data(cars)
+splines_model &lt;- smooth.spline(x=cars$speed, y=cars$dist, df = 6)
+splines_model_tidy &lt;- splines_model %&gt;% 
+  broom::augment() 
+ggplot(splines_model_tidy, aes(x=x)) +
+  geom_point(aes(y=y)) +
+  geom_line(aes(y=.fitted), col=&quot;blue&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
+<pre class="r"><code>new_speeds &lt;- c(24.6, 26.4, 23.4, 16.8, 15.8, 5.4, 14.8, 8.2, 1, 18.8, 25, 28, 19.6, 11.2, 21.8, 26.2, 20.6, 0, 14.4, 8.8)
+# What do you think output is?
+output &lt;- predict(splines_model, new_data = new_speeds) %&gt;% 
+  tibble::as.tibble()
+output</code></pre>
+<div data-pagedtable="false">
+<script data-pagedtable-source type="application/json">
+{"columns":[{"label":["x"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["y"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"5.731162"},{"1":"7","2":"12.541225"},{"1":"8","2":"15.054925"},{"1":"9","2":"17.863748"},{"1":"10","2":"21.053253"},{"1":"11","2":"24.469082"},{"1":"12","2":"28.683401"},{"1":"13","2":"33.816470"},{"1":"14","2":"38.246192"},{"1":"15","2":"40.948203"},{"1":"16","2":"43.615377"},{"1":"17","2":"47.059869"},{"1":"18","2":"50.524277"},{"1":"19","2":"52.699085"},{"1":"20","2":"55.273074"},{"1":"22","2":"66.705571"},{"1":"23","2":"75.308616"},{"1":"24","2":"85.044749"},{"1":"25","2":"94.446489"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
+  </script>
+</div>
 <hr />
 </div>
 <div id="intro-to-modeling" class="section level1">

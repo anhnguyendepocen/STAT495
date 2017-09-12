@@ -180,6 +180,24 @@ You will enter the [Sberbank Russian Housing Market](https://www.kaggle.com/c/sb
 * Tips:
     + Again, do not worry about your score. This problem set is more about process more than outcome.
     + Do not [spin your wheels](https://youtu.be/VrS14wLmVhY?t=12s)!
+* Hints:
+
+```{r}
+library(tidyverse)
+library(broom)
+data(cars)
+splines_model <- smooth.spline(x=cars$speed, y=cars$dist, df = 6)
+splines_model_tidy <- splines_model %>% 
+  broom::augment() 
+ggplot(splines_model_tidy, aes(x=x)) +
+  geom_point(aes(y=y)) +
+  geom_line(aes(y=.fitted), col="blue")
+new_speeds <- c(24.6, 26.4, 23.4, 16.8, 15.8, 5.4, 14.8, 8.2, 1, 18.8, 25, 28, 19.6, 11.2, 21.8, 26.2, 20.6, 0, 14.4, 8.8)
+# What do you think output is?
+output <- predict(splines_model, new_data = new_speeds) %>% 
+  tibble::as.tibble()
+output
+```
 
 
 
