@@ -29,7 +29,7 @@ rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), outpu
 ```
 
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=FALSE}
 # Code to randomly assign students to groups:
 library(tidyverse)
 class <- c("Brenna", "Anthony", "Abbas", "Sara", "Sarah", "Jonathan", "Harrison", "Tasheena", "Leonard", "Timothy", "Jenn", "Kiryu", "Jeff", "Vickie", "Pei", "Luke", "Brendan", "Caleb", "Meron", "Christien", "Wayne", "Meredith")
@@ -58,9 +58,10 @@ Baby's first Kaggle competition and GitHub pull request! Specifically the [Titan
 
 ## Today: Tue 9/12
 
-Announcements:
+Announcements: New office hours location: Seeley Mudd 208 (lounge)
 
-* New office hours location: Seeley Mudd 208 (lounge)
+## 
+
 
 
 
@@ -69,19 +70,29 @@ Announcements:
 
 # Problem set 2
 
+<a href="https://www.kaggle.com/c/sberbank-russian-housing-market">
+<img border="0" alt="Sberbank" src="images/sberbank.png" width="600">
+</a>
+
+You will enter the [Sberbank Russian Housing Market](https://www.kaggle.com/c/sberbank-russian-housing-market) Kaggle competition and fit a spline model to predict the outcome variable `price_doc`: the sale price of a piece of real estate. The data has been pre-downloaded and included in the [PS02 repo](https://github.com/2017-09-Amherst-STAT495/PS02) in the course GitHub Organization.
+
 * Assigned: Tue 9/12
-* Due: Tue 9/19 9:00am, at which point you'll all do a synchronized pull request.
-* Teams: 
-* Deliverables: A ready to submit *pull request* to the [PS01 repo](https://github.com/2017-09-Amherst-STAT495/PS01), in other words complete only [steps 1-5](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process) of the problem set submission process. However, you will all be submitting/making the pull request (step 6) at the same time as a group in lecture. The following files should be modified/added from the original
-    1. `PS01.Rmd`: This should be well-commented and **completely reproducible**. In other words, if someone else takes this repo, they should be able to reproduce your work with one click of the mouse. This necessitates taking an empathetic view of other users.
-    1. `PS01.html`: The output of `PS01.Rmd`
+* Due: Tue 9/19 9:00am, at which point there will be synchronized pull requests.
+* Teams: 2-3 people at your choosing. Once you've selected your group designate one person as team leader, who will:
+    + Create a Slack DM that includes Albert, Andrew Kim (TA), and all team members.
+    + Submit a single pull request on behalf of the group.
+    + Submit a single submission to Kaggle on behalf of the group.
+* Deliverables: One ready to submit *pull request* to the [PS02 repo](https://github.com/2017-09-Amherst-STAT495/PS02) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
+    1. `PS02.Rmd`: This should
+        + Be well-commented and completely reproducible.
+        + Involve an *exploratory data analysis*.
+        + Argue why you chose the model you did.
+    1. `PS02.html`: The output of `PS02.Rmd`. This will be the presentation file for a randomly chosen set of groups on Tue 9/19.
     1. `submission.csv`: Your predictions of who survives based on something other than sex. Current set to match `gender_submissions.csv` on Kaggle.
-    1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking. Be sure to "clean" your browsers.
-    1. Any other necessary files.
+    1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
 * Tips:
-    + This problem set is only about getting used to the process, not about anything substantive. 
-    + You don't have to fit actual model for now, but feel free to if you want. Don't even worry about how good your predictions are, just focus on getting a score.
-    + Do not [spin your wheels](https://youtu.be/VrS14wLmVhY?t=12s)! If you are stuck, take a breather, and consult others.
+    + Again, do not worry about your score. This problem set is more about process more than outcome.
+    + Do not [spin your wheels](https://youtu.be/VrS14wLmVhY?t=12s)!
 
 
 
@@ -247,7 +258,7 @@ test %>%
 
 
 
-# Problem Set 0
+# Problem set 0
 
 * Assigned: Tue 9/5
 * Due: Thu 9/7 lecture time.

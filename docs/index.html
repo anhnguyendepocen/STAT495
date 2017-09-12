@@ -302,7 +302,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">STAT/MATH 495: Advanced Data Analysis</h1>
 <h4 class="author"><em>Albert Y. Kim</em></h4>
-<h4 class="date"><em>Last updated on 2017-09-11</em></h4>
+<h4 class="date"><em>Last updated on 2017-09-12</em></h4>
 
 </div>
 
@@ -310,11 +310,6 @@ div.tocify {
 <style>
 h1{font-weight: 400;}
 </style>
-<pre class="r"><code># Code to randomly assign students to groups:
-library(tidyverse)
-class &lt;- c(&quot;Brenna&quot;, &quot;Anthony&quot;, &quot;Abbas&quot;, &quot;Sara&quot;, &quot;Sarah&quot;, &quot;Jonathan&quot;, &quot;Harrison&quot;, &quot;Tasheena&quot;, &quot;Leonard&quot;, &quot;Timothy&quot;, &quot;Jenn&quot;, &quot;Kiryu&quot;, &quot;Jeff&quot;, &quot;Vickie&quot;, &quot;Pei&quot;, &quot;Luke&quot;, &quot;Brendan&quot;, &quot;Caleb&quot;, &quot;Meron&quot;, &quot;Christien&quot;, &quot;Wayne&quot;, &quot;Meredith&quot;)
-set.seed(76)
-sample(class) %&gt;% matrix(nrow=2) %&gt;% tbl_df() %&gt;% knitr::kable()</code></pre>
 <!--
 
 # Problem set 2
@@ -332,32 +327,42 @@ Baby's first Kaggle competition and GitHub pull request! Specifically the [Titan
 <h1>1.4 Intro to splines</h1>
 <div id="today-tue-912" class="section level2">
 <h2>Today: Tue 9/12</h2>
-<p>Announcements:</p>
-<ul>
-<li>New office hours location: Seeley Mudd 208 (lounge)</li>
-</ul>
+<p>Announcements: New office hours location: Seeley Mudd 208 (lounge)</p>
+</div>
+<div id="section" class="section level2">
+<h2></h2>
 <hr />
 </div>
 </div>
 <div id="problem-set-2" class="section level1">
 <h1>Problem set 2</h1>
+<p><a href="https://www.kaggle.com/c/sberbank-russian-housing-market"> <img border="0" alt="Sberbank" src="images/sberbank.png" width="600"> </a></p>
+<p>You will enter the <a href="https://www.kaggle.com/c/sberbank-russian-housing-market">Sberbank Russian Housing Market</a> Kaggle competition and fit a spline model to predict the outcome variable <code>price_doc</code>: the sale price of a piece of real estate. The data has been pre-downloaded and included in the <a href="https://github.com/2017-09-Amherst-STAT495/PS02">PS02 repo</a> in the course GitHub Organization.</p>
 <ul>
 <li>Assigned: Tue 9/12</li>
-<li>Due: Tue 9/19 9:00am, at which point you’ll all do a synchronized pull request.</li>
-<li>Teams:</li>
-<li>Deliverables: A ready to submit <em>pull request</em> to the <a href="https://github.com/2017-09-Amherst-STAT495/PS01">PS01 repo</a>, in other words complete only <a href="https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process">steps 1-5</a> of the problem set submission process. However, you will all be submitting/making the pull request (step 6) at the same time as a group in lecture. The following files should be modified/added from the original
+<li>Due: Tue 9/19 9:00am, at which point there will be synchronized pull requests.</li>
+<li>Teams: 2-3 people at your choosing. Once you’ve selected your group designate one person as team leader, who will:
+<ul>
+<li>Create a Slack DM that includes Albert, Andrew Kim (TA), and all team members.</li>
+<li>Submit a single pull request on behalf of the group.</li>
+<li>Submit a single submission to Kaggle on behalf of the group.</li>
+</ul></li>
+<li>Deliverables: One ready to submit <em>pull request</em> to the <a href="https://github.com/2017-09-Amherst-STAT495/PS02">PS02 repo</a> (recall the GitHub <a href="https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process">submission process</a>). At the very least, the following files should be modified/added:
 <ol style="list-style-type: decimal">
-<li><code>PS01.Rmd</code>: This should be well-commented and <strong>completely reproducible</strong>. In other words, if someone else takes this repo, they should be able to reproduce your work with one click of the mouse. This necessitates taking an empathetic view of other users.</li>
-<li><code>PS01.html</code>: The output of <code>PS01.Rmd</code></li>
+<li><code>PS02.Rmd</code>: This should
+<ul>
+<li>Be well-commented and completely reproducible.</li>
+<li>Involve an <em>exploratory data analysis</em>.</li>
+<li>Argue why you chose the model you did.</li>
+</ul></li>
+<li><code>PS02.html</code>: The output of <code>PS02.Rmd</code>. This will be the presentation file for a randomly chosen set of groups on Tue 9/19.</li>
 <li><code>submission.csv</code>: Your predictions of who survives based on something other than sex. Current set to match <code>gender_submissions.csv</code> on Kaggle.</li>
-<li><code>screen_shot.png</code> or <code>screen_shot.jpg</code>: A screenshot of your Kaggle ranking. Be sure to “clean” your browsers.</li>
-<li>Any other necessary files.</li>
+<li><code>screen_shot.png</code> or <code>screen_shot.jpg</code>: A screenshot of your Kaggle ranking.</li>
 </ol></li>
 <li>Tips:
 <ul>
-<li>This problem set is only about getting used to the process, not about anything substantive.</li>
-<li>You don’t have to fit actual model for now, but feel free to if you want. Don’t even worry about how good your predictions are, just focus on getting a score.</li>
-<li>Do not <a href="https://youtu.be/VrS14wLmVhY?t=12s">spin your wheels</a>! If you are stuck, take a breather, and consult others.</li>
+<li>Again, do not worry about your score. This problem set is more about process more than outcome.</li>
+<li>Do not <a href="https://youtu.be/VrS14wLmVhY?t=12s">spin your wheels</a>!</li>
 </ul></li>
 </ul>
 <hr />
@@ -527,7 +532,7 @@ View(submission)</code></pre>
 </div>
 </div>
 <div id="problem-set-0" class="section level1">
-<h1>Problem Set 0</h1>
+<h1>Problem set 0</h1>
 <ul>
 <li>Assigned: Tue 9/5</li>
 <li>Due: Thu 9/7 lecture time.</li>
