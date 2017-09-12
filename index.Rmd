@@ -73,7 +73,7 @@ Splines are *piecewise cubic polynomials with smoothness constraints*. The code 
 library(tidyverse)
 library(broom)
 # Load some pre-computed data
-load(url("https://github.com/rudeboybert/STAT495/blob/master/static/splines.RData?raw=true"))
+load(url("https://rudeboybert.github.io/STAT495/static/splines.RData"))
 
 # Here is a wacky function f(x)
 f <- function(x){
