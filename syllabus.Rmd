@@ -82,26 +82,23 @@ I do not take explicit attendance, so there is no need to inform me of the occas
 
 ## Lecture schedule
 
-Roughly speaking we will cover the following topics. A more detailed outline can be found
+Roughly speaking we will cover the following topics. A more detailed outline and corresponding readings can be found
 [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true).
 
 1. Background
-    * Modeling at its simplest: $y = f(\vec{x}) + \epsilon$
-    * Sampling
-    * Crossvalidation
-1. Continuous outcome
-    * Regression for prediction
-    * Splines
+    * Intro to modeling
+    * Simple case to start: splines
+    * Out-of-sample prediction, sampling/resampling, crossvalidation
+    * Bias-variance tradeoff
+1. Continuous outcomes I
     * LOESS smoother
-1. Bias-variance tradeoff
-1. Categorical outcome AKA classification
-    * Logistic regression for prediction
-    * ROC curves
+    * Regression for prediction
+1. Categorical outcomes i.e. classification
+    * Logistic regression for prediction + ROC curves
     * k-Nearest Neighbors
     * Classification and regression trees (CART)
-1. Regularization/shrinkage methods
-    * Ridge regression
-    * LASSO
+1. Continuous outcome II
+    * Regularization/shrinkage methods: Ridge regression and LASSO
 1. Other methods
     * Boosting and bagging
     * Random forests

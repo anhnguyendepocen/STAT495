@@ -43,9 +43,40 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 ***
 
 
+
+The lectures are numbered according to the following rough topic outline below. A detailed topic schedule and corresponding readings can be found [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true).
+
+1. Background
+    * ~~Intro to modeling~~ Done
+    * Simple case with univariate predictors to start: splines
+    * Out-of-sample prediction, sampling/resampling, crossvalidation
+    * Bias-variance tradeoff
+1. Continuous outcomes I
+    * LOESS smoother
+    * Regression for prediction
+1. Categorical outcomes i.e. classification
+    * Logistic regression for prediction + ROC curves
+    * k-Nearest Neighbors
+    * Classification and regression trees (CART)
+1. Continuous outcome II
+    * Regularization/shrinkage methods: Ridge regression and LASSO
+1. Other methods
+    * Boosting and bagging
+    * Random forests
+    * Neural nets
+1. Unsupervised learning (time permitting)
+    * Principal components analysis
+    * k-Means Clustering
+
+
+
+***
+
+
+
 # 1.5 The theory of splines
 
-## Today: Thu 9/14
+## Thu 9/14
 
 Announcements:
 
@@ -121,7 +152,7 @@ output
 
 # 1.4 Intro to splines
 
-## Today: Tue 9/12
+## Tue 9/12
 
 Announcements: New office hours location: Seeley Mudd 208 (lounge)
 
@@ -226,7 +257,7 @@ truth
 
 # 1.3 Intro to modeling
 
-## Today: Mon 9/11
+## Mon 9/11
 
 Announcements:
 
@@ -317,7 +348,7 @@ date: "2017-09-07"
 
 # 1.2 Getting used to infrastructure
 
-## Today: Thu 9/7
+## Thu 9/7
 
 Announcements:
 
@@ -400,7 +431,7 @@ Thursday 2-5pm to help out if you are stuck.
 
 # 1.1 Syllabus and background
 
-## Today: Tue 9/5
+## Tue 9/5
 
 * Albert's background
 * Go over syllabus
