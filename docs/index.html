@@ -26,8 +26,6 @@
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-1.1/highlight.js"></script>
-<link href="site_libs/pagedtable-1.1/css/pagedtable.css" rel="stylesheet" />
-<script src="site_libs/pagedtable-1.1/js/pagedtable.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -413,20 +411,55 @@ data(cars)
 splines_model &lt;- smooth.spline(x=cars$speed, y=cars$dist, df = 6)
 splines_model_tidy &lt;- splines_model %&gt;% 
   broom::augment() 
-ggplot(splines_model_tidy, aes(x=x)) +
+plot &lt;- ggplot(splines_model_tidy, aes(x=x)) +
   geom_point(aes(y=y)) +
-  geom_line(aes(y=.fitted), col=&quot;blue&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+  geom_line(aes(y=.fitted), col=&quot;blue&quot;)
+plot</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="480" /></p>
 <pre class="r"><code>new_speeds &lt;- c(24.6, 26.4, 23.4, 16.8, 15.8, 5.4, 14.8, 8.2, 1, 18.8, 25, 28, 19.6, 11.2, 21.8, 26.2, 20.6, 0, 14.4, 8.8)
 # What do you think output is?
 output &lt;- predict(splines_model, new_data = new_speeds) %&gt;% 
   tibble::as.tibble()
-output</code></pre>
-<div data-pagedtable="false">
-<script data-pagedtable-source type="application/json">
-{"columns":[{"label":["x"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["y"],"name":[2],"type":["dbl"],"align":["right"]}],"data":[{"1":"4","2":"5.731162"},{"1":"7","2":"12.541225"},{"1":"8","2":"15.054925"},{"1":"9","2":"17.863748"},{"1":"10","2":"21.053253"},{"1":"11","2":"24.469082"},{"1":"12","2":"28.683401"},{"1":"13","2":"33.816470"},{"1":"14","2":"38.246192"},{"1":"15","2":"40.948203"},{"1":"16","2":"43.615377"},{"1":"17","2":"47.059869"},{"1":"18","2":"50.524277"},{"1":"19","2":"52.699085"},{"1":"20","2":"55.273074"},{"1":"22","2":"66.705571"},{"1":"23","2":"75.308616"},{"1":"24","2":"85.044749"},{"1":"25","2":"94.446489"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[10],"max":[10]},"pages":{}}}
-  </script>
+head(output)</code></pre>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="right">x</th>
+<th align="right">y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="right">4</td>
+<td align="right">5.731162</td>
+</tr>
+<tr class="even">
+<td align="right">7</td>
+<td align="right">12.541225</td>
+</tr>
+<tr class="odd">
+<td align="right">8</td>
+<td align="right">15.054925</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
+<td align="right">17.863747</td>
+</tr>
+<tr class="odd">
+<td align="right">10</td>
+<td align="right">21.053253</td>
+</tr>
+<tr class="even">
+<td align="right">11</td>
+<td align="right">24.469082</td>
+</tr>
+</tbody>
+</table>
 </div>
+<pre class="r"><code>plot +
+  geom_point(data=output, aes(x=x, y=y), col=&quot;red&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="480" /></p>
 <hr />
 </div>
 <div id="intro-to-splines" class="section level1">

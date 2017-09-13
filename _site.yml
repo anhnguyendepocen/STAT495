@@ -7,7 +7,7 @@ output:
     toc_float: true
     theme: cosmo
     highlight: textmate
-    df_print: paged
+    df_print: kable
 navbar:
   title: "STAT495"
   left:
