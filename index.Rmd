@@ -49,9 +49,14 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 
 Announcements:
 
+* "Gah! I can't tell who you are from your Slack names!" Please go to: "STAT 495 Amherst..." on top left of Slack -> "Profile & account" -> "Edit Profile" and
+    + Change "Display name" to your first name
+    + Add a photo
+* Andrew K. (TA) gave feedback on PS01 GitHub. You should've received an email notification, but feedback is best viewed with GitHub webpage GUI (graphical user interface). This will be done by Tuesday evenings for future problem sets.
+
 ## Chalk talk
 
-1.5 How splines work.
+1.5 How splines work
 
 
 
@@ -70,7 +75,11 @@ You will enter the [Sberbank Russian Housing Market](https://www.kaggle.com/c/sb
 * Assigned: Tue 9/12
 * Due: Tue 9/19 9:00am, at which point there will be synchronized pull requests.
 * Teams: 2-3 people at your choosing. Once you've selected your group designate one person as team leader, who will:
-    + Create a Slack DM that includes Albert, Andrew Kim (TA), and all team members.
+    + Create a Slack DM that includes Albert, Andrew Kim (TA), and all team members. So far:
+        + Team A: Sara (no "h"), Meredith, Brenna
+        + Team B: Jeff, Luke, Andrew
+        + Team C: Jonathan, Sarah (with "h"), Timothy
+        + Team D: Pei, Jenn, Anthony
     + Submit a single pull request on behalf of the group.
     + Submit a single submission to Kaggle on behalf of the group.
 * Deliverables: One ready to submit *pull request* to the [PS02 repo](https://github.com/2017-09-Amherst-STAT495/PS02) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
@@ -474,6 +483,7 @@ Thursday 2-5pm to help out if you are stuck.
     1. in-line using `
     1. Code blocks using ``` and shift+enter
 1. File drag and drop
+1. Edit profile
 -->
 
 * Chalk talk: 1.1 Slack
