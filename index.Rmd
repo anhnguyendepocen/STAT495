@@ -83,7 +83,13 @@ Announcements:
 * "Gah! I can't tell who you are from your Slack names!" Please go to: "STAT 495 Amherst..." on top left of Slack -> "Profile & account" -> "Edit Profile" and
     + Change "Display name" to your first name
     + Add a photo
-* Andrew K. (TA) gave feedback on PS01 GitHub. You should've received an email notification, but feedback is best viewed with GitHub webpage GUI (graphical user interface). This will be done by Tuesday evenings for future problem sets.
+* Andrew K. (TA) gave feedback on PS01 and will do so for every problem set by Tuesday evening.
+    + You should've received an email.
+    + Best viewed in the GitHub webpage GUI in split diff mode.
+* Overall comments:
+    + `View()` doesn't work in an `.Rmd` file; do not include these.
+    + Don't comment for your own sake, but rather comment to be empathetic to your collaborators. In particular your [most important collaborator](http://rmhogervorst.nl/cleancode/blog/2016/05/26/your-most-valuable-collaborator-future-you.html).
+    + The [tone of interactions](http://opensourcesurvey.org/2017/) matters, especially in an open source setting. This take practice.
 
 ## Chalk talk
 
@@ -91,8 +97,8 @@ Announcements:
 
 
 
-
 ***
+
 
 
 # Problem set 2
@@ -111,6 +117,7 @@ You will enter the [Sberbank Russian Housing Market](https://www.kaggle.com/c/sb
         + Team B: Jeff, Luke, Andrew
         + Team C: Jonathan, Sarah (with "h"), Timothy
         + Team D: Pei, Jenn, Anthony
+        + Team E: Leonard, Vickie, Brendan
     + Submit a single pull request on behalf of the group.
     + Submit a single submission to Kaggle on behalf of the group.
 * Deliverables: One ready to submit *pull request* to the [PS02 repo](https://github.com/2017-09-Amherst-STAT495/PS02) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
