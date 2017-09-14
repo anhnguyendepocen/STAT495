@@ -370,9 +370,20 @@ h1{font-weight: 400;}
 </ul></li>
 </ul>
 </div>
+<div id="splines" class="section level2">
+<h2>Splines</h2>
+<p>Splines are piecewise continuous polynomials with smoothness constraints:</p>
+<center>
+<img src="images/splines.png" alt="Drawing" style="width: 500px;"/>
+</center>
+</div>
 <div id="chalk-talk" class="section level2">
 <h2>Chalk talk</h2>
-<p>1.5 How splines work</p>
+<p>1.5 Splines</p>
+</div>
+<div id="how-are-splines-curves-fit" class="section level2">
+<h2>How are splines curves fit?</h2>
+<p>Combination of calculus (derivatives) and linear algebra (solving a system of equations). See this <a target="_blank" class="page-link" href="static/splines_notes.pdf">PDF</a> if you’re curious.</p>
 <hr />
 </div>
 </div>
@@ -485,7 +496,7 @@ head(output)</code></pre>
 <li>Analogy of what we are doing</li>
 </ul>
 </div>
-<div id="splines" class="section level2">
+<div id="splines-1" class="section level2">
 <h2>Splines</h2>
 <p>Splines are <em>piecewise cubic polynomials with smoothness constraints</em>. The code corresponding to the video at the end of <a href="https://rudeboybert.github.io/STAT495/#13_intro_to_modeling">Lecture 1.3</a> is below. (If you’re curious, the code that created <code>multiple_df</code>, <code>exercise</code>, <code>fitted</code>, and <code>truth</code> are available on lines 1-86 of <a href="https://bit.ly/rudeboybert_splines" class="uri">https://bit.ly/rudeboybert_splines</a>; these were run behind the scences to keep the code below simple.)</p>
 <pre class="r"><code>library(tidyverse)
