@@ -137,7 +137,7 @@ You will
 
 
 
-# 1.6 Resampling
+# 1.6 More resampling
 
 ## Mon 9/18
 
@@ -156,7 +156,7 @@ Announcements:
 
 
 
-# 1.5 The theory of splines
+# 1.5 The theory of splines + resampling
 
 ## Thu 9/14
 
