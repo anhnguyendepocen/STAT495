@@ -80,9 +80,7 @@ The lectures are numbered according to the following rough topic outline below. 
 
 Announcements:
 
-* "Gah! I can't tell who you are from your Slack names!" Please go to: "STAT 495 Amherst..." on top left of Slack -> "Profile & account" -> "Edit Profile" and
-    + Change "Display name" to your first name
-    + Add a photo
+* "Gah! I can't tell who you are from your Slack names!" Please go to: "STAT 495 Amherst..." on top left of Slack -> "Preferences" -> "Messages & Media" -> "Names" -> Click the "Full & display names" radio button.
 * Andrew K. (TA) gave [feedback on PS01](https://github.com/2017-09-Amherst-STAT495/PS01/pulls) and will do so for every problem set by Tuesday evening.
     + You should've received an email.
     + Best viewed in the GitHub webpage GUI in split diff mode.
