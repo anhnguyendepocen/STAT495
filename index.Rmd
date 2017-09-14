@@ -115,6 +115,15 @@ $$
 for each interval? A combination of calculus (derivatives) and linear algebra (solving a system of equations). See this <a target="_blank" class="page-link" href="static/splines_notes.pdf">PDF</a> if you're curious.
 
 
+## Sampling paradigm
+
+<center><img src="images/target-population.jpg" alt="Drawing" style="width: 500px;"/></center>
+
+## Chalk talk
+
+1.5 Sampling
+
+
 
 
 ***
