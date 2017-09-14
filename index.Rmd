@@ -89,7 +89,7 @@ Announcements:
 * Overall comments:
     + `View()` doesn't work in an `.Rmd` file; do not include these.
     + Don't comment for your own sake, but rather comment to be empathetic to your collaborators. In particular your [most important collaborator](http://rmhogervorst.nl/cleancode/blog/2016/05/26/your-most-valuable-collaborator-future-you.html).
-    + The [tone of interactions](http://opensourcesurvey.org/2017/) matters, especially in an open source setting. This take practice.
+    + The [tone of your interactions](http://opensourcesurvey.org/2017/) matters, especially in an open source setting. This take practice.
 
 ## Chalk talk
 
