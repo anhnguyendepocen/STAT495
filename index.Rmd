@@ -124,6 +124,15 @@ for each interval? A combination of calculus (derivatives) and linear algebra (s
 1.5 Sampling
 
 
+## Resampling paradigm
+
+<center><img src="images/resample.jpg" alt="Drawing" style="width: 500px;"/></center>
+
+**Moral**: You want the
+
+* the process represented by the red dashed line/arrow (resampling) to mimic as much as possible
+* the process represented by the black dashed line/arrow (sampling)
+
 
 
 ***
@@ -147,6 +156,8 @@ You will enter the [Sberbank Russian Housing Market](https://www.kaggle.com/c/sb
         + Team C: Jonathan, Sarah (with "h"), Timothy
         + Team D: Pei, Jenn, Anthony
         + Team E: Leonard, Vickie, Brendan
+        + Team F: Abbas, Caleb, Kiryu
+        + Team G: Harrison, Christien
     + Submit a single pull request on behalf of the group.
     + Submit a single submission to Kaggle on behalf of the group.
 * Deliverables: One ready to submit *pull request* to the [PS02 repo](https://github.com/2017-09-Amherst-STAT495/PS02) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
