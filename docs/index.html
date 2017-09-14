@@ -313,9 +313,9 @@ h1{font-weight: 400;}
 <ol style="list-style-type: decimal">
 <li>Background
 <ul>
-<li><del>Intro to modeling</del> Done</li>
-<li>Simple case with univariate predictors to start: splines</li>
-<li>Out-of-sample prediction, sampling/resampling, crossvalidation</li>
+<li><del>Intro to modeling</del></li>
+<li><del>Simple case with univariate predictors to start: splines</del> Done</li>
+<li>Sampling/resampling, out-of-sample prediction, crossvalidation</li>
 <li>Bias-variance tradeoff</li>
 </ul></li>
 <li>Continuous outcomes I
@@ -346,6 +346,79 @@ h1{font-weight: 400;}
 </ul></li>
 </ol>
 <hr />
+<!--
+
+# 1.8 Crossvalidation 2
+
+## Thu 9/21
+
+Announcements:
+
+* Problem set 02 feedback and example solutions given [below](#PS02).
+
+
+## Chalk talk
+
+1.8
+
+
+
+
+***
+
+
+
+# 1.7 Crossvalidation
+
+## Tue 9/19
+
+Announcements:
+
+* Problem set 02 presentations listed [below](#PS02).
+
+
+***
+
+
+# Problem set 3 {#PS03}
+
+## Information
+
+*Assigned on Thu 9/19, due on Tue 9/26 9am at which point there will be synchronized pull requests.*
+
+You will
+
+* Teams: 
+* Deliverables: One ready to submit *pull request* to the [PS03 repo](https://github.com/2017-09-Amherst-STAT495/PS03) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
+    1. `PS03.Rmd`: This should
+    1. `PS03.html`: The output of `PS03.Rmd`. This will be the presentation file for a randomly chosen set of groups.
+    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your team's version of `PS03.html` in a browser on Tuesday morning.
+* Tips:
+* Hints:
+
+
+## Presentations
+
+
+
+## Feedback
+
+
+
+***
+-->
+<div id="resampling" class="section level1">
+<h1>1.6 Resampling</h1>
+<div id="mon-918" class="section level2">
+<h2>Mon 9/18</h2>
+<p>Announcements:</p>
+</div>
+<div id="chalk-talk" class="section level2">
+<h2>Chalk talk</h2>
+<p>1.6 Resampling</p>
+<hr />
+</div>
+</div>
 <div id="the-theory-of-splines" class="section level1">
 <h1>1.5 The theory of splines</h1>
 <div id="thu-914" class="section level2">
@@ -353,27 +426,17 @@ h1{font-weight: 400;}
 <p>Announcements:</p>
 <ul>
 <li>“Gah! I can’t tell who you are from your Slack names!” Please go to: “STAT 495 Amherst…” on top left of Slack -&gt; “Preferences” -&gt; “Messages &amp; Media” -&gt; “Names” -&gt; Click the “Full &amp; display names” radio button.</li>
-<li>Andrew K. (TA) gave <a href="https://github.com/2017-09-Amherst-STAT495/PS01/pulls">feedback on PS01</a> and will do so for every problem set by Tuesday evening.
-<ul>
-<li>You should’ve received an email.</li>
-<li>Best viewed in the GitHub webpage GUI in split diff mode.</li>
-</ul></li>
-<li>Overall comments:
-<ul>
-<li><code>View()</code> doesn’t work in an <code>.Rmd</code> file; do not include these.</li>
-<li>Don’t comment for your own sake, but rather comment to be empathetic to your collaborators. In particular your <a href="http://rmhogervorst.nl/cleancode/blog/2016/05/26/your-most-valuable-collaborator-future-you.html">most important collaborator</a>.</li>
-<li>The <a href="http://opensourcesurvey.org/2017/">tone of your interactions</a> matters, especially in an open source setting. This take practice.</li>
-</ul></li>
+<li>Problem set 01 feedback given <a href="#PS01">below</a>.</li>
 </ul>
 </div>
 <div id="splines" class="section level2">
 <h2>Splines</h2>
-<p>Splines are piecewise continuous polynomials with smoothness constraints:</p>
+<p>Splines are piecewise continuous polynomials with <a href="https://en.wikipedia.org/wiki/Smoothness">smoothness</a> constraints:</p>
 <center>
 <img src="images/splines.png" alt="Drawing" style="width: 500px;"/>
 </center>
 </div>
-<div id="chalk-talk" class="section level2">
+<div id="chalk-talk-1" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.5 Splines</p>
 </div>
@@ -390,7 +453,7 @@ h1{font-weight: 400;}
 <img src="images/target-population.jpg" alt="Drawing" style="width: 500px;"/>
 </center>
 </div>
-<div id="chalk-talk-1" class="section level2">
+<div id="chalk-talk-2" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.5 Sampling</p>
 </div>
@@ -407,13 +470,14 @@ h1{font-weight: 400;}
 <hr />
 </div>
 </div>
-<div id="problem-set-2" class="section level1">
+<div id="PS02" class="section level1">
 <h1>Problem set 2</h1>
+<div id="information" class="section level2">
+<h2>Information</h2>
+<p><em>Assigned on Thu 9/12, due on Tue 9/19 9am at which point there will be synchronized pull requests.</em></p>
 <p><a href="https://www.kaggle.com/c/sberbank-russian-housing-market"> <img border="0" alt="Sberbank" src="images/sberbank.png" width="600"> </a></p>
 <p>You will enter the <a href="https://www.kaggle.com/c/sberbank-russian-housing-market">Sberbank Russian Housing Market</a> Kaggle competition and fit a spline model to predict the outcome variable <code>price_doc</code>: the sale price of a piece of real estate. The data has been pre-downloaded and included in the <a href="https://github.com/2017-09-Amherst-STAT495/PS02">PS02 repo</a> in the course GitHub Organization.</p>
 <ul>
-<li>Assigned: Tue 9/12</li>
-<li>Due: Tue 9/19 9:00am, at which point there will be synchronized pull requests.</li>
 <li>Teams: 2-3 people at your choosing. Once you’ve selected your group designate one person as team leader, who will:
 <ul>
 <li>Create a Slack DM that includes Albert, Andrew Kim (TA), and all team members. So far:
@@ -504,7 +568,17 @@ head(output)</code></pre>
 <pre class="r"><code>plot +
   geom_point(data=output, aes(x=x, y=y), col=&quot;red&quot;)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-3-2.png" width="480" /></p>
+</div>
+<div id="presentations" class="section level2">
+<h2>Presentations</h2>
+</div>
+<div id="feedback" class="section level2">
+<h2>Feedback</h2>
+</div>
+<div id="example-solutions" class="section level2">
+<h2>Example solutions</h2>
 <hr />
+</div>
 </div>
 <div id="intro-to-splines" class="section level1">
 <h1>1.4 Intro to splines</h1>
@@ -512,7 +586,7 @@ head(output)</code></pre>
 <h2>Tue 9/12</h2>
 <p>Announcements: New office hours location: Seeley Mudd 208 (lounge)</p>
 </div>
-<div id="chalk-talk-2" class="section level2">
+<div id="chalk-talk-3" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>Analogy of what we are doing</li>
@@ -623,7 +697,7 @@ truth</code></pre>
 <li>(If time) Sampling and resampling</li>
 </ul>
 </div>
-<div id="chalk-talk-3" class="section level2">
+<div id="chalk-talk-4" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Supervised vs unsupervised</li>
@@ -634,7 +708,7 @@ truth</code></pre>
 <p>Colin Woodard’s idea of 11 Nations of North America:</p>
 <p><img src="http://emerald.tufts.edu/alumni/magazine/fall2013/images/features/upinarms-map-large.jpg" alt="Drawing" style="width: 600px;"/></p>
 </div>
-<div id="chalk-talk-4" class="section level2">
+<div id="chalk-talk-5" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Model for supervised learning</li>
@@ -650,7 +724,7 @@ Teaching my students to separate systematic model component from irreducible err
 </blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-<div id="chalk-talk-5" class="section level2">
+<div id="chalk-talk-6" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Income example</li>
@@ -668,13 +742,14 @@ Teaching my students to separate systematic model component from irreducible err
 <hr />
 </div>
 </div>
-<div id="problem-set-1" class="section level1">
+<div id="PS01" class="section level1">
 <h1>Problem set 1</h1>
+<div id="information-1" class="section level2">
+<h2>Information</h2>
+<p><em>Assigned on Thu 9/7, due on Mon 9/11 9am.</em></p>
 <p><img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 250px;"/></p>
 <p>Baby’s first Kaggle competition and GitHub pull request! Specifically the <a href="https://www.kaggle.com/c/titanic">Titanic: Machine Learning from Disaster</a> competition. You will be submitting predictions on who survived/died amongst the passengers randomly assigned to the <em>test set</em> and viewing your Kaggle leaderboard score.</p>
 <ul>
-<li>Assigned: Thu 9/7</li>
-<li>Due: Mon 9/11 9:00am</li>
 <li>Teams: Individual</li>
 <li>Deliverables: A ready to submit <em>pull request</em> to the <a href="https://github.com/2017-09-Amherst-STAT495/PS01">PS01 repo</a>, in other words complete only <a href="https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process">steps 1-5</a> of the problem set submission process. However, you will all be submitting/making the pull request (step 6) at the same time as a group in lecture. The following files should be modified/added from the original
 <ol style="list-style-type: decimal">
@@ -693,7 +768,24 @@ Teaching my students to separate systematic model component from irreducible err
 <li><strong>Note added 9/7 1:30pm</strong>: There is an error in <code>PS01.Rmd</code>; replace line 4 of <code>PS01.Rmd</code> so that it reads:</li>
 </ul>
 <pre><code>date: &quot;2017-09-07&quot;</code></pre>
+</div>
+<div id="feedback-1" class="section level2">
+<h2>Feedback</h2>
+<ul>
+<li>Andrew K. (TA) gave <a href="https://github.com/2017-09-Amherst-STAT495/PS01/pulls">feedback on PS01 on GitHub</a> and will do so for every problem set by Tuesday evening.
+<ul>
+<li>You should’ve received an email.</li>
+<li>Best viewed in the GitHub webpage GUI in split diff mode.</li>
+</ul></li>
+<li>Overall comments:
+<ul>
+<li><code>View()</code> doesn’t work in an <code>.Rmd</code> file; do not include these.</li>
+<li>Don’t comment for your own sake, but rather comment to be empathetic to your collaborators. In particular your <a href="http://rmhogervorst.nl/cleancode/blog/2016/05/26/your-most-valuable-collaborator-future-you.html">most important collaborator</a>.</li>
+<li>The <a href="http://opensourcesurvey.org/2017/">tone of your interactions</a> matters, especially in an open source setting. This take practice.</li>
+</ul></li>
+</ul>
 <hr />
+</div>
 </div>
 <div id="getting-used-to-infrastructure" class="section level1">
 <h1>1.2 Getting used to infrastructure</h1>
@@ -766,13 +858,15 @@ View(submission)</code></pre>
 </div>
 <div id="problem-set-0" class="section level1">
 <h1>Problem set 0</h1>
+<div id="information-2" class="section level2">
+<h2>Information</h2>
+<p><em>Assigned on Tue 9/5, due on Thu 9/7 lecture time</em>.</p>
 <ul>
-<li>Assigned: Tue 9/5</li>
-<li>Due: Thu 9/7 lecture time.</li>
 <li>Set up Git/GitHub to interface with RStudio on your computer by reading and following along to Chapters 1-15 of <a href="http://happygitwithr.com/">“Happy Git and GitHub for the useR”</a></li>
 <li>If you start spinning your wheels, don’t panic! I’ll have office hours on Thursday 2-5pm to help out if you are stuck.</li>
 </ul>
 <hr />
+</div>
 </div>
 <div id="syllabus-and-background" class="section level1">
 <h1>1.1 Syllabus and background</h1>

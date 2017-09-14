@@ -29,6 +29,7 @@ rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), outpu
 ```
 
 
+
 ***
 
 
@@ -38,6 +39,9 @@ rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), outpu
 ## Thu X/X
 
 Announcements:
+
+* Problem set 0X feedback and example solutions given [below](#PS0X).
+
 
 ## Chalk talk
 
@@ -56,9 +60,7 @@ X.X
 
 Announcements:
 
-Topics: 
-
-## Problem set discussion
+* Problem set 0X presentations listed [below](#PS0X).
 
 
 
@@ -66,18 +68,14 @@ Topics:
 ***
 
 
-# Problem set 2
+# Problem set 0X {#PS0X}
 
-<!--
-<a href="https://www.kaggle.com/c/sberbank-russian-housing-market">
-<img border="0" alt="Sberbank" src="images/sberbank.png" width="600">
-</a>
--->
+## Information
 
+*Assigned on Tue X/X, due on Tue X/X 9am at which point there will be synchronized pull requests.*
 
 You will...
 
-* Assigned: Tue X/X
 * Due: Tue X/X 9:00am, at which point there will be synchronized pull requests.
 * Teams: 
 * Deliverables: One ready to submit *pull request* to the [PS0X repo](https://github.com/2017-09-Amherst-STAT495/PS0X) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
@@ -86,6 +84,16 @@ You will...
     1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your team's version of `PSX2.html` in a browser on Tuesday morning.
 * Tips:
 * Hints:
+
+
+## Presentations
+
+
+## Feedback
+
+
+## Example solutions
+
 
 
 
@@ -100,10 +108,15 @@ You will...
 
 Announcements:
 
-Topics:
-
 
 
 ## Chalk talk
 
 X.X
+
+
+
+***
+
+
+

@@ -47,9 +47,9 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 The lectures are numbered according to the following rough topic outline below. A detailed topic schedule and corresponding readings can be found [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true).
 
 1. Background
-    * ~~Intro to modeling~~ Done
-    * Simple case with univariate predictors to start: splines
-    * Out-of-sample prediction, sampling/resampling, crossvalidation
+    * ~~Intro to modeling~~ 
+    * ~~Simple case with univariate predictors to start: splines~~ Done
+    * Sampling/resampling, out-of-sample prediction, crossvalidation
     * Bias-variance tradeoff
 1. Continuous outcomes I
     * LOESS smoother
@@ -73,6 +73,88 @@ The lectures are numbered according to the following rough topic outline below. 
 ***
 
 
+<!--
+
+# 1.8 Crossvalidation 2
+
+## Thu 9/21
+
+Announcements:
+
+* Problem set 02 feedback and example solutions given [below](#PS02).
+
+
+## Chalk talk
+
+1.8
+
+
+
+
+***
+
+
+
+# 1.7 Crossvalidation
+
+## Tue 9/19
+
+Announcements:
+
+* Problem set 02 presentations listed [below](#PS02).
+
+
+***
+
+
+# Problem set 3 {#PS03}
+
+## Information
+
+*Assigned on Thu 9/19, due on Tue 9/26 9am at which point there will be synchronized pull requests.*
+
+You will
+
+* Teams: 
+* Deliverables: One ready to submit *pull request* to the [PS03 repo](https://github.com/2017-09-Amherst-STAT495/PS03) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
+    1. `PS03.Rmd`: This should
+    1. `PS03.html`: The output of `PS03.Rmd`. This will be the presentation file for a randomly chosen set of groups.
+    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your team's version of `PS03.html` in a browser on Tuesday morning.
+* Tips:
+* Hints:
+
+
+## Presentations
+
+
+
+## Feedback
+
+
+
+***
+-->
+
+
+
+# 1.6 Resampling
+
+## Mon 9/18
+
+Announcements:
+
+
+
+## Chalk talk
+
+1.6 Resampling
+
+
+
+***
+
+
+
 
 # 1.5 The theory of splines
 
@@ -81,19 +163,12 @@ The lectures are numbered according to the following rough topic outline below. 
 Announcements:
 
 * "Gah! I can't tell who you are from your Slack names!" Please go to: "STAT 495 Amherst..." on top left of Slack -> "Preferences" -> "Messages & Media" -> "Names" -> Click the "Full & display names" radio button.
-* Andrew K. (TA) gave [feedback on PS01](https://github.com/2017-09-Amherst-STAT495/PS01/pulls) and will do so for every problem set by Tuesday evening.
-    + You should've received an email.
-    + Best viewed in the GitHub webpage GUI in split diff mode.
-* Overall comments:
-    + `View()` doesn't work in an `.Rmd` file; do not include these.
-    + Don't comment for your own sake, but rather comment to be empathetic to your collaborators. In particular your [most important collaborator](http://rmhogervorst.nl/cleancode/blog/2016/05/26/your-most-valuable-collaborator-future-you.html).
-    + The [tone of your interactions](http://opensourcesurvey.org/2017/) matters, especially in an open source setting. This take practice.
-
+* Problem set 01 feedback given [below](#PS01).
 
 
 ## Splines
 
-Splines are piecewise continuous polynomials with smoothness constraints:
+Splines are piecewise continuous polynomials with [smoothness](https://en.wikipedia.org/wiki/Smoothness) constraints:
 
 <center><img src="images/splines.png" alt="Drawing" style="width: 500px;"/></center>
 
@@ -137,7 +212,11 @@ for each interval? A combination of calculus (derivatives) and linear algebra (s
 
 
 
-# Problem set 2
+# Problem set 2 {#PS02}
+
+## Information
+
+*Assigned on Thu 9/12, due on Tue 9/19 9am at which point there will be synchronized pull requests.*
 
 <a href="https://www.kaggle.com/c/sberbank-russian-housing-market">
 <img border="0" alt="Sberbank" src="images/sberbank.png" width="600">
@@ -145,8 +224,6 @@ for each interval? A combination of calculus (derivatives) and linear algebra (s
 
 You will enter the [Sberbank Russian Housing Market](https://www.kaggle.com/c/sberbank-russian-housing-market) Kaggle competition and fit a spline model to predict the outcome variable `price_doc`: the sale price of a piece of real estate. The data has been pre-downloaded and included in the [PS02 repo](https://github.com/2017-09-Amherst-STAT495/PS02) in the course GitHub Organization.
 
-* Assigned: Tue 9/12
-* Due: Tue 9/19 9:00am, at which point there will be synchronized pull requests.
 * Teams: 2-3 people at your choosing. Once you've selected your group designate one person as team leader, who will:
     + Create a Slack DM that includes Albert, Andrew Kim (TA), and all team members. So far:
         + Team A: Sara (no "h"), Meredith, Brenna
@@ -192,7 +269,13 @@ plot +
   geom_point(data=output, aes(x=x, y=y), col="red")
 ```
 
+## Presentations 
 
+
+## Feedback
+
+
+## Example solutions
 
 
 ***
@@ -366,14 +449,16 @@ Colin Woodard's idea of 11 Nations of North America:
 
 
 
-# Problem set 1
+# Problem set 1 {#PS01}
+
+## Information
+
+*Assigned on Thu 9/7, due on Mon 9/11 9am.*
 
 <img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 250px;"/>
 
 Baby's first Kaggle competition and GitHub pull request! Specifically the [Titanic: Machine Learning from Disaster](<https://www.kaggle.com/c/titanic>) competition. You will be submitting predictions on who survived/died amongst the passengers randomly assigned to the *test set* and viewing your Kaggle leaderboard score.
 
-* Assigned: Thu 9/7
-* Due: Mon 9/11 9:00am
 * Teams: Individual
 * Deliverables: A ready to submit *pull request* to the [PS01 repo](https://github.com/2017-09-Amherst-STAT495/PS01), in other words complete only [steps 1-5](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process) of the problem set submission process. However, you will all be submitting/making the pull request (step 6) at the same time as a group in lecture. The following files should be modified/added from the original
     1. `PS01.Rmd`: This should be well-commented and **completely reproducible**. In other words, if someone else takes this repo, they should be able to reproduce your work with one click of the mouse. This necessitates taking an empathetic view of other users.
@@ -391,8 +476,20 @@ Baby's first Kaggle competition and GitHub pull request! Specifically the [Titan
 date: "2017-09-07"
 ```
 
+## Feedback
+
+* Andrew K. (TA) gave [feedback on PS01 on GitHub](https://github.com/2017-09-Amherst-STAT495/PS01/pulls) and will do so for every problem set by Tuesday evening.
+    + You should've received an email.
+    + Best viewed in the GitHub webpage GUI in split diff mode.
+* Overall comments:
+    + `View()` doesn't work in an `.Rmd` file; do not include these.
+    + Don't comment for your own sake, but rather comment to be empathetic to your collaborators. In particular your [most important collaborator](http://rmhogervorst.nl/cleancode/blog/2016/05/26/your-most-valuable-collaborator-future-you.html).
+    + The [tone of your interactions](http://opensourcesurvey.org/2017/) matters, especially in an open source setting. This take practice.
+
+
 
 ***
+
 
 
 # 1.2 Getting used to infrastructure
@@ -464,8 +561,10 @@ test %>%
 
 # Problem set 0
 
-* Assigned: Tue 9/5
-* Due: Thu 9/7 lecture time.
+## Information
+
+*Assigned on Tue 9/5, due on Thu 9/7 lecture time*.
+
 * Set up Git/GitHub to interface with RStudio on your computer by reading and following along to
 Chapters 1-15 of ["Happy Git and GitHub for the
 useR"](http://happygitwithr.com/)
