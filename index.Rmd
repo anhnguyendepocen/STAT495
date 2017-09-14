@@ -107,7 +107,14 @@ Splines are piecewise continuous polynomials with smoothness constraints:
 
 ## How are splines curves fit?
 
-Combination of calculus (derivatives) and linear algebra (solving a system of equations). See this <a target="_blank" class="page-link" href="static/splines_notes.pdf">PDF</a> if you're curious.
+How to obtain the fitted $\widehat{\beta}_0$, $\widehat{\beta}_1$, $\widehat{\beta}_2$, and $\widehat{\beta}_3$ necessary for all $K+1$ cubic polynomials 
+$$
+\widehat{y}_i = \widehat{\beta}_0 + \widehat{\beta}_1 x_i + \widehat{\beta}_2 x_i^2 + \widehat{\beta}_3 x_i^3
+$$
+
+for each interval?
+
+A combination of calculus (derivatives) and linear algebra (solving a system of equations). See this <a target="_blank" class="page-link" href="static/splines_notes.pdf">PDF</a> if you're curious.
 
 
 
