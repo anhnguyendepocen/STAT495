@@ -157,10 +157,9 @@ You will
 Announcements:
 
 * Keyboard shortcut of the day
-* Philosophical fallacy of the day. *"Texas Sharpshooter Fallacy": When an argument is made and confirmed using the same set of information.* Watch first 50s of this video: 
+* Philosophical fallacy of the day. *"Texas Sharpshooter Fallacy": When an argument is made and confirmed using the same set of information.* Watch first 50s of this video: <https://www.youtube.com/embed/_tcBsryYd6s> 
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=_tcBsryYd6s" frameborder="0" allowfullscreen></iframe>
-
+<iframe width="560" height="315" src="https://www.youtube.com/embed/_tcBsryYd6s" frameborder="0" allowfullscreen></iframe>
 
 
 ## Chalk talk
