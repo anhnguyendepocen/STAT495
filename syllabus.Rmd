@@ -118,8 +118,8 @@ Roughly speaking we will cover the following topics. A more detailed outline and
 We will use chiefly use the following available textbooks:
 
 1. ["Happy Git and GitHub for the useR"](http://happygitwithr.com/) by Jenny Bryan.
-1. ["An Introduction to Statistical Learning"](http://www-bcf.usc.edu/~gareth/ISL/) by James, Witten, Hastie, and Tibshirani.
-1. ["Computer Age Statistical Inference"](https://web.stanford.edu/~hastie/CASI/) by Efron and Tibshirani.
+1. ["An Introduction to Statistical Learning"](http://www-bcf.usc.edu/~gareth/ISL/) by James, Witten, Hastie, and Tibshirani. We'll refer to this as "ISLR.""
+1. ["Computer Age Statistical Inference"](https://web.stanford.edu/~hastie/CASI/) by Efron and Tibshirani. We'll refer to this as "CASI."
 
 
 

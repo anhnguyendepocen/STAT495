@@ -143,11 +143,51 @@ You will
 
 Announcements:
 
+<center><img src="images/rstudio_projects.png" alt="Drawing" style="height: 100px;"/> & <img src="images/Octocat.png" alt="Drawing" style="height: 100px;"/></center>
+
+* RStudio projects:
+    + Are folders of self-contained projects.
+    + If a project is attached to a GitHub repository then the folders' contents match the GitHub repo online.
+    + RStudio -> Tools -> Terminal -> New Terminal -> Type `cd .git`. This (invisible) folder contains git info
+    + In RStudio on the top right, you should be working in the appropriate RStudio project.
+* Keyboard shortcut of the day
+* Philosophical fallacy of the day. *"Texas Sharpshooter Fallacy": When an argument is made and confirmed using the same set of information.*. Watch first 50s of this video: 
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=_tcBsryYd6s" frameborder="0" allowfullscreen></iframe>
+
 
 
 ## Chalk talk
 
-1.6 Resampling
+1.6 Texas sharpshooter fallacy
+
+
+## Recall
+
+Recall from our [Intro to Splines]({#intro_to_splines}) lecture the different
+fitted models based on different degrees of freedom (i.e. different numbers of
+knots). What's going on at df=50 vs df=10?
+
+```{r, echo=FALSE}
+library(tidyverse)
+library(broom)
+# Load some pre-computed data
+load(url("https://rudeboybert.github.io/STAT495/static/splines.RData"))
+multiple_df
+```
+
+
+
+## Chalk talk
+
+1.6 
+
+
+
+## Corresponding book chapters
+
+* ISLR: [5, 5.1.3] (Start of Chapter 5, through to the end of 5.1.3, stop just before 5.1.4)
+* CASI: [12, 12.2]
 
 
 
@@ -282,7 +322,7 @@ plot +
 
 
 
-# 1.4 Intro to splines
+# 1.4 Intro to splines {#intro_to_splines}
 
 ## Tue 9/12
 
