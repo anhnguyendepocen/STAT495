@@ -164,9 +164,9 @@ Announcements:
 
 ## Chalk talk
 
-1.6 Texas sharpshooter fallacy. Scenarios
+1.6 Texas sharpshooter fallacy scenarios
 
-* A) Philosophy
+* A) Shooting at a barn
 * B) Science
 * C) Machine learning in general
 
@@ -179,6 +179,7 @@ knots).
 
 ```{r, echo=FALSE}
 # From https://gist.github.com/rudeboybert/752f7aa1e42faa2174822dd29bfaf959
+set.seed(76)
 df_values <- c(2, 10, 25, 50)
 f <- function(x){
   f_x <- 0.2*x^11*(10*(1-x))^6+10*(10*x)^3*(1-x)^10
