@@ -101,7 +101,20 @@ Announcements:
 
 Announcements:
 
+<center><img src="images/rstudio_projects.png" alt="Drawing" style="height: 100px;"/> & <img src="images/Octocat.png" alt="Drawing" style="height: 100px;"/></center>
+
+* RStudio projects:
+    + Are folders of self-contained projects.
+    + If a project is attached to a GitHub repository then the folders' contents match the GitHub repo online.
+    + RStudio -> Tools -> Terminal -> New Terminal -> Type `cd .git`. This (invisible) folder contains git info
+    + In RStudio on the top right, you should be working in the appropriate RStudio project.
 * Problem set 02 presentations listed [below](#PS02).
+
+
+## Corresponding book chapters
+
+* ISLR: [5, 5.1.3] (Start of Chapter 5, through to the end of 5.1.3, stop just before 5.1.4)
+* CASI: [12, 12.2]
 
 
 ***
@@ -143,15 +156,8 @@ You will
 
 Announcements:
 
-<center><img src="images/rstudio_projects.png" alt="Drawing" style="height: 100px;"/> & <img src="images/Octocat.png" alt="Drawing" style="height: 100px;"/></center>
-
-* RStudio projects:
-    + Are folders of self-contained projects.
-    + If a project is attached to a GitHub repository then the folders' contents match the GitHub repo online.
-    + RStudio -> Tools -> Terminal -> New Terminal -> Type `cd .git`. This (invisible) folder contains git info
-    + In RStudio on the top right, you should be working in the appropriate RStudio project.
 * Keyboard shortcut of the day
-* Philosophical fallacy of the day. *"Texas Sharpshooter Fallacy": When an argument is made and confirmed using the same set of information.*. Watch first 50s of this video: 
+* Philosophical fallacy of the day. *"Texas Sharpshooter Fallacy": When an argument is made and confirmed using the same set of information.* Watch first 50s of this video: 
 
 <iframe width="560" height="315" src="https://www.youtube.com/watch?v=_tcBsryYd6s" frameborder="0" allowfullscreen></iframe>
 
@@ -159,35 +165,79 @@ Announcements:
 
 ## Chalk talk
 
-1.6 Texas sharpshooter fallacy
+1.6 Texas sharpshooter fallacy. Scenarios
+
+* A) Philosophy
+* B) Science
+* C) Machine learning in general
 
 
-## Recall
+## Scenario D)
 
-Recall from our [Intro to Splines]({#intro_to_splines}) lecture the different
+Let's call the following example "Scenario D) Splines". Recall from our [Intro to Splines](#intro_to_splines) lecture the different
 fitted models based on different degrees of freedom (i.e. different numbers of
-knots). What's going on at df=50 vs df=10?
+knots). 
 
 ```{r, echo=FALSE}
-library(tidyverse)
-library(broom)
-# Load some pre-computed data
-load(url("https://rudeboybert.github.io/STAT495/static/splines.RData"))
+# From https://gist.github.com/rudeboybert/752f7aa1e42faa2174822dd29bfaf959
+df_values <- c(2, 10, 25, 50)
+f <- function(x){
+  f_x <- 0.2*x^11*(10*(1-x))^6+10*(10*x)^3*(1-x)^10
+  return(f_x)
+}
+values <- data_frame(
+  x = seq(from=0, to=1, length=500),
+  f_x = f(x),
+  epsilon = rnorm(500, 0, sd = 2),
+  y = f_x + epsilon
+)
+overall <- NULL
+for(df in df_values){
+  overall <- smooth.spline(values$x, values$y, df=df) %>%
+    augment() %>%
+    mutate(df=df) %>%
+    bind_rows(overall)
+}
+overall <- overall %>% 
+  as_tibble()
+multiple_df <- overall %>% 
+  ggplot(aes(x=x)) +
+  geom_point(aes(y=y), size=0.5) +
+  geom_line(aes(y=.fitted), col="blue", size=1) +
+  facet_wrap(~df, nrow=2) +
+  labs(title="Splines fit w/ different degrees of freedom")
 multiple_df
 ```
 
 
 
+## Scenario D): Score
+
+Let's define a notion of "score" to evaluate how good the above fits are: *mean squared error (MSE)*. Image courtesy [Chris Albon's](https://twitter.com/chrisalbon) excellent [Machine Learning Flashcards](https://twitter.com/search?q=%23machinelearningflashcards%20%40chrisalbon&src=typd).
+
+<img src="images/Mean_Squared_Error_print.png" alt="Drawing" style="width: 400px;"/>
+
+
+
 ## Chalk talk
 
-1.6 
+1.6 Mean Squared Error
+
+
+## Scenario D)
+
+Here are the Root Mean Squared Errors for the plot above. `df=50` has lowest RMSE. Is `df=50` for out-of-sample prediction? What did the Texas Sharpshooter Fallacy say in the machine learning case?
+
+```{r, echo=FALSE}
+overall %>% 
+  group_by(df) %>% 
+  summarise(RMSE = sqrt(mean(.resid^2))) %>% 
+  knitr::kable(digits=3)
+```
 
 
 
-## Corresponding book chapters
 
-* ISLR: [5, 5.1.3] (Start of Chapter 5, through to the end of 5.1.3, stop just before 5.1.4)
-* CASI: [12, 12.2]
 
 
 
