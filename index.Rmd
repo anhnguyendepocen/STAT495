@@ -92,6 +92,8 @@ Announcements:
 
 
 ***
+-->
+
 
 
 
@@ -101,13 +103,6 @@ Announcements:
 
 Announcements:
 
-<center><img src="images/rstudio_projects.png" alt="Drawing" style="height: 100px;"/> & <img src="images/Octocat.png" alt="Drawing" style="height: 100px;"/></center>
-
-* RStudio projects:
-    + Are folders of self-contained projects.
-    + If a project is attached to a GitHub repository then the folders' contents match the GitHub repo online.
-    + RStudio -> Tools -> Terminal -> New Terminal -> Type `cd .git`. This (invisible) folder contains git info
-    + In RStudio on the top right, you should be working in the appropriate RStudio project.
 * Problem set 02 presentations listed [below](#PS02).
 
 
@@ -117,7 +112,9 @@ Announcements:
 * CASI: [12, 12.2]
 
 
+
 ***
+
 
 
 # Problem set 3 {#PS03}
@@ -146,11 +143,11 @@ You will
 
 
 ***
--->
 
 
 
-# 1.6 More resampling
+
+# 1.6 Texas sharpshooter fallacy
 
 ## Mon 9/18
 
