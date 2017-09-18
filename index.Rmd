@@ -323,6 +323,7 @@ You will enter the [Sberbank Russian Housing Market](https://www.kaggle.com/c/sb
         + Team E: Leonard, Vickie, Brendan
         + Team F: Abbas, Caleb, Kiryu
         + Team G: Harrison, Christien
+        + Team H: Meron, Wayne, Tasheena
     + Submit a single pull request on behalf of the group.
     + Submit a single submission to Kaggle on behalf of the group.
 * Deliverables: One ready to submit *pull request* to the [PS02 repo](https://github.com/2017-09-Amherst-STAT495/PS02) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
