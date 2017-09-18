@@ -237,6 +237,12 @@ overall %>%
 
 
 
+## Chalk talk
+
+1.6 The "rather" of Scenario D) (to avoid the Texas Sharpshooter Fallacy).
+
+
+
 
 
 
