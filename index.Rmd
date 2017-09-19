@@ -393,6 +393,12 @@ plot +
 
 ## Presentations 
 
+* Team F: Abbas, Caleb, Kiryu
+    + [Presentation](http://htmlpreview.github.io/?https://github.com/abby-shah/PS02/blob/master/PS02.html)
+    + [Source code](https://github.com/abby-shah/PS02/)
+* Team E: Leonard, Vickie, Brendan
+    + [Presentation](http://htmlpreview.github.io/?https://github.com/vippie852/PS02/blob/master/PS02.html)
+    + [Source code](https://github.com/vippie852/PS02/)
 
 ## Feedback
 
