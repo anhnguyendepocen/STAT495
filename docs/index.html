@@ -316,7 +316,7 @@ h1{font-weight: 400;}
 <li><del>Intro to modeling</del></li>
 <li><del>Simple case with univariate predictors to start: splines</del></li>
 <li><del>Sampling/resampling, out-of-sample prediction, crossvalidation</del></li>
-<li>Bias-variance tradeoff</li>
+<li>Bias-variance tradeoff (to be covered later)</li>
 </ul></li>
 <li>Continuous outcomes I
 <ul>
@@ -349,19 +349,86 @@ h1{font-weight: 400;}
 <!--
 Problem set 02 feedback and example solutions given [below](#PS02).
 -->
-<div id="tbd" class="section level1">
-<h1>1.8 TBD</h1>
+<div id="local-regression" class="section level1">
+<h1>2.1 Local regression</h1>
 <div id="thu-921" class="section level2">
 <h2>Thu 9/21</h2>
 <p>Announcements:</p>
 <ul>
-<li>Add to <span class="math inline">\(k=2\)</span> CV pseudocode from Lec 1.7: using results of CV to then make appropriate predictions.</li>
-<li></li>
+<li>Add to <span class="math inline">\(k=2\)</span> CV pseudocode chalk talk from Lec 1.7: using results of CV to then make appropriate predictions.</li>
+<li>Starting topic 2 today: Continuous outcomes part I</li>
+<li>We’ll come back to Lecture 1.9 <em>Bias-variance tradeoff</em> later.</li>
 </ul>
+</div>
+<div id="executive-summary-via-.gif" class="section level2">
+<h2>Executive summary via <code>.gif</code></h2>
+<p><img border="0" src="images/loess.gif" height="400"></p>
+</div>
+<div id="using-loess" class="section level2">
+<h2>Using <code>loess()</code></h2>
+<p>Commands:</p>
+<ul>
+<li>Fit a model: <code>loess(y~x, data)</code></li>
+<li>Predict based on a model: <code>predict(model_loess, newdata)</code></li>
+</ul>
+<pre class="r"><code># Install this package:
+library(tidyverse)
+library(nycflights13)
+library(broom)
+set.seed(76)
+
+# Let&#39;s join flight info for all 336K domestic flights that left an NYC airport
+# in 2013 (JFK, EWR, or LGA) and join it with weather data:
+View(flights)
+View(weather)
+flights_sample &lt;- flights %&gt;% 
+  left_join(weather, by=c(&quot;month&quot;, &quot;day&quot;, &quot;hour&quot;, &quot;origin&quot;)) %&gt;%
+  filter(!is.na(dep_delay) &amp; !is.na(temp)) %&gt;% 
+  sample_n(1000) %&gt;% 
+  select(temp, dep_delay) %&gt;% 
+  mutate(ID = 1:n())
+  
+flights_sample_train &lt;- flights_sample %&gt;% 
+  sample_n(500)
+flights_sample_test &lt;- flights_sample %&gt;% 
+  anti_join(flights_sample_train, by=&quot;ID&quot;)
+
+model_loess &lt;- loess(dep_delay ~ temp, data=flights_sample_train)
+
+model_loess %&gt;% 
+  augment() %&gt;% 
+  ggplot(aes(x=temp)) +
+  geom_point(aes(y=dep_delay)) +
+  geom_line(aes(y=.fitted), col=&quot;red&quot;, size=1) +
+  geom_smooth(aes(y=dep_delay))
+
+flights_sample_test &lt;- flights_sample_test %&gt;% 
+  mutate(dep_delay_hat = predict(model_loess, newdata=flights_sample_test))
+
+flights_sample_test %&gt;% 
+  summarise(num_missing = sum(is.na(dep_delay_hat)))
+
+flights_sample_test %&gt;%
+  filter(!is.na(dep_delay_hat)) %&gt;% 
+  summarise(RMSE = sqrt(mean((dep_delay - dep_delay_hat)^2)))</code></pre>
+</div>
+<div id="geom_smooth-uses-loess-when-n-1000" class="section level2">
+<h2><code>geom_smooth()</code> uses LOESS when n &lt; 1000</h2>
+<p>Look at the help file <code>?ggplot2::stat_smooth</code> under <code>method</code>: default for n&lt;1000 is <code>loess</code>.</p>
+<pre class="r"><code># When more
+ggplot(flights_sample, aes(x=temp, y=dep_delay)) +
+  geom_point() +
+  geom_smooth(se=FALSE, col=&quot;red&quot;, size=1, span=0.2)
+
+# Play around with the span argument here:
+flights_sample &lt;- flights_sample %&gt;% 
+  sample_n(999)
+ggplot(flights_sample, aes(x=temp, y=dep_delay)) +
+  geom_point() +
+  geom_smooth(se=FALSE, col=&quot;red&quot;, size=1, span=0.2)</code></pre>
 </div>
 <div id="chalk-talk" class="section level2">
 <h2>Chalk talk</h2>
-<p>1.8</p>
 <hr />
 </div>
 </div>
@@ -373,7 +440,7 @@ Problem set 02 feedback and example solutions given [below](#PS02).
 <center>
 <a href="http://tomaszkacmajor.pl/index.php/2016/05/01/svm-model-selection2/"> <img border="0" alt="Sberbank" src="http://tomaszkacmajor.pl/wp-content/uploads/2016/05/cross-validation.png" height="600"> </a>
 </center>
-<p>Baby’s first crossvalidation! You will implement from scratch a full crossvalidation and use it to find the splines model with the best out-of-sample predictive ability. The data include the following variables:</p>
+<p>Baby’s first crossvalidation! You will implement from scratch a full crossvalidation and use it to find the splines model with the best out-of-sample predictive ability <em>in terms of the Root Mean Squared Error (RMSE)</em>. The data include the following variables:</p>
 <ul>
 <li><code>ID</code> unique identifier variable</li>
 <li><code>x</code> univariate predictor of n=3000 equally spaced values between -10 and 90</li>
@@ -466,7 +533,7 @@ Problem set 02 feedback and example solutions given [below](#PS02).
 <div id="scenario-d" class="section level2">
 <h2>Scenario D)</h2>
 <p>Let’s call the following example “Scenario D) Splines”. Recall from our <a href="#intro_to_splines">Intro to Splines</a> lecture the different fitted models based on different degrees of freedom (i.e. different numbers of knots).</p>
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 </div>
 <div id="scenario-d-score" class="section level2">
 <h2>Scenario D): Score</h2>
@@ -618,7 +685,7 @@ plot &lt;- ggplot(splines_model_tidy, aes(x=x)) +
   geom_point(aes(y=y)) +
   geom_line(aes(y=.fitted), col=&quot;blue&quot;)
 plot</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="480" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="480" /></p>
 <pre class="r"><code>new_speeds &lt;- c(24.6, 26.4, 23.4, 16.8, 15.8, 5.4, 14.8, 8.2, 1, 18.8, 25, 28, 19.6, 11.2, 21.8, 26.2, 20.6, 0, 14.4, 8.8)
 # What do you think output is?
 output &lt;- predict(splines_model, new_speeds) %&gt;% 
@@ -662,7 +729,7 @@ head(output)</code></pre>
 </div>
 <pre class="r"><code>plot +
   geom_point(data=output, aes(x=x, y=y), col=&quot;red&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-5-2.png" width="480" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" width="480" /></p>
 </div>
 <div id="presentations-1" class="section level2">
 <h2>Presentations</h2>

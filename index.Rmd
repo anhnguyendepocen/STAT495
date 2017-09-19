@@ -21,6 +21,7 @@ library(knitr)
 library(modelr)
 library(lubridate)
 library(forcats)
+library(nycflights13)
 ```
 
 ```{r, eval=FALSE, echo=FALSE}
@@ -50,7 +51,7 @@ The lectures are numbered according to the following rough topic outline below. 
     * ~~Intro to modeling~~ 
     * ~~Simple case with univariate predictors to start: splines~~
     * ~~Sampling/resampling, out-of-sample prediction, crossvalidation~~
-    * Bias-variance tradeoff
+    * Bias-variance tradeoff (to be covered later)
 1. Continuous outcomes I
     * LOESS smoother
     * Regression for prediction
@@ -77,19 +78,100 @@ Problem set 02 feedback and example solutions given [below](#PS02).
 -->
 
 
-# 1.8 TBD
+
+
+# 2.1 Local regression
 
 ## Thu 9/21
 
 Announcements:
 
-* Add to $k=2$ CV pseudocode from Lec 1.7: using results of CV to then make appropriate predictions.
-* 
+* Add to $k=2$ CV pseudocode chalk talk from Lec 1.7: using results of CV to then make appropriate predictions.
+* Starting topic 2 today: Continuous outcomes part I
+* We'll come back to Lecture 1.9 *Bias-variance tradeoff* later.
+
+
+## Executive summary via `.gif`
+
+<img border="0" src="images/loess.gif" height="400">
+
+
+## Using `loess()`
+
+Commands:
+
+* Fit a model: `loess(y~x, data)`
+* Predict based on a model: `predict(model_loess, newdata)`
+
+```{r, eval=FALSE}
+# Install this package:
+library(tidyverse)
+library(nycflights13)
+library(broom)
+set.seed(76)
+
+# Let's join flight info for all 336K domestic flights that left an NYC airport
+# in 2013 (JFK, EWR, or LGA) and join it with weather data:
+View(flights)
+View(weather)
+flights_sample <- flights %>% 
+  left_join(weather, by=c("month", "day", "hour", "origin")) %>%
+  filter(!is.na(dep_delay) & !is.na(temp)) %>% 
+  sample_n(1000) %>% 
+  select(temp, dep_delay) %>% 
+  mutate(ID = 1:n())
+  
+flights_sample_train <- flights_sample %>% 
+  sample_n(500)
+flights_sample_test <- flights_sample %>% 
+  anti_join(flights_sample_train, by="ID")
+
+model_loess <- loess(dep_delay ~ temp, data=flights_sample_train)
+
+model_loess %>% 
+  augment() %>% 
+  ggplot(aes(x=temp)) +
+  geom_point(aes(y=dep_delay)) +
+  geom_line(aes(y=.fitted), col="red", size=1) +
+  geom_smooth(aes(y=dep_delay))
+
+flights_sample_test <- flights_sample_test %>% 
+  mutate(dep_delay_hat = predict(model_loess, newdata=flights_sample_test))
+
+flights_sample_test %>% 
+  summarise(num_missing = sum(is.na(dep_delay_hat)))
+
+flights_sample_test %>%
+  filter(!is.na(dep_delay_hat)) %>% 
+  summarise(RMSE = sqrt(mean((dep_delay - dep_delay_hat)^2)))
+```
+
+
+
+## `geom_smooth()` uses LOESS when n < 1000
+
+Look at the help file `?ggplot2::stat_smooth` under `method`: default for n<1000
+is `loess`. 
+
+```{r, eval=FALSE}
+# When more
+ggplot(flights_sample, aes(x=temp, y=dep_delay)) +
+  geom_point() +
+  geom_smooth(se=FALSE, col="red", size=1, span=0.2)
+
+# Play around with the span argument here:
+flights_sample <- flights_sample %>% 
+  sample_n(999)
+ggplot(flights_sample, aes(x=temp, y=dep_delay)) +
+  geom_point() +
+  geom_smooth(se=FALSE, col="red", size=1, span=0.2)
+```
 
 
 ## Chalk talk
 
-1.8
+
+
 
 
 
@@ -112,7 +194,7 @@ Announcements:
 </center>
 
 Baby's first crossvalidation! You will implement from scratch a full crossvalidation and use it to find the splines model
-with the best out-of-sample predictive ability. The data include the following variables:
+with the best out-of-sample predictive ability *in terms of the Root Mean Squared Error (RMSE)*. The data include the following variables:
 
 * `ID` unique identifier variable
 * `x` univariate predictor of n=3000 equally spaced values between -10 and 90
