@@ -104,7 +104,7 @@ Announcements:
 Announcements:
 
 * **Tip of the day:** Another reason I'm a big fan of Slack, quick videoconferencing with screensharing directly in Slack using appear.in. In a DM type `/appear NAME_OF_UNIQUE_CONFERENCE_ROOM`. 
-Ex: `/appear admiraal_von_douchenstein`.
+Ex: `/appear purple_monkey_dishwasher`.
 * Problem set 02 presentations! Under [Problem set 2](#PS02) section.
 
 
