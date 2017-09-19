@@ -48,8 +48,8 @@ The lectures are numbered according to the following rough topic outline below. 
 
 1. Background
     * ~~Intro to modeling~~ 
-    * ~~Simple case with univariate predictors to start: splines~~ Done
-    * Sampling/resampling, out-of-sample prediction, crossvalidation
+    * ~~Simple case with univariate predictors to start: splines~~
+    * ~~Sampling/resampling, out-of-sample prediction,~~ crossvalidation
     * Bias-variance tradeoff
 1. Continuous outcomes I
     * LOESS smoother
@@ -103,6 +103,7 @@ Announcements:
 
 Announcements:
 
+* **Tip of the day:** Another reason I'm a big fan of Slack, quick videoconferencing with screensharing using 
 * Problem set 02 presentations listed [below](#PS02).
 
 
@@ -123,15 +124,37 @@ Announcements:
 
 *Assigned on Thu 9/19, due on Tue 9/26 9am at which point there will be synchronized pull requests.*
 
-You will
+<center>
+<a href="http://tomaszkacmajor.pl/index.php/2016/05/01/svm-model-selection2/">
+<img border="0" alt="Sberbank" src="http://tomaszkacmajor.pl/wp-content/uploads/2016/05/cross-validation.png" height="600">
+</a>
+</center>
 
-* Teams: 
+Baby's first crossvalidation! You will implement from scratch a full crossvalidation and use it to find the splines model
+with the best out-of-sample predictive ability. The data include the following variables:
+
+* `ID` unique identifier variable
+* `x` univariate predictor of n=3000 equally spaced values between -10 and 90
+* `y` outcome variable generated from $y = f(x) + \epsilon$ where
+    + $\epsilon$ is a random variable distributed with mean 0 and standard deviation $\sigma$
+    + Both $f$ and $\sigma$ are only known by Albert! Not the same as the video in [Lecture 1.3](#intro_to_modeling).
+
+Notes:
+
+* Teams: Individual. I *highly* recommend you work in groups especially for the planning and eventually coding questions, but the ultimate code you submit should be your own.
 * Deliverables: One ready to submit *pull request* to the [PS03 repo](https://github.com/2017-09-Amherst-STAT495/PS03) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
-    1. `PS03.Rmd`: This should
-    1. `PS03.html`: The output of `PS03.Rmd`. This will be the presentation file for a randomly chosen set of groups.
-    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your team's version of `PS03.html` in a browser on Tuesday morning.
+    1. `PS03.Rmd`: Your work.
+    1. `PS03.html`: The output of `PS03.Rmd`. No presentations for this problem set.
+    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID so that you can open your version of `PS03.html` in a browser easily.
 * Tips:
-* Hints:
+    1. We're ramping up the coding in this assignment! Don't spin your wheels!
+    1. Pseudocode
+        + Don't start coding right away! Make a plan of attack using *pseudocode* that is language independent: <center>
+<img border="0" alt="Sberbank" src="https://www.researchgate.net/profile/Arnab_Shaw/publication/269321422/figure/fig4/AS:392222613753858@1470524566188/Figure-5-Pseudo-code-for-ReliefF-feature-selector.png" width="500">
+</center>
+        + You don't want to conflate the **what** (the algorithm) and the **how** (the code) of the problem set. Lay out the algorithm on paper, blackboard, whiteboard, etc, first!
+        + In exams, you won't be asked to write code, but rather pseudocode.
+
 
 
 ## Presentations
@@ -153,7 +176,7 @@ You will
 
 Announcements:
 
-* Keyboard shortcut of the day
+* **Tip of the day:** Keyboard shortcut `%>%` with command+shift+m on macOS and ctrl+shift+m on windows.
 * Philosophical fallacy of the day. *"Texas Sharpshooter Fallacy": When an argument is made and confirmed using the same set of information.* Watch first 50s of this video: <https://www.youtube.com/embed/_tcBsryYd6s> 
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_tcBsryYd6s" frameborder="0" allowfullscreen></iframe>
@@ -481,7 +504,7 @@ truth
 
 
 
-# 1.3 Intro to modeling
+# 1.3 Intro to modeling {#intro_to_modeling}
 
 ## Mon 9/11
 
