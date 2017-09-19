@@ -88,7 +88,7 @@ Announcements:
 
 * Add to $k=2$ CV pseudocode chalk talk from Lec 1.7: using results of CV to then make appropriate predictions.
 * Starting topic 2 today: Continuous outcomes part I
-* We'll come back to Lecture 1.9 *Bias-variance tradeoff* later.
+* We'll come back to Lecture 1.8 *Bias-variance tradeoff* later.
 
 
 ## Executive summary via `.gif`
