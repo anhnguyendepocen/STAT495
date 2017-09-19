@@ -103,11 +103,16 @@ Announcements:
 
 Announcements:
 
-* **Tip of the day:** Another reason I'm a big fan of Slack, quick videoconferencing with screensharing using 
-* Problem set 02 presentations listed [below](#PS02).
+* **Tip of the day:** Another reason I'm a big fan of Slack, quick videoconferencing with screensharing using appear.
+* Problem set 02 presentations! Under [Problem set 2](#PS02) section.
 
 
-## Corresponding book chapters
+
+## Chalk talk
+
+1.7 Crossvalidation
+
+Corresponding book chapters
 
 * ISLR: [5, 5.1.3] (Start of Chapter 5, through to the end of 5.1.3, stop just before 5.1.4)
 * CASI: [12, 12.2]
