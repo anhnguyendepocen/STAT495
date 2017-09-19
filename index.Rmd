@@ -49,7 +49,7 @@ The lectures are numbered according to the following rough topic outline below. 
 1. Background
     * ~~Intro to modeling~~ 
     * ~~Simple case with univariate predictors to start: splines~~
-    * ~~Sampling/resampling, out-of-sample prediction,~~ crossvalidation
+    * ~~Sampling/resampling, out-of-sample prediction, crossvalidation~~
     * Bias-variance tradeoff
 1. Continuous outcomes I
     * LOESS smoother
@@ -72,16 +72,19 @@ The lectures are numbered according to the following rough topic outline below. 
 
 ***
 
-
 <!--
+Problem set 02 feedback and example solutions given [below](#PS02).
+-->
 
-# 1.8 Crossvalidation 2
+
+# 1.8 TBD
 
 ## Thu 9/21
 
 Announcements:
 
-* Problem set 02 feedback and example solutions given [below](#PS02).
+* Add to $k=2$ CV pseudocode from Lec 1.7: using results of CV to then make appropriate predictions.
+* 
 
 
 ## Chalk talk
@@ -92,35 +95,7 @@ Announcements:
 
 
 ***
--->
 
-
-
-
-# 1.7 Crossvalidation
-
-## Tue 9/19
-
-Announcements:
-
-* **Tip of the day:** Another reason I'm a big fan of Slack, quick videoconferencing with screensharing directly in Slack using appear.in. In a DM type `/appear NAME_OF_UNIQUE_CONFERENCE_ROOM`. 
-Ex: `/appear purple_monkey_dishwasher`.
-* Problem set 02 presentations! Under [Problem set 2](#PS02) section.
-
-
-
-## Chalk talk
-
-1.7 Crossvalidation
-
-Corresponding book chapters
-
-* ISLR: [5, 5.1.3] (Start of Chapter 5, through to the end of 5.1.3, stop just before 5.1.4)
-* CASI: [12, 12.2]
-
-
-
-***
 
 
 
@@ -168,6 +143,35 @@ Notes:
 
 
 ## Feedback
+
+
+
+***
+
+
+
+
+
+# 1.7 Crossvalidation
+
+## Tue 9/19
+
+Announcements:
+
+* **Tip of the day:** Another reason I'm a big fan of Slack, quick videoconferencing with screensharing directly in Slack using appear.in. In a DM type `/appear NAME_OF_UNIQUE_CONFERENCE_ROOM`. 
+Ex: `/appear purple_monkey_dishwasher`.
+* Problem set 02 presentations! Under [Problem set 2](#PS02) section.
+
+
+
+## Chalk talk
+
+1.7 Crossvalidation
+
+Corresponding book chapters
+
+* ISLR: [5, 5.1.3] (Start of Chapter 5, through to the end of 5.1.3, stop just before 5.1.4)
+* CASI: [12, 12.2]
 
 
 
