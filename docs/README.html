@@ -302,11 +302,35 @@ div.tocify {
 
 <div id="stat495" class="section level1">
 <h1>STAT495</h1>
-<p>Homepage source code for 2017-09 Fall Amherst College Advanced Data Analysis <a href="https://rudeboybert.github.io/STAT495/" class="uri">https://rudeboybert.github.io/STAT495/</a>.</p>
+<p>Homepage source code for 2017-09 Fall Amherst College Advanced Data Analysis <a href="https://rudeboybert.github.io/STAT495/" class="uri">https://rudeboybert.github.io/STAT495/</a>. Most of the content is in either:</p>
 <ul>
-<li>Created using <a href="http://rmarkdown.rstudio.com/rmarkdown_websites.html">R Markdown websites</a></li>
-<li>Deployed via <a href="https://pages.github.com/">GitHub pages</a></li>
+<li><code>index.Rmd</code>: a single Moodle-style page that lists all announcements, lectures notes, and problem sets/homeworks in chronological order.</li>
+<li><code>syllabus.Rmd</code></li>
 </ul>
+<div id="how-to-build-this-webpage" class="section level2">
+<h2>How to build this webpage</h2>
+<p>This webpage is built/compiled using <a href="http://rmarkdown.rstudio.com/rmarkdown_websites.html">R Markdown websites</a>. To compile this webpage for yourself, do the following:</p>
+<ol style="list-style-type: decimal">
+<li>Get the contents of this directory/repository:
+<ul>
+<li>If you are not familiar with GitHub, click the green “Clone or download” button on the top-right -&gt; Download ZIP -&gt; Unzip <code>STAT495-master.zip</code>.</li>
+<li>If you are familiar with GitHub, clone this repository.</li>
+</ul></li>
+<li>Double-click the <code>STAT495.Rproj</code> to open RStudio.</li>
+<li>If you haven’t already, install the R Markdown package by typing <code>install.packages(&quot;rmarkdown&quot;)</code> in the console.</li>
+<li>Go to the “Build” pane of RStudio -&gt; More -&gt; Configure Build Tools… -&gt; Ensure that “Project build tools” is set to “Webpage”.</li>
+<li>Click “Build Website”. You may need to install some additional R pacakges listed at the top of <code>index.Rmd</code>.</li>
+<li>The website will display in the Viewer pane. The resulting <code>index.html</code> file and all other files for the webpage will be saved in the <code>docs/</code> folder.</li>
+</ol>
+</div>
+<div id="how-to-publish-this-webpage" class="section level2">
+<h2>How to publish this webpage</h2>
+<p>To publish/deploy this webpage and make it viewable on the web, you need to either:</p>
+<ol style="list-style-type: decimal">
+<li>Copy the contents of the <code>docs/</code> folder to your personal webpage or whatever domain hosting service you use.</li>
+<li>Use <a href="https://pages.github.com/">GitHub pages</a> as I do. RStudio’s R Markdown Websites page gives <a href="http://rmarkdown.rstudio.com/rmarkdown_websites.html#publishing_websites">instructions</a> on how.</li>
+</ol>
+</div>
 </div>
 
 

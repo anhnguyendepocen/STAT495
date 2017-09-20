@@ -22,6 +22,7 @@ library(modelr)
 library(lubridate)
 library(forcats)
 library(nycflights13)
+library(Quandl)
 ```
 
 ```{r, eval=FALSE, echo=FALSE}
@@ -86,19 +87,88 @@ Problem set 02 feedback and example solutions given [below](#PS02).
 
 Announcements:
 
-* Add to $k=2$ CV pseudocode chalk talk from Lec 1.7: using results of CV to then make appropriate predictions.
-* Starting topic 2 today: Continuous outcomes part I
-* We'll come back to Lecture 1.8 *Bias-variance tradeoff* later.
+* Install the following packages:
+    + [`fivethirtyeight`](https://rudeboybert.github.io/fivethirtyeight/): Data
+    from the articles on FiveThirtyEight
+    + [`nycflights13`](https://github.com/hadley/nycflights13): Info
+    for all 336K domestic flights that left an NYC airport in 2013 (JFK, EWR, or
+    LGA)
+* Add to $k=2$ CV pseudocode chalk talk from Lec 1.7: using results of CV to
+then make appropriate predictions.
+* Starting topic 2 today: Continuous outcomes part I.  We'll come back to the final subtopic of topic 1, the bias-variance tradeoff, later.
 
 
-## Executive summary via `.gif`
+## Digression: Chalk talk
+
+2.1: $\log()$ and $\log10()$ transformations.
+
+
+## Digression: The importance of log-transformations
+
+Let's consider a set of post-2000 movies from the `bechdel` data set (type `?bechdel` for
+details) and plot:
+
+* x-axis: movie budget (in 2013-inflation adjusted US dollars)
+* y-axis: domestic gross (in 2013-inflation adjusted US dollars)
+
+```{r, fig.height=9/2, fig.width=16/2}
+library(tidyverse)
+library(fivethirtyeight)
+bechdel_2000 <- bechdel %>% 
+  filter(year >= 2000)
+ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
+  geom_point() +
+  labs(x="Budget", y="Domestic Gross")
+```
+
+We see there is a right-skew to both the x and y-values. This is because we are
+comparing big budget Hollywood blockbusters with (likely) lower budget
+independent films. Hence, it's really hard to see what's going on at the
+lower-end of the budget scale. Let's unskew both variables and compare not
+*absolute* differences, but rather, *relative* differences i.e. differences in
+"order of magnitude" using a `log10()` transformation:
+
+```{r, fig.height=9/2, fig.width=16/2}
+ggplot(bechdel_2000, aes(x=log10(budget_2013), y=log10(domgross_2013))) +
+  geom_point() +
+  labs(x="log10(Budget)", y="log10(Domestic Gross)")
+```
+
+We can see a little better what's going on at the lower end of the budget scale.
+However the values on the axes require a little thinking to process. For example
+at $x=7$, this corresponds to movies with a budget of $10^7 = 10,000,000$
+dollars. So instead, let's *rescale* both axes so that they display the data in
+their original units.
+
+```{r, fig.height=9/2, fig.width=16/2}
+ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
+  geom_point() +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(x="Budget (log10-scale)", y="Domestic Gross (log10-scale)")
+```
+
+Note that the two plots are identical, but the values on the axes are different.
+
+
+## Local regression: executive summary via `.gif`
 
 <img border="0" src="images/loess.gif" height="400">
 
 
+## Chalk talk
+
+2.1 Local regression i.e. LOESS AKA LOWESS 
+
+
 ## Using `loess()`
 
-Commands:
+Let's fit a LOESS smoother model to 
+
+* x: (top of the hour) temperature recorded for flight
+* y: departure delay for flight
+
+on 1000 randomly sampled flights whose (x,y) values aren't missing. Commands:
 
 * Fit a model: `loess(y~x, data)`
 * Predict based on a model: `predict(model_loess, newdata)`
@@ -108,42 +178,55 @@ Commands:
 library(tidyverse)
 library(nycflights13)
 library(broom)
-set.seed(76)
 
-# Let's join flight info for all 336K domestic flights that left an NYC airport
-# in 2013 (JFK, EWR, or LGA) and join it with weather data:
-View(flights)
-View(weather)
+# Let's join flight and join it with weather data after setting the seed
+# value for the random number generator:
+set.seed(76)
 flights_sample <- flights %>% 
   left_join(weather, by=c("month", "day", "hour", "origin")) %>%
   filter(!is.na(dep_delay) & !is.na(temp)) %>% 
   sample_n(1000) %>% 
   select(temp, dep_delay) %>% 
   mutate(ID = 1:n())
-  
+
+# Create disjoint training and test data sets of size 500 each:  
 flights_sample_train <- flights_sample %>% 
   sample_n(500)
 flights_sample_test <- flights_sample %>% 
   anti_join(flights_sample_train, by="ID")
 
+# 1. Fit model
 model_loess <- loess(dep_delay ~ temp, data=flights_sample_train)
 
-model_loess %>% 
-  augment() %>% 
-  ggplot(aes(x=temp)) +
-  geom_point(aes(y=dep_delay)) +
-  geom_line(aes(y=.fitted), col="red", size=1) +
-  geom_smooth(aes(y=dep_delay))
+# The next two lines take the fitted model and output a data frame with the 
+# original (x,y) values, but also
+# * y_hat in the column .fitted.
+# * y - y_hat = residual in the column .reside
+# You can ignore the warnings about purrr
+model_loess_df <- model_loess %>% 
+  broom::augment()
+View(model_loess_df)
 
+# Plot
+ggplot(model_loess_df, aes(x=temp)) +
+  geom_point(aes(y=dep_delay)) +
+  geom_line(aes(y=.fitted), col="red", size=1)
+
+# 2. Pretend for a moment you don't know the true y = dep_delay, take the
+# previously fitted model and make predictions on test set:
 flights_sample_test <- flights_sample_test %>% 
   mutate(dep_delay_hat = predict(model_loess, newdata=flights_sample_test))
 
-flights_sample_test %>% 
-  summarise(num_missing = sum(is.na(dep_delay_hat)))
+# Now let's stop pretending and compare our predictions (red points) to the
+# truth (black points)
+ggplot(flights_sample_test, aes(x=temp)) +
+  geom_point(aes(y=dep_delay)) +
+  geom_point(aes(y=dep_delay_hat), col="red", size=1)
 
+# Now let's evaluate the RMSE
 flights_sample_test %>%
-  filter(!is.na(dep_delay_hat)) %>% 
-  summarise(RMSE = sqrt(mean((dep_delay - dep_delay_hat)^2)))
+  summarise(MSE = mean((dep_delay - dep_delay_hat)^2)) %>% 
+  mutate(RMSE = sqrt(MSE))
 ```
 
 
@@ -154,30 +237,28 @@ Look at the help file `?ggplot2::stat_smooth` under `method`: default for n<1000
 is `loess`. 
 
 ```{r, eval=FALSE}
-# When more
+# When more than 1000 obs, geom_smooth uses another method
+dim(flights_sample)
 ggplot(flights_sample, aes(x=temp, y=dep_delay)) +
   geom_point() +
-  geom_smooth(se=FALSE, col="red", size=1, span=0.2)
+  geom_smooth(se=FALSE, col="red", size=1)
 
-# Play around with the span argument here:
-flights_sample <- flights_sample %>% 
-  sample_n(999)
-ggplot(flights_sample, aes(x=temp, y=dep_delay)) +
+# When less than 1000 obs, geom_smooth uses LOESS
+dim(flights_sample_train)
+ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
+  geom_point() +
+  geom_smooth(se=FALSE, col="red", size=1)
+
+# How do I "tune" a LOESS smoother? Using span! Play around with the value
+# below:
+ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
   geom_point() +
   geom_smooth(se=FALSE, col="red", size=1, span=0.2)
 ```
 
 
-## Chalk talk
-
-
-
-
-
-
 
 ***
-
 
 
 

@@ -300,7 +300,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">STAT/MATH 495: Advanced Data Analysis</h1>
 <h4 class="author"><em>Albert Y. Kim</em></h4>
-<h4 class="date"><em>Last updated on 2017-09-19</em></h4>
+<h4 class="date"><em>Last updated on 2017-09-20</em></h4>
 
 </div>
 
@@ -355,18 +355,64 @@ Problem set 02 feedback and example solutions given [below](#PS02).
 <h2>Thu 9/21</h2>
 <p>Announcements:</p>
 <ul>
+<li>Install the following packages:
+<ul>
+<li><a href="https://rudeboybert.github.io/fivethirtyeight/"><code>fivethirtyeight</code></a>: Data from the articles on FiveThirtyEight</li>
+<li><a href="https://github.com/hadley/nycflights13"><code>nycflights13</code></a>: Info for all 336K domestic flights that left an NYC airport in 2013 (JFK, EWR, or LGA)</li>
+</ul></li>
 <li>Add to <span class="math inline">\(k=2\)</span> CV pseudocode chalk talk from Lec 1.7: using results of CV to then make appropriate predictions.</li>
-<li>Starting topic 2 today: Continuous outcomes part I</li>
-<li>We’ll come back to Lecture 1.8 <em>Bias-variance tradeoff</em> later.</li>
+<li>Starting topic 2 today: Continuous outcomes part I. We’ll come back to the final subtopic of topic 1, the bias-variance tradeoff, later.</li>
 </ul>
 </div>
-<div id="executive-summary-via-.gif" class="section level2">
-<h2>Executive summary via <code>.gif</code></h2>
+<div id="digression-chalk-talk" class="section level2">
+<h2>Digression: Chalk talk</h2>
+<p>2.1: <span class="math inline">\(\log()\)</span> and <span class="math inline">\(\log10()\)</span> transformations.</p>
+</div>
+<div id="digression-the-importance-of-log-transformations" class="section level2">
+<h2>Digression: The importance of log-transformations</h2>
+<p>Let’s consider a set of post-2000 movies from the <code>bechdel</code> data set (type <code>?bechdel</code> for details) and plot:</p>
+<ul>
+<li>x-axis: movie budget (in 2013-inflation adjusted US dollars)</li>
+<li>y-axis: domestic gross (in 2013-inflation adjusted US dollars)</li>
+</ul>
+<pre class="r"><code>library(tidyverse)
+library(fivethirtyeight)
+bechdel_2000 &lt;- bechdel %&gt;% 
+  filter(year &gt;= 2000)
+ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
+  geom_point() +
+  labs(x=&quot;Budget&quot;, y=&quot;Domestic Gross&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="768" /></p>
+<p>We see there is a right-skew to both the x and y-values. This is because we are comparing big budget Hollywood blockbusters with (likely) lower budget independent films. Hence, it’s really hard to see what’s going on at the lower-end of the budget scale. Let’s unskew both variables and compare not <em>absolute</em> differences, but rather, <em>relative</em> differences i.e. differences in “order of magnitude” using a <code>log10()</code> transformation:</p>
+<pre class="r"><code>ggplot(bechdel_2000, aes(x=log10(budget_2013), y=log10(domgross_2013))) +
+  geom_point() +
+  labs(x=&quot;log10(Budget)&quot;, y=&quot;log10(Domestic Gross)&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+<p>We can see a little better what’s going on at the lower end of the budget scale. However the values on the axes require a little thinking to process. For example at <span class="math inline">\(x=7\)</span>, this corresponds to movies with a budget of <span class="math inline">\(10^7 = 10,000,000\)</span> dollars. So instead, let’s <em>rescale</em> both axes so that they display the data in their original units.</p>
+<pre class="r"><code>ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
+  geom_point() +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(x=&quot;Budget (log10-scale)&quot;, y=&quot;Domestic Gross (log10-scale)&quot;)</code></pre>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
+<p>Note that the two plots are identical, but the values on the axes are different.</p>
+</div>
+<div id="local-regression-executive-summary-via-.gif" class="section level2">
+<h2>Local regression: executive summary via <code>.gif</code></h2>
 <p><img border="0" src="images/loess.gif" height="400"></p>
+</div>
+<div id="chalk-talk" class="section level2">
+<h2>Chalk talk</h2>
+<p>2.1 Local regression i.e. LOESS AKA LOWESS</p>
 </div>
 <div id="using-loess" class="section level2">
 <h2>Using <code>loess()</code></h2>
-<p>Commands:</p>
+<p>Let’s fit a LOESS smoother model to</p>
+<ul>
+<li>x: (top of the hour) temperature recorded for flight</li>
+<li>y: departure delay for flight</li>
+</ul>
+<p>on 1000 randomly sampled flights whose (x,y) values aren’t missing. Commands:</p>
 <ul>
 <li>Fit a model: <code>loess(y~x, data)</code></li>
 <li>Predict based on a model: <code>predict(model_loess, newdata)</code></li>
@@ -375,60 +421,76 @@ Problem set 02 feedback and example solutions given [below](#PS02).
 library(tidyverse)
 library(nycflights13)
 library(broom)
-set.seed(76)
 
-# Let&#39;s join flight info for all 336K domestic flights that left an NYC airport
-# in 2013 (JFK, EWR, or LGA) and join it with weather data:
-View(flights)
-View(weather)
+# Let&#39;s join flight and join it with weather data after setting the seed
+# value for the random number generator:
+set.seed(76)
 flights_sample &lt;- flights %&gt;% 
   left_join(weather, by=c(&quot;month&quot;, &quot;day&quot;, &quot;hour&quot;, &quot;origin&quot;)) %&gt;%
   filter(!is.na(dep_delay) &amp; !is.na(temp)) %&gt;% 
   sample_n(1000) %&gt;% 
   select(temp, dep_delay) %&gt;% 
   mutate(ID = 1:n())
-  
+
+# Create disjoint training and test data sets of size 500 each:  
 flights_sample_train &lt;- flights_sample %&gt;% 
   sample_n(500)
 flights_sample_test &lt;- flights_sample %&gt;% 
   anti_join(flights_sample_train, by=&quot;ID&quot;)
 
+# 1. Fit model
 model_loess &lt;- loess(dep_delay ~ temp, data=flights_sample_train)
 
-model_loess %&gt;% 
-  augment() %&gt;% 
-  ggplot(aes(x=temp)) +
-  geom_point(aes(y=dep_delay)) +
-  geom_line(aes(y=.fitted), col=&quot;red&quot;, size=1) +
-  geom_smooth(aes(y=dep_delay))
+# The next two lines take the fitted model and output a data frame with the 
+# original (x,y) values, but also
+# * y_hat in the column .fitted.
+# * y - y_hat = residual in the column .reside
+# You can ignore the warnings about purrr
+model_loess_df &lt;- model_loess %&gt;% 
+  broom::augment()
+View(model_loess_df)
 
+# Plot
+ggplot(model_loess_df, aes(x=temp)) +
+  geom_point(aes(y=dep_delay)) +
+  geom_line(aes(y=.fitted), col=&quot;red&quot;, size=1)
+
+# 2. Pretend for a moment you don&#39;t know the true y = dep_delay, take the
+# previously fitted model and make predictions on test set:
 flights_sample_test &lt;- flights_sample_test %&gt;% 
   mutate(dep_delay_hat = predict(model_loess, newdata=flights_sample_test))
 
-flights_sample_test %&gt;% 
-  summarise(num_missing = sum(is.na(dep_delay_hat)))
+# Now let&#39;s stop pretending and compare our predictions (red points) to the
+# truth (black points)
+ggplot(flights_sample_test, aes(x=temp)) +
+  geom_point(aes(y=dep_delay)) +
+  geom_point(aes(y=dep_delay_hat), col=&quot;red&quot;, size=1)
 
+# Now let&#39;s evaluate the RMSE
 flights_sample_test %&gt;%
-  filter(!is.na(dep_delay_hat)) %&gt;% 
-  summarise(RMSE = sqrt(mean((dep_delay - dep_delay_hat)^2)))</code></pre>
+  summarise(MSE = mean((dep_delay - dep_delay_hat)^2)) %&gt;% 
+  mutate(RMSE = sqrt(MSE))</code></pre>
 </div>
 <div id="geom_smooth-uses-loess-when-n-1000" class="section level2">
 <h2><code>geom_smooth()</code> uses LOESS when n &lt; 1000</h2>
 <p>Look at the help file <code>?ggplot2::stat_smooth</code> under <code>method</code>: default for n&lt;1000 is <code>loess</code>.</p>
-<pre class="r"><code># When more
+<pre class="r"><code># When more than 1000 obs, geom_smooth uses another method
+dim(flights_sample)
 ggplot(flights_sample, aes(x=temp, y=dep_delay)) +
   geom_point() +
-  geom_smooth(se=FALSE, col=&quot;red&quot;, size=1, span=0.2)
+  geom_smooth(se=FALSE, col=&quot;red&quot;, size=1)
 
-# Play around with the span argument here:
-flights_sample &lt;- flights_sample %&gt;% 
-  sample_n(999)
-ggplot(flights_sample, aes(x=temp, y=dep_delay)) +
+# When less than 1000 obs, geom_smooth uses LOESS
+dim(flights_sample_train)
+ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
+  geom_point() +
+  geom_smooth(se=FALSE, col=&quot;red&quot;, size=1)
+
+# How do I &quot;tune&quot; a LOESS smoother? Using span! Play around with the value
+# below:
+ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
   geom_point() +
   geom_smooth(se=FALSE, col=&quot;red&quot;, size=1, span=0.2)</code></pre>
-</div>
-<div id="chalk-talk" class="section level2">
-<h2>Chalk talk</h2>
 <hr />
 </div>
 </div>
@@ -533,7 +595,7 @@ ggplot(flights_sample, aes(x=temp, y=dep_delay)) +
 <div id="scenario-d" class="section level2">
 <h2>Scenario D)</h2>
 <p>Let’s call the following example “Scenario D) Splines”. Recall from our <a href="#intro_to_splines">Intro to Splines</a> lecture the different fitted models based on different degrees of freedom (i.e. different numbers of knots).</p>
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 </div>
 <div id="scenario-d-score" class="section level2">
 <h2>Scenario D): Score</h2>
@@ -685,7 +747,7 @@ plot &lt;- ggplot(splines_model_tidy, aes(x=x)) +
   geom_point(aes(y=y)) +
   geom_line(aes(y=.fitted), col=&quot;blue&quot;)
 plot</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="480" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="480" /></p>
 <pre class="r"><code>new_speeds &lt;- c(24.6, 26.4, 23.4, 16.8, 15.8, 5.4, 14.8, 8.2, 1, 18.8, 25, 28, 19.6, 11.2, 21.8, 26.2, 20.6, 0, 14.4, 8.8)
 # What do you think output is?
 output &lt;- predict(splines_model, new_speeds) %&gt;% 
@@ -729,7 +791,7 @@ head(output)</code></pre>
 </div>
 <pre class="r"><code>plot +
   geom_point(data=output, aes(x=x, y=y), col=&quot;red&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-7-2.png" width="480" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-2.png" width="480" /></p>
 </div>
 <div id="presentations-1" class="section level2">
 <h2>Presentations</h2>
