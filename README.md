@@ -1,6 +1,11 @@
 # STAT495
 
-Homepage source code for 2017-09 Fall Amherst College Advanced Data Analysis <https://rudeboybert.github.io/STAT495/>. 
+Homepage source code for 2017-09 Fall Amherst College Advanced Data Analysis <https://rudeboybert.github.io/STAT495/>. Most of the content is in either:
+
+* `index.Rmd`: a single Moodle-style page that lists all announcements, lectures notes, and problem sets/homeworks in chronological order.
+* `syllabus.Rmd`
+
+
 
 
 ## How to build this webpage
