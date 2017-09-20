@@ -249,8 +249,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
   geom_point() +
   geom_smooth(se=FALSE, col="red", size=1)
 
-# How do I "tune" a LOESS smoother? Using span! Play around with the value
-# below:
+# How do I "tune" a LOESS smoother? Play around with the span value below:
 ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
   geom_point() +
   geom_smooth(se=FALSE, col="red", size=1, span=0.2)
