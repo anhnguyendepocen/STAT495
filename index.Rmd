@@ -81,7 +81,7 @@ Problem set 02 feedback and example solutions given [below](#PS02).
 
 
 
-# 2.1 Local regression
+# 2.1 Intro to local regression (LOESS)
 
 ## Thu 9/21
 
