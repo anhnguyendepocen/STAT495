@@ -146,12 +146,20 @@ place to hold your group peers accountable for their work.
 The problem sets in this class should be viewed as low-stakes opportunities to
 practice, instead of evaluative tools used by the instructor to assign grades.
 
-* All problem sets assigned/due/presented on Tuesdays 
-* Basic structure:
-    1. You will be randomly assigned into pairs.
-    1. You will complete the problem set and submit it via GitHub pull request.
-    1. On the due date, I will pick a certain number of teams at random to present their findings.
-    1. You will have the option of updating your submissions.
+* ~~Basic structure~~: Updated below
+    1. ~~You will be randomly assigned into pairs.~~
+    1. ~~You will complete the problem set and submit it via GitHub pull request.~~
+    1. ~~On the due date, I will pick a certain number of teams at random to present their findings.~~
+    1. ~~You will have the option of updating your submissions.~~
+* Sometimes problem sets will be individual, sometimes you will choose groups, sometimes you'll be randomly assigned into groups.
+* Typical problem set timeline
+    + Tuesday: problem set assigned
+    + The following Tuesday 8:30am:
+        + Submitted via a synchronized pull request by you/your team leader
+        + Presentations (if applicable)
+    + By Wednesday 9am: The TA will give feedback over GitHub. Do not commit/push any new changes until you've received the feedback.
+    + By Thursday 8:30am: Revise/resubmit your work. There is no need to create a new pull request; the existing one will be updated.
+    + By Monday: Albert will give his feedback and the grade. 
 * Policy on collaboration:
     + While I encourage you to discuss problem sets with your peers, you must submit
 your own answers and not simple rewordings of another's work.

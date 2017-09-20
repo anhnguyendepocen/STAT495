@@ -93,9 +93,11 @@ Announcements:
     + [`nycflights13`](https://github.com/hadley/nycflights13): Info
     for all 336K domestic flights that left an NYC airport in 2013 (JFK, EWR, or
     LGA)
+* Updated syllabus to reflect typical problem set timeline.
 * Add to $k=2$ CV pseudocode chalk talk from Lec 1.7: using results of CV to
 then make appropriate predictions.
-* Starting topic 2 today: Continuous outcomes part I.  We'll come back to the final subtopic of topic 1, the bias-variance tradeoff, later.
+* Starting topic 2 today: Continuous outcomes part I.  We'll come back to the
+final subtopic of topic 1, the bias-variance tradeoff, later.
 
 
 ## Digression: Chalk talk
