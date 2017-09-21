@@ -86,7 +86,6 @@ The source code for this webpage is available by clicking the "Octocat" icon on 
 
 
 
-
 # 2.1 Local regression (LOESS)
 
 ## Thu 9/21
@@ -121,7 +120,7 @@ final subtopic of topic 1, the bias-variance tradeoff, later.
 
 ## Digression: Chalk talk
 
-2.1: $\log()$ and $\log10()$ transformations.
+2.1: $\log()$ and $\log_{10}()$ transformations.
 
 
 ## Digression: The importance of log-transformations
