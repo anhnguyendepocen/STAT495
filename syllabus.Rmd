@@ -113,13 +113,21 @@ Roughly speaking we will cover the following topics. A more detailed outline and
 
 
     
-# Materials
+# Materials/Readings
 
 We will use chiefly use the following available textbooks:
 
 1. ["Happy Git and GitHub for the useR"](http://happygitwithr.com/) by Jenny Bryan.
 1. ["An Introduction to Statistical Learning"](http://www-bcf.usc.edu/~gareth/ISL/) by James, Witten, Hastie, and Tibshirani. We'll refer to this as "ISLR.""
 1. ["Computer Age Statistical Inference"](https://web.stanford.edu/~hastie/CASI/) by Efron and Tibshirani. We'll refer to this as "CASI."
+1. ["The Elements of Statitiscal Learning"](https://web.stanford.edu/~hastie/ElemStatLearn/) by Hastie, Tibshirani, and Friedman. We'll refer to this as "ESL."
+
+The latter three are all supplemental resources: use these if you find chalk talks and the course main page are lacking in any
+regard. That being said, here is a rough hierarchy of how I much I refer to them:
+
+1. ISLR: Most of my notes center around this text, which is targeted at undergraduates.
+1. ESL: This is the graduate version of ISLR, and predates ISLR by a few years.
+1. CASI: A 30,000 foot overview of the past, present, and future of statistics/data science/machine learning. We'll refer to this occationally. 
 
 
 
@@ -141,7 +149,7 @@ place to hold your group peers accountable for their work.
 * More details and examples will be posted later in the semester.
 
 
-## Weekly Problem Sets 20%
+## Weekly Problem Sets 20% {#problem_sets}
 
 The problem sets in this class should be viewed as low-stakes opportunities to
 practice, instead of evaluative tools used by the instructor to assign grades.

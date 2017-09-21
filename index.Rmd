@@ -23,6 +23,8 @@ library(lubridate)
 library(forcats)
 library(nycflights13)
 library(Quandl)
+# devtools::install_github("hadley/emo")
+library(emo)
 ```
 
 ```{r, eval=FALSE, echo=FALSE}
@@ -75,17 +77,18 @@ The lectures are numbered according to the following rough topic outline below. 
 ***
 
 <!--
-Problem set 02 feedback and example solutions given [below](#PS02).
+* Problem set 02 feedback and example solutions given [below](#PS02).
+* Explain GitHub collaborator vs GitHub pull request
 -->
 
 
 
 
-# 2.1 Intro to local regression (LOESS)
+# 2.1 Local regression (LOESS)
 
 ## Thu 9/21
 
-Announcements:
+Before class:
 
 * Install the following packages:
     + [`fivethirtyeight`](https://rudeboybert.github.io/fivethirtyeight/): Data
@@ -93,7 +96,15 @@ Announcements:
     + [`nycflights13`](https://github.com/hadley/nycflights13): Info
     for all 336K domestic flights that left an NYC airport in 2013 (JFK, EWR, or
     LGA)
-* Updated syllabus to reflect typical problem set timeline.
+* AC students: Start networking! Have your name and LinkedIn profile appear on 
+the [Amherst website](https://www.amherst.edu/academiclife/departments/mathematics-statistics/alumni/alumni-links) by filling out this [Google Form](https://docs.google.com/forms/d/1LW1E50wXVGW3-I0949pvRnqrm7M8E5nfADQWlx1YCPc/edit). Recruiters pay `r emo::ji("dollar")``r emo::ji("dollar")``r emo::ji("dollar")` to LinkedIn to be able to do 
+targeted searches of potential hires!
+
+Announcements:
+
+* Updated/clarified syllabus to reflect:
+    + Typical problem set timeline under problem sets
+    + Expectations on readings under materials/readings
 * Add to $k=2$ CV pseudocode chalk talk from Lec 1.7: using results of CV to
 then make appropriate predictions.
 * Starting topic 2 today: Continuous outcomes part I.  We'll come back to the
