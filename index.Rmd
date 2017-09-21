@@ -25,6 +25,7 @@ library(nycflights13)
 library(Quandl)
 # devtools::install_github("hadley/emo")
 library(emo)
+set.seed(76)
 ```
 
 ```{r, eval=FALSE, echo=FALSE}
@@ -124,7 +125,7 @@ details) and plot:
 * x-axis: movie budget (in 2013-inflation adjusted US dollars)
 * y-axis: domestic gross (in 2013-inflation adjusted US dollars)
 
-```{r, fig.height=9/2, fig.width=16/2}
+```{r, fig.height=9/2.5, fig.width=16/2.5}
 library(tidyverse)
 library(fivethirtyeight)
 bechdel_2000 <- bechdel %>% 
@@ -141,7 +142,7 @@ lower-end of the budget scale. Let's unskew both variables and compare not
 *absolute* differences, but rather, *relative* differences i.e. differences in
 "order of magnitude" using a `log10()` transformation:
 
-```{r, fig.height=9/2, fig.width=16/2}
+```{r, fig.height=9/2.5, fig.width=16/2.5}
 ggplot(bechdel_2000, aes(x=log10(budget_2013), y=log10(domgross_2013))) +
   geom_point() +
   labs(x="log10(Budget)", y="log10(Domestic Gross)")
@@ -153,7 +154,7 @@ at $x=7$, this corresponds to movies with a budget of $10^7 = 10,000,000$
 dollars. So instead, let's *rescale* both axes so that they display the data in
 their original units.
 
-```{r, fig.height=9/2, fig.width=16/2}
+```{r, fig.height=9/2.5, fig.width=16/2.5}
 ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
   geom_point() +
   scale_x_log10() +
@@ -173,6 +174,10 @@ Note that the two plots are identical, but the values on the axes are different.
 
 2.1 Local regression i.e. LOESS AKA LOWESS 
 
+Corresponding book chapters
+
+* ISLR: 7.6
+* CASI: 19.8
 
 ## Using `loess()`
 
@@ -183,7 +188,7 @@ Let's fit a LOESS smoother model to
 
 on 1000 randomly sampled flights whose (x,y) values aren't missing. Commands:
 
-* Fit a model: `loess(y~x, data)`
+* Fit a model: `loess(y~x, data)` (Note there is also a `lowess()` command, but AFAIK there is no convenient `predict()` function).
 * Predict based on a model: `predict(model_loess, newdata)`
 
 ```{r, eval=FALSE}
@@ -192,8 +197,8 @@ library(tidyverse)
 library(nycflights13)
 library(broom)
 
-# Let's join flight and join it with weather data after setting the seed
-# value for the random number generator:
+# Let's join flight and join it with weather data after setting the seed value
+# for the random number generator to ensure we have "replicable randomness"
 set.seed(76)
 flights_sample <- flights %>% 
   left_join(weather, by=c("month", "day", "hour", "origin")) %>%
