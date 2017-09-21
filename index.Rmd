@@ -73,6 +73,8 @@ The lectures are numbered according to the following rough topic outline below. 
     * Principal components analysis
     * k-Means Clustering
 
+The source code for this webpage is available by clicking the "Octocat" icon on the top-right of the nav bar.
+
 
 
 ***
