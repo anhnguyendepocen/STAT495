@@ -169,7 +169,10 @@ ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
   labs(x="Budget (log10-scale)", y="Domestic Gross (log10-scale)")
 ```
 
-Note that the two plots are identical, but the values on the axes are different.
+Note that
+
+* The two plots are identical, but the values on the axes are different.
+* In the rescaled x and y axes plot, equivalent distances on each axes correspond to not equivalent absolute differences, but equivalent relative/multiplicative differences. So for example, the horizontal distance on the plot from Budget = `1e+05` = $10^5$ to Budget  = `1e+06` = $10^6$ is equal to the horizontal distance on the plot from Budget = `1e+06` = $10^6$ to Budget = `1e+07` = $10^7$.
 
 
 ## Local regression: executive summary via `.gif`
