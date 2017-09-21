@@ -103,6 +103,11 @@ targeted `r emo::ji("search")`s of potential hires!
 
 Announcements:
 
+* Amherst College Department of Mathematics and Statistics Amherst College Statistics Colloquia tonight. 
+    + Title: Lessons for official statistics production around the world from the experience of Greece
+    + Speaker: Andreas Georgiou ‘83, Visiting Lecturer in Economics Amherst College ([speaker background](https://www.amherst.edu/academiclife/departments/mathematics-statistics/news))
+    + When/where: Thursday, September 21, 2017 7:00 pm in Seeley Mudd 206. 
+    + Abstract: The seminar will address what lessons can be gleaned from the experience with official statistics production in Greece, both in the period up to the onset of the debt crisis and since then. The seminar will discuss lessons about the appropriate institutional setting, legal framework, statistical culture and statistical practices.
 * Updated/clarified syllabus to reflect:
     + Typical problem set timeline under problem sets
     + Expectations on readings under materials/readings
