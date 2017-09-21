@@ -97,8 +97,8 @@ Before class:
     for all 336K domestic flights that left an NYC airport in 2013 (JFK, EWR, or
     LGA)
 * AC students: Start networking! Have your name and LinkedIn profile appear on 
-the [Amherst website](https://www.amherst.edu/academiclife/departments/mathematics-statistics/alumni/alumni-links) by filling out this [Google Form](https://docs.google.com/forms/d/1LW1E50wXVGW3-I0949pvRnqrm7M8E5nfADQWlx1YCPc/edit). Recruiters pay `r emo::ji("dollar")``r emo::ji("dollar")``r emo::ji("dollar")` to LinkedIn to be able to do 
-targeted searches of potential hires!
+the [Amherst website](https://www.amherst.edu/academiclife/departments/mathematics-statistics/alumni/alumni-links) by filling out this [Google Form](https://docs.google.com/forms/d/1LW1E50wXVGW3-I0949pvRnqrm7M8E5nfADQWlx1YCPc/edit). Recruiters pay `r emo::ji("dollar")``r emo::ji("money")``r emo::ji("currency")` to LinkedIn to be able to do 
+targeted `r emo::ji("search")`s of potential hires!
 
 Announcements:
 
