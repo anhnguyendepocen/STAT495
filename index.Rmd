@@ -174,13 +174,14 @@ Announcements:
     + $y=f(\vec{x})+\epsilon$
     + What machine learning/data science tries to do  
 
-<iframe src='http://abcnews.go.com/video/embed?id=49810458' autostart="1" width='640' height='360' scrolling='no' style='border:none;'></iframe>
+<iframe src='http://abcnews.go.com/video/embed?id=49810458' width='640' height='360' scrolling='no' style='border:none;'></iframe>
 
 
 ## Today's exercise
 
 1. Go to Stitch Fix and individually complete the "style quiz" for your gender; I just like their approach (their [blog](http://multithreaded.stitchfix.com/blog/) for example).
 1. Log out and using a different email address complete the "style quiz" for the *opposite* gender and note the major differences.
+1. Shout out to Jeff L for <https://10minutemail.com/10MinuteMail/index.html?dswid=4246>
 1. Communicate with your seatmates every step of the way; I'll poll some groups for their observations.
 1. Again, view all this thru the lens of:
     + $y=f(\vec{x})+\epsilon$
