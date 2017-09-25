@@ -57,7 +57,7 @@ The lectures are numbered according to the following rough topic outline below. 
     * ~~Sampling/resampling, out-of-sample prediction, crossvalidation~~
     * Bias-variance tradeoff (to be covered later)
 1. Continuous outcomes I
-    * LOESS smoother
+    * ~~LOESS smoother~~
     * Regression for prediction
 1. Categorical outcomes i.e. classification
     * Logistic regression for prediction + ROC curves
@@ -79,10 +79,94 @@ The source code for this webpage is available by clicking the "Octocat" icon on 
 
 ***
 
+
+<!--
+# X.X
+
+## Thu X/X
+
+Announcements:
+
+
+## Chalk talk
+
+X.X
+
+
+
+
+***
+
+
+
+# X.X 
+
+## Tue X/X
+
+Announcements:
+
+* Problem set 0X presentations listed [below](#PS0X).
+
+
+
+
+***
+
+
+# Problem set 0X {#PS0X}
+
+## Information
+
+*Assigned on Tue X/X, due on Tue X/X 9am at which point there will be synchronized pull requests.*
+
+You will...
+
+* Due: Tue X/X 9:00am, at which point there will be synchronized pull requests.
+* Teams: 
+* Deliverables: One ready to submit *pull request* to the [PS0X repo](https://github.com/2017-09-Amherst-STAT495/PS0X) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
+    1. `PS0X.Rmd`: This should
+    1. `PS0X.html`: The output of `PS0X.Rmd`. This will be the presentation file for a randomly chosen set of groups.
+    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your team's version of `PSX2.html` in a browser on Tuesday morning.
+* Tips:
+* Hints:
+
+
+## Presentations
+
+
+## Feedback
+
+
+## Example solutions
+
+
+
+
+
+***
+-->
+
+
+
+
+# 2.2 Regression for prediction
+
+## Mon 9/5
+
+Announcements:
+
 <!--
 * Problem set 02 feedback and example solutions given [below](#PS02).
 * Explain GitHub collaborator vs GitHub pull request
 -->
+
+## Chalk talk
+
+X.X
+
+
+
+***
 
 
 
