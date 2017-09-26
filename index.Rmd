@@ -101,7 +101,7 @@ flights_sample <- flights %>%
   sample_n(100)
 delays_plot <- ggplot(flights_sample, aes(x=dep_delay, y=arr_delay)) +
   geom_point()
-# Hover your mouse over this:
+# Hover your mouse over the resulting plot
 ggplotly(delays_plot)
 ```
 
