@@ -13,6 +13,8 @@ navbar:
   left:
     - text: "GitHub Org"
       href: https://github.com/2017-09-Amherst-STAT495
+    - text: "Quickstart"
+      href: quickstart.html
   right:
     - text: "Syllabus"
       href: syllabus.html

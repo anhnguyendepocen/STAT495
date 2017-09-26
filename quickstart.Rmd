@@ -1,0 +1,193 @@
+---
+title: "Quickstart Guide to Models"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float:
+      collapsed: false
+---
+
+<style>
+h1{font-weight: 400;}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE)
+set.seed(76)
+```
+
+
+# Create training and test data
+
+We will use the same data for all the model types below.
+
+```{r}
+library(tidyverse)
+library(broom)
+
+mtcars <- mtcars %>% 
+  mutate(ID = 1:n()) %>% 
+  select(ID, mpg, hp) %>% 
+  as_tibble()
+mtcars_train <- mtcars %>% 
+  sample_frac(0.5)
+mtcars_test <- mtcars %>% 
+  anti_join(mtcars_train, by="ID")
+```
+
+
+# Regression via `lm()`
+
+## Fit/train model
+
+```{r}
+model_formula <- as.formula("mpg ~ hp")
+model_lm <- lm(model_formula, data=mtcars_train)
+
+# 1.a) Extract regression table in tidy format
+model_lm %>% 
+  broom::tidy()
+
+# 1.b) Extract point-by-point info in tidy format
+model_lm %>% 
+  broom::augment() %>% 
+  head()
+
+# 1.c) Extract summary stats info in tidy format
+model_lm %>% 
+  broom::glance()
+```
+
+## Predict outcomes for test data
+
+```{r}
+# 2. Make predictions on test data
+# Method 1:
+# -input: mtcars_test is a data frame
+# -output: y_hat is a vector
+y_hat <- predict(model_lm, newdata=mtcars_test)
+
+# Method 2: All new variables start with a period
+model_lm %>% 
+  augment(newdata=mtcars_test) %>% 
+  head()
+```
+
+## Plot
+
+```{r}
+fitted_model <- model_lm %>% 
+  broom::augment()
+predictions <- model_lm %>% 
+  augment(newdata=mtcars_test)
+
+ggplot(NULL) +
+  geom_point(data=fitted_model, aes(x=hp, y=mpg)) +
+  geom_line(data=fitted_model, aes(x=hp, y=.fitted), col="blue") +
+  geom_point(data=predictions, aes(x=hp, y=.fitted), col="red") +
+  labs(x="Horse power", y="Miles per gallon")
+```
+
+
+
+# LOESS {#loess}
+
+## Fit/train model
+
+```{r}
+model_formula <- as.formula("mpg ~ hp")
+model_loess <- loess(model_formula, data=mtcars_train, span=0.9)
+
+# 1.a) Extract point-by-point info in tidy format
+model_loess %>% 
+  broom::augment() %>% 
+  head()
+```
+
+## Predict outcomes for test data
+
+```{r}
+# 2. Make predictions on test data
+# Method 1:
+# -input: mtcars_test is a data frame
+# -output: y_hat is a vector
+y_hat <- predict(model_loess, newdata=mtcars_test)
+
+# Method 2: All new variables start with a period
+model_loess %>% 
+  augment(newdata=mtcars_test) %>% 
+  head()
+```
+
+## Plot
+
+```{r}
+fitted_model <- model_loess %>% 
+  broom::augment()
+predictions <- model_loess %>% 
+  augment(newdata=mtcars_test)
+
+ggplot(NULL) +
+  geom_point(data=fitted_model, aes(x=hp, y=mpg)) +
+  geom_line(data=fitted_model, aes(x=hp, y=.fitted), col="blue") +
+  geom_point(data=predictions, aes(x=hp, y=.fitted), col="red") +
+  labs(x="Horse power", y="Miles per gallon")
+```
+
+
+
+
+
+# Splines {#splines}
+
+## Fit/train model
+
+```{r}
+model_spline <- smooth.spline(x=mtcars_train$hp, y=mtcars_train$mpg, df = 4)
+
+# 1.a) Extract point-by-point info in tidy format
+model_spline %>% 
+  broom::augment() %>% 
+  head()
+
+# 1.b) Extract summary stats info in tidy format
+model_spline %>% 
+  broom::glance() %>% 
+  head()
+```
+
+## Predict outcomes for test data
+
+```{r}
+# 2. Make predictions on test data
+# Method 1:
+# -input: mtcars_test$hp is a vector
+# -output: is a list with two slots: x & y
+spline_fitted <- predict(model_spline, x=mtcars_test$hp)
+
+# Convert y_hat to tibble data frame with x, y columns
+spline_fitted <- spline_fitted %>% 
+  as_tibble() %>% 
+  rename(hp = x, .fitted = y)
+
+y_hat <- spline_fitted$.fitted
+```
+
+## Plot
+
+```{r}
+fitted_model <- model_spline %>% 
+  broom::augment() %>% 
+  rename(hp = x, mpg = y)
+predictions <- mtcars_test %>% 
+  mutate(.fitted = y_hat)
+
+ggplot(NULL) +
+  geom_point(data=fitted_model, aes(x=hp, y=mpg)) +
+  geom_line(data=fitted_model, aes(x=hp, y=.fitted), col="blue") +
+  geom_point(data=predictions, aes(x=hp, y=.fitted), col="red") +
+  labs(x="Horse power", y="Miles per gallon")
+```
+
+
