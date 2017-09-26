@@ -80,26 +80,43 @@ The source code for this webpage is available by clicking the "Octocat" icon on 
 ***
 
 
-<!--
-# X.X
 
-## Thu X/X
+# 2.4 More regression
+
+## Thu 9/26
 
 Announcements:
 
-* plotly example
-* Graduate school thing
+* Information session for statistics and biostatistics grqduate programs
+    + Where: Merrill 300A.
+    + When: Friday, October 6 12:00 pm. A light lunch will be served.
+    + More information [here](static/StatsGradSchoolInfoOct2017.pdf).
+* Plotly example
+
+```{r}
+library(tidyverse)
+library(plotly)
+library(nycflights13)
+flights_sample <- flights %>% 
+  sample_n(100)
+delays_plot <- ggplot(flights_sample, aes(x=dep_delay, y=arr_delay)) +
+  geom_point()
+# Hover your mouse over this:
+ggplotly(delays_plot)
+```
+
+
 
 
 ## Chalk talk
 
-X.X
+2.4
 
 
 
 
 ***
--->
+
 
 
 
