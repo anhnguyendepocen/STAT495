@@ -354,6 +354,9 @@ h1{font-weight: 400;}
 
 Announcements:
 
+* plotly example
+* Graduate school thing
+
 
 ## Chalk talk
 
@@ -364,6 +367,36 @@ X.X
 
 ***
 -->
+<div id="PS04" class="section level1">
+<h1>Problem set 4</h1>
+<div id="information" class="section level2">
+<h2>Information</h2>
+<p><em>Assigned on Tue 9/26, due on Tue 10/3 9am at which point there will be synchronized pull requests.</em></p>
+<p>You will fit your first model with multiple predictors!</p>
+<ul>
+<li>Due: Tue 10/3 9:00am, at which point there will be synchronized pull requests.</li>
+<li>Details:
+<ul>
+<li>Teams: Individual</li>
+<li>Presentation: Done</li>
+<li>Revision round: None</li>
+</ul></li>
+<li>Deliverables: One ready to submit <em>pull request</em> to the <a href="https://github.com/2017-09-Amherst-STAT495/PS04">PS04 repo</a> (recall the GitHub <a href="https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process">submission process</a>). At the very least, the following files should be modified/added:
+<ol style="list-style-type: decimal">
+<li><code>PS04.Rmd</code>: Your work</li>
+<li><code>PS04.html</code>: The output of <code>PS04.Rmd</code>.</li>
+<li><code>README.md</code>: Change <code>rudeboybert</code> in the URL to the GitHub ID so that you can open <code>PS04.html</code> in a browser.</li>
+</ol></li>
+</ul>
+</div>
+<div id="feedback" class="section level2">
+<h2>Feedback</h2>
+</div>
+<div id="example-solutions" class="section level2">
+<h2>Example solutions</h2>
+<hr />
+</div>
+</div>
 <div id="regression-for-prediction" class="section level1">
 <h1>2.3 Regression for prediction</h1>
 <div id="tue-926" class="section level2">
@@ -423,8 +456,8 @@ model %&gt;%
   augment(newdata=mtcars_test) %&gt;% 
   head()</code></pre>
 </div>
-<div id="eda-of-data-for-problem-set-4" class="section level2">
-<h2>EDA of data for problem set 4</h2>
+<div id="eda-of-problem-set-4-data-shiny-app" class="section level2">
+<h2>EDA of problem set 4 data + Shiny app</h2>
 <p>Let’s do an exploratory data analysis of the data for problem set 4. For <span class="math inline">\(i=1, \ldots, 400\)</span> individuals, we are interested in their credit card balance. Alas, no sampling information is provided, so we can’t make any statements on the generalizability of this analysis. Recall our model formulation: <span class="math inline">\(y_i = f(\vec{x}_i) + \epsilon_i\)</span>:</p>
 <ul>
 <li><span class="math inline">\(y_i\)</span>: Credit card balance</li>
@@ -440,42 +473,7 @@ credit &lt;- read_csv(&quot;http://www-bcf.usc.edu/~gareth/ISL/Credit.csv&quot;)
   select(-X1) %&gt;%
   mutate(ID = 1:n()) %&gt;% 
   select(ID, Balance, Income, Limit, Rating, Age, Cards, Education)</code></pre>
-<p>Read the contents of this <a href="https://beta.rstudioconnect.com/connect/#/apps/2692/access">Shiny App</a> upto just before “Shrinking <span class="math inline">\(\beta\)</span> Coefficients via LASSO” (which we will cover later).</p>
-<hr />
-</div>
-</div>
-<div id="PS04" class="section level1">
-<h1>Problem set 4</h1>
-<div id="information" class="section level2">
-<h2>Information</h2>
-<p><em>Assigned on Tue 9/26, due on Tue 10/3 9am at which point there will be synchronized pull requests.</em></p>
-<p>You will fit your first model with multiple predictors!</p>
-<ul>
-<li>Due: Tue 10/3 9:00am, at which point there will be synchronized pull requests.</li>
-<li>Details:
-<ul>
-<li>Teams: Individual</li>
-<li>Presentation: Done</li>
-<li>Revision round: None</li>
-</ul></li>
-<li>Deliverables: One ready to submit <em>pull request</em> to the <a href="https://github.com/2017-09-Amherst-STAT495/PS04">PS04 repo</a> (recall the GitHub <a href="https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process">submission process</a>). At the very least, the following files should be modified/added:
-<ol style="list-style-type: decimal">
-<li><code>PS04.Rmd</code>: Your work</li>
-<li><code>PS04.html</code>: The output of <code>PS04.Rmd</code>.</li>
-<li><code>README.md</code>: Change <code>rudeboybert</code> in the URL to the GitHub ID so that you can open <code>PS04.html</code> in a browser.</li>
-</ol></li>
-<li>Tips:</li>
-<li>Hints:</li>
-</ul>
-</div>
-<div id="presentations" class="section level2">
-<h2>Presentations</h2>
-</div>
-<div id="feedback" class="section level2">
-<h2>Feedback</h2>
-</div>
-<div id="example-solutions" class="section level2">
-<h2>Example solutions</h2>
+<p>Read the contents of this <a href="https://beta.rstudioconnect.com/connect/#/apps/2692/access">Shiny App</a> up to just before “Shrinking <span class="math inline">\(\beta\)</span> Coefficients via LASSO” (which we will cover later).</p>
 <hr />
 </div>
 </div>
@@ -742,9 +740,6 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 </ol></li>
 </ul>
 </div>
-<div id="presentations-1" class="section level2">
-<h2>Presentations</h2>
-</div>
 <div id="feedback-1" class="section level2">
 <h2>Feedback</h2>
 <hr />
@@ -999,7 +994,7 @@ head(output)</code></pre>
   geom_point(data=output, aes(x=x, y=y), col=&quot;red&quot;)</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-12-2.png" width="480" /></p>
 </div>
-<div id="presentations-2" class="section level2">
+<div id="presentations" class="section level2">
 <h2>Presentations</h2>
 <ul>
 <li>Team F: Abbas, Caleb, Kiryu

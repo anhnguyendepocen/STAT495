@@ -87,6 +87,9 @@ The source code for this webpage is available by clicking the "Octocat" icon on 
 
 Announcements:
 
+* plotly example
+* Graduate school thing
+
 
 ## Chalk talk
 
@@ -97,6 +100,36 @@ X.X
 
 ***
 -->
+
+
+
+# Problem set 4 {#PS04}
+
+## Information
+
+*Assigned on Tue 9/26, due on Tue 10/3 9am at which point there will be synchronized pull requests.*
+
+You will fit your first model with multiple predictors!
+
+* Due: Tue 10/3 9:00am, at which point there will be synchronized pull requests.
+* Details:
+    + Teams: Individual
+    + Presentation: Done
+    + Revision round: None
+* Deliverables: One ready to submit *pull request* to the [PS04 repo](https://github.com/2017-09-Amherst-STAT495/PS04) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
+    1. `PS04.Rmd`: Your work
+    1. `PS04.html`: The output of `PS04.Rmd`.
+    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID so that you can open `PS04.html` in a browser.
+
+
+## Feedback
+
+
+## Example solutions
+
+
+
+***
 
 
 
@@ -163,7 +196,8 @@ model %>%
 ```
 
 
-## EDA of data for problem set 4
+
+## EDA of problem set 4 data + Shiny app
 
 Let's do an exploratory data analysis of the data for problem set 4. For $i=1, \ldots, 400$ individuals, we are interested in their credit
 card balance. Alas, no sampling information is provided, so we can't make any statements on the generalizability of this analysis. Recall our model formulation: $y_i = f(\vec{x}_i) + \epsilon_i$:
@@ -184,48 +218,12 @@ credit <- read_csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv") %>%
   select(ID, Balance, Income, Limit, Rating, Age, Cards, Education)
 ```
 
-Read the contents of this [Shiny App](https://beta.rstudioconnect.com/connect/#/apps/2692/access) upto just before "Shrinking $\beta$ Coefficients via LASSO" (which we will cover later).
+Read the contents of this [Shiny App](https://beta.rstudioconnect.com/connect/#/apps/2692/access) up to just before "Shrinking $\beta$ Coefficients via LASSO" (which we will cover later).
 
 
 
 
 ***
-
-
-# Problem set 4 {#PS04}
-
-## Information
-
-*Assigned on Tue 9/26, due on Tue 10/3 9am at which point there will be synchronized pull requests.*
-
-You will fit your first model with multiple predictors!
-
-* Due: Tue 10/3 9:00am, at which point there will be synchronized pull requests.
-* Details:
-    + Teams: Individual
-    + Presentation: Done
-    + Revision round: None
-* Deliverables: One ready to submit *pull request* to the [PS04 repo](https://github.com/2017-09-Amherst-STAT495/PS04) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
-    1. `PS04.Rmd`: Your work
-    1. `PS04.html`: The output of `PS04.Rmd`.
-    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID so that you can open `PS04.html` in a browser.
-* Tips:
-* Hints:
-
-
-## Presentations
-
-
-## Feedback
-
-
-## Example solutions
-
-
-
-***
-
-
 
 
 
@@ -528,10 +526,6 @@ Notes:
 </center>
         + You don't want to conflate the **what** (the algorithm) and the **how** (the code) of the problem set. Lay out the algorithm on paper, blackboard, whiteboard, etc, first!
         + In exams, you won't be asked to write code, but rather pseudocode.
-
-
-
-## Presentations
 
 
 
