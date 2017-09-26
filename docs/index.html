@@ -300,7 +300,7 @@ div.tocify {
 
 <h1 class="title toc-ignore">STAT/MATH 495: Advanced Data Analysis</h1>
 <h4 class="author"><em>Albert Y. Kim</em></h4>
-<h4 class="date"><em>Last updated on 2017-09-25</em></h4>
+<h4 class="date"><em>Last updated on 2017-09-26</em></h4>
 
 </div>
 
@@ -363,55 +363,122 @@ X.X
 
 
 ***
-
-
-
-# X.X 
-
-## Tue X/X
-
-Announcements:
-
-* Problem set 0X presentations listed [below](#PS0X).
-
-
-
-
-***
-
-
-# Problem set 0X {#PS0X}
-
-## Information
-
-*Assigned on Tue X/X, due on Tue X/X 9am at which point there will be synchronized pull requests.*
-
-You will...
-
-* Due: Tue X/X 9:00am, at which point there will be synchronized pull requests.
-* Teams: 
-* Deliverables: One ready to submit *pull request* to the [PS0X repo](https://github.com/2017-09-Amherst-STAT495/PS0X) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
-    1. `PS0X.Rmd`: This should
-    1. `PS0X.html`: The output of `PS0X.Rmd`. This will be the presentation file for a randomly chosen set of groups.
-    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your team's version of `PSX2.html` in a browser on Tuesday morning.
-* Tips:
-* Hints:
-
-
-## Presentations
-
-
-## Feedback
-
-
-## Example solutions
-
-
-
-
-
-***
 -->
+<div id="regression-for-prediction" class="section level1">
+<h1>2.3 Regression for prediction</h1>
+<div id="tue-926" class="section level2">
+<h2>Tue 9/26</h2>
+<p>Announcements:</p>
+<ul>
+<li>Since there are no presentations/discussions today for PS03, no revisions due on Thursday.</li>
+<li>Pull request is now due at 5pm today.</li>
+<li>Extra office hours today from 1:30-3pm in Seeley Mudd 208.</li>
+<li>Install <code>plotly</code> package</li>
+</ul>
+</div>
+<div id="chalk-talk" class="section level2">
+<h2>Chalk talk</h2>
+<p>2.3 Regression for prediction</p>
+</div>
+<div id="regression-quickstart-guide" class="section level2">
+<h2>Regression quickstart guide</h2>
+<pre class="r"><code>library(tidyverse)
+library(room)
+
+# 0. Demo data -----------------------------------------------
+# You should get in habit of always viewing data first
+# View(mtcars)
+mtcars &lt;- mtcars %&gt;% 
+  mutate(ID = 1:n())
+mtcars_train &lt;- mtcars %&gt;% 
+  sample_frac(0.5)
+mtcars_test &lt;- mtcars %&gt;% 
+  anti_join(mtcars_train, by=&quot;ID&quot;)
+
+# 1. Fit a model ----------------------------------------
+model_formula &lt;- as.formula(&quot;mpg ~ hp + cyl&quot;)
+model &lt;- lm(model_formula, data=mtcars_train)
+
+# 1.a) Extract regression table in tidy format
+model %&gt;% 
+  broom::tidy()
+
+# 1.b) Extract point-by-point info in tidy format
+model %&gt;% 
+  broom::augment() %&gt;% 
+  head()
+
+# 1.c) Extract summary stats info in tidy format
+model %&gt;% 
+  broom::glance()
+
+# 2. Make predictions ----------------------------------------
+# One way: Note the output is a vector
+predict(model, newdata=mtcars_test)
+
+# The other way. Note the output is a data frame with
+# -all the original data
+# -new variable start with a period
+model %&gt;% 
+  augment(newdata=mtcars_test) %&gt;% 
+  head()</code></pre>
+</div>
+<div id="eda-of-data-for-problem-set-4" class="section level2">
+<h2>EDA of data for problem set 4</h2>
+<p>Let’s do an exploratory data analysis of the data for problem set 4. For <span class="math inline">\(i=1, \ldots, 400\)</span> individuals, we are interested in their credit card balance. Alas, no sampling information is provided, so we can’t make any statements on the generalizability of this analysis. Recall our model formulation: <span class="math inline">\(y_i = f(\vec{x}_i) + \epsilon_i\)</span>:</p>
+<ul>
+<li><span class="math inline">\(y_i\)</span>: Credit card balance</li>
+<li><span class="math inline">\(x_{1,i}\)</span>: Income in $10K</li>
+<li><span class="math inline">\(x_{2,i}\)</span>: Credit limit in $</li>
+<li><span class="math inline">\(x_{3,i}\)</span>: Credit rating</li>
+<li><span class="math inline">\(x_{4,i}\)</span>: Age</li>
+<li><span class="math inline">\(x_{5,i}\)</span>: Number of credit cards</li>
+<li><span class="math inline">\(x_{6,i}\)</span>: Years of education</li>
+</ul>
+<pre class="r"><code>library(tidyverse)
+credit &lt;- read_csv(&quot;http://www-bcf.usc.edu/~gareth/ISL/Credit.csv&quot;) %&gt;%
+  select(-X1) %&gt;%
+  mutate(ID = 1:n()) %&gt;% 
+  select(ID, Balance, Income, Limit, Rating, Age, Cards, Education)</code></pre>
+<p>Read the contents of this <a href="https://beta.rstudioconnect.com/connect/#/apps/2692/access">Shiny App</a> upto just before “Shrinking <span class="math inline">\(\beta\)</span> Coefficients via LASSO” (which we will cover later).</p>
+<hr />
+</div>
+</div>
+<div id="PS04" class="section level1">
+<h1>Problem set 4</h1>
+<div id="information" class="section level2">
+<h2>Information</h2>
+<p><em>Assigned on Tue 9/26, due on Tue 10/3 9am at which point there will be synchronized pull requests.</em></p>
+<p>You will fit your first model with multiple predictors!</p>
+<ul>
+<li>Due: Tue 10/3 9:00am, at which point there will be synchronized pull requests.</li>
+<li>Details:
+<ul>
+<li>Teams: Individual</li>
+<li>Presentation: Done</li>
+<li>Revision round: None</li>
+</ul></li>
+<li>Deliverables: One ready to submit <em>pull request</em> to the <a href="https://github.com/2017-09-Amherst-STAT495/PS04">PS04 repo</a> (recall the GitHub <a href="https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process">submission process</a>). At the very least, the following files should be modified/added:
+<ol style="list-style-type: decimal">
+<li><code>PS04.Rmd</code>: Your work</li>
+<li><code>PS04.html</code>: The output of <code>PS04.Rmd</code>.</li>
+<li><code>README.md</code>: Change <code>rudeboybert</code> in the URL to the GitHub ID so that you can open <code>PS04.html</code> in a browser.</li>
+</ol></li>
+<li>Tips:</li>
+<li>Hints:</li>
+</ul>
+</div>
+<div id="presentations" class="section level2">
+<h2>Presentations</h2>
+</div>
+<div id="feedback" class="section level2">
+<h2>Feedback</h2>
+</div>
+<div id="example-solutions" class="section level2">
+<h2>Example solutions</h2>
+<hr />
+</div>
+</div>
 <div id="a-step-back" class="section level1">
 <h1>2.2 A step back</h1>
 <div id="mon-95" class="section level2">
@@ -420,10 +487,10 @@ You will...
 <ul>
 <li>Explain GitHub collaborator vs GitHub pull request</li>
 <li>Problem set 02 feedback and example solutions given tomorrow.</li>
-<li>Today: <del>2.2 Regression for prediction</del> A step back</li>
+<li>Today: 2.2 <del>Regression for prediction</del> A step back</li>
 </ul>
 </div>
-<div id="chalk-talk" class="section level2">
+<div id="chalk-talk-1" class="section level2">
 <h2>Chalk talk</h2>
 <p>2.2 A step back. Recall our “projection onto the sheet” exercise</p>
 </div>
@@ -513,19 +580,19 @@ bechdel_2000 &lt;- bechdel %&gt;%
 ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
   geom_point() +
   labs(x=&quot;Budget&quot;, y=&quot;Domestic Gross&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="614.4" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="614.4" /></p>
 <p>We see there is a right-skew to both the x and y-values. This is because we are comparing big budget Hollywood blockbusters with (likely) lower budget independent films. Hence, it’s really hard to see what’s going on at the lower-end of the budget scale. Let’s unskew both variables and compare not <em>absolute</em> differences, but rather, <em>relative</em> differences i.e. differences in “order of magnitude” using a <code>log10()</code> transformation:</p>
 <pre class="r"><code>ggplot(bechdel_2000, aes(x=log10(budget_2013), y=log10(domgross_2013))) +
   geom_point() +
   labs(x=&quot;log10(Budget)&quot;, y=&quot;log10(Domestic Gross)&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="614.4" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="614.4" /></p>
 <p>We can see a little better what’s going on at the lower end of the budget scale. However the values on the axes require a little thinking to process. For example at <span class="math inline">\(x=7\)</span>, this corresponds to movies with a budget of <span class="math inline">\(10^7 = 10,000,000\)</span> dollars. So instead, let’s <em>rescale</em> both axes so that they display the data in their original units.</p>
 <pre class="r"><code>ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
   geom_point() +
   scale_x_log10() +
   scale_y_log10() +
   labs(x=&quot;Budget (log10-scale)&quot;, y=&quot;Domestic Gross (log10-scale)&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="614.4" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="614.4" /></p>
 <p>Note that</p>
 <ul>
 <li>The two plots are identical, but the values on the axes are different.</li>
@@ -536,7 +603,7 @@ ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
 <h2>Local regression: executive summary via <code>.gif</code></h2>
 <p><img border="0" src="images/loess.gif" height="400"></p>
 </div>
-<div id="chalk-talk-1" class="section level2">
+<div id="chalk-talk-2" class="section level2">
 <h2>Chalk talk</h2>
 <p>2.1 Local regression i.e. LOESS AKA LOWESS</p>
 <p>Corresponding book chapters</p>
@@ -635,7 +702,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 </div>
 <div id="PS03" class="section level1">
 <h1>Problem set 3</h1>
-<div id="information" class="section level2">
+<div id="information-1" class="section level2">
 <h2>Information</h2>
 <p><em>Assigned on Thu 9/19, due on Tue 9/26 9am at which point there will be synchronized pull requests.</em></p>
 <center>
@@ -675,10 +742,10 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 </ol></li>
 </ul>
 </div>
-<div id="presentations" class="section level2">
+<div id="presentations-1" class="section level2">
 <h2>Presentations</h2>
 </div>
-<div id="feedback" class="section level2">
+<div id="feedback-1" class="section level2">
 <h2>Feedback</h2>
 <hr />
 </div>
@@ -693,7 +760,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <li>Problem set 02 presentations! Under <a href="#PS02">Problem set 2</a> section.</li>
 </ul>
 </div>
-<div id="chalk-talk-2" class="section level2">
+<div id="chalk-talk-3" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.7 Crossvalidation</p>
 <p>Corresponding book chapters</p>
@@ -716,7 +783,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_tcBsryYd6s" frameborder="0" allowfullscreen>
 </iframe>
 </div>
-<div id="chalk-talk-3" class="section level2">
+<div id="chalk-talk-4" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.6 Texas sharpshooter fallacy scenarios</p>
 <ul>
@@ -734,14 +801,14 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <div id="scenario-d" class="section level2">
 <h2>Scenario D)</h2>
 <p>Let’s call the following example “Scenario D) Splines”. Recall from our <a href="#intro_to_splines">Intro to Splines</a> lecture the different fitted models based on different degrees of freedom (i.e. different numbers of knots).</p>
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 <div id="scenario-d-score" class="section level2">
 <h2>Scenario D): Score</h2>
 <p>Let’s define a notion of “score” to evaluate how good the above fits are: <em>mean squared error (MSE)</em>. Image courtesy <a href="https://twitter.com/chrisalbon">Chris Albon’s</a> excellent <a href="https://twitter.com/search?q=%23machinelearningflashcards%20%40chrisalbon&amp;src=typd">Machine Learning Flashcards</a>.</p>
 <p><img src="images/Mean_Squared_Error_print.png" alt="Drawing" style="width: 400px;"/></p>
 </div>
-<div id="chalk-talk-4" class="section level2">
+<div id="chalk-talk-5" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.6 Mean Squared Error</p>
 </div>
@@ -775,7 +842,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 </tbody>
 </table>
 </div>
-<div id="chalk-talk-5" class="section level2">
+<div id="chalk-talk-6" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.6 The “rather” of Scenario D) (to avoid the Texas Sharpshooter Fallacy).</p>
 <hr />
@@ -798,7 +865,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <img src="images/splines.png" alt="Drawing" style="width: 500px;"/>
 </center>
 </div>
-<div id="chalk-talk-6" class="section level2">
+<div id="chalk-talk-7" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.5 Splines</p>
 </div>
@@ -815,7 +882,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <img src="images/target-population.jpg" alt="Drawing" style="width: 500px;"/>
 </center>
 </div>
-<div id="chalk-talk-7" class="section level2">
+<div id="chalk-talk-8" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.5 Sampling</p>
 </div>
@@ -834,7 +901,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 </div>
 <div id="PS02" class="section level1">
 <h1>Problem set 2</h1>
-<div id="information-1" class="section level2">
+<div id="information-2" class="section level2">
 <h2>Information</h2>
 <p><em>Assigned on Thu 9/12, due on Tue 9/19 9am at which point there will be synchronized pull requests.</em></p>
 <p><a href="https://www.kaggle.com/c/sberbank-russian-housing-market"> <img border="0" alt="Sberbank" src="images/sberbank.png" width="600"> </a></p>
@@ -886,7 +953,7 @@ plot &lt;- ggplot(splines_model_tidy, aes(x=x)) +
   geom_point(aes(y=y)) +
   geom_line(aes(y=.fitted), col=&quot;blue&quot;)
 plot</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="480" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-12-1.png" width="480" /></p>
 <pre class="r"><code>new_speeds &lt;- c(24.6, 26.4, 23.4, 16.8, 15.8, 5.4, 14.8, 8.2, 1, 18.8, 25, 28, 19.6, 11.2, 21.8, 26.2, 20.6, 0, 14.4, 8.8)
 # What do you think output is?
 output &lt;- predict(splines_model, new_speeds) %&gt;% 
@@ -930,9 +997,9 @@ head(output)</code></pre>
 </div>
 <pre class="r"><code>plot +
   geom_point(data=output, aes(x=x, y=y), col=&quot;red&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-10-2.png" width="480" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-12-2.png" width="480" /></p>
 </div>
-<div id="presentations-1" class="section level2">
+<div id="presentations-2" class="section level2">
 <h2>Presentations</h2>
 <ul>
 <li>Team F: Abbas, Caleb, Kiryu
@@ -947,10 +1014,10 @@ head(output)</code></pre>
 </ul></li>
 </ul>
 </div>
-<div id="feedback-1" class="section level2">
+<div id="feedback-2" class="section level2">
 <h2>Feedback</h2>
 </div>
-<div id="example-solutions" class="section level2">
+<div id="example-solutions-1" class="section level2">
 <h2>Example solutions</h2>
 <hr />
 </div>
@@ -961,7 +1028,7 @@ head(output)</code></pre>
 <h2>Tue 9/12</h2>
 <p>Announcements: New office hours location: Seeley Mudd 208 (lounge)</p>
 </div>
-<div id="chalk-talk-8" class="section level2">
+<div id="chalk-talk-9" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>Analogy of what we are doing</li>
@@ -1072,7 +1139,7 @@ truth</code></pre>
 <li>(If time) Sampling and resampling</li>
 </ul>
 </div>
-<div id="chalk-talk-9" class="section level2">
+<div id="chalk-talk-10" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Supervised vs unsupervised</li>
@@ -1083,7 +1150,7 @@ truth</code></pre>
 <p>Colin Woodard’s idea of 11 Nations of North America:</p>
 <p><img src="http://emerald.tufts.edu/alumni/magazine/fall2013/images/features/upinarms-map-large.jpg" alt="Drawing" style="width: 600px;"/></p>
 </div>
-<div id="chalk-talk-10" class="section level2">
+<div id="chalk-talk-11" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Model for supervised learning</li>
@@ -1099,7 +1166,7 @@ Teaching my students to separate systematic model component from irreducible err
 </blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-<div id="chalk-talk-11" class="section level2">
+<div id="chalk-talk-12" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Income example</li>
@@ -1119,7 +1186,7 @@ Teaching my students to separate systematic model component from irreducible err
 </div>
 <div id="PS01" class="section level1">
 <h1>Problem set 1</h1>
-<div id="information-2" class="section level2">
+<div id="information-3" class="section level2">
 <h2>Information</h2>
 <p><em>Assigned on Thu 9/7, due on Mon 9/11 9am.</em></p>
 <p><img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 250px;"/></p>
@@ -1144,7 +1211,7 @@ Teaching my students to separate systematic model component from irreducible err
 </ul>
 <pre><code>date: &quot;2017-09-07&quot;</code></pre>
 </div>
-<div id="feedback-2" class="section level2">
+<div id="feedback-3" class="section level2">
 <h2>Feedback</h2>
 <ul>
 <li>Andrew K. (TA) gave <a href="https://github.com/2017-09-Amherst-STAT495/PS01/pulls">feedback on PS01 on GitHub</a> and will do so for every problem set by Tuesday evening.
@@ -1233,7 +1300,7 @@ View(submission)</code></pre>
 </div>
 <div id="problem-set-0" class="section level1">
 <h1>Problem set 0</h1>
-<div id="information-3" class="section level2">
+<div id="information-4" class="section level2">
 <h2>Information</h2>
 <p><em>Assigned on Tue 9/5, due on Thu 9/7 lecture time</em>.</p>
 <ul>

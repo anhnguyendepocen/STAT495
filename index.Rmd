@@ -96,16 +96,95 @@ X.X
 
 
 ***
+-->
 
 
 
-# X.X 
+# 2.3 Regression for prediction
 
-## Tue X/X
+## Tue 9/26
 
 Announcements:
 
-* Problem set 0X presentations listed [below](#PS0X).
+* Since there are no presentations/discussions today for PS03, no revisions due on Thursday.
+* Pull request is now due at 5pm today.
+* Extra office hours today from 1:30-3pm in Seeley Mudd 208.
+* Install `plotly` package
+
+## Chalk talk
+
+2.3 Regression for prediction
+
+
+
+## Regression quickstart guide
+
+```{r, eval=FALSE}
+library(tidyverse)
+library(room)
+
+# 0. Demo data -----------------------------------------------
+# You should get in habit of always viewing data first
+# View(mtcars)
+mtcars <- mtcars %>% 
+  mutate(ID = 1:n())
+mtcars_train <- mtcars %>% 
+  sample_frac(0.5)
+mtcars_test <- mtcars %>% 
+  anti_join(mtcars_train, by="ID")
+
+# 1. Fit a model ----------------------------------------
+model_formula <- as.formula("mpg ~ hp + cyl")
+model <- lm(model_formula, data=mtcars_train)
+
+# 1.a) Extract regression table in tidy format
+model %>% 
+  broom::tidy()
+
+# 1.b) Extract point-by-point info in tidy format
+model %>% 
+  broom::augment() %>% 
+  head()
+
+# 1.c) Extract summary stats info in tidy format
+model %>% 
+  broom::glance()
+
+# 2. Make predictions ----------------------------------------
+# One way: Note the output is a vector
+predict(model, newdata=mtcars_test)
+
+# The other way. Note the output is a data frame with
+# -all the original data
+# -new variable start with a period
+model %>% 
+  augment(newdata=mtcars_test) %>% 
+  head()
+```
+
+
+## EDA of data for problem set 4
+
+Let's do an exploratory data analysis of the data for problem set 4. For $i=1, \ldots, 400$ individuals, we are interested in their credit
+card balance. Alas, no sampling information is provided, so we can't make any statements on the generalizability of this analysis. Recall our model formulation: $y_i = f(\vec{x}_i) + \epsilon_i$:
+
+* $y_i$: Credit card balance
+* $x_{1,i}$: Income in $10K
+* $x_{2,i}$: Credit limit in $
+* $x_{3,i}$: Credit rating
+* $x_{4,i}$: Age
+* $x_{5,i}$: Number of credit cards
+* $x_{6,i}$: Years of education
+
+```{r, eval=FALSE}
+library(tidyverse)
+credit <- read_csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv") %>%
+  select(-X1) %>%
+  mutate(ID = 1:n()) %>% 
+  select(ID, Balance, Income, Limit, Rating, Age, Cards, Education)
+```
+
+Read the contents of this [Shiny App](https://beta.rstudioconnect.com/connect/#/apps/2692/access) upto just before "Shrinking $\beta$ Coefficients via LASSO" (which we will cover later).
 
 
 
@@ -113,20 +192,23 @@ Announcements:
 ***
 
 
-# Problem set 0X {#PS0X}
+# Problem set 4 {#PS04}
 
 ## Information
 
-*Assigned on Tue X/X, due on Tue X/X 9am at which point there will be synchronized pull requests.*
+*Assigned on Tue 9/26, due on Tue 10/3 9am at which point there will be synchronized pull requests.*
 
-You will...
+You will fit your first model with multiple predictors!
 
-* Due: Tue X/X 9:00am, at which point there will be synchronized pull requests.
-* Teams: 
-* Deliverables: One ready to submit *pull request* to the [PS0X repo](https://github.com/2017-09-Amherst-STAT495/PS0X) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
-    1. `PS0X.Rmd`: This should
-    1. `PS0X.html`: The output of `PS0X.Rmd`. This will be the presentation file for a randomly chosen set of groups.
-    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your team's version of `PSX2.html` in a browser on Tuesday morning.
+* Due: Tue 10/3 9:00am, at which point there will be synchronized pull requests.
+* Details:
+    + Teams: Individual
+    + Presentation: Done
+    + Revision round: None
+* Deliverables: One ready to submit *pull request* to the [PS04 repo](https://github.com/2017-09-Amherst-STAT495/PS04) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
+    1. `PS04.Rmd`: Your work
+    1. `PS04.html`: The output of `PS04.Rmd`.
+    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID so that you can open `PS04.html` in a browser.
 * Tips:
 * Hints:
 
@@ -141,10 +223,8 @@ You will...
 
 
 
-
-
 ***
--->
+
 
 
 
@@ -157,7 +237,7 @@ Announcements:
 
 * Explain GitHub collaborator vs GitHub pull request
 * Problem set 02 feedback and example solutions given tomorrow.
-* Today: ~~2.2 Regression for prediction~~ A step back
+* Today: 2.2 ~~Regression for prediction~~ A step back
 
 
 ## Chalk talk
