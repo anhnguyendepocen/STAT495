@@ -81,7 +81,7 @@ The source code for this webpage is available by clicking the "Octocat" icon on 
 
 
 
-# 2.4 More regression
+# 2.4 Feedback on PS02 and PS03
 
 ## Thu 9/26
 
@@ -118,6 +118,34 @@ ggplotly(delays_plot)
 [Problem set 2](#PS02) feedback
 
 
+## Problem set 3
+
+Look at the image for [Problem set 3](#PS03), and then answer these two questions
+with your seatmates.
+
+```{r, eval=FALSE}
+library(tidyverse)
+
+mtcars <- mtcars %>% 
+  # A tibble is very similar to a data frame, but when you view its contents
+  # in the console, it only prints out about 30 rows
+  as_tibble() %>% 
+  mutate(ID = 1:n()) %>% 
+  select(ID, mpg, hp)
+
+# Number of folds
+k <- 5
+
+# Q1: What's the difference between these two in terms of crossvalidation?
+# Hint: table() function to get frequency table
+fold_scheme_1 <- sample(1:k, size=nrow(mtcars), replace = TRUE)
+fold_scheme_2 <- rep(1:k, len=nrow(mtcars))
+
+mtcars %>% 
+  # Q2: Why do we sample_frac 100% first?
+  sample_frac(1) %>% 
+  mutate(fold = rep(1:k, len=n()))
+```
 
 
 ***
@@ -249,7 +277,7 @@ Read the contents of this [Shiny App](https://beta.rstudioconnect.com/connect/#/
 
 
 
-# 2.2 A step back
+# 2.2 A step back: StitchFix
 
 ## Mon 9/5
 
@@ -553,28 +581,7 @@ Notes:
 
 ## Feedback
 
-```{r, eval=FALSE}
-library(tidyverse)
 
-mtcars <- mtcars %>% 
-  # A tibble is very similar to a data frame, but when you view its contents
-  # in the console, it only prints out about 30 rows
-  as_tibble() %>% 
-  mutate(ID = 1:n()) %>% 
-  select(ID, mpg, hp)
-
-# Number of folds
-k <- 5
-
-# Q1: What's the difference between these two in terms of crossvalidation?
-folds_1 <- sample(1:k, size=nrow(mtcars), replace = TRUE)
-folds_2 <- rep(1:k, len=nrow(mtcars))
-
-mtcars %>% 
-  # Q2: Why do we sample_frac 100% first?
-  sample_frac(1) %>% 
-  mutate(fold = rep(1:k, len=n()))
-```
 
 ***
 
