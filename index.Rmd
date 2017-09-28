@@ -87,6 +87,9 @@ The source code for this webpage is available by clicking the "Octocat" icon on 
 
 Announcements:
 
+* Note new "Quickstart" tab in nav bar. For every model we see it will contain input/output/code info for:
+    + Fitting model
+    + Making predictions
 * Comps and final project information
     + Comps information will be mailed out Oct 10th or 11th.
     + Prof. Amy Wagaman will be coming to class on Tue 10/17 to answer any questions about comps.
@@ -110,11 +113,9 @@ ggplotly(delays_plot)
 ```
 
 
-
-
 ## Chalk talk
 
-2.4
+[Problem set 2](#PS02) feedback
 
 
 
@@ -815,8 +816,13 @@ plot +
 
 ## Feedback
 
+Chalk talk on Thu 9/28.
+
 
 ## Example solutions
+
+* [HTML output](https://htmlpreview.github.io/?https://github.com/2017-09-Amherst-STAT495/PS02/blob/master/PS02_albert.html)
+* [`.Rmd` source code](https://github.com/2017-09-Amherst-STAT495/PS02/blob/master/PS02_albert.Rmd). Click on "Raw" button and save to `.Rmd` in your `PS02` folder/RStudio project.
 
 
 ***

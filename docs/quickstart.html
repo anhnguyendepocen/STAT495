@@ -338,7 +338,7 @@ model_lm &lt;- lm(model_formula, data=mtcars_train)
 
 # 1.a) Extract regression table in tidy format
 model_lm %&gt;% 
-  broom::tidy()</code></pre>
+  broom::tidy(conf.int=TRUE)</code></pre>
 <div class="kable-table">
 <table>
 <thead>
@@ -348,6 +348,8 @@ model_lm %&gt;%
 <th align="right">std.error</th>
 <th align="right">statistic</th>
 <th align="right">p.value</th>
+<th align="right">conf.low</th>
+<th align="right">conf.high</th>
 </tr>
 </thead>
 <tbody>
@@ -357,6 +359,8 @@ model_lm %&gt;%
 <td align="right">2.1216629</td>
 <td align="right">15.524350</td>
 <td align="right">0.00e+00</td>
+<td align="right">28.3869233</td>
+<td align="right">37.4879520</td>
 </tr>
 <tr class="even">
 <td align="left">hp</td>
@@ -364,6 +368,8 @@ model_lm %&gt;%
 <td align="right">0.0152156</td>
 <td align="right">-6.148787</td>
 <td align="right">2.52e-05</td>
+<td align="right">-0.1261915</td>
+<td align="right">-0.0609232</td>
 </tr>
 </tbody>
 </table>

@@ -47,7 +47,7 @@ model_lm <- lm(model_formula, data=mtcars_train)
 
 # 1.a) Extract regression table in tidy format
 model_lm %>% 
-  broom::tidy()
+  broom::tidy(conf.int=TRUE)
 
 # 1.b) Extract point-by-point info in tidy format
 model_lm %>% 
