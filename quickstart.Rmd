@@ -37,7 +37,7 @@ mtcars_test <- mtcars %>%
 ```
 
 
-# Regression via `lm()`
+# Regression via `lm`
 
 ## Fit/train model
 

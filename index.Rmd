@@ -33,7 +33,6 @@ set.seed(76)
 rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), output_file = "slides.html")
 ```
 
-
 ```{r, eval=FALSE, echo=FALSE}
 # Code to randomly assign students to groups:
 library(tidyverse)
@@ -41,7 +40,6 @@ class <- c("Brenna", "Anthony", "Abbas", "Sara", "Sarah", "Jonathan", "Harrison"
 set.seed(76)
 sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 ```
-
 
 
 
@@ -79,14 +77,104 @@ The source code for this webpage is available by clicking the "Octocat" icon on 
 
 
 <!--
-https://education.github.com/discount_requests/2106466/personal_details
--->
+
+***
+
+
+# 2.7
+
+## Thu 10/5
+
+Announcements:
+
+* Problem set 0X feedback and example solutions given [below](#PS0X).
+
+
+## Chalk talk
+
+2.7
+
+
+
 
 ***
 
 
 
-# 2.4 Feedback on PS02 and PS03
+# 2.6
+
+## Tue 10/3
+
+Announcements:
+
+* Problem set 0X presentations listed [below](#PS0X).
+
+
+## Chalk talk
+
+2.6
+
+
+
+***
+
+
+# Problem set 5 {#PS05}
+
+## Information
+
+*Assigned on Tue 10/3, due on Tue 10/10 9am at which point there will be synchronized pull requests.*
+
+You will...
+
+* Teams: 
+* Deliverables: One ready to submit *pull request* to the [PS05 repo](https://github.com/2017-09-Amherst-STAT495/PS05) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
+    1. `PS05.Rmd`: This should
+    1. `PS05.html`: The output of `PS05.Rmd`. This will be the presentation file for a randomly chosen set of groups.
+    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your team's version of `PS05.html` in a browser on Tuesday morning.
+* Tips:
+* Hints:
+
+
+## Presentations
+
+
+## Feedback
+
+
+## Example solutions
+
+
+
+
+***
+-->
+
+
+
+# 2.5
+
+## Mon 10/2
+
+Announcements:
+
+* Via [GitHub
+Education](https://education.github.com/discount_requests/2106466/personal_details)
+get a number of free private repositories and other benefits.
+
+
+
+## Chalk talk
+
+2.5
+
+
+
+***
+
+
+
+# 2.4 Feedback on PS02
 
 ## Thu 9/26
 
@@ -166,7 +254,6 @@ mtcars %>%
 
 You will fit your first model with multiple predictors!
 
-* Due: Tue 10/3 9:00am, at which point there will be synchronized pull requests.
 * Details:
     + Teams: Individual
     + Presentation: Done
@@ -204,51 +291,9 @@ Announcements:
 2.3 Regression for prediction
 
 
-
 ## Regression quickstart guide
 
-```{r, eval=FALSE}
-library(tidyverse)
-library(room)
-
-# 0. Demo data -----------------------------------------------
-# You should get in habit of always viewing data first
-# View(mtcars)
-mtcars <- mtcars %>% 
-  mutate(ID = 1:n())
-mtcars_train <- mtcars %>% 
-  sample_frac(0.5)
-mtcars_test <- mtcars %>% 
-  anti_join(mtcars_train, by="ID")
-
-# 1. Fit a model ----------------------------------------
-model_formula <- as.formula("mpg ~ hp + cyl")
-model <- lm(model_formula, data=mtcars_train)
-
-# 1.a) Extract regression table in tidy format
-model %>% 
-  broom::tidy()
-
-# 1.b) Extract point-by-point info in tidy format
-model %>% 
-  broom::augment() %>% 
-  head()
-
-# 1.c) Extract summary stats info in tidy format
-model %>% 
-  broom::glance()
-
-# 2. Make predictions ----------------------------------------
-# One way: Note the output is a vector
-predict(model, newdata=mtcars_test)
-
-# The other way. Note the output is a data frame with
-# -all the original data
-# -new variable start with a period
-model %>% 
-  augment(newdata=mtcars_test) %>% 
-  head()
-```
+Moved to [Quickstart](quickstart.html#regression_via_lm) tab above.
 
 
 
