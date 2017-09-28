@@ -553,7 +553,28 @@ Notes:
 
 ## Feedback
 
+```{r, eval=FALSE}
+library(tidyverse)
 
+mtcars <- mtcars %>% 
+  # A tibble is very similar to a data frame, but when you view its contents
+  # in the console, it only prints out about 30 rows
+  as_tibble() %>% 
+  mutate(ID = 1:n()) %>% 
+  select(ID, mpg, hp)
+
+# Number of folds
+k <- 5
+
+# Q1: What's the difference between these two in terms of crossvalidation?
+folds_1 <- sample(1:k, size=nrow(mtcars), replace = TRUE)
+folds_2 <- rep(1:k, len=nrow(mtcars))
+
+mtcars %>% 
+  # Q2: Why do we sample_frac 100% first?
+  sample_frac(1) %>% 
+  mutate(fold = rep(1:k, len=n()))
+```
 
 ***
 
