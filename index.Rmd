@@ -119,27 +119,44 @@ Announcements:
 ***
 
 
+
 # Problem set 5 {#PS05}
 
 ## Information
 
 *Assigned on Tue 10/3, due on Tue 10/10 9am at which point there will be synchronized pull requests.*
 
-You will...
+<a href="https://www.kaggle.com/c/bike-sharing-demand">
+<img border="0" alt="bike" src="images/bike.png" width="600">
+</a>
 
-* Teams: 
+You will enter the [Bike Sharing
+Demand](https://www.kaggle.com/c/bike-sharing-demand) Kaggle competition and fit
+a linear regression model to predict the number of rentals per hour, however using only 3 predictor variables. Download the data and
+save it in a folder `data/` in your forked copy of the [PS05
+repo](https://github.com/2017-09-Amherst-STAT495/PS05) in the course GitHub
+Organization.
+
+
+* Teams: 2-3 people at your choosing. Once you've selected your group designate one person as team leader, who will:
+    + Create a Slack DM that includes Albert, Andrew Kim (TA), and all team members. So far:
+        + Team A: 
+    + Submit a single pull request on behalf of the group.
+    + Submit a single submission to Kaggle on behalf of the group.
 * Deliverables: One ready to submit *pull request* to the [PS05 repo](https://github.com/2017-09-Amherst-STAT495/PS05) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
     1. `PS05.Rmd`: This should
-    1. `PS05.html`: The output of `PS05.Rmd`. This will be the presentation file for a randomly chosen set of groups.
+        + Be well-commented and completely reproducible.
+        + Involve an *exploratory data analysis* arguing why you chose the three variables you did.
+    1. `PS05.html`: The output of `PS05.Rmd`. This will be the presentation file for a randomly chosen set of groups on Tue 10/10.
     1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your team's version of `PS05.html` in a browser on Tuesday morning.
-* Tips:
-* Hints:
+    1. `submission.csv`
+    1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
+* Your group can resubmit your work by Thursday 8:30am.
+* Tips: Again, do not worry about your score. This problem set is more about process than product. 
 
 
 ## Presentations
 
-
-## Feedback
 
 
 ## Example solutions
@@ -152,7 +169,8 @@ You will...
 
 
 
-# 2.5
+
+# 2.5 Feedback on PS03 + Midterm I Review
 
 ## Mon 10/2
 
@@ -163,10 +181,10 @@ Education](https://education.github.com/discount_requests/2106466/personal_detai
 get a number of free private repositories and other benefits.
 
 
-
 ## Chalk talk
 
-2.5
+* 2.5 [Problem set 3](#PS03) example solutions
+* 2.5 Midterm I review
 
 
 
@@ -628,9 +646,10 @@ Notes:
         + In exams, you won't be asked to write code, but rather pseudocode.
 
 
+## Example solutions
 
-## Feedback
-
+* [HTML output](https://htmlpreview.github.io/?https://github.com/2017-09-Amherst-STAT495/PS03/blob/master/PS03_albert.html) (backup [HTML link](http://rpubs.com/rudeboybert/STAT495_PS03_albert))
+* [`.Rmd` source code](https://github.com/2017-09-Amherst-STAT495/PS03/blob/master/PS03_albert.Rmd). Click on "Raw" button and save to `.Rmd` in your `PS03` folder/RStudio project.
 
 
 ***
