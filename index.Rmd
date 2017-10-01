@@ -135,7 +135,8 @@ Demand](https://www.kaggle.com/c/bike-sharing-demand) Kaggle competition and fit
 a linear regression model to predict the number of rentals per hour, however using only 3 predictor variables. Download the data and
 save it in a folder `data/` in your forked copy of the [PS05
 repo](https://github.com/2017-09-Amherst-STAT495/PS05) in the course GitHub
-Organization.
+Organization. The focus of this exercise is to argue to management why your 3 chosen variables provide the most
+bang for your buck.
 
 
 * Teams: 2-3 people at your choosing. Once you've selected your group designate one person as team leader, who will:
@@ -152,7 +153,9 @@ Organization.
     1. `submission.csv`
     1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
 * Your group can resubmit your work by Thursday 8:30am.
-* Tips: Again, do not worry about your score. This problem set is more about process than product. 
+* Tips:
+    + Think about projection onto sheet exercise. What variables provide the most "most for your buck"
+    + Again, do not worry about your score. This problem set is more about process than product. 
 
 
 ## Presentations
