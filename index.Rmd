@@ -124,7 +124,13 @@ how to select which predictors to use in a final regression model.
 
 2.6 Bias-Variance Trade-Off
 
+<!--
 
+* Show splines example with perfect fit
+* High bias, low variability
+* Low bias, high variability
+
+-->
 
 ***
 
