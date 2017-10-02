@@ -45,33 +45,30 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 
 ***
 
+* **Source code**: The R Markdown code to build this webpage is accesible by clicking the GitHub icon on the top-right of the nav bar.
+* **Lecture numbering**: The lectures are numbered according to the following rough topic outline:
+    1. Background
+        * ~~Intro to modeling~~ 
+        * ~~Simple case with univariate predictors to start: splines~~
+        * ~~Sampling/resampling, out-of-sample prediction, crossvalidation~~
+        * Bias-variance tradeoff (to be covered later)
+    1. Continuous outcomes I
+        * ~~LOESS smoother~~
+        * Regression for prediction
+    1. Categorical outcomes i.e. classification
+        * Logistic regression for prediction + ROC curves
+        * k-Nearest Neighbors
+        * Classification and regression trees (CART)
+    1. Continuous outcome II
+        * Regularization/shrinkage methods: Ridge regression and LASSO
+    1. Other methods
+        * Boosting and bagging
+        * Random forests
+        * Neural nets
+    1. Unsupervised learning (time permitting)
+        * Principal components analysis
+        * k-Means Clustering
 
-
-The lectures are numbered according to the following rough topic outline below. A detailed topic schedule and corresponding readings can be found [here](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true).
-
-1. Background
-    * ~~Intro to modeling~~ 
-    * ~~Simple case with univariate predictors to start: splines~~
-    * ~~Sampling/resampling, out-of-sample prediction, crossvalidation~~
-    * Bias-variance tradeoff (to be covered later)
-1. Continuous outcomes I
-    * ~~LOESS smoother~~
-    * Regression for prediction
-1. Categorical outcomes i.e. classification
-    * Logistic regression for prediction + ROC curves
-    * k-Nearest Neighbors
-    * Classification and regression trees (CART)
-1. Continuous outcome II
-    * Regularization/shrinkage methods: Ridge regression and LASSO
-1. Other methods
-    * Boosting and bagging
-    * Random forests
-    * Neural nets
-1. Unsupervised learning (time permitting)
-    * Principal components analysis
-    * k-Means Clustering
-
-The source code for this webpage is available by clicking the "Octocat" icon on the top-right of the nav bar.
 
 
 
@@ -255,10 +252,20 @@ k <- 5
 fold_scheme_1 <- sample(1:k, size=nrow(mtcars), replace = TRUE)
 fold_scheme_2 <- rep(1:k, len=nrow(mtcars))
 
+# A1:
+# -fold_scheme_2 has roughly equal numbers of observations in each fold
+# -fold_scheme_1 only has equal numbers of observations in each fold in 
+# expectation
+table(fold_scheme_1); table(fold_scheme_2)
+
 mtcars %>% 
   # Q2: Why do we sample_frac 100% first?
   sample_frac(1) %>% 
   mutate(fold = rep(1:k, len=n()))
+
+# A1: This effectively randomizes the fold assignment by first shuffling the
+# rows. Say we didn't do this and mtcars had an inherent ordering to it?
+# Then our fold assignment would not be at random!
 ```
 
 
