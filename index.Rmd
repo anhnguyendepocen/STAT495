@@ -51,10 +51,10 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
         * ~~Intro to modeling~~ 
         * ~~Simple case with univariate predictors to start: splines~~
         * ~~Sampling/resampling, out-of-sample prediction, crossvalidation~~
-        * Bias-variance tradeoff (to be covered later)
-    1. Continuous outcomes I
+        * Bias-variance tradeoff
+    1. ~~Continuous outcomes I~~
         * ~~LOESS smoother~~
-        * Regression for prediction
+        * ~~Regression for prediction~~
     1. Categorical outcomes i.e. classification
         * Logistic regression for prediction + ROC curves
         * k-Nearest Neighbors
@@ -84,6 +84,12 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 
 Announcements:
 
+* Style guides
+
+http://r-pkgs.had.co.nz/style.html
+http://adv-r.had.co.nz/Style.html 
+http://style.tidyverse.org/
+
 * Problem set 0X feedback and example solutions given [below](#PS0X).
 
 
@@ -95,21 +101,28 @@ Announcements:
 
 
 ***
+-->
 
 
 
-# 2.6
+# 2.6 Bias-Variance Trade-Off
 
 ## Tue 10/3
 
 Announcements:
 
-* Problem set 0X presentations listed [below](#PS0X).
+* Test out [RStudio Shared
+Projects](https://support.rstudio.com/hc/en-us/articles/211659737-Sharing-Projects-in-RStudio-Server-Pro). Executive summary: it's not quite using R in "Google Docs", but rather "Google
+Doc"-like collaborative editing functionality.
+* *Note on model selection*: Read ISLR Chapters 6 thru to the beginning of 6.2
+(book pages 203-214, PDF pages 217-228) for a discussion on "model selection":
+how to select which predictors to use in a final regression model.
+* *Today*: Back to Topic 1 to finish it off!
 
 
 ## Chalk talk
 
-2.6
+2.6 Bias-Variance Trade-Off
 
 
 
@@ -129,30 +142,45 @@ Announcements:
 
 You will enter the [Bike Sharing
 Demand](https://www.kaggle.com/c/bike-sharing-demand) Kaggle competition and fit
-a linear regression model to predict the number of rentals per hour, however using only 3 predictor variables. Download the data and
-save it in a folder `data/` in your forked copy of the [PS05
+a linear regression model to predict the number of rentals per hour, however
+*using only 3 predictor variables*. Fork a copy of the [PS05
 repo](https://github.com/2017-09-Amherst-STAT495/PS05) in the course GitHub
-Organization. The focus of this exercise is to argue to management why your 3 chosen variables provide the most
-bang for your buck.
+Organization and then clone it in whatever version of RStudio you like. The
+focus of this exercise is to argue to decision makers why your 3 chosen
+variables provide the most "bang for your buck" in predicting bikeshare demand.
 
-
-* Teams: 2-3 people at your choosing. Once you've selected your group designate one person as team leader, who will:
+* Teams: 2-3 people at your choosing. Once you've selected your group designate one person as team leader *who has not previously been a team leader*, who will:
     + Create a Slack DM that includes Albert, Andrew Kim (TA), and all team members. So far:
         + Team A: 
     + Submit a single pull request on behalf of the group.
     + Submit a single submission to Kaggle on behalf of the group.
-* Deliverables: One ready to submit *pull request* to the [PS05 repo](https://github.com/2017-09-Amherst-STAT495/PS05) (recall the GitHub [submission process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)). At the very least, the following files should be modified/added:
+* Deliverables: One ready to submit *pull request* to the [PS05
+repo](https://github.com/2017-09-Amherst-STAT495/PS05) (recall the GitHub
+[submission
+process](https://github.com/2017-09-Amherst-STAT495/README#problem-set-submission-process)).
+At the very least, the following files should be modified/added:
     1. `PS05.Rmd`: This should
         + Be well-commented and completely reproducible.
-        + Involve an *exploratory data analysis* arguing why you chose the three variables you did.
-    1. `PS05.html`: The output of `PS05.Rmd`. This will be the presentation file for a randomly chosen set of groups on Tue 10/10.
-    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your team's version of `PS05.html` in a browser on Tuesday morning.
+        + Involve an *exploratory data analysis* arguing why you chose the three
+        variables you did.
+    1. `PS05.html`: The output of `PS05.Rmd`. This will be the presentation file
+    for a randomly chosen set of groups on Tue 10/10.
+    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team
+    leader so that you can open your team's version of `PS05.html` in a browser
+    on Tuesday morning.
     1. `submission.csv`
     1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
 * Your group can resubmit your work by Thursday 8:30am.
 * Tips:
-    + Think about projection onto sheet exercise. What variables provide the most "most for your buck"
-    + Again, do not worry about your score. This problem set is more about process than product. 
+    + Think about the projection onto the sheet exercise. What variables provide
+    the most "bang for your buck" for understanding what's behind the sheet, in
+    this case, the mechanism that determines bikeshare demand.
+    + Again, do not worry about your score. This problem set is more about
+    process than product.
+    + Your decision process for determining which 3 to use can be based
+    exclusively on your EDA. However, if you are looking for something "less
+    unsystematic", you can use the approaches in the ISLR readings for Chapter 6
+    listed above; this kind of approach is strictly optional.
 
 
 ## Presentations
@@ -165,7 +193,7 @@ bang for your buck.
 
 
 ***
--->
+
 
 
 
