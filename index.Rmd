@@ -183,8 +183,8 @@ get a number of free private repositories and other benefits.
 
 ## Chalk talk
 
-* 2.5 [Problem set 3](#PS03) example solutions
 * 2.5 Midterm I review
+* 2.5 [Problem set 3](#PS03) example solutions
 
 
 
@@ -658,7 +658,7 @@ Notes:
 
 ## Example solutions
 
-* [HTML output](https://htmlpreview.github.io/?https://github.com/2017-09-Amherst-STAT495/PS03/blob/master/PS03_albert.html) (backup [HTML link](http://rpubs.com/rudeboybert/STAT495_PS03_albert))
+* [HTML output](http://rpubs.com/rudeboybert/STAT495_PS03_albert)
 * [`.Rmd` source code](https://github.com/2017-09-Amherst-STAT495/PS03/blob/master/PS03_albert.Rmd). Click on "Raw" button and save to `.Rmd` in your `PS03` folder/RStudio project.
 
 
