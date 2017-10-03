@@ -121,7 +121,7 @@ At the very least, the following files should be modified/added:
     on Tuesday morning.
     1. `submission.csv`
     1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
-* Your group can resubmit your work by TBD.
+* Feedback will be delivered by Thursday 10/12 9am. Your group can resubmit your work by Friday 10/13 at 5pm.
 * Tips:
     + Think about the projection onto the sheet exercise. What variables provide
     the most "bang for your buck" for understanding what's behind the sheet, in
