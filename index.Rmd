@@ -22,7 +22,8 @@ library(modelr)
 library(lubridate)
 library(forcats)
 library(nycflights13)
-library(Quandl)
+library(gridExtra)
+
 # devtools::install_github("hadley/emo")
 library(emo)
 set.seed(76)
@@ -116,13 +117,86 @@ Projects](https://support.rstudio.com/hc/en-us/articles/211659737-Sharing-Projec
 Doc"-like collaborative editing functionality.
 * *Note on model selection*: Read ISLR Chapters 6 thru to the beginning of 6.2
 (book pages 203-214, PDF pages 217-228) for a discussion on "model selection":
-how to select which predictors to use in a final regression model.
-* *Today*: Back to Topic 1 to finish it off!
+how to select which predictors to use in a final regression model. 
+* Quiz on Wed 10/11 (Monday schedule) after PS05 submission, worth one tenth of participation grade = 1%
+of final grade. Read the following explanation of the  [bias-variance
+tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html) and be prepared
+to answer questions on it.
 
 
 ## Chalk talk
 
-2.6 Bias-Variance Trade-Off
+* 2.6 Finish PS03 discussion: How to pick optimal degrees of freedom $df^*$
+
+
+## Back to splines
+
+Let's look at:
+
+* Three of the splines models from [Lecture 1.6](#texas), however for only 100 randomly sampled points $y=f(x)+\epsilon$ to make the plots less dense
+* Plus an extreme case of "perfect" fitting
+* There is no new sample of points being collected nor crossvalidation going on here; just take the points and fit a model.
+
+
+```{r, echo=FALSE, fig.width=8, fig.height=8}
+# From https://gist.github.com/rudeboybert/752f7aa1e42faa2174822dd29bfaf959
+set.seed(76)
+df_values <- c(2, 25, 50)
+f <- function(x){
+  f_x <- 0.2*x^11*(10*(1-x))^6+10*(10*x)^3*(1-x)^10
+  return(f_x)
+}
+values <- data_frame(
+  x = seq(from=0, to=1, length=100),
+  f_x = f(x),
+  epsilon = rnorm(100, 0, sd = 2),
+  y = f_x + epsilon
+)
+overall <- NULL
+for(df in df_values){
+  overall <- smooth.spline(values$x, values$y, df=df) %>%
+    augment() %>%
+    mutate(df=df) %>%
+    bind_rows(overall)
+}
+overall <- overall %>% 
+  as_tibble()
+
+plot1 <- overall %>% 
+  filter(df == 2) %>% 
+  ggplot(aes(x=x)) +
+  geom_point(aes(y=y), size=0.75) +
+  geom_line(aes(y=.fitted), col="blue", size=0.5) +
+  labs(title="Plot 1: Splines with df = 2")
+
+plot2 <- overall %>% 
+  filter(df == 25) %>% 
+  ggplot(aes(x=x)) +
+  geom_point(aes(y=y), size=0.75) +
+  geom_line(aes(y=.fitted), col="blue", size=0.5) +
+  labs(title="Plot 2: Splines with df = 25")
+
+plot3 <- overall %>% 
+  filter(df == 50) %>% 
+  ggplot(aes(x=x)) +
+  geom_point(aes(y=y), size=0.75) +
+  geom_line(aes(y=.fitted), col="blue", size=0.5) +
+  labs(title="Plot 3: Splines with df = 50")
+
+plot4 <- overall %>% 
+  filter(df == 50) %>% 
+  ggplot(aes(x=x)) +
+  geom_line(aes(y=y), col="blue", size=0.5) +
+  geom_point(aes(y=y), size=0.75) +
+  labs(title="Plot 4: Extreme case")
+
+grid.arrange(plot1, plot2, plot3, plot4, nrow=2)
+```
+
+## Chalk talk
+
+* 2.6 Bias-Variance Trade-Off
+
 
 <!--
 
@@ -140,7 +214,7 @@ how to select which predictors to use in a final regression model.
 
 ## Information
 
-*Assigned on Tue 10/3, due on Tue 10/10 9am at which point there will be synchronized pull requests.*
+*Assigned on Tue 10/3, due on Wed 10/11 (Monday schedule) 9am at which point there will be synchronized pull requests.*
 
 <a href="https://www.kaggle.com/c/bike-sharing-demand">
 <img border="0" alt="bike" src="images/bike.png" width="600">
@@ -170,13 +244,13 @@ At the very least, the following files should be modified/added:
         + Involve an *exploratory data analysis* arguing why you chose the three
         variables you did.
     1. `PS05.html`: The output of `PS05.Rmd`. This will be the presentation file
-    for a randomly chosen set of groups on Tue 10/10.
+    for a randomly chosen set of groups on Wed 10/11.
     1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team
     leader so that you can open your team's version of `PS05.html` in a browser
     on Tuesday morning.
     1. `submission.csv`
     1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
-* Your group can resubmit your work by Thursday 8:30am.
+* Your group can resubmit your work by TBD.
 * Tips:
     + Think about the projection onto the sheet exercise. What variables provide
     the most "bang for your buck" for understanding what's behind the sheet, in
@@ -730,7 +804,7 @@ Corresponding book chapters
 
 
 
-# 1.6 Texas sharpshooter fallacy
+# 1.6 Texas sharpshooter fallacy {#texas}
 
 ## Mon 9/18
 
