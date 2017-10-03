@@ -73,36 +73,12 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 
 
 
-
 <!--
-
-***
-
-
-# 2.7
-
-## Thu 10/5
-
-Announcements:
-
-* Style guides
-
 http://r-pkgs.had.co.nz/style.html
 http://adv-r.had.co.nz/Style.html 
 http://style.tidyverse.org/
-
-* Problem set 0X feedback and example solutions given [below](#PS0X).
-
-
-## Chalk talk
-
-2.7
-
-
-
-
-***
 -->
+
 
 
 
@@ -114,7 +90,7 @@ Announcements:
 
 * Test out [RStudio Shared
 Projects](https://support.rstudio.com/hc/en-us/articles/211659737-Sharing-Projects-in-RStudio-Server-Pro). Executive summary: it's not quite using R in "Google Docs", but rather "Google
-Doc"-like collaborative editing functionality.
+Doc"-like collaborative editing functionality in RStudio.
 * *Note on model selection*: Read ISLR Chapters 6 thru to the beginning of 6.2
 (book pages 203-214, PDF pages 217-228) for a discussion on "model selection":
 how to select which predictors to use in a final regression model. 
