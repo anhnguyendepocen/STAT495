@@ -23,9 +23,9 @@ h1{font-weight: 400;}
     Late changes to office hours will be posted on Slack.
     + **StatFellow Office Hours**: Andrew Kim (`akim17` on Slack): M 6:00-8:00pm in Seeley Mudd 205.
 * **Important dates:**
-    + Midterm I: Th 10/5
-    + Midterm II: Th 11/9
-    + Midterm III: Exam week
+    + Midterm I: Thu 10/5
+    + Midterm II: Thu 11/9
+    + Midterm III: Thu 12/21 9:00 a.m. Chapin Hall 201
 
 
 
