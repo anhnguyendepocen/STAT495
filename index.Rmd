@@ -73,11 +73,101 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 
 
 
+
+
 <!--
+# 3.1 Categorical outcomes
+
+## Thu 12/12
+
+Announcements:
+
+
 http://r-pkgs.had.co.nz/style.html
 http://adv-r.had.co.nz/Style.html 
 http://style.tidyverse.org/
+
+
+## Chalk talk
+
+3.1
+
+
+
+
+
+***
+
+
+
+
+
 -->
+
+
+
+***
+
+
+# Problem set 6 {#PS06}
+
+## Information
+
+Important dates/times:
+
+* Wed 10/11: Assigned.
+* Tue 10/17 8:30am: Due via synchronized pull request. No presentations for PS06.
+* Wed 10/18 9am: Feedback delivered by Andrew.
+* Thu 10/19 8:30am: (Optional) revisions due.
+
+<!--
+<a href="https://www.kaggle.com/c/bike-sharing-demand">
+<img border="0" alt="bike" src="images/bike.png" width="600">
+</a>
+-->
+
+You will 
+
+* Teams: Individual
+* Presentations: None
+* Deliverables: One ready to submit *pull request* to the [PS06
+repo](https://github.com/2017-09-Amherst-STAT495/PS06). At the very least, the
+following files should be modified/added:
+    1. `PS06.Rmd`: Source code
+    1. `PS06.html`: The output of `PS06.Rmd`.
+    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
+    both Andrew and I can open your `PS06.html` in a browser. Test this URL out!
+* Tips:
+
+
+## Example solutions
+
+
+
+***
+
+
+
+# 2.7 More bias-variance trade-off
+
+## Wed 10/11 (Monday schedule)
+
+* At 9am, [PS05](#PS05) sychronized pull requests by team leaders.
+* Quiz on [bias-variance
+tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html) reading posted in Lec 2.6.
+<!--* Midterm I review-->
+* Problem set 05 (randomly chosen) [group presentations](#PS05_presentations).
+* Recall because of odd schedule this week, feedback will be delivered by Thursday 10/12 9am. Your group can (optionally) resubmit your work by Friday 10/13 at 5pm.
+
+
+
+## Chalk talk
+
+2.7 
+
+
+
+***
 
 
 
@@ -100,10 +190,12 @@ Organization and then clone it in whatever version of RStudio you like. The
 focus of this exercise is to argue to decision makers why your 3 chosen
 variables provide the most "bang for your buck" in predicting bikeshare demand.
 
-* Teams: 2-3 people at your choosing. Once you've selected your group designate one person as team leader *who has not previously been a team leader*, who will:
+* Teams: 2-3 people at your choosing. Once you've selected your group designate one person as **team leader** *who has not previously been a team leader*, who will:
     + Create a Slack DM that includes Albert, Andrew Kim (TA), and all team members. So far:
-        + Team A: Jonathan, Sarah T, Timothy
-        + Team B: Harrison, Christien
+        + Team A: **Sarah T**, Jonathan, Timothy
+        + Team B: **Christien**, Harrison 
+        + Team C: **Brendan**, Leonard, Vickie
+        + Team D: **Jenn**, Pei, Anthony
     + Submit a single pull request on behalf of the group.
     + Submit a single submission to Kaggle on behalf of the group.
 * Deliverables: One ready to submit *pull request* to the [PS05
@@ -135,7 +227,8 @@ At the very least, the following files should be modified/added:
     listed above; this kind of approach is strictly optional.
 
 
-## Presentations
+## Presentations {#PS05_presentations}
+
 
 
 
@@ -150,7 +243,7 @@ At the very least, the following files should be modified/added:
 
 
 
-# 2.6 Bias-Variance Trade-Off
+# 2.6 Bias-variance trade-off
 
 ## Tue 10/3
 
@@ -163,7 +256,7 @@ Doc"-like collaborative editing functionality in RStudio.
 (book pages 203-214, PDF pages 217-228) for a discussion on "model selection":
 how to select which predictors to use in a final regression model. 
 * Quiz on Wed 10/11 (Monday schedule) after PS05 submission, worth one tenth of participation grade = 1%
-of final grade. Read the following explanation of the  [bias-variance
+of final grade. Read the following explanation of the [bias-variance
 tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html) and be prepared
 to answer questions on it.
 
