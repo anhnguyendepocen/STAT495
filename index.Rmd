@@ -4,6 +4,7 @@ author: "Albert Y. Kim"
 date: "Last updated on `r Sys.Date()`"
 output:
   html_document:
+    code_download: yes
     toc: true
     toc_depth: 1
     toc_float: true
@@ -109,6 +110,30 @@ http://style.tidyverse.org/
 ***
 
 
+# 2.7 More bias-variance trade-off
+
+## Wed 10/11 (Monday schedule)
+
+* At 9am, [PS05](#PS05) sychronized pull requests by team leaders.
+* Quiz on [bias-variance
+tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html) reading posted in Lec 2.6.
+* Problem set 05 (randomly chosen) [group presentations](#PS05_presentations).
+* Recall because of odd schedule this week, feedback will be delivered by Thursday 10/12 9am. Your group can (optionally) resubmit your work by Friday 10/13 at 5pm.
+
+
+
+## Chalk talk
+
+2.7 Bias-variance trade-off handouts:
+<!--
+* [PDF](static/generate_splines_bias_variance_handout/plots.pdf)
+* [Source code](static/generate_splines_bias_variance_handout/generate_splines_bias_variance_handout.R)
+-->
+
+
+***
+
+
 # Problem set 6 {#PS06}
 
 ## Information
@@ -120,13 +145,7 @@ Important dates/times:
 * Wed 10/18 9am: Feedback delivered by Andrew.
 * Thu 10/19 8:30am: (Optional) revisions due.
 
-<!--
-<a href="https://www.kaggle.com/c/bike-sharing-demand">
-<img border="0" alt="bike" src="images/bike.png" width="600">
-</a>
--->
-
-You will 
+You will show 
 
 * Teams: Individual
 * Presentations: None
@@ -141,29 +160,6 @@ following files should be modified/added:
 
 
 ## Example solutions
-
-
-
-***
-
-
-
-# 2.7 More bias-variance trade-off
-
-## Wed 10/11 (Monday schedule)
-
-* At 9am, [PS05](#PS05) sychronized pull requests by team leaders.
-* Quiz on [bias-variance
-tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html) reading posted in Lec 2.6.
-<!--* Midterm I review-->
-* Problem set 05 (randomly chosen) [group presentations](#PS05_presentations).
-* Recall because of odd schedule this week, feedback will be delivered by Thursday 10/12 9am. Your group can (optionally) resubmit your work by Friday 10/13 at 5pm.
-
-
-
-## Chalk talk
-
-2.7 
 
 
 
@@ -238,6 +234,8 @@ At the very least, the following files should be modified/added:
 
 
 ***
+
+
 
 
 
