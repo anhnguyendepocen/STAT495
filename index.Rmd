@@ -191,6 +191,8 @@ variables provide the most "bang for your buck" in predicting bikeshare demand.
         + Team B: **Christien**, Harrison 
         + Team C: **Brendan**, Leonard, Vickie
         + Team D: **Jenn**, Pei, Anthony
+        + Team E: **Meredith**, Sara, Brenna
+        + Team F: **Kiryu**, Abbas, Caleb
     + Submit a single pull request on behalf of the group.
     + Submit a single submission to Kaggle on behalf of the group.
 * Deliverables: One ready to submit *pull request* to the [PS05
@@ -233,8 +235,6 @@ At the very least, the following files should be modified/added:
 
 
 ***
-
-
 
 
 
