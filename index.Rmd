@@ -46,8 +46,8 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 
 ***
 
-* **Source code**: The R Markdown code to build this webpage is accesible by clicking the GitHub icon on the top-right of the nav bar.
-* **Lecture numbering**: The lectures are numbered according to the following rough topic outline:
+* **Lecture numbering**: The lectures are numbered according to the following
+rough topic outline:
     1. Background
         * ~~Intro to modeling~~ 
         * ~~Simple case with univariate predictors to start: splines~~
@@ -69,10 +69,13 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
     1. Unsupervised learning (time permitting)
         * Principal components analysis
         * k-Means Clustering
+* **Source code**: The code to build this webpage is accesible by
+clicking the GitHub icon on the top-right of the nav bar.
 
 
-
-
+<!--
+https://www.technologyreview.com/s/608986/forget-killer-robotsbias-is-the-real-ai-danger/
+-->
 
 
 <!--
@@ -86,6 +89,9 @@ Announcements:
 http://r-pkgs.had.co.nz/style.html
 http://adv-r.had.co.nz/Style.html 
 http://style.tidyverse.org/
+
+- Posted discussion points for PS05
+- https://en.wikipedia.org/wiki/Poisson_regression#Regression_models
 
 
 ## Chalk talk
@@ -122,7 +128,8 @@ $$
 \left(\mbox{Bias}\left[\widehat{f}(x)\right]\right)^2 + \sigma^2
 $$
 
-You will show that the above breakdown of the mean square error holds true for the two models fit in the handout from Lec 2.7.
+You will show that the above breakdown of the mean square error holds true for
+the two models fit in the handout from Lec 2.7.
 
 * Much like `rnorm(100000, mean=5) %>% mean()` should roughly equal 5, you will
 show the equality based on `n_sim=100000` simulations.
@@ -150,7 +157,8 @@ following files should be modified/added:
     1. `PS06.Rmd`: Source code
     1. `PS06.html`: The output of `PS06.Rmd`.
     1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
-    both Andrew and I can open your `PS06.html` in a browser. **Please test this URL before submitting your work!**
+    both Andrew and I can open your `PS06.html` in a browser. **Please test this
+    URL before submitting your work!**
 
 
 ## Example solutions
@@ -294,10 +302,12 @@ At the very least, the following files should be modified/added:
 
 ## Presentations {#PS05_presentations}
 
-
-
-
-## Example solutions
+* [Christien, Harrison](http://htmlpreview.github.io/?https://github.com/hmarick/PS05/blob/master/PS05.html). Comments:
+    + Consider adding a `geom_smooth()` to all scatterplots to really pick out signal from noise.
+    + It's always worth considering combining levels of a categorical variable to have fewer. For example, instead of one level for each hour, combine hours to get levels "night, morning rush, daytime, night rush"
+* [Meredith, Sara, Brenna](http://htmlpreview.github.io/?https://github.com/mmanley18/PS05/blob/master/PS05.html)
+    + Always worthwhile to at least look at a visualization of *just the outcome variable*. i.e. If you had no other information (no predictor information), what would you guess?
+    + Meredith's question: How to you pick which varibles to include in model in a less unsystematic fashion? Model selection! While taking a "choose those variables that are statistically significant" approach might still be valid, I feel that using "does adding a variable decrease the prediction error (ex: MSE) enough to warrant the extra complexity of adding that variable?" approach is more in line with "modeling for prediction."
 
 
 
