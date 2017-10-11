@@ -164,7 +164,7 @@ $$
 
 ***
 
-
+<!--
 # Problem set 6 {#PS06}
 
 ## Information
@@ -219,6 +219,8 @@ following files should be modified/added:
 ***
 
 
+
+-->
 
 # Problem set 5 {#PS05}
 
