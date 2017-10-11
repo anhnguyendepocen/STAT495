@@ -105,65 +105,6 @@ http://style.tidyverse.org/
 -->
 
 
-
-***
-
-
-# 2.7 More bias-variance trade-off
-
-## Wed 10/11 (Monday schedule)
-
-* Quiz on [bias-variance
-tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html) reading posted in Lec 2.6.
-* Problem set 04 discussion/solutions [posted](#PS04_solutions).
-* Problem set 05:
-    + At 9am, sychronized pull requests by team leaders.
-    + Recall because of odd schedule this week, feedback will be delivered by Thursday 10/12 9am. Your group can (optionally) resubmit your work by Friday 10/13 at 5pm.
-    + Problem set 05 (randomly chosen) [group presentations](#PS05_presentations).
-
-
-
-## Chalk talk
-
-2.7 Bias-variance trade-off handouts:
-
-<!--
-* [PDF](static/generate_splines_bias_variance_handout/plots.pdf)
-* [Source code](static/generate_splines_bias_variance_handout/generate_splines_bias_variance_handout.R)
--->
-
-## Actual breakdown
-
-Note:
-
-* Not necessary to understand all steps of derivation for PS06. 
-* $\widehat{y}$ is also denoted $\widehat{f}(x)$. $\widehat{f}(x)$ is a random variable.
-* $y=f(x)+\epsilon$ with $\mathbb{E}\left[\epsilon\right] = 0$ and $\mbox{Var}[\epsilon] = \sigma$. Hence $y$ is random as well.
-* The variation is over sample to sample.
-
-
-$$
-\begin{aligned}
-\mbox{MSE}\left[\widehat{f}(x)\right] &= \mathbb{E}\left[\left( y - \widehat{f}(x) \right)^2\right]= \mathbb{E}\left[\left( y^2 - 2 y\widehat{f}(x) + \widehat{f}(x)^2 \right)\right]\\
-&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2y\widehat{f}(x) \right]\right) \mbox{ by linearity of expectations } \\
-&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2(f(x)+\epsilon)\widehat{f}(x) \right]\right) \mbox{ since } y = f(x)+\epsilon\\
-&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2f(x)\widehat{f}(x) \right] + \mathbb{E}\left[ 2\epsilon\widehat{f}(x) \right]\right)  \\
-&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 2\mathbb{E}\left[ \epsilon\widehat{f}(x) \right]  \mbox{ since } \mathbb{E}\left[aX\right] = a\mathbb{E}\left[X\right] \mbox{ for } a \in \mathbb{R}\\
-&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 2\mathbb{E}\left[\epsilon \right]\mathbb{E}\left[\widehat{f}(x) \right] \mbox{ since } \mathbb{E}\left[XY\right] = \mathbb{E}\left[X\right]\mathbb{E}\left[Y\right] \mbox{ if }X,Y \mbox{ are independent}\\
-&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 0 \mbox{ since } \mathbb{E}\left[\epsilon\right]=0\\
-&= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[y\right]^2 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] \mbox{ since } \mbox{Var}\left[X\right] = \mathbb{E}\left[X^2\right] - \mathbb{E}\left[X\right]^2\\
-&= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[f(x) + \epsilon\right]^2 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right]\\
-&= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[f(x)\right]^2 + 0 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] \mbox{ since } \mathbb{E}\left[\epsilon\right] = 0\\
-&= \mbox{Var}\left[ y \right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left( f(x)^2  -  2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2 \right)\\
-&= \mbox{Var}\left[ y \right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left(  f(x) - \mathbb{E}\left[\widehat{f}(x) \right] \right)^2 \\
-&= \mbox{Var}\left[ y\right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left(  \mathbb{E}\left[f(x)-\widehat{f}(x) \right] \right)^2 \mbox{ since } \mathbb{E}\left[a + X \right] = a + \mathbb{E}\left[X\right] \mbox{ for } a \in \mathbb{R}\\
-&= \sigma^2 + \mbox{Var}\left[ \widehat{f}(x) \right] + \left( \mbox{Bias}\left[ \widehat{f}(x) \right] \right)^2 \mbox{ since } \mbox{Var}\left[ y\right] = \mbox{Var}\left[ f(x)+\epsilon\right] = \mbox{Var}\left[ \epsilon \right] = \sigma^2\\
-\end{aligned}
-$$
-
-
-***
-
 <!--
 # Problem set 6 {#PS06}
 
@@ -221,6 +162,75 @@ following files should be modified/added:
 
 
 -->
+
+
+
+***
+
+
+# 2.7 More bias-variance trade-off
+
+## Wed 10/11 (Monday schedule)
+
+* Quiz on [bias-variance
+tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html) reading posted in Lec 2.6.
+* Problem set 04 discussion/solutions [posted](#PS04_solutions).
+* Problem set 05:
+    + At 9am, sychronized pull requests by team leaders.
+    + Recall because of odd schedule this week, feedback will be delivered by Thursday 10/12 9am. Your group can (optionally) resubmit your work by Friday 10/13 at 5pm.
+    + Problem set 05 (randomly chosen) [group presentations](#PS05_presentations).
+
+
+
+## Chalk talk
+
+2.7 Bias-variance trade-off handouts:
+
+* [PDF](static/generate_splines_bias_variance_handout/plots.pdf)
+* [Source code](static/generate_splines_bias_variance_handout/generate_splines_bias_variance_handout.R)
+* Recall from the [bias-variance
+tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html) reading the image below.
+    + $df=2$ is the bottom-left case
+    + $df=99$ is the top-right case
+    + Sweet-spot is somewhere in between i.e. the balance/tradeoff. (Note: Top-left case is best-case scenario and bottom-right case is worst case scenario!)
+
+<center>
+<img src="images/accuracy_vs_precision.png" alt="Drawing" style="width: 400px;"/>
+</center>
+
+
+## Actual breakdown
+
+Note:
+
+* Not necessary to understand all steps of derivation for PS06. 
+* $\widehat{y}$ is also denoted $\widehat{f}(x)$. $\widehat{f}(x)$ is a random variable.
+* $y=f(x)+\epsilon$ with $\mathbb{E}\left[\epsilon\right] = 0$ and $\mbox{Var}[\epsilon] = \sigma$. Hence $y$ is random as well.
+* The variation is over sample to sample.
+
+
+$$
+\begin{aligned}
+\mbox{MSE}\left[\widehat{f}(x)\right] &= \mathbb{E}\left[\left( y - \widehat{f}(x) \right)^2\right]= \mathbb{E}\left[\left( y^2 - 2 y\widehat{f}(x) + \widehat{f}(x)^2 \right)\right]\\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2y\widehat{f}(x) \right]\right) \mbox{ by linearity of expectations } \\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2(f(x)+\epsilon)\widehat{f}(x) \right]\right) \mbox{ since } y = f(x)+\epsilon\\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - \left(\mathbb{E}\left[ 2f(x)\widehat{f}(x) \right] + \mathbb{E}\left[ 2\epsilon\widehat{f}(x) \right]\right)  \\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 2\mathbb{E}\left[ \epsilon\widehat{f}(x) \right]  \mbox{ since } \mathbb{E}\left[aX\right] = a\mathbb{E}\left[X\right] \mbox{ for } a \in \mathbb{R}\\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 2\mathbb{E}\left[\epsilon \right]\mathbb{E}\left[\widehat{f}(x) \right] \mbox{ since } \mathbb{E}\left[XY\right] = \mathbb{E}\left[X\right]\mathbb{E}\left[Y\right] \mbox{ if }X,Y \mbox{ are independent}\\
+&= \left( \mathbb{E}\left[ y^2 \right]\right) + \left(\mathbb{E}\left[ \widehat{f}(x)^2 \right]\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] - 0 \mbox{ since } \mathbb{E}\left[\epsilon\right]=0\\
+&= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[y\right]^2 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] \mbox{ since } \mbox{Var}\left[X\right] = \mathbb{E}\left[X^2\right] - \mathbb{E}\left[X\right]^2\\
+&= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[f(x) + \epsilon\right]^2 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right]\\
+&= \left( \mbox{Var}\left[ y \right] + \mathbb{E}\left[f(x)\right]^2 + 0 \right) + \left(\mbox{Var}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2\right) - 2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] \mbox{ since } \mathbb{E}\left[\epsilon\right] = 0\\
+&= \mbox{Var}\left[ y \right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left( f(x)^2  -  2f(x)\mathbb{E}\left[ \widehat{f}(x) \right] + \mathbb{E}\left[ \widehat{f}(x) \right]^2 \right)\\
+&= \mbox{Var}\left[ y \right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left(  f(x) - \mathbb{E}\left[\widehat{f}(x) \right] \right)^2 \\
+&= \mbox{Var}\left[ y\right] + \mbox{Var}\left[ \widehat{f}(x) \right] + \left(  \mathbb{E}\left[f(x)-\widehat{f}(x) \right] \right)^2 \mbox{ since } \mathbb{E}\left[a + X \right] = a + \mathbb{E}\left[X\right] \mbox{ for } a \in \mathbb{R}\\
+&= \sigma^2 + \mbox{Var}\left[ \widehat{f}(x) \right] + \left( \mbox{Bias}\left[ \widehat{f}(x) \right] \right)^2 \mbox{ since } \mbox{Var}\left[ y\right] = \mbox{Var}\left[ f(x)+\epsilon\right] = \mbox{Var}\left[ \epsilon \right] = \sigma^2\\
+\end{aligned}
+$$
+
+
+***
+
 
 # Problem set 5 {#PS05}
 
