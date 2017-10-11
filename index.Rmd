@@ -113,11 +113,14 @@ http://style.tidyverse.org/
 
 ## Wed 10/11 (Monday schedule)
 
-* At 9am, [PS05](#PS05) sychronized pull requests by team leaders.
 * Quiz on [bias-variance
 tradeoff](http://scott.fortmann-roe.com/docs/BiasVariance.html) reading posted in Lec 2.6.
-* Problem set 05 (randomly chosen) [group presentations](#PS05_presentations).
-* Recall because of odd schedule this week, feedback will be delivered by Thursday 10/12 9am. Your group can (optionally) resubmit your work by Friday 10/13 at 5pm.
+* Problem set 04 discussion/solutions [posted](#PS04_solutions).
+* Problem set 05:
+    + At 9am, sychronized pull requests by team leaders.
+    + Recall because of odd schedule this week, feedback will be delivered by Thursday 10/12 9am. Your group can (optionally) resubmit your work by Friday 10/13 at 5pm.
+    + Problem set 05 (randomly chosen) [group presentations](#PS05_presentations).
+
 
 
 
@@ -467,11 +470,17 @@ You will fit your first model with multiple predictors!
     1. `PS04.html`: The output of `PS04.Rmd`.
     1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID so that you can open `PS04.html` in a browser.
 
+## Example solutions {#PS04_solutions}
 
-## Feedback
+* [HTML output](http://htmlpreview.github.io/?https://raw.githubusercontent.com/2017-09-Amherst-STAT495/PS04/master/PS04_albert.html)
+* [`.Rmd` source code](https://github.com/2017-09-Amherst-STAT495/PS04/blob/master/PS04_albert.Rmd). Click on "Raw" button and save to `.Rmd` in your `PS04` folder/RStudio project.
+* Overall comments:
+    + Note, all our conclusions have to be taken with a grain of salt as I didn't add the variables in an arbitrary order from `model1` to `model7`! They were added in order determined by the variable selection inherent to the LASSO method, from "most informative" to "least". More when we cover regularization methods.
+    + Overfitting is an issue not so much when the number of observations $n$ in the training set is small relative to the number of observations in the test set, but when $n$ is small relative to $p$, the number of predictors used! Again, more when we see LASSO.
+    + Keep in mind the "Texas Sharpshooter fallacy" was only an analogy I drew for comparison, and not a machine learning specific term.
 
 
-## Example solutions
+
 
 
 
