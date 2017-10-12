@@ -38,7 +38,9 @@ rmarkdown::render("index.Rmd", output_format = c("ioslides_presentation"), outpu
 ```{r, eval=FALSE, echo=FALSE}
 # Code to randomly assign students to groups:
 library(tidyverse)
-class <- c("Brenna", "Anthony", "Abbas", "Sara", "Sarah", "Jonathan", "Harrison", "Tasheena", "Leonard", "Timothy", "Jenn", "Kiryu", "Jeff", "Vickie", "Pei", "Luke", "Brendan", "Caleb", "Meron", "Christien", "Wayne", "Meredith")
+class <- c("Brenna", "Anthony", "Abbas", "Sara", "Sarah", "Jonathan", "Harrison",
+           "Tasheena", "Leonard", "Timothy", "Jenn", "Kiryu", "Jeff", "Vickie", 
+           "Pei", "Luke", "Brendan", "Caleb", "Meron", "Christien", "Wayne", "Meredith")
 set.seed(76)
 sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 ```
@@ -75,8 +77,15 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 
 <!--
-https://www.technologyreview.com/s/608986/forget-killer-robotsbias-is-the-real-ai-danger/
+* https://www.technologyreview.com/s/608986/forget-killer-robotsbias-is-the-real-ai-danger/
+* Final project discussions on Monday
+* Amy coming tomorrow 
 -->
+
+
+
+***
+
 
 
 # Problem set 6 {#PS06}
@@ -108,14 +117,6 @@ show the equality based on `n_sim=100000` simulations.
 * You won't show this for *all* values on the domain of $f()$, but only for $x_0
 = 0.95$.
 
-
-
-
-
-
-
-
-
 Details: 
 
 * Teams: Individual
@@ -134,8 +135,8 @@ following files should be modified/added:
 
 
 
-
 ***
+
 
 
 # 3.1 Starting categorical outcomes
