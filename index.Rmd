@@ -79,6 +79,65 @@ https://www.technologyreview.com/s/608986/forget-killer-robotsbias-is-the-real-a
 -->
 
 
+# Problem set 6 {#PS06}
+
+## Information
+
+Important dates/times:
+
+* Wed 10/11: Assigned.
+* Tue 10/17 8:30am: Due via synchronized pull request. No presentations for PS06.
+* Wed 10/18 9am: Feedback delivered by Andrew.
+* Thu 10/19 8:30am: (Optional) revisions due.
+
+$$
+\mbox{MSE}\left[\widehat{f}(x)\right] = \mbox{Var}\left[\widehat{f}(x)\right] +
+\left(\mbox{Bias}\left[\widehat{f}(x)\right]\right)^2 + \sigma^2
+$$
+
+You will show that the above breakdown of the mean square error holds true for
+the two models fit in the handout from Lec 2.7.
+
+* The learning goal of the assignment is not so much to show the breakdown
+holds; we know this is true by probabilistic fact from the derivation in Lec
+2.7. Rather, the goal is to understand what is random and what is not in the
+above breakdown; you'll only be able to show the above breakdown by simulation
+if you understand these.
+* Much like `rnorm(100000, mean=5) %>% mean()` should roughly equal 5, you will
+show the equality based on `n_sim=100000` simulations.
+* You won't show this for *all* values on the domain of $f()$, but only for $x_0
+= 0.95$.
+
+
+
+
+
+
+
+
+
+Details: 
+
+* Teams: Individual
+* Presentations: None
+* Deliverables: One ready to submit *pull request* to the [PS06
+repo](https://github.com/2017-09-Amherst-STAT495/PS06). At the very least, the
+following files should be modified/added:
+    1. `PS06.Rmd`: Source code
+    1. `PS06.html`: The output of `PS06.Rmd`.
+    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
+    both Andrew and I can open your `PS06.html` in a browser. **Please test this
+    URL before submitting your work!**
+
+
+## Example solutions
+
+
+
+
+***
+
+
 # 3.1 Starting categorical outcomes
 
 ## Thu 12/12
@@ -98,7 +157,6 @@ Announcements:
 ## Chalk talk
 
 3.1 Starting categorical outcomes: Logistic regression
-
 
 
 ## Transform Probability Space to logit Space
@@ -139,8 +197,17 @@ grid.arrange(plot1, plot2, nrow=1)
 ```
 
 
+## Chalk talk
 
+3.1: Topics
 
+* Digression: Poisson regression
+* Machine learning procedure
+* Notion of error/score, in particular consider the following contingency table/confusion matrix from the Wikipedia page for [Sensitivity and specificity](https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Confusion_matrix)
+
+<center>
+<img src="images/contingency_matrix.png" alt="Drawing" style="width: 600px;"/>
+</center>
 
 
 
@@ -153,63 +220,6 @@ grid.arrange(plot1, plot2, nrow=1)
 
 
 
-
-# Problem set 6 {#PS06}
-
-## Information
-
-Important dates/times:
-
-* Wed 10/11: Assigned.
-* Tue 10/17 8:30am: Due via synchronized pull request. No presentations for PS06.
-* Wed 10/18 9am: Feedback delivered by Andrew.
-* Thu 10/19 8:30am: (Optional) revisions due.
-
-$$
-\mbox{MSE}\left[\widehat{f}(x)\right] = \mbox{Var}\left[\widehat{f}(x)\right] +
-\left(\mbox{Bias}\left[\widehat{f}(x)\right]\right)^2 + \sigma^2
-$$
-
-You will show that the above breakdown of the mean square error holds true for
-the two models fit in the handout from Lec 2.7.
-
-* Much like `rnorm(100000, mean=5) %>% mean()` should roughly equal 5, you will
-show the equality based on `n_sim=100000` simulations.
-* You won't show this for *all* values on the domain of $f()$, but only for $x_0
-= 0.95$.
-* The learning goal of the assignment is not so much to show the breakdown
-holds; we know this is true by probabilistic fact from the derivation in Lec
-2.7. Rather, the goal is to understand what is random and what is not in the
-above breakdown; you'll only be able to show the above breakdown by simulation
-if you understand these.
-
-
-
-
-
-
-
-
-Details: 
-
-* Teams: Individual
-* Presentations: None
-* Deliverables: One ready to submit *pull request* to the [PS06
-repo](https://github.com/2017-09-Amherst-STAT495/PS06). At the very least, the
-following files should be modified/added:
-    1. `PS06.Rmd`: Source code
-    1. `PS06.html`: The output of `PS06.Rmd`.
-    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
-    both Andrew and I can open your `PS06.html` in a browser. **Please test this
-    URL before submitting your work!**
-
-
-## Example solutions
-
-
-
-
-***
 
 
 # 2.7 More bias-variance trade-off
