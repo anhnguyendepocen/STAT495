@@ -661,7 +661,7 @@ Read the contents of this [Shiny App](https://beta.rstudioconnect.com/connect/#/
 
 # 2.2 A step back: StitchFix
 
-## Mon 9/5
+## Mon 9/25
 
 Announcements:
 
