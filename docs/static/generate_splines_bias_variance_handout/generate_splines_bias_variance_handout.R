@@ -40,11 +40,11 @@ plot1
 # -the predictor x (uniform on [0,1])
 # -the amount of noise eps (normal with mean=0 & sd=sigma=0.3)
 # Think of this as a "get new data" function:
-generate_sample <- function(f, n_sim, sigma) {
+generate_sample <- function(f, sample_size, sigma) {
   sample <- data_frame(
-    x = runif(n = n_sim, min = 0, max = 1),
+    x = runif(n = sample_size, min = 0, max = 1),
     f_x = f(x),
-    epsilon = rnorm(n = n_sim, mean = 0, sd = sigma),
+    epsilon = rnorm(n = sample_size, mean = 0, sd = sigma),
     y = f_x + epsilon
   )
   # Recall: We don't observe f(x) and epsilon, just (x, y)
@@ -55,7 +55,7 @@ generate_sample <- function(f, n_sim, sigma) {
 }
 
 # Sample n=100 points
-sampled_points <- generate_sample(f=f, n_sim=100, sigma)
+sampled_points <- generate_sample(f=f, sample_size=100, sigma)
 sampled_points
 
 plot2a <- baseplot +
@@ -102,7 +102,7 @@ plot3
 
 
 # Plot 4: Sample 100 new points and do this again ---------------
-sampled_points <- generate_sample(f=f, n_sim=100, sigma)
+sampled_points <- generate_sample(f=f, sample_size=100, sigma)
 
 # Fit splines with df=2 and add to plot
 fitted_df_2 <- smooth.spline(x=sampled_points$x, y=sampled_points$y, df=2) %>%
@@ -132,7 +132,7 @@ plot4
 
 
 # Plot 5: Do this again ---------------
-sampled_points <- generate_sample(f=f, n_sim=100, sigma)
+sampled_points <- generate_sample(f=f, sample_size=100, sigma)
 
 # Fit splines with df=2 and add to plot
 fitted_df_2 <- smooth.spline(x=sampled_points$x, y=sampled_points$y, df=2) %>%
@@ -162,7 +162,7 @@ plot5
 
 
 # Plot 6: And again ---------------
-sampled_points <- generate_sample(f=f, n_sim=100, sigma)
+sampled_points <- generate_sample(f=f, sample_size=100, sigma)
 
 # Fit splines with df=2 and add to plot
 fitted_df_2 <- smooth.spline(x=sampled_points$x, y=sampled_points$y, df=2) %>%
@@ -192,7 +192,7 @@ plot6
 
 
 # Plot 7: And again ---------------
-sampled_points <- generate_sample(f=f, n_sim=100, sigma)
+sampled_points <- generate_sample(f=f, sample_size=100, sigma)
 
 # Fit splines with df=2 and add to plot
 fitted_df_2 <- smooth.spline(x=sampled_points$x, y=sampled_points$y, df=2) %>%
@@ -228,7 +228,7 @@ plot_df_2 <- baseplot +
 plot_df_99 <- baseplot +
   labs(title="Plot 8: 50 different spline fits w/ df = 99 based on 50 different samples of size n = 100")
 for(i in 1:50) {
-  sampled_points <- generate_sample(f, n_sim = 100)
+  sampled_points <- generate_sample(f, sample_size = 100, sigma)
 
   # Fit splines with df=2 and add to plot
   fitted_df_2 <- smooth.spline(x=sampled_points$x, y=sampled_points$y, df=2) %>%
