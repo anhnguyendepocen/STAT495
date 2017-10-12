@@ -492,7 +492,7 @@ get a number of free private repositories and other benefits.
 
 # 2.4 Feedback on PS02
 
-## Thu 9/26
+## Thu 9/29
 
 Announcements:
 
