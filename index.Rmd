@@ -55,7 +55,7 @@ rough topic outline:
         * ~~Intro to modeling~~ 
         * ~~Simple case with univariate predictors to start: splines~~
         * ~~Sampling/resampling, out-of-sample prediction, crossvalidation~~
-        * Bias-variance tradeoff
+        * ~~Bias-variance tradeoff~~
     1. ~~Continuous outcomes I~~
         * ~~LOESS smoother~~
         * ~~Regression for prediction~~
@@ -78,8 +78,7 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 <!--
 * https://www.technologyreview.com/s/608986/forget-killer-robotsbias-is-the-real-ai-danger/
-* Final project discussions + Amy coming tomorrow to answer comps
-* 
+* Quiz on interpreting beta coefficients
 -->
 
 
@@ -103,7 +102,9 @@ answer comps questions.
 ## Exercise
 
 Go over "Binary outcomes" section in [Quickstart guide](quickstart.html) to 
-fit/predict with logistic regression and answer these questions.
+fit/predict with logistic regression and answer these questions. The data is info
+on 59,946 OkCupid users who were living in San Francisco in June 2012. Note:
+permission to use this data was explicitly granted by OkCupid.
 
 * After loading and wrangling the `profiles` data:
     + Create histograms of male and female heights using a bin width of 1 inch. IMO
