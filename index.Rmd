@@ -60,7 +60,7 @@ rough topic outline:
         * ~~LOESS smoother~~
         * ~~Regression for prediction~~
     1. Categorical outcomes i.e. classification
-        * Logistic regression for prediction + ROC curves
+        * ~~Logistic regression for prediction~~ + ROC curves
         * k-Nearest Neighbors
         * Classification and regression trees (CART)
     1. Continuous outcome II
@@ -77,9 +77,61 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 
 <!--
-* https://www.technologyreview.com/s/608986/forget-killer-robotsbias-is-the-real-ai-danger/
 * Quiz on interpreting beta coefficients
 -->
+
+
+
+***
+
+
+
+# 3.3 ROC curves
+
+## Tue 10/17
+
+Announcements:
+
+* Go over [solutions to exercises from Lec 3.2](#Lec3_2_solutions)
+
+
+
+
+***
+
+
+
+
+
+# Problem set 7 {#PS07}
+
+## Information
+
+Important dates/times:
+
+* Tue 10/17: Assigned.
+* Tue 10/24 8:30am: Due via synchronized pull request. No presentations for PS06.
+* Wed 10/25 9am: Feedback delivered by Andrew.
+* Thu 10/26 8:30am: (Optional) revisions due.
+
+
+You will show that the above breakdown of the mean square error holds true for
+the two models fit in the handout from Lec 2.7.
+
+Details: 
+
+* Teams: Individual
+* Presentations: None
+* Deliverables: One ready to submit *pull request* to the [PS07
+repo](https://github.com/2017-09-Amherst-STAT495/PS07). At the very least, the
+following files should be modified/added:
+    1. `PS07.Rmd`: Source code
+    1. `PS07.html`: The output of `PS07.Rmd`.
+    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
+    both Andrew and I can open your `PS07.html` in a browser.
+
+
+## Example solutions
 
 
 
@@ -106,6 +158,8 @@ fit/predict with logistic regression and answer these questions. The data is inf
 on 59,946 OkCupid users who were living in San Francisco in June 2012. Note:
 permission to use this data was explicitly granted by OkCupid.
 
+### Questions
+
 * After loading and wrangling the `profiles` data:
     + Create histograms of male and female heights using a bin width of 1 inch. IMO
 there is an irregularity in the male heights histogram. What could be the cause
@@ -124,6 +178,8 @@ truth. What value do you need?
     + Accuracy = 1 - classification error rate
     + False positive rate
     + False negative rate
+
+### Solutions {#Lec3_2_solutions}
 
 ```{r, eval=FALSE, echo=FALSE}
 profiles %>% 
