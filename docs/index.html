@@ -364,6 +364,37 @@ h1{font-weight: 400;}
 * 
 -->
 <hr />
+<div id="logistic-regression" class="section level1">
+<h1>3.2 Logistic regression</h1>
+<div id="mon-1016" class="section level2">
+<h2>Mon 10/16</h2>
+<p>Announcements:</p>
+<ul>
+<li>Tomorrow: Final project discussions + Prof. Wagaman visiting class at 9:30 to answer comps questions.</li>
+<li>How does one create a training set? Article from 2017/9/10 <a href="https://www.nytimes.com/2017/09/10/business/warehouse-robots-learning.html">“In the Future, Warehouse Robots Will Learn on Their Own”</a></li>
+</ul>
+</div>
+<div id="exercise" class="section level2">
+<h2>Exercise</h2>
+<p>Go over “Binary outcomes” section in <a href="quickstart.html">Quickstart guide</a> to fit/predict with logistic regression and answer these questions.</p>
+<ul>
+<li>After loading and wrangling the <code>profiles</code> data:
+<ul>
+<li>Create histograms of male and female heights using a bin width of 1 inch. IMO there is an irregularity in the male heights histogram. What could be the cause of it?</li>
+<li><strong>Challenge question</strong>: There are 24106 females and 35808 males in this dataset (OkCupid has since allowed for more gender options). Based on the data, answer the question “Going from shorter to taller, at what height would you start guessing that an individual is male?” by creating a scatterplot of “observed proportion female” over height.</li>
+</ul></li>
+<li>Section 1.1.1: In code snippet <code>1.b)</code> in the resulting point-by-point <code>augment()</code> table, why are there negative <code>.fitted</code> values?</li>
+<li>Section 1.1.2: Wrangle the data so that we have all four values needed to compute the <em>contingency table/confusion matrix</em> from last lecture comparing your predictions vs truth. What value do you need?</li>
+<li>After looking at the <a href="https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Confusion_matrix">Wikipedia entry on confusion matrices</a> compute the:
+<ul>
+<li>Accuracy = 1 - classification error rate</li>
+<li>False positive rate</li>
+<li>False negative rate</li>
+</ul></li>
+</ul>
+<hr />
+</div>
+</div>
 <div id="PS06" class="section level1">
 <h1>Problem set 6</h1>
 <div id="information" class="section level2">
@@ -404,8 +435,8 @@ h1{font-weight: 400;}
 </div>
 <div id="starting-categorical-outcomes" class="section level1">
 <h1>3.1 Starting categorical outcomes</h1>
-<div id="thu-1212" class="section level2">
-<h2>Thu 12/12</h2>
+<div id="thu-1012" class="section level2">
+<h2>Thu 10/12</h2>
 <p>Announcements:</p>
 <ul>
 <li>PS05:
@@ -433,7 +464,7 @@ h1{font-weight: 400;}
 \mbox{right-hand function} = \mbox{inverse-logit}(\alpha) &amp;= \frac{\exp(\alpha)}{\exp(\alpha) + 1} = \frac{1}{1+ \exp(-\alpha)}
 \end{align}
 \]</span></p>
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
 </div>
 <div id="chalk-talk-1" class="section level2">
 <h2>Chalk talk</h2>
@@ -598,7 +629,7 @@ h1{font-weight: 400;}
 <li>Plus an extreme case of “perfect” fitting</li>
 <li>There is no new sample of points being collected nor crossvalidation going on here; just take the points and fit a model.</li>
 </ul>
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
 </div>
 <div id="chalk-talk-4" class="section level2">
 <h2>Chalk talk</h2>
@@ -667,8 +698,8 @@ delays_plot &lt;- ggplot(flights_sample, aes(x=dep_delay, y=arr_delay)) +
   geom_point()
 # Hover your mouse over the resulting plot
 ggplotly(delays_plot)</code></pre>
-<div id="8f8b59a41a7f" style="width:576px;height:324px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="8f8b59a41a7f">{"x":{"data":[{"x":[1,0,-8,-5,25,-4,null,1,-4,-7,15,1,2,3,121,14,77,5,-5,-2,-4,-3,11,39,-5,57,-4,1,226,1,-6,null,-5,-5,57,19,-1,-6,0,33,-7,-5,20,-3,5,37,-1,94,2,-5,3,40,-4,-5,152,0,52,-6,-9,19,-5,10,26,-5,-7,129,31,-5,-4,-9,50,152,43,-7,8,63,39,94,-3,-7,9,-1,8,-4,46,1,5,-1,16,0,-7,-1,42,1,-1,-2,2,-4,-1,-4],"y":[-13,-4,-10,-5,8,7,null,-10,-23,-23,-14,-4,17,-4,103,17,62,4,-30,-38,-10,-9,-3,55,14,87,-2,-11,266,-20,3,null,-14,-18,60,18,-6,-24,-7,24,38,0,-5,-11,4,43,-34,51,-18,-27,10,11,-1,-10,166,-12,24,2,-44,1,-48,17,27,2,5,141,31,-11,-32,5,26,128,33,4,-24,65,90,86,3,-19,-4,-21,24,-31,42,97,-9,-23,13,-20,-10,39,12,-1,-22,-14,-9,0,30,-11],"text":["dep_delay:   1<br />arr_delay: -13","dep_delay:   0<br />arr_delay:  -4","dep_delay:  -8<br />arr_delay: -10","dep_delay:  -5<br />arr_delay:  -5","dep_delay:  25<br />arr_delay:   8","dep_delay:  -4<br />arr_delay:   7","dep_delay:  NA<br />arr_delay:  NA","dep_delay:   1<br />arr_delay: -10","dep_delay:  -4<br />arr_delay: -23","dep_delay:  -7<br />arr_delay: -23","dep_delay:  15<br />arr_delay: -14","dep_delay:   1<br />arr_delay:  -4","dep_delay:   2<br />arr_delay:  17","dep_delay:   3<br />arr_delay:  -4","dep_delay: 121<br />arr_delay: 103","dep_delay:  14<br />arr_delay:  17","dep_delay:  77<br />arr_delay:  62","dep_delay:   5<br />arr_delay:   4","dep_delay:  -5<br />arr_delay: -30","dep_delay:  -2<br />arr_delay: -38","dep_delay:  -4<br />arr_delay: -10","dep_delay:  -3<br />arr_delay:  -9","dep_delay:  11<br />arr_delay:  -3","dep_delay:  39<br />arr_delay:  55","dep_delay:  -5<br />arr_delay:  14","dep_delay:  57<br />arr_delay:  87","dep_delay:  -4<br />arr_delay:  -2","dep_delay:   1<br />arr_delay: -11","dep_delay: 226<br />arr_delay: 266","dep_delay:   1<br />arr_delay: -20","dep_delay:  -6<br />arr_delay:   3","dep_delay:  NA<br />arr_delay:  NA","dep_delay:  -5<br />arr_delay: -14","dep_delay:  -5<br />arr_delay: -18","dep_delay:  57<br />arr_delay:  60","dep_delay:  19<br />arr_delay:  18","dep_delay:  -1<br />arr_delay:  -6","dep_delay:  -6<br />arr_delay: -24","dep_delay:   0<br />arr_delay:  -7","dep_delay:  33<br />arr_delay:  24","dep_delay:  -7<br />arr_delay:  38","dep_delay:  -5<br />arr_delay:   0","dep_delay:  20<br />arr_delay:  -5","dep_delay:  -3<br />arr_delay: -11","dep_delay:   5<br />arr_delay:   4","dep_delay:  37<br />arr_delay:  43","dep_delay:  -1<br />arr_delay: -34","dep_delay:  94<br />arr_delay:  51","dep_delay:   2<br />arr_delay: -18","dep_delay:  -5<br />arr_delay: -27","dep_delay:   3<br />arr_delay:  10","dep_delay:  40<br />arr_delay:  11","dep_delay:  -4<br />arr_delay:  -1","dep_delay:  -5<br />arr_delay: -10","dep_delay: 152<br />arr_delay: 166","dep_delay:   0<br />arr_delay: -12","dep_delay:  52<br />arr_delay:  24","dep_delay:  -6<br />arr_delay:   2","dep_delay:  -9<br />arr_delay: -44","dep_delay:  19<br />arr_delay:   1","dep_delay:  -5<br />arr_delay: -48","dep_delay:  10<br />arr_delay:  17","dep_delay:  26<br />arr_delay:  27","dep_delay:  -5<br />arr_delay:   2","dep_delay:  -7<br />arr_delay:   5","dep_delay: 129<br />arr_delay: 141","dep_delay:  31<br />arr_delay:  31","dep_delay:  -5<br />arr_delay: -11","dep_delay:  -4<br />arr_delay: -32","dep_delay:  -9<br />arr_delay:   5","dep_delay:  50<br />arr_delay:  26","dep_delay: 152<br />arr_delay: 128","dep_delay:  43<br />arr_delay:  33","dep_delay:  -7<br />arr_delay:   4","dep_delay:   8<br />arr_delay: -24","dep_delay:  63<br />arr_delay:  65","dep_delay:  39<br />arr_delay:  90","dep_delay:  94<br />arr_delay:  86","dep_delay:  -3<br />arr_delay:   3","dep_delay:  -7<br />arr_delay: -19","dep_delay:   9<br />arr_delay:  -4","dep_delay:  -1<br />arr_delay: -21","dep_delay:   8<br />arr_delay:  24","dep_delay:  -4<br />arr_delay: -31","dep_delay:  46<br />arr_delay:  42","dep_delay:   1<br />arr_delay:  97","dep_delay:   5<br />arr_delay:  -9","dep_delay:  -1<br />arr_delay: -23","dep_delay:  16<br />arr_delay:  13","dep_delay:   0<br />arr_delay: -20","dep_delay:  -7<br />arr_delay: -10","dep_delay:  -1<br />arr_delay:  39","dep_delay:  42<br />arr_delay:  12","dep_delay:   1<br />arr_delay:  -1","dep_delay:  -1<br />arr_delay: -22","dep_delay:  -2<br />arr_delay: -14","dep_delay:   2<br />arr_delay:  -9","dep_delay:  -4<br />arr_delay:   0","dep_delay:  -1<br />arr_delay:  30","dep_delay:  -4<br />arr_delay: -11"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":28.98833079655,"r":7.30593607305936,"b":42.9426686960934,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-20.75,237.75],"ticktext":["0","50","100","150","200"],"tickvals":[0,50,100,150,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"dep_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-63.7,281.7],"ticktext":["0","100","200"],"tickvals":[0,100,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"arr_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","width":576,"height":324},"source":"A","attrs":{"8f8b1a4f8117":{"x":{},"y":{},"type":"ggplotly"}},"cur_data":"8f8b1a4f8117","visdat":{"8f8b1a4f8117":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+<div id="94881070a2e0" style="width:576px;height:324px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="94881070a2e0">{"x":{"data":[{"x":[1,0,-8,-5,25,-4,null,1,-4,-7,15,1,2,3,121,14,77,5,-5,-2,-4,-3,11,39,-5,57,-4,1,226,1,-6,null,-5,-5,57,19,-1,-6,0,33,-7,-5,20,-3,5,37,-1,94,2,-5,3,40,-4,-5,152,0,52,-6,-9,19,-5,10,26,-5,-7,129,31,-5,-4,-9,50,152,43,-7,8,63,39,94,-3,-7,9,-1,8,-4,46,1,5,-1,16,0,-7,-1,42,1,-1,-2,2,-4,-1,-4],"y":[-13,-4,-10,-5,8,7,null,-10,-23,-23,-14,-4,17,-4,103,17,62,4,-30,-38,-10,-9,-3,55,14,87,-2,-11,266,-20,3,null,-14,-18,60,18,-6,-24,-7,24,38,0,-5,-11,4,43,-34,51,-18,-27,10,11,-1,-10,166,-12,24,2,-44,1,-48,17,27,2,5,141,31,-11,-32,5,26,128,33,4,-24,65,90,86,3,-19,-4,-21,24,-31,42,97,-9,-23,13,-20,-10,39,12,-1,-22,-14,-9,0,30,-11],"text":["dep_delay:   1<br />arr_delay: -13","dep_delay:   0<br />arr_delay:  -4","dep_delay:  -8<br />arr_delay: -10","dep_delay:  -5<br />arr_delay:  -5","dep_delay:  25<br />arr_delay:   8","dep_delay:  -4<br />arr_delay:   7","dep_delay:  NA<br />arr_delay:  NA","dep_delay:   1<br />arr_delay: -10","dep_delay:  -4<br />arr_delay: -23","dep_delay:  -7<br />arr_delay: -23","dep_delay:  15<br />arr_delay: -14","dep_delay:   1<br />arr_delay:  -4","dep_delay:   2<br />arr_delay:  17","dep_delay:   3<br />arr_delay:  -4","dep_delay: 121<br />arr_delay: 103","dep_delay:  14<br />arr_delay:  17","dep_delay:  77<br />arr_delay:  62","dep_delay:   5<br />arr_delay:   4","dep_delay:  -5<br />arr_delay: -30","dep_delay:  -2<br />arr_delay: -38","dep_delay:  -4<br />arr_delay: -10","dep_delay:  -3<br />arr_delay:  -9","dep_delay:  11<br />arr_delay:  -3","dep_delay:  39<br />arr_delay:  55","dep_delay:  -5<br />arr_delay:  14","dep_delay:  57<br />arr_delay:  87","dep_delay:  -4<br />arr_delay:  -2","dep_delay:   1<br />arr_delay: -11","dep_delay: 226<br />arr_delay: 266","dep_delay:   1<br />arr_delay: -20","dep_delay:  -6<br />arr_delay:   3","dep_delay:  NA<br />arr_delay:  NA","dep_delay:  -5<br />arr_delay: -14","dep_delay:  -5<br />arr_delay: -18","dep_delay:  57<br />arr_delay:  60","dep_delay:  19<br />arr_delay:  18","dep_delay:  -1<br />arr_delay:  -6","dep_delay:  -6<br />arr_delay: -24","dep_delay:   0<br />arr_delay:  -7","dep_delay:  33<br />arr_delay:  24","dep_delay:  -7<br />arr_delay:  38","dep_delay:  -5<br />arr_delay:   0","dep_delay:  20<br />arr_delay:  -5","dep_delay:  -3<br />arr_delay: -11","dep_delay:   5<br />arr_delay:   4","dep_delay:  37<br />arr_delay:  43","dep_delay:  -1<br />arr_delay: -34","dep_delay:  94<br />arr_delay:  51","dep_delay:   2<br />arr_delay: -18","dep_delay:  -5<br />arr_delay: -27","dep_delay:   3<br />arr_delay:  10","dep_delay:  40<br />arr_delay:  11","dep_delay:  -4<br />arr_delay:  -1","dep_delay:  -5<br />arr_delay: -10","dep_delay: 152<br />arr_delay: 166","dep_delay:   0<br />arr_delay: -12","dep_delay:  52<br />arr_delay:  24","dep_delay:  -6<br />arr_delay:   2","dep_delay:  -9<br />arr_delay: -44","dep_delay:  19<br />arr_delay:   1","dep_delay:  -5<br />arr_delay: -48","dep_delay:  10<br />arr_delay:  17","dep_delay:  26<br />arr_delay:  27","dep_delay:  -5<br />arr_delay:   2","dep_delay:  -7<br />arr_delay:   5","dep_delay: 129<br />arr_delay: 141","dep_delay:  31<br />arr_delay:  31","dep_delay:  -5<br />arr_delay: -11","dep_delay:  -4<br />arr_delay: -32","dep_delay:  -9<br />arr_delay:   5","dep_delay:  50<br />arr_delay:  26","dep_delay: 152<br />arr_delay: 128","dep_delay:  43<br />arr_delay:  33","dep_delay:  -7<br />arr_delay:   4","dep_delay:   8<br />arr_delay: -24","dep_delay:  63<br />arr_delay:  65","dep_delay:  39<br />arr_delay:  90","dep_delay:  94<br />arr_delay:  86","dep_delay:  -3<br />arr_delay:   3","dep_delay:  -7<br />arr_delay: -19","dep_delay:   9<br />arr_delay:  -4","dep_delay:  -1<br />arr_delay: -21","dep_delay:   8<br />arr_delay:  24","dep_delay:  -4<br />arr_delay: -31","dep_delay:  46<br />arr_delay:  42","dep_delay:   1<br />arr_delay:  97","dep_delay:   5<br />arr_delay:  -9","dep_delay:  -1<br />arr_delay: -23","dep_delay:  16<br />arr_delay:  13","dep_delay:   0<br />arr_delay: -20","dep_delay:  -7<br />arr_delay: -10","dep_delay:  -1<br />arr_delay:  39","dep_delay:  42<br />arr_delay:  12","dep_delay:   1<br />arr_delay:  -1","dep_delay:  -1<br />arr_delay: -22","dep_delay:  -2<br />arr_delay: -14","dep_delay:   2<br />arr_delay:  -9","dep_delay:  -4<br />arr_delay:   0","dep_delay:  -1<br />arr_delay:  30","dep_delay:  -4<br />arr_delay: -11"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":28.98833079655,"r":7.30593607305936,"b":42.9426686960934,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-20.75,237.75],"ticktext":["0","50","100","150","200"],"tickvals":[0,50,100,150,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"dep_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-63.7,281.7],"ticktext":["0","100","200"],"tickvals":[0,100,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"arr_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","width":576,"height":324},"source":"A","attrs":{"94886b1c5290":{"x":{},"y":{},"type":"ggplotly"}},"cur_data":"94886b1c5290","visdat":{"94886b1c5290":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 </div>
 <div id="chalk-talk-6" class="section level2">
 <h2>Chalk talk</h2>
@@ -889,19 +920,19 @@ bechdel_2000 &lt;- bechdel %&gt;%
 ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
   geom_point() +
   labs(x=&quot;Budget&quot;, y=&quot;Domestic Gross&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="614.4" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="614.4" /></p>
 <p>We see there is a right-skew to both the x and y-values. This is because we are comparing big budget Hollywood blockbusters with (likely) lower budget independent films. Hence, it’s really hard to see what’s going on at the lower-end of the budget scale. Let’s unskew both variables and compare not <em>absolute</em> differences, but rather, <em>relative</em> differences i.e. differences in “order of magnitude” using a <code>log10()</code> transformation:</p>
 <pre class="r"><code>ggplot(bechdel_2000, aes(x=log10(budget_2013), y=log10(domgross_2013))) +
   geom_point() +
   labs(x=&quot;log10(Budget)&quot;, y=&quot;log10(Domestic Gross)&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="614.4" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="614.4" /></p>
 <p>We can see a little better what’s going on at the lower end of the budget scale. However the values on the axes require a little thinking to process. For example at <span class="math inline">\(x=7\)</span>, this corresponds to movies with a budget of <span class="math inline">\(10^7 = 10,000,000\)</span> dollars. So instead, let’s <em>rescale</em> both axes so that they display the data in their original units.</p>
 <pre class="r"><code>ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
   geom_point() +
   scale_x_log10() +
   scale_y_log10() +
   labs(x=&quot;Budget (log10-scale)&quot;, y=&quot;Domestic Gross (log10-scale)&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="614.4" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="614.4" /></p>
 <p>Note that</p>
 <ul>
 <li>The two plots are identical, but the values on the axes are different.</li>
@@ -1111,7 +1142,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <div id="scenario-d" class="section level2">
 <h2>Scenario D)</h2>
 <p>Let’s call the following example “Scenario D) Splines”. Recall from our <a href="#intro_to_splines">Intro to Splines</a> lecture the different fitted models based on different degrees of freedom (i.e. different numbers of knots).</p>
-<p><img src="index_files/figure-html/unnamed-chunk-13-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" width="768" /></p>
 </div>
 <div id="scenario-d-score" class="section level2">
 <h2>Scenario D): Score</h2>
@@ -1263,7 +1294,7 @@ plot &lt;- ggplot(splines_model_tidy, aes(x=x)) +
   geom_point(aes(y=y)) +
   geom_line(aes(y=.fitted), col=&quot;blue&quot;)
 plot</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" width="480" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" width="480" /></p>
 <pre class="r"><code>new_speeds &lt;- c(24.6, 26.4, 23.4, 16.8, 15.8, 5.4, 14.8, 8.2, 1, 18.8, 25, 28, 19.6, 11.2, 21.8, 26.2, 20.6, 0, 14.4, 8.8)
 # What do you think output is?
 output &lt;- predict(splines_model, new_speeds) %&gt;% 
@@ -1307,7 +1338,7 @@ head(output)</code></pre>
 </div>
 <pre class="r"><code>plot +
   geom_point(data=output, aes(x=x, y=y), col=&quot;red&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-15-2.png" width="480" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-16-2.png" width="480" /></p>
 </div>
 <div id="presentations" class="section level2">
 <h2>Presentations</h2>

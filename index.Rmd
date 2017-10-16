@@ -88,6 +88,67 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 
 
+# 3.2 Logistic regression
+
+## Mon 10/16
+
+Announcements:
+
+* Tomorrow: Final project discussions + Prof. Wagaman visiting class at 9:30 to
+answer comps questions.
+* How does one create a training set? Article from 2017/9/10 ["In the Future, Warehouse Robots Will Learn on Their Own"](https://www.nytimes.com/2017/09/10/business/warehouse-robots-learning.html)
+
+
+
+## Exercise
+
+Go over "Binary outcomes" section in [Quickstart guide](quickstart.html) to 
+fit/predict with logistic regression and answer these questions.
+
+* After loading and wrangling the `profiles` data:
+    + Create histograms of male and female heights using a bin width of 1 inch. IMO
+there is an irregularity in the male heights histogram. What could be the cause
+of it?
+    + **Challenge question**: There are 24106 females and 35808 males in this dataset (OkCupid has
+since allowed for more gender options). Based on the data,
+answer the question "Going from shorter to taller, at what height would you
+start guessing that an individual is male?" by creating a scatterplot of "observed proportion female"
+over height.
+* Section 1.1.1: In code snippet `1.b)` in the resulting point-by-point
+`augment()` table, why are there negative `.fitted` values?
+* Section 1.1.2: Wrangle the data so that we have all four values needed to
+compute the *contingency table/confusion matrix* from last lecture comparing your predictions vs
+truth. What value do you need?
+* After looking at the [Wikipedia entry on confusion matrices](https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Confusion_matrix) compute the:
+    + Accuracy = 1 - classification error rate
+    + False positive rate
+    + False negative rate
+
+```{r, eval=FALSE, echo=FALSE}
+profiles %>% 
+  group_by(height, sex) %>% 
+  count() %>% 
+  group_by(height) %>% 
+  mutate(prop = n/sum(n)) %>% 
+  filter(sex == "f") %>% 
+  ggplot(aes(x=height, y=prop)) +
+  geom_text(aes(label=n))
+```
+
+
+
+
+
+
+
+***
+
+
+
+
+
+
+
 # Problem set 6 {#PS06}
 
 ## Information
@@ -141,7 +202,7 @@ following files should be modified/added:
 
 # 3.1 Starting categorical outcomes
 
-## Thu 12/12
+## Thu 10/12
 
 Announcements:
 
