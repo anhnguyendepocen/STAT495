@@ -1,36 +1,36 @@
----
-title: "Quickstart Guide to Models"
-output:
-  html_document:
-    number_sections: yes
-    toc: yes
-    toc_depth: 2
-    toc_float:
-      collapsed: no
----
-
-<style>
-h1{font-weight: 400;}
-</style>
-
-```{r setup, include=FALSE}
+#' ---
+#' title: "Quickstart Guide to Models"
+#' output:
+#'   html_document:
+#'     number_sections: yes
+#'     toc: yes
+#'     toc_depth: 2
+#'     toc_float:
+#'       collapsed: no
+#' ---
+#' 
+#' <style>
+#' h1{font-weight: 400;}
+#' </style>
+#' 
+## ----setup, include=FALSE------------------------------------------------
 knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE)
 set.seed(76)
 options(digits = 4)
-```
 
-
-
-
-# Binary outcomes
-
-```{r}
+#' 
+#' 
+#' 
+#' 
+#' # Binary outcomes
+#' 
+## ------------------------------------------------------------------------
 library(tidyverse)
 library(broom)
 library(okcupiddata)
-```
 
-```{r, cache=TRUE}
+#' 
+## ---- cache=TRUE---------------------------------------------------------
 profiles <- profiles %>%
   as_tibble() %>%
   # Create binary outcome variable y:
@@ -46,13 +46,13 @@ profiles_train <- profiles %>%
   sample_frac(0.5)
 profiles_test <- profiles %>% 
   anti_join(profiles_train, by="ID")
-```
 
-## Logistic regression via `glm`
-
-### Fit/train model
-
-```{r, cache=TRUE}
+#' 
+#' ## Logistic regression via `glm`
+#' 
+#' ### Fit/train model
+#' 
+## ---- cache=TRUE---------------------------------------------------------
 model_formula <- as.formula(y~height)
 model_logistic <- glm(model_formula, data=profiles_train, family="binomial")
 
@@ -69,11 +69,11 @@ model_logistic %>%
 # 1.c) Extract summary stats info in tidy format
 model_logistic %>% 
   broom::glance()
-```
 
-### Predict outcomes for test data
-
-```{r, cache=TRUE}
+#' 
+#' ### Predict outcomes for test data
+#' 
+## ---- cache=TRUE---------------------------------------------------------
 # 2. Make predictions on test data
 # Method 1:
 # -input: profiles_test is a data frame
@@ -87,11 +87,11 @@ model_logistic %>%
   as_tibble() %>% 
   mutate(p_hat = 1/(1 + exp(-.fitted))) %>% 
   sample_n(5)
-```
 
-### Plot
-
-```{r, cache=TRUE}
+#' 
+#' ### Plot
+#' 
+## ---- cache=TRUE---------------------------------------------------------
 fitted_model <- model_logistic %>% 
   broom::augment() %>% 
   as_tibble() %>% 
@@ -113,13 +113,13 @@ ggplot(NULL) +
   labs(x="height (in inches)", y="p_hat", title="Fitted probability of being female vs height") +
   # Add observed binary y's, and put a little random jitter to the points
   geom_jitter(data=fitted_model, aes(x=height, y=y), height=0.05, alpha=0.05)
-```
 
-
-
-# Continuous outcomes
-
-```{r}
+#' 
+#' 
+#' 
+#' # Continuous outcomes
+#' 
+## ------------------------------------------------------------------------
 library(tidyverse)
 library(broom)
 
@@ -132,14 +132,14 @@ mtcars_train <- mtcars %>%
   sample_frac(0.5)
 mtcars_test <- mtcars %>% 
   anti_join(mtcars_train, by="ID")
-```
 
-
-## Regression via `lm`
-
-### Fit/train model
-
-```{r}
+#' 
+#' 
+#' ## Regression via `lm`
+#' 
+#' ### Fit/train model
+#' 
+## ------------------------------------------------------------------------
 model_formula <- as.formula("mpg ~ hp")
 model_lm <- lm(model_formula, data=mtcars_train)
 
@@ -156,11 +156,11 @@ model_lm %>%
 # 1.c) Extract summary stats info in tidy format
 model_lm %>% 
   broom::glance()
-```
 
-### Predict outcomes for test data
-
-```{r}
+#' 
+#' ### Predict outcomes for test data
+#' 
+## ------------------------------------------------------------------------
 # 2. Make predictions on test data
 # Method 1:
 # -input: mtcars_test is a data frame
@@ -172,11 +172,11 @@ model_lm %>%
   broom::augment(newdata=mtcars_test) %>% 
   as_tibble() %>% 
   sample_n(5)
-```
 
-### Plot
-
-```{r}
+#' 
+#' ### Plot
+#' 
+## ------------------------------------------------------------------------
 fitted_model <- model_lm %>% 
   broom::augment() %>% 
   as_tibble()
@@ -188,15 +188,15 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col="blue") +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col="red") +
   labs(x="Horse power", y="Miles per gallon")
-```
 
-
-
-## LOESS {#loess}
-
-### Fit/train model
-
-```{r}
+#' 
+#' 
+#' 
+#' ## LOESS {#loess}
+#' 
+#' ### Fit/train model
+#' 
+## ------------------------------------------------------------------------
 model_formula <- as.formula("mpg ~ hp")
 model_loess <- loess(model_formula, data=mtcars_train, span=0.9)
 
@@ -205,11 +205,11 @@ model_loess %>%
   broom::augment() %>% 
   as_tibble() %>% 
   sample_n(5)
-```
 
-### Predict outcomes for test data
-
-```{r}
+#' 
+#' ### Predict outcomes for test data
+#' 
+## ------------------------------------------------------------------------
 # 2. Make predictions on test data
 # Method 1:
 # -input: mtcars_test is a data frame
@@ -220,11 +220,11 @@ y_hat <- predict(model_loess, newdata=mtcars_test)
 model_loess %>% 
   broom::augment(newdata=mtcars_test) %>% 
   sample_n(5)
-```
 
-### Plot
-
-```{r}
+#' 
+#' ### Plot
+#' 
+## ------------------------------------------------------------------------
 fitted_model <- model_loess %>% 
   broom::augment() %>% 
   as_tibble()
@@ -237,17 +237,17 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col="blue") +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col="red") +
   labs(x="Horse power", y="Miles per gallon")
-```
 
-
-
-
-
-## Splines {#splines}
-
-### Fit/train model
-
-```{r}
+#' 
+#' 
+#' 
+#' 
+#' 
+#' ## Splines {#splines}
+#' 
+#' ### Fit/train model
+#' 
+## ------------------------------------------------------------------------
 model_spline <- smooth.spline(x=mtcars_train$hp, y=mtcars_train$mpg, df = 4)
 
 # 1.a) Extract point-by-point info in tidy format
@@ -259,11 +259,11 @@ model_spline %>%
 # 1.b) Extract summary stats info in tidy format
 model_spline %>% 
   broom::glance()
-```
 
-### Predict outcomes for test data
-
-```{r}
+#' 
+#' ### Predict outcomes for test data
+#' 
+## ------------------------------------------------------------------------
 # 2. Make predictions on test data
 # Method 1:
 # -input: mtcars_test$hp is a vector
@@ -276,11 +276,11 @@ spline_fitted <- spline_fitted %>%
   rename(hp = x, .fitted = y)
 
 y_hat <- spline_fitted$.fitted
-```
 
-### Plot
-
-```{r}
+#' 
+#' ### Plot
+#' 
+## ------------------------------------------------------------------------
 fitted_model <- model_spline %>% 
   broom::augment() %>% 
   as_tibble() %>% 
@@ -293,6 +293,6 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col="blue") +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col="red") +
   labs(x="Horse power", y="Miles per gallon")
-```
 
-
+#' 
+#' 
