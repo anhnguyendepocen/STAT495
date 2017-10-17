@@ -115,6 +115,29 @@ ggplot(NULL) +
   geom_jitter(data=fitted_model, aes(x=height, y=y), height=0.05, alpha=0.05)
 ```
 
+### ROC curve {#ROC_curve}
+
+```{r}
+profiles_train_augmented <- model_logistic %>% 
+  broom::augment() %>% 
+  as_tibble() %>% 
+  mutate(p_hat = 1/(1+exp(-.fitted)))
+
+library(ROCR)
+# This bit of code computes the ROC curve
+pred <- prediction(predictions = profiles_train_augmented$p_hat, labels = profiles_train_augmented$y)
+perf <- performance(pred, "tpr","fpr")
+
+# This bit of code computes the Area Under the Curve
+auc <- as.numeric(performance(pred,"auc")@y.values)
+auc
+
+# This bit of code prints it
+plot(perf, main=paste("Area Under the Curve =", round(auc, 3)))
+abline(c(0, 1), lty=2)
+```
+
+
 
 
 # Continuous outcomes

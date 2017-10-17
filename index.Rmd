@@ -96,6 +96,21 @@ Announcements:
 * Go over [solutions to exercises from Lec 3.2](#Lec3_2_solutions)
 
 
+## Chalk talk
+
+3.3 Receiver Operating Characterisitics (ROC) curves
+
+
+## Shiny App
+
+Play around with decision threshold $p^*$ in this [Shiny App](https://rsconnect.amherst.edu/connect/#/apps/13/). Note:
+
+* The $\widehat{p}$'s are computed using logistic regression with one predictor: height.
+* Each choice of $p^*$ yields a different confusion matrix/contingency matrix
+whose values we use to plot one point on the cuve.
+* The Area Under the Curve is really high! Over 90%.
+
+
 
 
 ***
@@ -116,13 +131,12 @@ Important dates/times:
 * Thu 10/26 8:30am: (Optional) revisions due.
 
 
-You will show that the above breakdown of the mean square error holds true for
-the two models fit in the handout from Lec 2.7.
+You will 
 
 Details: 
 
-* Teams: Individual
-* Presentations: None
+* Teams: 
+* Presentations: 
 * Deliverables: One ready to submit *pull request* to the [PS07
 repo](https://github.com/2017-09-Amherst-STAT495/PS07). At the very least, the
 following files should be modified/added:

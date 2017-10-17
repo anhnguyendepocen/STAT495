@@ -591,6 +591,27 @@ ggplot(NULL) +
   geom_jitter(data=fitted_model, aes(x=height, y=y), height=0.05, alpha=0.05)</code></pre>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 </div>
+<div id="ROC_curve" class="section level3">
+<h3><span class="header-section-number">1.1.4</span> ROC curve</h3>
+<pre class="r"><code>profiles_train_augmented &lt;- model_logistic %&gt;% 
+  broom::augment() %&gt;% 
+  as_tibble() %&gt;% 
+  mutate(p_hat = 1/(1+exp(-.fitted)))
+
+library(ROCR)
+# This bit of code computes the ROC curve
+pred &lt;- prediction(predictions = profiles_train_augmented$p_hat, labels = profiles_train_augmented$y)
+perf &lt;- performance(pred, &quot;tpr&quot;,&quot;fpr&quot;)
+
+# This bit of code computes the Area Under the Curve
+auc &lt;- as.numeric(performance(pred,&quot;auc&quot;)@y.values)
+auc</code></pre>
+<pre><code>## [1] 0.9077422</code></pre>
+<pre class="r"><code># This bit of code prints it
+plot(perf, main=paste(&quot;Area Under the Curve =&quot;, round(auc, 3)))
+abline(c(0, 1), lty=2)</code></pre>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+</div>
 </div>
 </div>
 <div id="continuous-outcomes" class="section level1">
@@ -846,7 +867,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
 </div>
 </div>
 <div id="loess" class="section level2">
@@ -995,7 +1016,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 </div>
 <div id="splines" class="section level2">
@@ -1118,7 +1139,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
 </div>
 </div>
