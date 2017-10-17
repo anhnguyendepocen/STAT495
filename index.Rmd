@@ -24,6 +24,7 @@ library(lubridate)
 library(forcats)
 library(nycflights13)
 library(gridExtra)
+library(okcupiddata)
 
 # devtools::install_github("hadley/emo")
 library(emo)
@@ -160,48 +161,134 @@ permission to use this data was explicitly granted by OkCupid.
 
 ### Questions
 
-* After loading and wrangling the `profiles` data:
-    + Create histograms of male and female heights using a bin width of 1 inch. IMO
+1. After loading and wrangling the `profiles` data:
+    a) Create histograms of male and female heights using a bin width of 1 inch. IMO
 there is an irregularity in the male heights histogram. What could be the cause
 of it?
-    + **Challenge question**: There are 24106 females and 35808 males in this dataset (OkCupid has
+    a) **Challenge question**: There are 24106 females and 35808 males in this dataset (OkCupid has
 since allowed for more gender options). Based on the data,
 answer the question "Going from shorter to taller, at what height would you
 start guessing that an individual is male?" by creating a scatterplot of "observed proportion female"
 over height.
-* Section 1.1.1: In code snippet `1.b)` in the resulting point-by-point
+1. Section 1.1.1: In code snippet `1.b)` in the resulting point-by-point
 `augment()` table, why are there negative `.fitted` values?
-* Section 1.1.2: Wrangle the data so that we have all four values needed to
+1. Section 1.1.2: Wrangle the data so that we have all four values needed to
 compute the *contingency table/confusion matrix* from last lecture comparing your predictions vs
 truth. What value do you need?
-* After looking at the [Wikipedia entry on confusion matrices](https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Confusion_matrix) compute the:
-    + Accuracy = 1 - classification error rate
-    + False positive rate
-    + False negative rate
+1. After looking at the [Wikipedia entry on confusion matrices](https://en.wikipedia.org/wiki/Sensitivity_and_specificity#Confusion_matrix) compute the:
+    a) Accuracy = 1 - classification error rate
+    a) False positive rate
+    a) False negative rate
 
 ### Solutions {#Lec3_2_solutions}
 
-```{r, eval=FALSE, echo=FALSE}
-profiles %>% 
+```{r, echo=FALSE}
+library(okcupiddata)
+profiles <- profiles %>%
+  as_tibble() %>%
+  # Create binary outcome variable y:
+  mutate(y = ifelse(sex=="f", 1, 0)) %>%
+  # Remove heights below 50 inches:
+  filter(height>50) %>%
+  # Add ID column:
+  mutate(ID = 1:n()) %>%
+  select(ID, sex, y, height) %>%
+  # Remove all rows with NA missing values:
+  na.omit()
+profiles_train <- profiles %>% 
+  sample_frac(0.5)
+profiles_test <- profiles %>% 
+  anti_join(profiles_train, by="ID")
+```
+
+**Question 1.a)**: Histograms of male and female heights using a binwidth of 1 inch:
+
+```{r, echo=TRUE}
+ggplot(profiles, aes(x=height)) +
+  geom_histogram(binwidth = 1) +
+  facet_wrap(~sex, nrow=2) +
+  labs(title="Self-reported heights for women vs men", x="height (inches)")
+```
+
+**Question 1.b)**: "Going from shorter to taller, at what height would you
+start guessing that an individual is male?"
+
+```{r, echo=TRUE}
+proportion_female <- profiles %>% 
+  # For each (height x sex) combo, return count
   group_by(height, sex) %>% 
-  count() %>% 
+  summarise(n=n()) %>% 
+  # Create new grouping structure to compute proportions:
   group_by(height) %>% 
   mutate(prop = n/sum(n)) %>% 
-  filter(sex == "f") %>% 
-  ggplot(aes(x=height, y=prop)) +
-  geom_text(aes(label=n))
+  filter(sex == "f")
+
+ggplot(proportion_female, aes(x=height, y=prop)) +
+  geom_line() +
+  labs(x="height (inches)", y="Proportion women", title="Proportion women for each height")
+```
+
+Why is this so variable, especially at shorter and taller heights? Because of
+the small sample size. Let's also mark the number of women for each height:
+
+```{r, echo=TRUE}
+ggplot(proportion_female, aes(x=height, y=prop)) +
+  geom_line(alpha=0.2) + 
+  geom_text(aes(label=n), size=5) +
+  labs(x="height (inches)", y="Proportion women", title="Proportion women for each height")
+```
+
+Let's add a horizontal line at 40.2%:
+
+```{r, echo=TRUE}
+ggplot(proportion_female, aes(x=height, y=prop)) +
+  geom_line(alpha=0.2) + 
+  geom_text(aes(label=n), size=5) +
+  labs(x="height (inches)", y="Proportion women", title="Proportion women for each height") +
+  geom_hline(yintercept = 0.402, col="red")
+```
+
+We see that when we jump from 67 inches (5'7'' ~ 170.2cm) to 68 inches (5'8'' ~
+172.7) the proportion female drops below 40.2%. Why did I use 40.2% and not the
+intuitive 50% as a cutoff? Because 24106/(24106+35808) = 40.2% of this
+population are women, and not 50%. So the appropriate *baseline for comparison*
+is 40.2%.
+
+
+**Question 2**: The `.fitted` values are the fitted values *in log-odds space*
+$(-\infty, \infty)$. To convert back to probability space, we need to apply the 
+*inverse-logit function*.
+
+**Question 3**: Values for contingency table/confusion matrix. To compute this,
+we need a decision threshold $p^*$:
+
+```{r, echo=TRUE, cache=TRUE}
+p_star <- 0.5
+model_logistic <- glm(y~height, data=profiles_train, family="binomial")
+model_logistic %>% 
+  broom::augment() %>% 
+  as_tibble() %>% 
+  mutate(
+    p_hat = 1/(1+exp(-.fitted)),
+    y_hat = p_hat >= p_star
+    ) %>% 
+  group_by(y, y_hat) %>% 
+  summarise(n=n())
 ```
 
 
+**Question 4**: 
 
+Recall that $y=1$ indicates user was female.
+
+* Accuracy = 1 - classification error rate: (15167+9754)/(15167+2734+2302+9754) = 83.1%
+* False positive rate (rate at which men are predicted to be women): 2734/(2734+15167) = 15.3%
+* False negative rate (rate at which women are predicted to be men): 2302/(2302+9754) = 19.1%
 
 
 
 
 ***
-
-
-
 
 
 

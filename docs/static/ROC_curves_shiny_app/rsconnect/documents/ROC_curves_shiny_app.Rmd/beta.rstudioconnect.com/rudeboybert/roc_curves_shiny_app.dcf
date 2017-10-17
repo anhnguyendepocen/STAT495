@@ -1,0 +1,12 @@
+name: roc_curves_shiny_app
+title: ROC_curves_shiny_app
+username: rudeboybert
+account: rudeboybert
+server: beta.rstudioconnect.com
+hostUrl: https://beta.rstudioconnect.com/__api__
+appId: 3099
+bundleId: 6675
+url: https://beta.rstudioconnect.com/content/3099/
+when: 1508237239.16628
+asMultiple: FALSE
+asStatic: FALSE

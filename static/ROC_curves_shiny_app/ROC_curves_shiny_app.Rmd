@@ -3,6 +3,7 @@ title: "ROC Curves Shiny App"
 author: "Albert Y. Kim"
 date: "Last updated on `r Sys.Date()`"
 output: html_document
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -19,7 +20,8 @@ values <- read_csv("https://rudeboybert.github.io/STAT495/static/ROC_curves_shin
   tibble::rownames_to_column(var="ID")
 ```
 
-Let's take a look at a random sample of 10 rows out of `r nrow(values)` of the
+In our data set of `r nrow(values)` individuals, 24116 are women and 35827 are
+women. Let's take a look at a random sample of 10 rows of our data that we'll
 input data to our "Receiver Operating Characteristic" ROC curve:
 
 ```{r, echo=FALSE, message=FALSE}
@@ -31,7 +33,7 @@ values %>%
 We see that we have 
 
 * An identication variable `ID`
-* The truth: $y$ is 0 or 1
+* The binary truth: $y$ is 0 (male) or 1 (female)
 * The fitted probability $\widehat{p}$ which are values between 0 & 1.
 
 **Decision rule**: If $\widehat{p} > p^*$, then predict $\widehat{y} = 1$.
@@ -39,6 +41,15 @@ We see that we have
 
 
 ## ROC Curve as a Function of $p^*$
+
+An ROC Curve does *not* plot a function $(x, f(x))$, but rather a 
+*parametric curve* $\left(x\left(p^*\right), y\left(p^*\right)\right)$ as a function of parameter $p^*$ where:
+
+* $x\left(p^* \right)$: Resulting False Positive Rate $\mbox{FPR}(p^*)$
+* $y\left(p^* \right)$: Resulting True Positive Rate $\mbox{TPR}(p^*)$
+
+Play around with different thresholds $p^*$ to see the resulting confusion
+matrix/continency table below:
 
 ```{r eruptions, echo=FALSE}
 inputPanel(
@@ -51,17 +62,17 @@ renderPlot({
     summarise(
       Positive = sum(y),
       Negative = n() - sum(y)
-      ) %>%
+    ) %>%
     arrange(-p_hat) %>%
     mutate(
       TPR = cumsum(Positive) / sum(Positive),
       FPR = cumsum(Negative) / sum(Negative)
-      )
+    )
   
   AUC <- ROC_data %>% 
     summarise(AUC = sum(diff(FPR) * na.omit(lead(TPR) + TPR)) / 2)
-
-    current <- ROC_data %>% 
+  
+  current <- ROC_data %>% 
     mutate(
       diff_p = abs(p_hat - input$p_star)
     ) %>% 
@@ -75,7 +86,7 @@ renderPlot({
       x = expression(paste("False Positive Rate(", p, "*)")),
       y = expression(paste("True Positive Rate(", p, "*)")), 
       title = paste("ROC Curve as a Parametric Function of p*. Area Under Curve = ", round(AUC,3), sep="")
-      ) +
+    ) +
     geom_point(data=current, size=8, col="red")
 })
 
@@ -150,21 +161,13 @@ renderUI({
   
   TPR <- TP/(TP+FN)
   FPR <- FP/(FP+TN)
-
-str1 <- paste("False Positive Rate = ", FP, "/(", FP, "+", TN, ") = ", round(FPR,3), sep="")
-str2 <- paste( "True Positive Rate = ", TP, "/(", TP, "+", FN, ") = ", round(TPR,3), sep="")
-str <- paste( "$$\\mbox{False Positive Rate} = \\frac{", FP, "}{", FP, "+", TN, "} = \\thinspace ", round(FPR,3), "\\mbox{ & }","\\thinspace \\mbox{True Positive Rate} = \\frac{", TP, "}{", TP, "+", FN, "} = ", round(TPR,3),"$$", sep="")
-HTML(paste(str1, str2, sep = '<br/>'))
   
+  str1 <- paste("False positive rate (rate at which men are predicted to be women) = ", FP, "/(", FP, "+", TN, ") = ", round(FPR,3), sep="")
+  str2 <- paste( "True positive rate (rate at which women are predicted to be women) =", TP, "/(", TP, "+", FN, ") = ", round(TPR,3), sep="")
+  str <- paste( "$$\\mbox{False Positive Rate} = \\frac{", FP, "}{", FP, "+", TN, "} = \\thinspace ", round(FPR,3), "\\mbox{ & }","\\thinspace \\mbox{True Positive Rate} = \\frac{", TP, "}{", TP, "+", FN, "} = ", round(TPR,3),"$$", sep="")
+  HTML(paste(str1, str2, sep = '<br/>'))
 })
 ```
 
 
-## Note
 
-An ROC Curve does *not* plot a function $(x, f(x))$, but rather a 
-*parametric curve* $(x(\alpha), y(\alpha))$ as a function of parameter $\alpha$ where:
-
-* $\alpha$: Probability threshold $p^*$
-* $x(\alpha)$: Resulting False Positive Rate $\mbox{FPR}(p^*)$
-* $y(\alpha)$: Resulting True Positive Rate $\mbox{TPR}(p^*)$
