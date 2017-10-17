@@ -87,6 +87,74 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 
 
+# Problem set 7 {#PS07}
+
+## Information
+
+<a href="https://www.kaggle.com/c/GiveMeSomeCredit/data">
+<img border="0" alt="bike" src="images/credit.png" width="300">
+</a>
+
+Important dates/times:
+
+* Tue 10/17: Assigned.
+* Tue 10/24 8:30am:
+    + Pull request submission
+    + A 10-15 minute essay question quiz
+* Wed 10/25 9am: Feedback delivered by Andrew.
+* Thu 10/26 8:30am: (Optional) revisions due.
+
+There are two components to this week's assignment.
+
+1. **Code component:** You will enter the [Give Me Some
+Credit](https://www.kaggle.com/c/GiveMeSomeCredit) Kaggle competition and
+construct a binary classifier to predict whether or not someone experienced 90
+days past due delinquency or worse in the last 2 years. Fork a copy of the [PS07
+repo](https://github.com/2017-09-Amherst-STAT495/PS07) in the course GitHub
+Organization and then clone it. Notes:
+    a) Use only a **single** predictor variable chosen from `DebtRatio`, `age`, or `MonthlyIncome` and justify your choice.
+    a) Based on which every variable you chose, plot an ROC curve.
+    a) Plot an ROC curve based on *random guessing*.
+1. **Ethics of machine leanrning discussion component:** Listen to <a
+target="_blank" class="page-link"
+href="http://www.econtalk.org/archives/2016/10/cathy_oneil_on_1.html">Econ Talk
+podcast interview</a> (time 1h11m) of <a target="_blank" class="page-link"
+href="https://mathbabe.org/">Cathy O'Neil</a>, author of <a target="_blank"
+class="page-link" href="https://weaponsofmathdestructionbook.com/">Weapons of
+Math Destruction</a>. There will be a 10-15 minute essay question
+quiz at the start of class on Tuesday 10/24.
+
+
+Details: 
+
+* Teams: Individual
+* Presentations: None
+* Deliverables: One ready to submit *pull request* to the [PS07
+repo](https://github.com/2017-09-Amherst-STAT495/PS07). At the very least, the
+following files should be modified/added:
+    1. `PS07.Rmd`: Source code
+    1. `PS07.html`: The output of `PS07.Rmd`.
+    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
+    both Andrew and I can open your `PS07.html` in a browser.
+    1. `submission.csv`
+    1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
+
+
+
+
+
+
+
+
+
+
+
+
+
+***
+
+
+
 # 3.3 ROC curves
 
 ## Tue 10/17
@@ -117,41 +185,6 @@ whose values we use to plot one point on the cuve.
 ***
 
 
-
-
-
-# Problem set 7 {#PS07}
-
-## Information
-
-Important dates/times:
-
-* Tue 10/17: Assigned.
-* Tue 10/24 8:30am: Due via synchronized pull request. No presentations for PS06.
-* Wed 10/25 9am: Feedback delivered by Andrew.
-* Thu 10/26 8:30am: (Optional) revisions due.
-
-
-You will 
-
-Details: 
-
-* Teams: 
-* Presentations: 
-* Deliverables: One ready to submit *pull request* to the [PS07
-repo](https://github.com/2017-09-Amherst-STAT495/PS07). At the very least, the
-following files should be modified/added:
-    1. `PS07.Rmd`: Source code
-    1. `PS07.html`: The output of `PS07.Rmd`.
-    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
-    both Andrew and I can open your `PS07.html` in a browser.
-
-
-## Example solutions
-
-
-
-***
 
 
 
