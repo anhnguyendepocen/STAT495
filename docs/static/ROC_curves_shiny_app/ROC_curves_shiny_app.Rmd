@@ -9,24 +9,31 @@ runtime: shiny
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+set.seed(76)
 ```
 
 
 ## Background
 
 ```{r, echo=FALSE, message=FALSE}
-values <- read_csv("https://raw.githubusercontent.com/rudeboybert/MATH218/gh-pages/assets/classification/ROC_shiny/example.csv")
+values <- read_csv("https://rudeboybert.github.io/STAT495/static/ROC_curves_shiny_app/example.csv")
 ```
 
-The first three of the `r nrow(values)` rows of input data look like:
+Let's take a look at a random sample of 10 rows out of `r nrow(values)` of the
+input data to our "Receiver Operating Characteristic" ROC curve:
 
 ```{r, echo=FALSE, message=FALSE}
 values %>% 
-  head(3) %>% 
+  sample_n(10) %>% 
   knitr::kable()
 ```
 
-**Rule**: If $\widehat{p} > p^*$, then predict $\widehat{y} = 1$.
+We see that we have 
+
+* The truth: $y$ is 0 or 1
+* The fitted probability $\widehat{p}$ which are values between 0 & 1.
+
+**Decision rule**: If $\widehat{p} > p^*$, then predict $\widehat{y} = 1$.
 
 
 
