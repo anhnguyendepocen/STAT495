@@ -108,11 +108,11 @@ ggplot(NULL) +
 
 # Convert back to probability space
 ggplot(NULL) +
+  # Add observed binary y's, and put a little random jitter to the points
+  geom_jitter(data=fitted_model, aes(x=height, y=y), height=0.05, alpha=0.05) +
   geom_line(data=fitted_model, aes(x=height, y=p_hat), col="blue") +
   geom_point(data=predictions, aes(x=height, y=p_hat), col="red") +
-  labs(x="height (in inches)", y="p_hat", title="Fitted probability of being female vs height") +
-  # Add observed binary y's, and put a little random jitter to the points
-  geom_jitter(data=fitted_model, aes(x=height, y=y), height=0.05, alpha=0.05)
+  labs(x="height (in inches)", y="p_hat", title="Fitted probability of being female vs height")
 ```
 
 ### ROC curve {#ROC_curve}

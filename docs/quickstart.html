@@ -584,11 +584,11 @@ ggplot(NULL) +
 <p><img src="quickstart_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
 <pre class="r"><code># Convert back to probability space
 ggplot(NULL) +
+  # Add observed binary y&#39;s, and put a little random jitter to the points
+  geom_jitter(data=fitted_model, aes(x=height, y=y), height=0.05, alpha=0.05) +
   geom_line(data=fitted_model, aes(x=height, y=p_hat), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=height, y=p_hat), col=&quot;red&quot;) +
-  labs(x=&quot;height (in inches)&quot;, y=&quot;p_hat&quot;, title=&quot;Fitted probability of being female vs height&quot;) +
-  # Add observed binary y&#39;s, and put a little random jitter to the points
-  geom_jitter(data=fitted_model, aes(x=height, y=y), height=0.05, alpha=0.05)</code></pre>
+  labs(x=&quot;height (in inches)&quot;, y=&quot;p_hat&quot;, title=&quot;Fitted probability of being female vs height&quot;)</code></pre>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
 </div>
 <div id="ROC_curve" class="section level3">
