@@ -3,7 +3,7 @@ title: "Syllabus"
 output:
   html_document:
     toc: true
-    toc_depth: 3
+    toc_depth: 2
     toc_float:
       collapsed: false
 ---
@@ -139,14 +139,50 @@ regard. That being said, here is a rough hierarchy of how I much I refer to them
 
 ## Group Final Project 30%
 
-Much of this course is a build up to the final project. You will be
-participating in a Kaggle competition.
+Much of this course is a build up to the final project. You will participate in
+any Kaggle competition that has a leaderboard, but in a more exhaustive fashion.
+This could mean:
 
+* Comparing and constrasting methods
+* Drilling down on only one method
+* Thinking of creative ways of transformation existing variables
+
+**Details**:
+
+* Due Friday 12/22 5pm (last day of exams).
 * All groups members are expected to contribute and a system will be put in
 place to hold your group peers accountable for their work.
 * As per the Amherst College Student Code of Conduct's statement on
 [intellectual responbisility and plagiarism](https://www.amherst.edu/offices/student-affairs/community-standards/intellectual-responsibility-and-plagiarism) **all external sources must be cited in your submissions**.
-* More details and examples will be posted later in the semester.
+
+
+**Deliverables**:
+
+* On Thu 12/7, Mon 12/11, and Tue 12/12: in-class presentations.
+* On due date, an `.Rmd` file that
+    1. Is completely reproducible and easy for a new user to pick up and
+    understand and replicate. New users include: other people, future you, and
+    especially me!
+    1. Loads all data
+    1. Has an exploratory data analysis (EDA)
+    1. Shows your work
+    1. Creates a submission CSV file
+* On due date, a two-page max summary PDF of your thinking:
+    1. All the approaches you tried.
+    1. An easy-to-read description of what went into your ultimate submission.
+    1. What went well, what when wrong, and what you learned.
+    1. Examples
+        + [Team A](static/report_A.pdf)
+        + [Team G](static/report_G.pdf)
+        + [Team J](static/report_J.pdf)
+    
+
+
+
+
+
+
+
 
 
 ## Weekly Problem Sets 20% {#problem_sets}

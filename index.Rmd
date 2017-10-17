@@ -93,6 +93,7 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 Announcements:
 
+* [Topic schedule](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true) for rest of semester roughly finalized.
 * Go over [solutions to exercises from Lec 3.2](#Lec3_2_solutions)
 
 
