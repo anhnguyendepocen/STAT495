@@ -79,11 +79,54 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 <!--
 * Quiz on interpreting beta coefficients
+* PS06:
+    + Graduate level
+    + It took me 6 hours to figure it out 
+    + https://en.wikipedia.org/wiki/Bias%E2%80%93variance_tradeoff#Derivation
+    + https://youtu.be/k0GNAJwxTnQ?t=2m31s
 -->
 
 
 
 ***
+
+
+
+# 3.4 $k$ Nearest Neighbors
+
+## Thu 10/18
+
+Announcements:
+
+* Albert is [calling an audible](https://english.stackexchange.com/posts/39307/revisions)!
+    + Topic $k$-means clustering, an unsupervised learning technique, is now
+bumped up from Mon 11/13 to Mon 10/30 + Tue 10/31
+    + PS09 assigned on Tue 10/31, due Tue 11/7, will be on $k$-means clustering
+    + Why? [Prof Rachel Ward](https://www.ma.utexas.edu/users/rachel/) of University of Texas at Austin will be giving a talk "Mathematics for $k$-means clustering and beyond" on Friday 11/10 4:30pm in Seeley Mudd 206.
+
+<center>
+<a href="images/k_means.pdf">
+<img border="0" src="images/k_means.png" width="200">
+</a>
+</center>
+
+
+## PS06: Bias-variance tradeoff
+
+Why are we doing this? Watch this video <https://www.youtube.com/watch?v=k0GNAJwxTnQ&feature=youtu.be&t=2m31s> 
+
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=k0GNAJwxTnQ&feature=youtu.be&t=2m31s" frameborder="0" allowfullscreen></iframe>
+
+
+
+
+
+
+
+
+
+***
+
 
 
 
