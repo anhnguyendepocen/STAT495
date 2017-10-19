@@ -96,7 +96,6 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 ## Thu 10/18
 
-<!--
 Announcements:
 
 * Albert is [calling an audible](https://english.stackexchange.com/posts/39307/revisions)!
@@ -114,9 +113,47 @@ bumped up from Mon 11/13 to Mon 10/30 + Tue 10/31
 
 ## PS06: Bias-variance tradeoff
 
-Why are we doing this? Watch this video <https://www.youtube.com/watch?v=k0GNAJwxTnQ&feature=youtu.be&t=2m31s> 
--->
+* Question: Why are we doing this?
+* Answer: [Courtesy Obi-Wan Kenobi](https://www.youtube.com/watch?v=k0GNAJwxTnQ&feature=youtu.be&t=2m31s)
+* Slideshow:
 
+<a href="images/star_wars.pdf">
+<img border="0" src="images/bias_variance_1_you.png" width="500">
+</a>
+
+
+## Iris Data Set
+
+* Classic data set in statistics and machine learning
+([Wikipedia](https://en.wikipedia.org/wiki/Iris_flower_data_set)). Introduced by
+the Fisher in 1936 paper "The use of multiple measurements in taxonomic problems
+as an example of linear discriminant analysis."
+* Categorical outcome $y$: One of **three** species of iris flower
+* 4 Predictor variables $\vec{X}$: 
+    + Sepal length & width in cm
+    + Petal length & width in cm
+
+```{r}
+library(tidyverse)
+iris %>%
+  sample_n(5)
+```
+
+### Outcome variable $y$ image
+
+Setosa            |  Versicolor |  Virginica
+:-------------------------:|:-------------------------:|:-------------------------:
+<img src="images/iris_setosa.png" alt="Drawing" style="width: 250px;"/>  |  <img src="images/iris_versicolor.png" alt="Drawing" style="width: 250px;"/>  |  <img src="images/iris_virginica.png" alt="Drawing" style="width: 250px;"/>
+
+### Predictor variables $\vec{X}$ image
+
+<center><img src="images/petals_sepals.jpg" alt="Drawing" style="width: 300px;"/></center>
+
+
+
+## Chalk talk
+
+3.4 $k$ Nearest Neighbors
 
 
 

@@ -371,26 +371,127 @@ h1{font-weight: 400;}
 <h1>3.4 <span class="math inline">\(k\)</span> Nearest Neighbors</h1>
 <div id="thu-1018" class="section level2">
 <h2>Thu 10/18</h2>
-<!--
-Announcements:
-
-* Albert is [calling an audible](https://english.stackexchange.com/posts/39307/revisions)!
-    + Topic $k$-means clustering, an unsupervised learning technique, is now
-bumped up from Mon 11/13 to Mon 10/30 + Tue 10/31
-    + PS09 assigned on Tue 10/31, due Tue 11/7, will be on $k$-means clustering
-    + Why? [Prof Rachel Ward](https://www.ma.utexas.edu/users/rachel/) of University of Texas at Austin will be giving a talk "Mathematics for $k$-means clustering and beyond" on Friday 11/10 4:30pm in Seeley Mudd 206.
-
+<p>Announcements:</p>
+<ul>
+<li>Albert is <a href="https://english.stackexchange.com/posts/39307/revisions">calling an audible</a>!
+<ul>
+<li>Topic <span class="math inline">\(k\)</span>-means clustering, an unsupervised learning technique, is now bumped up from Mon 11/13 to Mon 10/30 + Tue 10/31</li>
+<li>PS09 assigned on Tue 10/31, due Tue 11/7, will be on <span class="math inline">\(k\)</span>-means clustering</li>
+<li>Why? <a href="https://www.ma.utexas.edu/users/rachel/">Prof Rachel Ward</a> of University of Texas at Austin will be giving a talk “Mathematics for <span class="math inline">\(k\)</span>-means clustering and beyond” on Friday 11/10 4:30pm in Seeley Mudd 206.</li>
+</ul></li>
+</ul>
 <center>
-<a href="images/k_means.pdf">
-<img border="0" src="images/k_means.png" width="200">
-</a>
+<a href="images/k_means.pdf"> <img border="0" src="images/k_means.png" width="200"> </a>
 </center>
-
-
-## PS06: Bias-variance tradeoff
-
-Why are we doing this? Watch this video <https://www.youtube.com/watch?v=k0GNAJwxTnQ&feature=youtu.be&t=2m31s> 
--->
+</div>
+<div id="ps06-bias-variance-tradeoff" class="section level2">
+<h2>PS06: Bias-variance tradeoff</h2>
+<ul>
+<li>Question: Why are we doing this?</li>
+<li>Answer: <a href="https://www.youtube.com/watch?v=k0GNAJwxTnQ&amp;feature=youtu.be&amp;t=2m31s">Courtesy Obi-Wan Kenobi</a></li>
+<li>Slideshow:</li>
+</ul>
+<p><a href="images/star_wars.pdf"> <img border="0" src="images/bias_variance_1_you.png" width="500"> </a></p>
+</div>
+<div id="iris-data-set" class="section level2">
+<h2>Iris Data Set</h2>
+<pre class="r"><code>library(tidyverse)
+iris %&gt;%
+  sample_n(5)</code></pre>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th></th>
+<th align="right">Sepal.Length</th>
+<th align="right">Sepal.Width</th>
+<th align="right">Petal.Length</th>
+<th align="right">Petal.Width</th>
+<th align="left">Species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>94</td>
+<td align="right">5.0</td>
+<td align="right">2.3</td>
+<td align="right">3.3</td>
+<td align="right">1.0</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td>110</td>
+<td align="right">7.2</td>
+<td align="right">3.6</td>
+<td align="right">6.1</td>
+<td align="right">2.5</td>
+<td align="left">virginica</td>
+</tr>
+<tr class="odd">
+<td>64</td>
+<td align="right">6.1</td>
+<td align="right">2.9</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td>15</td>
+<td align="right">5.8</td>
+<td align="right">4.0</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
+<td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td>69</td>
+<td align="right">6.2</td>
+<td align="right">2.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
+</tr>
+</tbody>
+</table>
+</div>
+<ul>
+<li>Classic data set in statistics and machine learning <a href="https://en.wikipedia.org/wiki/Iris_flower_data_set">wikipedia</a>. Introduced by the Fisher in 1936 paper “The use of multiple measurements in taxonomic problems as an example of linear discriminant analysis.”</li>
+<li>Categorical outcome <span class="math inline">\(y\)</span>: One of three species of iris flower</li>
+<li>4 Predictor variables <span class="math inline">\(\vec{X}\)</span>:
+<ul>
+<li>Sepal length &amp; width in cm</li>
+<li>Petal length &amp; width in cm</li>
+</ul></li>
+</ul>
+<div id="outcome-variable-image" class="section level3">
+<h3>Outcome variable image</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Setosa</th>
+<th align="center">Versicolor</th>
+<th align="center">Virginica</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><img src="images/iris_setosa.png" alt="Drawing" style="width: 250px;"/></td>
+<td align="center"><img src="images/iris_versicolor.png" alt="Drawing" style="width: 250px;"/></td>
+<td align="center"><img src="images/iris_virginica.png" alt="Drawing" style="width: 250px;"/></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div id="predictor-variable-image" class="section level3">
+<h3>Predictor variable image</h3>
+<center>
+<img src="images/petals_sepals.jpg" alt="Drawing" style="width: 400px;"/>
+</center>
+</div>
+</div>
+<div id="chalk-talk" class="section level2">
+<h2>Chalk talk</h2>
+<p>3.4 <span class="math inline">\(k\)</span> Nearest Neighbors</p>
 <hr />
 </div>
 </div>
@@ -450,7 +551,7 @@ class="page-link" href="https://weaponsofmathdestructionbook.com/">Weapons of Ma
 <li>Go over <a href="#Lec3_2_solutions">solutions to exercises from Lec 3.2</a></li>
 </ul>
 </div>
-<div id="chalk-talk" class="section level2">
+<div id="chalk-talk-1" class="section level2">
 <h2>Chalk talk</h2>
 <p>3.3 Receiver Operating Characterisitics (ROC) curves</p>
 </div>
@@ -503,7 +604,7 @@ class="page-link" href="https://weaponsofmathdestructionbook.com/">Weapons of Ma
   geom_histogram(binwidth = 1) +
   facet_wrap(~sex, nrow=2) +
   labs(title=&quot;Self-reported heights for women vs men&quot;, x=&quot;height (inches)&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
 <p><strong>Question 1.b)</strong>: “Going from shorter to taller, at what height would you start guessing that an individual is male?”</p>
 <pre class="r"><code>proportion_female &lt;- profiles %&gt;% 
   # For each (height x sex) combo, return count
@@ -517,20 +618,20 @@ class="page-link" href="https://weaponsofmathdestructionbook.com/">Weapons of Ma
 ggplot(proportion_female, aes(x=height, y=prop)) +
   geom_line() +
   labs(x=&quot;height (inches)&quot;, y=&quot;Proportion women&quot;, title=&quot;Proportion women for each height&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-5-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="768" /></p>
 <p>Why is this so variable, especially at shorter and taller heights? Because of the small sample size. Let’s also mark the number of women for each height:</p>
 <pre class="r"><code>ggplot(proportion_female, aes(x=height, y=prop)) +
   geom_line(alpha=0.2) + 
   geom_text(aes(label=n), size=5) +
   labs(x=&quot;height (inches)&quot;, y=&quot;Proportion women&quot;, title=&quot;Proportion women for each height&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-6-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="768" /></p>
 <p>Let’s add a horizontal line at 40.2%:</p>
 <pre class="r"><code>ggplot(proportion_female, aes(x=height, y=prop)) +
   geom_line(alpha=0.2) + 
   geom_text(aes(label=n), size=5) +
   labs(x=&quot;height (inches)&quot;, y=&quot;Proportion women&quot;, title=&quot;Proportion women for each height&quot;) +
   geom_hline(yintercept = 0.402, col=&quot;red&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-8-1.png" width="768" /></p>
 <p>We see that when we jump from 67 inches (5’7’‘~ 170.2cm) to 68 inches (5’8’’ ~ 172.7) the proportion female drops below 40.2%. Why did I use 40.2% and not the intuitive 50% as a cutoff? Because 24106/(24106+35808) = 40.2% of this population are women, and not 50%. So the appropriate <em>baseline for comparison</em> is 40.2%.</p>
 <p><strong>Question 2</strong>: The <code>.fitted</code> values are the fitted values <em>in log-odds space</em> <span class="math inline">\((-\infty, \infty)\)</span>. To convert back to probability space, we need to apply the <em>inverse-logit function</em>.</p>
 <p><strong>Question 3</strong>: Values for contingency table/confusion matrix. To compute this, we need a decision threshold <span class="math inline">\(p^*\)</span>:</p>
@@ -558,22 +659,22 @@ model_logistic %&gt;%
 <tr class="odd">
 <td align="right">0</td>
 <td align="left">FALSE</td>
-<td align="right">15167</td>
+<td align="right">15165</td>
 </tr>
 <tr class="even">
 <td align="right">0</td>
 <td align="left">TRUE</td>
-<td align="right">2734</td>
+<td align="right">2709</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
 <td align="left">FALSE</td>
-<td align="right">2302</td>
+<td align="right">2326</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
 <td align="left">TRUE</td>
-<td align="right">9754</td>
+<td align="right">9757</td>
 </tr>
 </tbody>
 </table>
@@ -646,7 +747,7 @@ model_logistic %&gt;%
 </ul></li>
 </ul>
 </div>
-<div id="chalk-talk-1" class="section level2">
+<div id="chalk-talk-2" class="section level2">
 <h2>Chalk talk</h2>
 <p>3.1 Starting categorical outcomes: Logistic regression</p>
 </div>
@@ -658,9 +759,9 @@ model_logistic %&gt;%
 \mbox{right-hand function} = \mbox{inverse-logit}(\alpha) &amp;= \frac{\exp(\alpha)}{\exp(\alpha) + 1} = \frac{1}{1+ \exp(-\alpha)}
 \end{align}
 \]</span></p>
-<p><img src="index_files/figure-html/unnamed-chunk-9-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="768" /></p>
 </div>
-<div id="chalk-talk-2" class="section level2">
+<div id="chalk-talk-3" class="section level2">
 <h2>Chalk talk</h2>
 <p>3.1: Topics</p>
 <ul>
@@ -689,7 +790,7 @@ model_logistic %&gt;%
 </ul></li>
 </ul>
 </div>
-<div id="chalk-talk-3" class="section level2">
+<div id="chalk-talk-4" class="section level2">
 <h2>Chalk talk</h2>
 <p>2.7 Bias-variance trade-off handouts:</p>
 <ul>
@@ -809,7 +910,7 @@ model_logistic %&gt;%
 <li>Quiz on Wed 10/11 (Monday schedule) after PS05 submission, worth one tenth of participation grade = 1% of final grade. Read the following explanation of the <a href="http://scott.fortmann-roe.com/docs/BiasVariance.html">bias-variance tradeoff</a> and be prepared to answer questions on it.</li>
 </ul>
 </div>
-<div id="chalk-talk-4" class="section level2">
+<div id="chalk-talk-5" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>2.6 Finish PS03 discussion: How to pick optimal degrees of freedom <span class="math inline">\(df^*\)</span></li>
@@ -823,9 +924,9 @@ model_logistic %&gt;%
 <li>Plus an extreme case of “perfect” fitting</li>
 <li>There is no new sample of points being collected nor crossvalidation going on here; just take the points and fit a model.</li>
 </ul>
-<p><img src="index_files/figure-html/unnamed-chunk-10-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-11-1.png" width="768" /></p>
 </div>
-<div id="chalk-talk-5" class="section level2">
+<div id="chalk-talk-6" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>2.6 Bias-Variance Trade-Off</li>
@@ -849,7 +950,7 @@ model_logistic %&gt;%
 <li>Via <a href="https://education.github.com/discount_requests/2106466/personal_details">GitHub Education</a> get a number of free private repositories and other benefits.</li>
 </ul>
 </div>
-<div id="chalk-talk-6" class="section level2">
+<div id="chalk-talk-7" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>2.5 Midterm I review</li>
@@ -892,10 +993,10 @@ delays_plot &lt;- ggplot(flights_sample, aes(x=dep_delay, y=arr_delay)) +
   geom_point()
 # Hover your mouse over the resulting plot
 ggplotly(delays_plot)</code></pre>
-<div id="f9a15734925a" style="width:576px;height:324px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="f9a15734925a">{"x":{"data":[{"x":[1,0,-8,-5,25,-4,null,1,-4,-7,15,1,2,3,121,14,77,5,-5,-2,-4,-3,11,39,-5,57,-4,1,226,1,-6,null,-5,-5,57,19,-1,-6,0,33,-7,-5,20,-3,5,37,-1,94,2,-5,3,40,-4,-5,152,0,52,-6,-9,19,-5,10,26,-5,-7,129,31,-5,-4,-9,50,152,43,-7,8,63,39,94,-3,-7,9,-1,8,-4,46,1,5,-1,16,0,-7,-1,42,1,-1,-2,2,-4,-1,-4],"y":[-13,-4,-10,-5,8,7,null,-10,-23,-23,-14,-4,17,-4,103,17,62,4,-30,-38,-10,-9,-3,55,14,87,-2,-11,266,-20,3,null,-14,-18,60,18,-6,-24,-7,24,38,0,-5,-11,4,43,-34,51,-18,-27,10,11,-1,-10,166,-12,24,2,-44,1,-48,17,27,2,5,141,31,-11,-32,5,26,128,33,4,-24,65,90,86,3,-19,-4,-21,24,-31,42,97,-9,-23,13,-20,-10,39,12,-1,-22,-14,-9,0,30,-11],"text":["dep_delay:   1<br />arr_delay: -13","dep_delay:   0<br />arr_delay:  -4","dep_delay:  -8<br />arr_delay: -10","dep_delay:  -5<br />arr_delay:  -5","dep_delay:  25<br />arr_delay:   8","dep_delay:  -4<br />arr_delay:   7","dep_delay:  NA<br />arr_delay:  NA","dep_delay:   1<br />arr_delay: -10","dep_delay:  -4<br />arr_delay: -23","dep_delay:  -7<br />arr_delay: -23","dep_delay:  15<br />arr_delay: -14","dep_delay:   1<br />arr_delay:  -4","dep_delay:   2<br />arr_delay:  17","dep_delay:   3<br />arr_delay:  -4","dep_delay: 121<br />arr_delay: 103","dep_delay:  14<br />arr_delay:  17","dep_delay:  77<br />arr_delay:  62","dep_delay:   5<br />arr_delay:   4","dep_delay:  -5<br />arr_delay: -30","dep_delay:  -2<br />arr_delay: -38","dep_delay:  -4<br />arr_delay: -10","dep_delay:  -3<br />arr_delay:  -9","dep_delay:  11<br />arr_delay:  -3","dep_delay:  39<br />arr_delay:  55","dep_delay:  -5<br />arr_delay:  14","dep_delay:  57<br />arr_delay:  87","dep_delay:  -4<br />arr_delay:  -2","dep_delay:   1<br />arr_delay: -11","dep_delay: 226<br />arr_delay: 266","dep_delay:   1<br />arr_delay: -20","dep_delay:  -6<br />arr_delay:   3","dep_delay:  NA<br />arr_delay:  NA","dep_delay:  -5<br />arr_delay: -14","dep_delay:  -5<br />arr_delay: -18","dep_delay:  57<br />arr_delay:  60","dep_delay:  19<br />arr_delay:  18","dep_delay:  -1<br />arr_delay:  -6","dep_delay:  -6<br />arr_delay: -24","dep_delay:   0<br />arr_delay:  -7","dep_delay:  33<br />arr_delay:  24","dep_delay:  -7<br />arr_delay:  38","dep_delay:  -5<br />arr_delay:   0","dep_delay:  20<br />arr_delay:  -5","dep_delay:  -3<br />arr_delay: -11","dep_delay:   5<br />arr_delay:   4","dep_delay:  37<br />arr_delay:  43","dep_delay:  -1<br />arr_delay: -34","dep_delay:  94<br />arr_delay:  51","dep_delay:   2<br />arr_delay: -18","dep_delay:  -5<br />arr_delay: -27","dep_delay:   3<br />arr_delay:  10","dep_delay:  40<br />arr_delay:  11","dep_delay:  -4<br />arr_delay:  -1","dep_delay:  -5<br />arr_delay: -10","dep_delay: 152<br />arr_delay: 166","dep_delay:   0<br />arr_delay: -12","dep_delay:  52<br />arr_delay:  24","dep_delay:  -6<br />arr_delay:   2","dep_delay:  -9<br />arr_delay: -44","dep_delay:  19<br />arr_delay:   1","dep_delay:  -5<br />arr_delay: -48","dep_delay:  10<br />arr_delay:  17","dep_delay:  26<br />arr_delay:  27","dep_delay:  -5<br />arr_delay:   2","dep_delay:  -7<br />arr_delay:   5","dep_delay: 129<br />arr_delay: 141","dep_delay:  31<br />arr_delay:  31","dep_delay:  -5<br />arr_delay: -11","dep_delay:  -4<br />arr_delay: -32","dep_delay:  -9<br />arr_delay:   5","dep_delay:  50<br />arr_delay:  26","dep_delay: 152<br />arr_delay: 128","dep_delay:  43<br />arr_delay:  33","dep_delay:  -7<br />arr_delay:   4","dep_delay:   8<br />arr_delay: -24","dep_delay:  63<br />arr_delay:  65","dep_delay:  39<br />arr_delay:  90","dep_delay:  94<br />arr_delay:  86","dep_delay:  -3<br />arr_delay:   3","dep_delay:  -7<br />arr_delay: -19","dep_delay:   9<br />arr_delay:  -4","dep_delay:  -1<br />arr_delay: -21","dep_delay:   8<br />arr_delay:  24","dep_delay:  -4<br />arr_delay: -31","dep_delay:  46<br />arr_delay:  42","dep_delay:   1<br />arr_delay:  97","dep_delay:   5<br />arr_delay:  -9","dep_delay:  -1<br />arr_delay: -23","dep_delay:  16<br />arr_delay:  13","dep_delay:   0<br />arr_delay: -20","dep_delay:  -7<br />arr_delay: -10","dep_delay:  -1<br />arr_delay:  39","dep_delay:  42<br />arr_delay:  12","dep_delay:   1<br />arr_delay:  -1","dep_delay:  -1<br />arr_delay: -22","dep_delay:  -2<br />arr_delay: -14","dep_delay:   2<br />arr_delay:  -9","dep_delay:  -4<br />arr_delay:   0","dep_delay:  -1<br />arr_delay:  30","dep_delay:  -4<br />arr_delay: -11"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":28.98833079655,"r":7.30593607305936,"b":42.9426686960934,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-20.75,237.75],"ticktext":["0","50","100","150","200"],"tickvals":[0,50,100,150,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"dep_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-63.7,281.7],"ticktext":["0","100","200"],"tickvals":[0,100,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"arr_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","width":576,"height":324},"source":"A","attrs":{"f9a1665502f2":{"x":{},"y":{},"type":"ggplotly"}},"cur_data":"f9a1665502f2","visdat":{"f9a1665502f2":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+<div id="ff8762190937" style="width:576px;height:324px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="ff8762190937">{"x":{"data":[{"x":[1,0,-8,-5,25,-4,null,1,-4,-7,15,1,2,3,121,14,77,5,-5,-2,-4,-3,11,39,-5,57,-4,1,226,1,-6,null,-5,-5,57,19,-1,-6,0,33,-7,-5,20,-3,5,37,-1,94,2,-5,3,40,-4,-5,152,0,52,-6,-9,19,-5,10,26,-5,-7,129,31,-5,-4,-9,50,152,43,-7,8,63,39,94,-3,-7,9,-1,8,-4,46,1,5,-1,16,0,-7,-1,42,1,-1,-2,2,-4,-1,-4],"y":[-13,-4,-10,-5,8,7,null,-10,-23,-23,-14,-4,17,-4,103,17,62,4,-30,-38,-10,-9,-3,55,14,87,-2,-11,266,-20,3,null,-14,-18,60,18,-6,-24,-7,24,38,0,-5,-11,4,43,-34,51,-18,-27,10,11,-1,-10,166,-12,24,2,-44,1,-48,17,27,2,5,141,31,-11,-32,5,26,128,33,4,-24,65,90,86,3,-19,-4,-21,24,-31,42,97,-9,-23,13,-20,-10,39,12,-1,-22,-14,-9,0,30,-11],"text":["dep_delay:   1<br />arr_delay: -13","dep_delay:   0<br />arr_delay:  -4","dep_delay:  -8<br />arr_delay: -10","dep_delay:  -5<br />arr_delay:  -5","dep_delay:  25<br />arr_delay:   8","dep_delay:  -4<br />arr_delay:   7","dep_delay:  NA<br />arr_delay:  NA","dep_delay:   1<br />arr_delay: -10","dep_delay:  -4<br />arr_delay: -23","dep_delay:  -7<br />arr_delay: -23","dep_delay:  15<br />arr_delay: -14","dep_delay:   1<br />arr_delay:  -4","dep_delay:   2<br />arr_delay:  17","dep_delay:   3<br />arr_delay:  -4","dep_delay: 121<br />arr_delay: 103","dep_delay:  14<br />arr_delay:  17","dep_delay:  77<br />arr_delay:  62","dep_delay:   5<br />arr_delay:   4","dep_delay:  -5<br />arr_delay: -30","dep_delay:  -2<br />arr_delay: -38","dep_delay:  -4<br />arr_delay: -10","dep_delay:  -3<br />arr_delay:  -9","dep_delay:  11<br />arr_delay:  -3","dep_delay:  39<br />arr_delay:  55","dep_delay:  -5<br />arr_delay:  14","dep_delay:  57<br />arr_delay:  87","dep_delay:  -4<br />arr_delay:  -2","dep_delay:   1<br />arr_delay: -11","dep_delay: 226<br />arr_delay: 266","dep_delay:   1<br />arr_delay: -20","dep_delay:  -6<br />arr_delay:   3","dep_delay:  NA<br />arr_delay:  NA","dep_delay:  -5<br />arr_delay: -14","dep_delay:  -5<br />arr_delay: -18","dep_delay:  57<br />arr_delay:  60","dep_delay:  19<br />arr_delay:  18","dep_delay:  -1<br />arr_delay:  -6","dep_delay:  -6<br />arr_delay: -24","dep_delay:   0<br />arr_delay:  -7","dep_delay:  33<br />arr_delay:  24","dep_delay:  -7<br />arr_delay:  38","dep_delay:  -5<br />arr_delay:   0","dep_delay:  20<br />arr_delay:  -5","dep_delay:  -3<br />arr_delay: -11","dep_delay:   5<br />arr_delay:   4","dep_delay:  37<br />arr_delay:  43","dep_delay:  -1<br />arr_delay: -34","dep_delay:  94<br />arr_delay:  51","dep_delay:   2<br />arr_delay: -18","dep_delay:  -5<br />arr_delay: -27","dep_delay:   3<br />arr_delay:  10","dep_delay:  40<br />arr_delay:  11","dep_delay:  -4<br />arr_delay:  -1","dep_delay:  -5<br />arr_delay: -10","dep_delay: 152<br />arr_delay: 166","dep_delay:   0<br />arr_delay: -12","dep_delay:  52<br />arr_delay:  24","dep_delay:  -6<br />arr_delay:   2","dep_delay:  -9<br />arr_delay: -44","dep_delay:  19<br />arr_delay:   1","dep_delay:  -5<br />arr_delay: -48","dep_delay:  10<br />arr_delay:  17","dep_delay:  26<br />arr_delay:  27","dep_delay:  -5<br />arr_delay:   2","dep_delay:  -7<br />arr_delay:   5","dep_delay: 129<br />arr_delay: 141","dep_delay:  31<br />arr_delay:  31","dep_delay:  -5<br />arr_delay: -11","dep_delay:  -4<br />arr_delay: -32","dep_delay:  -9<br />arr_delay:   5","dep_delay:  50<br />arr_delay:  26","dep_delay: 152<br />arr_delay: 128","dep_delay:  43<br />arr_delay:  33","dep_delay:  -7<br />arr_delay:   4","dep_delay:   8<br />arr_delay: -24","dep_delay:  63<br />arr_delay:  65","dep_delay:  39<br />arr_delay:  90","dep_delay:  94<br />arr_delay:  86","dep_delay:  -3<br />arr_delay:   3","dep_delay:  -7<br />arr_delay: -19","dep_delay:   9<br />arr_delay:  -4","dep_delay:  -1<br />arr_delay: -21","dep_delay:   8<br />arr_delay:  24","dep_delay:  -4<br />arr_delay: -31","dep_delay:  46<br />arr_delay:  42","dep_delay:   1<br />arr_delay:  97","dep_delay:   5<br />arr_delay:  -9","dep_delay:  -1<br />arr_delay: -23","dep_delay:  16<br />arr_delay:  13","dep_delay:   0<br />arr_delay: -20","dep_delay:  -7<br />arr_delay: -10","dep_delay:  -1<br />arr_delay:  39","dep_delay:  42<br />arr_delay:  12","dep_delay:   1<br />arr_delay:  -1","dep_delay:  -1<br />arr_delay: -22","dep_delay:  -2<br />arr_delay: -14","dep_delay:   2<br />arr_delay:  -9","dep_delay:  -4<br />arr_delay:   0","dep_delay:  -1<br />arr_delay:  30","dep_delay:  -4<br />arr_delay: -11"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":28.98833079655,"r":7.30593607305936,"b":42.9426686960934,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-20.75,237.75],"ticktext":["0","50","100","150","200"],"tickvals":[0,50,100,150,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"dep_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-63.7,281.7],"ticktext":["0","100","200"],"tickvals":[0,100,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"arr_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","width":576,"height":324},"source":"A","attrs":{"ff872313b236":{"x":{},"y":{},"type":"ggplotly"}},"cur_data":"ff872313b236","visdat":{"ff872313b236":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 </div>
-<div id="chalk-talk-7" class="section level2">
+<div id="chalk-talk-8" class="section level2">
 <h2>Chalk talk</h2>
 <p><a href="#PS02">Problem set 2</a> feedback</p>
 </div>
@@ -984,7 +1085,7 @@ mtcars %&gt;%
 <li>Install <code>plotly</code> package</li>
 </ul>
 </div>
-<div id="chalk-talk-8" class="section level2">
+<div id="chalk-talk-9" class="section level2">
 <h2>Chalk talk</h2>
 <p>2.3 Regression for prediction</p>
 </div>
@@ -1024,7 +1125,7 @@ credit &lt;- read_csv(&quot;http://www-bcf.usc.edu/~gareth/ISL/Credit.csv&quot;)
 <li>Today: 2.2 <del>Regression for prediction</del> A step back</li>
 </ul>
 </div>
-<div id="chalk-talk-9" class="section level2">
+<div id="chalk-talk-10" class="section level2">
 <h2>Chalk talk</h2>
 <p>2.2 A step back. Recall our “projection onto the sheet” exercise</p>
 </div>
@@ -1114,19 +1215,19 @@ bechdel_2000 &lt;- bechdel %&gt;%
 ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
   geom_point() +
   labs(x=&quot;Budget&quot;, y=&quot;Domestic Gross&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-14-1.png" width="614.4" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" width="614.4" /></p>
 <p>We see there is a right-skew to both the x and y-values. This is because we are comparing big budget Hollywood blockbusters with (likely) lower budget independent films. Hence, it’s really hard to see what’s going on at the lower-end of the budget scale. Let’s unskew both variables and compare not <em>absolute</em> differences, but rather, <em>relative</em> differences i.e. differences in “order of magnitude” using a <code>log10()</code> transformation:</p>
 <pre class="r"><code>ggplot(bechdel_2000, aes(x=log10(budget_2013), y=log10(domgross_2013))) +
   geom_point() +
   labs(x=&quot;log10(Budget)&quot;, y=&quot;log10(Domestic Gross)&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-15-1.png" width="614.4" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" width="614.4" /></p>
 <p>We can see a little better what’s going on at the lower end of the budget scale. However the values on the axes require a little thinking to process. For example at <span class="math inline">\(x=7\)</span>, this corresponds to movies with a budget of <span class="math inline">\(10^7 = 10,000,000\)</span> dollars. So instead, let’s <em>rescale</em> both axes so that they display the data in their original units.</p>
 <pre class="r"><code>ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
   geom_point() +
   scale_x_log10() +
   scale_y_log10() +
   labs(x=&quot;Budget (log10-scale)&quot;, y=&quot;Domestic Gross (log10-scale)&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-16-1.png" width="614.4" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-17-1.png" width="614.4" /></p>
 <p>Note that</p>
 <ul>
 <li>The two plots are identical, but the values on the axes are different.</li>
@@ -1137,7 +1238,7 @@ ggplot(bechdel_2000, aes(x=budget_2013, y=domgross_2013)) +
 <h2>Local regression: executive summary via <code>.gif</code></h2>
 <p><img border="0" src="images/loess.gif" height="400"></p>
 </div>
-<div id="chalk-talk-10" class="section level2">
+<div id="chalk-talk-11" class="section level2">
 <h2>Chalk talk</h2>
 <p>2.1 Local regression i.e. LOESS AKA LOWESS</p>
 <p>Corresponding book chapters</p>
@@ -1295,7 +1396,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <li>Problem set 02 presentations! Under <a href="#PS02">Problem set 2</a> section.</li>
 </ul>
 </div>
-<div id="chalk-talk-11" class="section level2">
+<div id="chalk-talk-12" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.7 Crossvalidation</p>
 <p>Corresponding book chapters</p>
@@ -1318,7 +1419,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <iframe width="560" height="315" src="https://www.youtube.com/embed/_tcBsryYd6s" frameborder="0" allowfullscreen>
 </iframe>
 </div>
-<div id="chalk-talk-12" class="section level2">
+<div id="chalk-talk-13" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.6 Texas sharpshooter fallacy scenarios</p>
 <ul>
@@ -1336,14 +1437,14 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <div id="scenario-d" class="section level2">
 <h2>Scenario D)</h2>
 <p>Let’s call the following example “Scenario D) Splines”. Recall from our <a href="#intro_to_splines">Intro to Splines</a> lecture the different fitted models based on different degrees of freedom (i.e. different numbers of knots).</p>
-<p><img src="index_files/figure-html/unnamed-chunk-19-1.png" width="768" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-20-1.png" width="768" /></p>
 </div>
 <div id="scenario-d-score" class="section level2">
 <h2>Scenario D): Score</h2>
 <p>Let’s define a notion of “score” to evaluate how good the above fits are: <em>mean squared error (MSE)</em>. Image courtesy <a href="https://twitter.com/chrisalbon">Chris Albon’s</a> excellent <a href="https://twitter.com/search?q=%23machinelearningflashcards%20%40chrisalbon&amp;src=typd">Machine Learning Flashcards</a>.</p>
 <p><img src="images/Mean_Squared_Error_print.png" alt="Drawing" style="width: 400px;"/></p>
 </div>
-<div id="chalk-talk-13" class="section level2">
+<div id="chalk-talk-14" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.6 Mean Squared Error</p>
 </div>
@@ -1377,7 +1478,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 </tbody>
 </table>
 </div>
-<div id="chalk-talk-14" class="section level2">
+<div id="chalk-talk-15" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.6 The “rather” of Scenario D) (to avoid the Texas Sharpshooter Fallacy).</p>
 <hr />
@@ -1400,7 +1501,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <img src="images/splines.png" alt="Drawing" style="width: 500px;"/>
 </center>
 </div>
-<div id="chalk-talk-15" class="section level2">
+<div id="chalk-talk-16" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.5 Splines</p>
 </div>
@@ -1417,7 +1518,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 <img src="images/target-population.jpg" alt="Drawing" style="width: 500px;"/>
 </center>
 </div>
-<div id="chalk-talk-16" class="section level2">
+<div id="chalk-talk-17" class="section level2">
 <h2>Chalk talk</h2>
 <p>1.5 Sampling</p>
 </div>
@@ -1488,7 +1589,7 @@ plot &lt;- ggplot(splines_model_tidy, aes(x=x)) +
   geom_point(aes(y=y)) +
   geom_line(aes(y=.fitted), col=&quot;blue&quot;)
 plot</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-21-1.png" width="480" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-22-1.png" width="480" /></p>
 <pre class="r"><code>new_speeds &lt;- c(24.6, 26.4, 23.4, 16.8, 15.8, 5.4, 14.8, 8.2, 1, 18.8, 25, 28, 19.6, 11.2, 21.8, 26.2, 20.6, 0, 14.4, 8.8)
 # What do you think output is?
 output &lt;- predict(splines_model, new_speeds) %&gt;% 
@@ -1532,7 +1633,7 @@ head(output)</code></pre>
 </div>
 <pre class="r"><code>plot +
   geom_point(data=output, aes(x=x, y=y), col=&quot;red&quot;)</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-21-2.png" width="480" /></p>
+<p><img src="index_files/figure-html/unnamed-chunk-22-2.png" width="480" /></p>
 </div>
 <div id="presentations" class="section level2">
 <h2>Presentations</h2>
@@ -1568,7 +1669,7 @@ head(output)</code></pre>
 <h2>Tue 9/12</h2>
 <p>Announcements: New office hours location: Seeley Mudd 208 (lounge)</p>
 </div>
-<div id="chalk-talk-17" class="section level2">
+<div id="chalk-talk-18" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>Analogy of what we are doing</li>
@@ -1679,7 +1780,7 @@ truth</code></pre>
 <li>(If time) Sampling and resampling</li>
 </ul>
 </div>
-<div id="chalk-talk-18" class="section level2">
+<div id="chalk-talk-19" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Supervised vs unsupervised</li>
@@ -1690,7 +1791,7 @@ truth</code></pre>
 <p>Colin Woodard’s idea of 11 Nations of North America:</p>
 <p><img src="http://emerald.tufts.edu/alumni/magazine/fall2013/images/features/upinarms-map-large.jpg" alt="Drawing" style="width: 600px;"/></p>
 </div>
-<div id="chalk-talk-19" class="section level2">
+<div id="chalk-talk-20" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Model for supervised learning</li>
@@ -1706,7 +1807,7 @@ Teaching my students to separate systematic model component from irreducible err
 </blockquote>
 <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
 </div>
-<div id="chalk-talk-20" class="section level2">
+<div id="chalk-talk-21" class="section level2">
 <h2>Chalk talk</h2>
 <ul>
 <li>1.3 Income example</li>
