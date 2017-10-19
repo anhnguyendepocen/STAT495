@@ -91,7 +91,6 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 ## Thu 10/19
 
-
 Announcements: Albert is [calling an audible](https://english.stackexchange.com/posts/39307/revisions)!
 
 * Topic $k$-means clustering, an unsupervised learning technique, is now bumped up from Mon 11/13 to Mon 10/30 + Tue 10/31
@@ -105,7 +104,7 @@ Announcements: Albert is [calling an audible](https://english.stackexchange.com/
 </center>
 
 
-<!--
+
 ## PS06: Bias-variance tradeoff
 
 * It took me 6 hours to figure it out $MSE = \frac{1}{n}\sum_{i=1}^{n}\left(y_i - \widehat{y}_i\right)^2$ and not $MSE = \frac{1}{n}\sum_{i=1}^{n}\left(f(x_i) - \widehat{y}_i\right)^2$
@@ -116,6 +115,8 @@ Announcements: Albert is [calling an audible](https://english.stackexchange.com/
 <a href="images/star_wars.pdf">
 <img border="0" src="images/bias_variance_1_you.png" width="500">
 </a>
+
+
 
 
 ## Iris Data Set
@@ -160,7 +161,8 @@ Supplemental materials:
 
 * [Handout](static/kNN/knn_all_plots.pdf)
 * [Shiny app](https://rsconnect.amherst.edu/connect/#/apps/14/)
--->
+
+
 
 
 
