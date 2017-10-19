@@ -52,7 +52,7 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 
 * **Lecture numbering**: The lectures are numbered according to the following
 rough topic outline:
-    1. Background
+    1. ~~Background~~
         * ~~Intro to modeling~~ 
         * ~~Simple case with univariate predictors to start: splines~~
         * ~~Sampling/resampling, out-of-sample prediction, crossvalidation~~
@@ -61,7 +61,7 @@ rough topic outline:
         * ~~LOESS smoother~~
         * ~~Regression for prediction~~
     1. Categorical outcomes i.e. classification
-        * ~~Logistic regression for prediction~~ + ROC curves
+        * ~~Logistic regression for prediction + ROC curves~~
         * k-Nearest Neighbors
         * Classification and regression trees (CART)
     1. Continuous outcome II
