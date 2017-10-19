@@ -89,7 +89,7 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 # 3.4 $k$ Nearest Neighbors
 
-## Thu 10/18
+## Thu 10/19
 
 
 Announcements: Albert is [calling an audible](https://english.stackexchange.com/posts/39307/revisions)!
