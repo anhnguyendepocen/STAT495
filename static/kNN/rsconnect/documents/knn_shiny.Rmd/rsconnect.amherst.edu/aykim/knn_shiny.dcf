@@ -1,0 +1,12 @@
+name: knn_shiny
+title: knn_shiny
+username: aykim
+account: aykim
+server: rsconnect.amherst.edu
+hostUrl: https://rsconnect.amherst.edu/__api__
+appId: 14
+bundleId: 34
+url: https://rsconnect.amherst.edu:443/content/14/
+when: 1508376296.09845
+asMultiple: FALSE
+asStatic: FALSE

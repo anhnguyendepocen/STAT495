@@ -96,6 +96,7 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 ## Thu 10/18
 
+<!--
 Announcements:
 
 * Albert is [calling an audible](https://english.stackexchange.com/posts/39307/revisions)!
@@ -113,6 +114,7 @@ bumped up from Mon 11/13 to Mon 10/30 + Tue 10/31
 
 ## PS06: Bias-variance tradeoff
 
+* It took me 6 hours to figure it out $MSE = \frac{1}{n}\sum_{i=1}^{n}\left(y_i - \widehat{y}_i\right)^2$ and not $MSE = \frac{1}{n}\sum_{i=1}^{n}\left(f(x_i) - \widehat{y}_i\right)^2$
 * Question: Why are we doing this?
 * Answer: [Courtesy Obi-Wan Kenobi](https://www.youtube.com/watch?v=k0GNAJwxTnQ&feature=youtu.be&t=2m31s)
 * Slideshow:
@@ -133,27 +135,38 @@ as an example of linear discriminant analysis."
     + Sepal length & width in cm
     + Petal length & width in cm
 
-```{r}
-library(tidyverse)
-iris %>%
-  sample_n(5)
-```
 
-### Outcome variable $y$ image
+### Outcome variable $y$ images
 
 Setosa            |  Versicolor |  Virginica
 :-------------------------:|:-------------------------:|:-------------------------:
-<img src="images/iris_setosa.png" alt="Drawing" style="width: 250px;"/>  |  <img src="images/iris_versicolor.png" alt="Drawing" style="width: 250px;"/>  |  <img src="images/iris_virginica.png" alt="Drawing" style="width: 250px;"/>
+<img src="images/iris_setosa.png" alt="Drawing" style="width: 200px;"/>  |  <img src="images/iris_versicolor.png" alt="Drawing" style="width: 200px;"/>  |  <img src="images/iris_virginica.png" alt="Drawing" style="width: 200px;"/>
 
 ### Predictor variables $\vec{X}$ image
 
-<center><img src="images/petals_sepals.jpg" alt="Drawing" style="width: 300px;"/></center>
+<center><img src="images/petals_sepals.jpg" alt="Drawing" style="width: 200px;"/></center>
+
+### Data in R
+
+```{r}
+library(tidyverse)
+iris %>%
+  as_tibble() %>% 
+  tibble::rownames_to_column(var="ID") %>% 
+  sample_n(5)
+```
 
 
 
 ## Chalk talk
 
 3.4 $k$ Nearest Neighbors
+
+Supplemental materials:
+
+* [Handout](static/kNN/knn_all_plots.pdf)
+* [Shiny app](https://rsconnect.amherst.edu/connect/#/apps/14/)
+-->
 
 
 
