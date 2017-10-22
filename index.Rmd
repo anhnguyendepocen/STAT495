@@ -86,8 +86,106 @@ clicking the GitHub icon on the top-right of the nav bar.
 ***
 
 
+<!--
+# 3.7
 
-# 3.4 $k$ Nearest Neighbors
+## Thu 10/26
+
+Announcements: 
+
+* 
+
+
+## Chalk talk
+
+3.7
+
+
+
+
+***
+
+
+
+
+# Problem set 8 {#PS08}
+
+## Information
+
+
+Important dates/times:
+
+* Tue 10/24: Assigned.
+* Tue 10/31 8:30am:
+    + Pull request submission
+* Wed 11/1 9am: Feedback delivered by Andrew.
+* Thu 11/2 8:30am: (Optional) revisions due.
+
+Details: 
+
+* Teams: Individual
+* Presentations: None
+* Deliverables: One ready to submit *pull request* to the [PS08
+repo](https://github.com/2017-09-Amherst-STAT495/PS08). At the very least, the
+following files should be modified/added:
+    1. `PS08.Rmd`: Source code
+    1. `PS08.html`: The output of `PS08.Rmd`.
+    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
+    both Andrew and I can open your `PS08.html` in a browser.
+    1. `submission.csv`
+    1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
+
+
+
+
+***
+
+
+
+
+# 3.6
+
+## Tue 10/24
+
+Announcements:
+
+* 
+
+
+## Chalk talk
+
+3.6
+
+
+
+
+***
+-->
+
+
+
+
+# 3.5 More $k$-nearest neighbors
+
+## Mon 10/23
+
+Announcements:
+
+* 
+
+
+## Chalk talk
+
+3.5 
+
+
+
+***
+
+
+
+
+# 3.4 $k$-nearest neighbors
 
 ## Thu 10/19
 
@@ -426,57 +524,6 @@ Recall that $y=1$ indicates user was female.
 
 
 
-# Problem set 6 {#PS06}
-
-## Information
-
-Important dates/times:
-
-* Wed 10/11: Assigned.
-* Tue 10/17 8:30am: Due via synchronized pull request. No presentations for PS06.
-* Wed 10/18 9am: Feedback delivered by Andrew.
-* Thu 10/19 8:30am: (Optional) revisions due.
-
-$$
-\mbox{MSE}\left[\widehat{f}(x)\right] = \mbox{Var}\left[\widehat{f}(x)\right] +
-\left(\mbox{Bias}\left[\widehat{f}(x)\right]\right)^2 + \sigma^2
-$$
-
-You will show that the above breakdown of the mean square error holds true for
-the two models fit in the handout from Lec 2.7.
-
-* The learning goal of the assignment is not so much to show the breakdown
-holds; we know this is true by probabilistic fact from the derivation in Lec
-2.7. Rather, the goal is to understand what is random and what is not in the
-above breakdown; you'll only be able to show the above breakdown by simulation
-if you understand these.
-* Much like `rnorm(100000, mean=5) %>% mean()` should roughly equal 5, you will
-show the equality based on `n_sim=100000` simulations.
-* You won't show this for *all* values on the domain of $f()$, but only for $x_0
-= 0.95$.
-
-Details: 
-
-* Teams: Individual
-* Presentations: None
-* Deliverables: One ready to submit *pull request* to the [PS06
-repo](https://github.com/2017-09-Amherst-STAT495/PS06). At the very least, the
-following files should be modified/added:
-    1. `PS06.Rmd`: Source code
-    1. `PS06.html`: The output of `PS06.Rmd`.
-    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
-    both Andrew and I can open your `PS06.html` in a browser. **Please test this
-    URL before submitting your work!**
-
-
-## Example solutions
-
-
-
-***
-
-
-
 # 3.1 Starting categorical outcomes
 
 ## Thu 10/12
@@ -558,6 +605,57 @@ grid.arrange(plot1, plot2, nrow=1)
 
 
 
+
+
+
+# Problem set 6 {#PS06}
+
+## Information
+
+Important dates/times:
+
+* Wed 10/11: Assigned.
+* Tue 10/17 8:30am: Due via synchronized pull request. No presentations for PS06.
+* Wed 10/18 9am: Feedback delivered by Andrew.
+* Thu 10/19 8:30am: (Optional) revisions due.
+
+$$
+\mbox{MSE}\left[\widehat{f}(x)\right] = \mbox{Var}\left[\widehat{f}(x)\right] +
+\left(\mbox{Bias}\left[\widehat{f}(x)\right]\right)^2 + \sigma^2
+$$
+
+You will show that the above breakdown of the mean square error holds true for
+the two models fit in the handout from Lec 2.7.
+
+* The learning goal of the assignment is not so much to show the breakdown
+holds; we know this is true by probabilistic fact from the derivation in Lec
+2.7. Rather, the goal is to understand what is random and what is not in the
+above breakdown; you'll only be able to show the above breakdown by simulation
+if you understand these.
+* Much like `rnorm(100000, mean=5) %>% mean()` should roughly equal 5, you will
+show the equality based on `n_sim=100000` simulations.
+* You won't show this for *all* values on the domain of $f()$, but only for $x_0
+= 0.95$.
+
+Details: 
+
+* Teams: Individual
+* Presentations: None
+* Deliverables: One ready to submit *pull request* to the [PS06
+repo](https://github.com/2017-09-Amherst-STAT495/PS06). At the very least, the
+following files should be modified/added:
+    1. `PS06.Rmd`: Source code
+    1. `PS06.html`: The output of `PS06.Rmd`.
+    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
+    both Andrew and I can open your `PS06.html` in a browser. **Please test this
+    URL before submitting your work!**
+
+
+## Example solutions
+
+
+
+***
 
 
 
