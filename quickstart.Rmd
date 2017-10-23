@@ -20,9 +20,43 @@ set.seed(76)
 ```
 
 
+# Categorical outcomes ($\geq$ 2 levels)
+
+```{r}
+library(tidyverse)
+library(caret)
+library(MLmetrics)
+```
+
+```{r, cache=TRUE}
+train <- iris %>%
+  as_tibble() %>%
+  # Add ID column:
+  mutate(ID = 1:n()) %>% 
+  select(ID, Species, Sepal.Length, Sepal.Width)
+
+test <- expand.grid(
+  Sepal.Length = seq(3.3, 8.7, by=0.1),
+  Sepal.Width = seq(1, 5.4, by=0.1)
+  ) %>%
+  tbl_df()
+```
+
+## $k$-nearest neighbors
+
+### Fit/train model
+
+```{r}
+
+```
 
 
-# Binary outcomes
+
+
+
+
+
+# Binary outcomes (2 levels)
 
 ```{r}
 library(tidyverse)

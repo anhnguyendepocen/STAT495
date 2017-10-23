@@ -314,8 +314,31 @@ div.tocify {
 <style>
 h1{font-weight: 400;}
 </style>
-<div id="binary-outcomes" class="section level1">
-<h1><span class="header-section-number">1</span> Binary outcomes</h1>
+<div id="categorical-outcomes-geq-2-levels" class="section level1">
+<h1><span class="header-section-number">1</span> Categorical outcomes (<span class="math inline">\(\geq\)</span> 2 levels)</h1>
+<pre class="r"><code>library(tidyverse)
+library(caret)
+library(MLmetrics)</code></pre>
+<pre class="r"><code>train &lt;- iris %&gt;%
+  as_tibble() %&gt;%
+  # Add ID column:
+  mutate(ID = 1:n()) %&gt;% 
+  select(ID, Species, Sepal.Length, Sepal.Width)
+
+test &lt;- expand.grid(
+  Sepal.Length = seq(3.3, 8.7, by=0.1),
+  Sepal.Width = seq(1, 5.4, by=0.1)
+  ) %&gt;%
+  tbl_df()</code></pre>
+<div id="k-nearest-neighbors" class="section level2">
+<h2><span class="header-section-number">1.1</span> <span class="math inline">\(k\)</span>-nearest neighbors</h2>
+<div id="fittrain-model" class="section level3">
+<h3><span class="header-section-number">1.1.1</span> Fit/train model</h3>
+</div>
+</div>
+</div>
+<div id="binary-outcomes-2-levels" class="section level1">
+<h1><span class="header-section-number">2</span> Binary outcomes (2 levels)</h1>
 <pre class="r"><code>library(tidyverse)
 library(broom)
 library(okcupiddata)</code></pre>
@@ -335,9 +358,9 @@ profiles_train &lt;- profiles %&gt;%
 profiles_test &lt;- profiles %&gt;% 
   anti_join(profiles_train, by=&quot;ID&quot;)</code></pre>
 <div id="logistic-regression-via-glm" class="section level2">
-<h2><span class="header-section-number">1.1</span> Logistic regression via <code>glm</code></h2>
-<div id="fittrain-model" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Fit/train model</h3>
+<h2><span class="header-section-number">2.1</span> Logistic regression via <code>glm</code></h2>
+<div id="fittrain-model-1" class="section level3">
+<h3><span class="header-section-number">2.1.1</span> Fit/train model</h3>
 <pre class="r"><code>model_formula &lt;- as.formula(y~height)
 model_logistic &lt;- glm(model_formula, data=profiles_train, family=&quot;binomial&quot;)
 
@@ -360,21 +383,21 @@ model_logistic %&gt;%
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="right">43.7523</td>
-<td align="right">0.4971</td>
-<td align="right">88.02</td>
+<td align="right">43.7522830</td>
+<td align="right">0.4970786</td>
+<td align="right">88.01885</td>
 <td align="right">0</td>
-<td align="right">42.7852</td>
-<td align="right">44.7338</td>
+<td align="right">42.785242</td>
+<td align="right">44.7338355</td>
 </tr>
 <tr class="even">
 <td align="left">height</td>
-<td align="right">-0.6516</td>
-<td align="right">0.0074</td>
-<td align="right">-88.55</td>
+<td align="right">-0.6515739</td>
+<td align="right">0.0073586</td>
+<td align="right">-88.54583</td>
 <td align="right">0</td>
-<td align="right">-0.6661</td>
-<td align="right">-0.6373</td>
+<td align="right">-0.666105</td>
+<td align="right">-0.6372586</td>
 </tr>
 </tbody>
 </table>
@@ -403,57 +426,57 @@ model_logistic %&gt;%
 <tr class="odd">
 <td align="right">0</td>
 <td align="right">72</td>
-<td align="right">-3.1610</td>
-<td align="right">0.0370</td>
-<td align="right">-0.2881</td>
-<td align="right">1e-04</td>
-<td align="right">0.8681</td>
-<td align="right">0</td>
-<td align="right">-0.2881</td>
+<td align="right">-3.1610371</td>
+<td align="right">0.0370102</td>
+<td align="right">-0.2881258</td>
+<td align="right">5.34e-05</td>
+<td align="right">0.8681114</td>
+<td align="right">1.10e-06</td>
+<td align="right">-0.2881335</td>
 </tr>
 <tr class="even">
 <td align="right">0</td>
 <td align="right">67</td>
-<td align="right">0.0968</td>
-<td align="right">0.0171</td>
-<td align="right">-1.2188</td>
-<td align="right">1e-04</td>
-<td align="right">0.8681</td>
-<td align="right">0</td>
-<td align="right">-1.2188</td>
+<td align="right">0.0968323</td>
+<td align="right">0.0171323</td>
+<td align="right">-1.2187985</td>
+<td align="right">7.32e-05</td>
+<td align="right">0.8680845</td>
+<td align="right">4.03e-05</td>
+<td align="right">-1.2188432</td>
 </tr>
 <tr class="odd">
 <td align="right">0</td>
 <td align="right">67</td>
-<td align="right">0.0968</td>
-<td align="right">0.0171</td>
-<td align="right">-1.2188</td>
-<td align="right">1e-04</td>
-<td align="right">0.8681</td>
-<td align="right">0</td>
-<td align="right">-1.2188</td>
+<td align="right">0.0968323</td>
+<td align="right">0.0171323</td>
+<td align="right">-1.2187985</td>
+<td align="right">7.32e-05</td>
+<td align="right">0.8680845</td>
+<td align="right">4.03e-05</td>
+<td align="right">-1.2188432</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
 <td align="right">67</td>
-<td align="right">0.0968</td>
-<td align="right">0.0171</td>
-<td align="right">1.1366</td>
-<td align="right">1e-04</td>
-<td align="right">0.8681</td>
-<td align="right">0</td>
-<td align="right">1.1366</td>
+<td align="right">0.0968323</td>
+<td align="right">0.0171323</td>
+<td align="right">1.1365761</td>
+<td align="right">7.32e-05</td>
+<td align="right">0.8680882</td>
+<td align="right">3.32e-05</td>
+<td align="right">1.1366177</td>
 </tr>
 <tr class="odd">
 <td align="right">0</td>
 <td align="right">73</td>
-<td align="right">-3.8126</td>
-<td align="right">0.0437</td>
-<td align="right">-0.2090</td>
-<td align="right">0e+00</td>
-<td align="right">0.8681</td>
-<td align="right">0</td>
-<td align="right">-0.2090</td>
+<td align="right">-3.8126110</td>
+<td align="right">0.0437024</td>
+<td align="right">-0.2090453</td>
+<td align="right">4.04e-05</td>
+<td align="right">0.8681122</td>
+<td align="right">4.00e-07</td>
+<td align="right">-0.2090495</td>
 </tr>
 </tbody>
 </table>
@@ -476,12 +499,12 @@ model_logistic %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">40381</td>
+<td align="right">40381.44</td>
 <td align="right">29956</td>
-<td align="right">-11287</td>
-<td align="right">22578</td>
-<td align="right">22595</td>
-<td align="right">22574</td>
+<td align="right">-11286.97</td>
+<td align="right">22577.94</td>
+<td align="right">22594.56</td>
+<td align="right">22573.94</td>
 <td align="right">29955</td>
 </tr>
 </tbody>
@@ -489,7 +512,7 @@ model_logistic %&gt;%
 </div>
 </div>
 <div id="predict-outcomes-for-test-data" class="section level3">
-<h3><span class="header-section-number">1.1.2</span> Predict outcomes for test data</h3>
+<h3><span class="header-section-number">2.1.2</span> Predict outcomes for test data</h3>
 <pre class="r"><code># 2. Make predictions on test data
 # Method 1:
 # -input: profiles_test is a data frame
@@ -522,52 +545,52 @@ model_logistic %&gt;%
 <td align="left">m</td>
 <td align="right">0</td>
 <td align="right">71</td>
-<td align="right">-2.510</td>
-<td align="right">0.0306</td>
-<td align="right">0.0752</td>
+<td align="right">-2.509463</td>
+<td align="right">0.0306253</td>
+<td align="right">0.0751974</td>
 </tr>
 <tr class="even">
 <td align="right">49914</td>
 <td align="left">f</td>
 <td align="right">1</td>
 <td align="right">59</td>
-<td align="right">5.309</td>
-<td align="right">0.0648</td>
-<td align="right">0.9951</td>
+<td align="right">5.309423</td>
+<td align="right">0.0648309</td>
+<td align="right">0.9950796</td>
 </tr>
 <tr class="odd">
 <td align="right">49214</td>
 <td align="left">m</td>
 <td align="right">0</td>
 <td align="right">69</td>
-<td align="right">-1.206</td>
-<td align="right">0.0200</td>
-<td align="right">0.2304</td>
+<td align="right">-1.206316</td>
+<td align="right">0.0199779</td>
+<td align="right">0.2303536</td>
 </tr>
 <tr class="even">
 <td align="right">32598</td>
 <td align="left">f</td>
 <td align="right">1</td>
 <td align="right">65</td>
-<td align="right">1.400</td>
-<td align="right">0.0249</td>
-<td align="right">0.8022</td>
+<td align="right">1.399980</td>
+<td align="right">0.0249220</td>
+<td align="right">0.8021807</td>
 </tr>
 <tr class="odd">
 <td align="right">57406</td>
 <td align="left">f</td>
 <td align="right">1</td>
 <td align="right">64</td>
-<td align="right">2.052</td>
-<td align="right">0.0308</td>
-<td align="right">0.8861</td>
+<td align="right">2.051554</td>
+<td align="right">0.0307791</td>
+<td align="right">0.8861045</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div id="plot" class="section level3">
-<h3><span class="header-section-number">1.1.3</span> Plot</h3>
+<h3><span class="header-section-number">2.1.3</span> Plot</h3>
 <pre class="r"><code>fitted_model &lt;- model_logistic %&gt;% 
   broom::augment() %&gt;% 
   as_tibble() %&gt;% 
@@ -581,7 +604,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=height, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=height, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;height (in inches)&quot;, y=&quot;Fitted log-odds of p_hat&quot;, title=&quot;Fitted log-odds of probability of being female vs height&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-5-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
 <pre class="r"><code># Convert back to probability space
 ggplot(NULL) +
   # Add observed binary y&#39;s, and put a little random jitter to the points
@@ -589,10 +612,10 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=height, y=p_hat), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=height, y=p_hat), col=&quot;red&quot;) +
   labs(x=&quot;height (in inches)&quot;, y=&quot;p_hat&quot;, title=&quot;Fitted probability of being female vs height&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-5-2.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-8-2.png" width="672" /></p>
 </div>
 <div id="ROC_curve" class="section level3">
-<h3><span class="header-section-number">1.1.4</span> ROC curve</h3>
+<h3><span class="header-section-number">2.1.4</span> ROC curve</h3>
 <pre class="r"><code>profiles_train_augmented &lt;- model_logistic %&gt;% 
   broom::augment() %&gt;% 
   as_tibble() %&gt;% 
@@ -610,12 +633,12 @@ auc</code></pre>
 <pre class="r"><code># This bit of code prints it
 plot(perf, main=paste(&quot;Area Under the Curve =&quot;, round(auc, 3)))
 abline(c(0, 1), lty=2)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 </div>
 </div>
 <div id="continuous-outcomes" class="section level1">
-<h1><span class="header-section-number">2</span> Continuous outcomes</h1>
+<h1><span class="header-section-number">3</span> Continuous outcomes</h1>
 <pre class="r"><code>library(tidyverse)
 library(broom)
 
@@ -629,9 +652,9 @@ mtcars_train &lt;- mtcars %&gt;%
 mtcars_test &lt;- mtcars %&gt;% 
   anti_join(mtcars_train, by=&quot;ID&quot;)</code></pre>
 <div id="regression-via-lm" class="section level2">
-<h2><span class="header-section-number">2.1</span> Regression via <code>lm</code></h2>
-<div id="fittrain-model-1" class="section level3">
-<h3><span class="header-section-number">2.1.1</span> Fit/train model</h3>
+<h2><span class="header-section-number">3.1</span> Regression via <code>lm</code></h2>
+<div id="fittrain-model-2" class="section level3">
+<h3><span class="header-section-number">3.1.1</span> Fit/train model</h3>
 <pre class="r"><code>model_formula &lt;- as.formula(&quot;mpg ~ hp&quot;)
 model_lm &lt;- lm(model_formula, data=mtcars_train)
 
@@ -654,21 +677,21 @@ model_lm %&gt;%
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="right">34.4838071</td>
-<td align="right">3.0879509</td>
-<td align="right">11.167214</td>
+<td align="right">26.624491</td>
+<td align="right">1.9116157</td>
+<td align="right">13.927742</td>
 <td align="right">0.0000000</td>
-<td align="right">27.8608111</td>
-<td align="right">41.1068031</td>
+<td align="right">22.5244829</td>
+<td align="right">30.7244987</td>
 </tr>
 <tr class="even">
 <td align="left">hp</td>
-<td align="right">-0.0987504</td>
-<td align="right">0.0211535</td>
-<td align="right">-4.668289</td>
-<td align="right">0.0003623</td>
-<td align="right">-0.1441201</td>
-<td align="right">-0.0533808</td>
+<td align="right">-0.048168</td>
+<td align="right">0.0108536</td>
+<td align="right">-4.437963</td>
+<td align="right">0.0005622</td>
+<td align="right">-0.0714468</td>
+<td align="right">-0.0248893</td>
 </tr>
 </tbody>
 </table>
@@ -695,59 +718,59 @@ model_lm %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">14.3</td>
-<td align="right">245</td>
-<td align="right">10.28996</td>
-<td align="right">2.477280</td>
-<td align="right">4.0100443</td>
-<td align="right">0.3783171</td>
-<td align="right">3.934432</td>
-<td align="right">0.4851678</td>
-<td align="right">1.2627503</td>
+<td align="right">15.5</td>
+<td align="right">150</td>
+<td align="right">19.39929</td>
+<td align="right">0.7926221</td>
+<td align="right">-3.8992854</td>
+<td align="right">0.0638516</td>
+<td align="right">3.057243</td>
+<td align="right">0.0562940</td>
+<td align="right">-1.2847906</td>
 </tr>
 <tr class="even">
+<td align="right">13.3</td>
+<td align="right">245</td>
+<td align="right">14.82332</td>
+<td align="right">1.2056518</td>
+<td align="right">-1.5233220</td>
+<td align="right">0.1477349</td>
+<td align="right">3.222831</td>
+<td align="right">0.0239843</td>
+<td align="right">-0.5260464</td>
+</tr>
+<tr class="odd">
+<td align="right">15.8</td>
+<td align="right">264</td>
+<td align="right">13.90813</td>
+<td align="right">1.3688767</td>
+<td align="right">1.8918707</td>
+<td align="right">0.1904443</td>
+<td align="right">3.202498</td>
+<td align="right">0.0528527</td>
+<td align="right">0.6703287</td>
+</tr>
+<tr class="even">
+<td align="right">15.2</td>
+<td align="right">180</td>
+<td align="right">17.95424</td>
+<td align="right">0.8118945</td>
+<td align="right">-2.7542443</td>
+<td align="right">0.0669944</td>
+<td align="right">3.157634</td>
+<td align="right">0.0296677</td>
+<td align="right">-0.9090338</td>
+</tr>
+<tr class="odd">
 <td align="right">17.3</td>
 <td align="right">180</td>
-<td align="right">16.70873</td>
-<td align="right">1.342828</td>
-<td align="right">0.5912674</td>
-<td align="right">0.1111594</td>
-<td align="right">4.176025</td>
-<td align="right">0.0015161</td>
-<td align="right">0.1557130</td>
-</tr>
-<tr class="odd">
-<td align="right">21.0</td>
-<td align="right">110</td>
-<td align="right">23.62126</td>
-<td align="right">1.168190</td>
-<td align="right">-2.6212616</td>
-<td align="right">0.0841264</td>
-<td align="right">4.110031</td>
-<td align="right">0.0212401</td>
-<td align="right">-0.6800571</td>
-</tr>
-<tr class="even">
-<td align="right">30.4</td>
-<td align="right">113</td>
-<td align="right">23.32501</td>
-<td align="right">1.137330</td>
-<td align="right">7.0749897</td>
-<td align="right">0.0797404</td>
-<td align="right">3.644912</td>
-<td align="right">0.1452731</td>
-<td align="right">1.8311480</td>
-</tr>
-<tr class="odd">
-<td align="right">32.4</td>
-<td align="right">66</td>
-<td align="right">27.96628</td>
-<td align="right">1.825795</td>
-<td align="right">4.4337202</td>
-<td align="right">0.2054990</td>
-<td align="right">3.945400</td>
-<td align="right">0.1972573</td>
-<td align="right">1.2350196</td>
+<td align="right">17.95424</td>
+<td align="right">0.8118945</td>
+<td align="right">-0.6542443</td>
+<td align="right">0.0669944</td>
+<td align="right">3.249737</td>
+<td align="right">0.0016740</td>
+<td align="right">-0.2159323</td>
 </tr>
 </tbody>
 </table>
@@ -774,16 +797,16 @@ model_lm %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">0.6088612</td>
-<td align="right">0.5809227</td>
-<td align="right">4.027608</td>
-<td align="right">21.79292</td>
-<td align="right">0.0003623</td>
+<td align="right">0.5845144</td>
+<td align="right">0.5548368</td>
+<td align="right">3.136753</td>
+<td align="right">19.69551</td>
+<td align="right">0.0005622</td>
 <td align="right">2</td>
-<td align="right">-43.92553</td>
-<td align="right">93.85106</td>
-<td align="right">96.16882</td>
-<td align="right">227.1028</td>
+<td align="right">-39.92578</td>
+<td align="right">85.85155</td>
+<td align="right">88.16932</td>
+<td align="right">137.7491</td>
 <td align="right">14</td>
 </tr>
 </tbody>
@@ -791,7 +814,7 @@ model_lm %&gt;%
 </div>
 </div>
 <div id="predict-outcomes-for-test-data-1" class="section level3">
-<h3><span class="header-section-number">2.1.2</span> Predict outcomes for test data</h3>
+<h3><span class="header-section-number">3.1.2</span> Predict outcomes for test data</h3>
 <pre class="r"><code># 2. Make predictions on test data
 # Method 1:
 # -input: mtcars_test is a data frame
@@ -816,46 +839,46 @@ model_lm %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">3</td>
+<td align="right">28</td>
+<td align="right">30.4</td>
+<td align="right">113</td>
+<td align="right">21.18150</td>
+<td align="right">0.9392238</td>
+</tr>
+<tr class="even">
+<td align="right">18</td>
+<td align="right">32.4</td>
+<td align="right">66</td>
+<td align="right">23.44540</td>
+<td align="right">1.2921813</td>
+</tr>
+<tr class="odd">
+<td align="right">30</td>
+<td align="right">19.7</td>
+<td align="right">175</td>
+<td align="right">18.19508</td>
+<td align="right">0.7995585</td>
+</tr>
+<tr class="even">
+<td align="right">9</td>
 <td align="right">22.8</td>
-<td align="right">93</td>
-<td align="right">25.30002</td>
-<td align="right">1.385632</td>
-</tr>
-<tr class="even">
-<td align="right">27</td>
-<td align="right">26.0</td>
-<td align="right">91</td>
-<td align="right">25.49752</td>
-<td align="right">1.415030</td>
+<td align="right">95</td>
+<td align="right">22.04853</td>
+<td align="right">1.0593770</td>
 </tr>
 <tr class="odd">
-<td align="right">16</td>
-<td align="right">10.4</td>
-<td align="right">215</td>
-<td align="right">13.25247</td>
-<td align="right">1.914913</td>
-</tr>
-<tr class="even">
-<td align="right">11</td>
-<td align="right">17.8</td>
-<td align="right">123</td>
-<td align="right">22.33751</td>
-<td align="right">1.055714</td>
-</tr>
-<tr class="odd">
-<td align="right">17</td>
-<td align="right">14.7</td>
-<td align="right">230</td>
-<td align="right">11.77121</td>
-<td align="right">2.191170</td>
+<td align="right">21</td>
+<td align="right">21.5</td>
+<td align="right">97</td>
+<td align="right">21.95219</td>
+<td align="right">1.0449057</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div id="plot-1" class="section level3">
-<h3><span class="header-section-number">2.1.3</span> Plot</h3>
+<h3><span class="header-section-number">3.1.3</span> Plot</h3>
 <pre class="r"><code>fitted_model &lt;- model_lm %&gt;% 
   broom::augment() %&gt;% 
   as_tibble()
@@ -867,13 +890,13 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 </div>
 <div id="loess" class="section level2">
-<h2><span class="header-section-number">2.2</span> LOESS</h2>
-<div id="fittrain-model-2" class="section level3">
-<h3><span class="header-section-number">2.2.1</span> Fit/train model</h3>
+<h2><span class="header-section-number">3.2</span> LOESS</h2>
+<div id="fittrain-model-3" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Fit/train model</h3>
 <pre class="r"><code>model_formula &lt;- as.formula(&quot;mpg ~ hp&quot;)
 model_loess &lt;- loess(model_formula, data=mtcars_train, span=0.9)
 
@@ -895,46 +918,46 @@ model_loess %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">17.3</td>
+<td align="right">16.4</td>
 <td align="right">180</td>
-<td align="right">16.66805</td>
-<td align="right">1.426152</td>
-<td align="right">0.6319468</td>
-</tr>
-<tr class="even">
-<td align="right">32.4</td>
-<td align="right">66</td>
-<td align="right">32.56568</td>
-<td align="right">2.395804</td>
-<td align="right">-0.1656798</td>
-</tr>
-<tr class="odd">
-<td align="right">14.3</td>
-<td align="right">245</td>
-<td align="right">14.45152</td>
-<td align="right">3.467183</td>
-<td align="right">-0.1515229</td>
+<td align="right">16.50306</td>
+<td align="right">0.6439809</td>
+<td align="right">-0.1030618</td>
 </tr>
 <tr class="even">
 <td align="right">30.4</td>
-<td align="right">113</td>
-<td align="right">21.44732</td>
-<td align="right">1.446189</td>
-<td align="right">8.9526848</td>
+<td align="right">52</td>
+<td align="right">30.66447</td>
+<td align="right">1.3261716</td>
+<td align="right">-0.2644678</td>
 </tr>
 <tr class="odd">
-<td align="right">21.4</td>
-<td align="right">109</td>
-<td align="right">22.11343</td>
-<td align="right">1.445075</td>
-<td align="right">-0.7134326</td>
+<td align="right">27.3</td>
+<td align="right">66</td>
+<td align="right">27.28707</td>
+<td align="right">0.9079373</td>
+<td align="right">0.0129277</td>
+</tr>
+<tr class="even">
+<td align="right">13.3</td>
+<td align="right">245</td>
+<td align="right">15.11083</td>
+<td align="right">0.9180818</td>
+<td align="right">-1.8108306</td>
+</tr>
+<tr class="odd">
+<td align="right">17.3</td>
+<td align="right">180</td>
+<td align="right">16.50306</td>
+<td align="right">0.6439809</td>
+<td align="right">0.7969382</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div id="predict-outcomes-for-test-data-2" class="section level3">
-<h3><span class="header-section-number">2.2.2</span> Predict outcomes for test data</h3>
+<h3><span class="header-section-number">3.2.2</span> Predict outcomes for test data</h3>
 <pre class="r"><code># 2. Make predictions on test data
 # Method 1:
 # -input: mtcars_test is a data frame
@@ -960,50 +983,50 @@ model_loess %&gt;%
 <tbody>
 <tr class="odd">
 <td>11</td>
-<td align="right">24</td>
-<td align="right">13.3</td>
-<td align="right">245</td>
-<td align="right">14.45152</td>
-<td align="right">3.467183</td>
+<td align="right">20</td>
+<td align="right">33.9</td>
+<td align="right">65</td>
+<td align="right">27.51394</td>
+<td align="right">0.9309295</td>
 </tr>
 <tr class="even">
-<td>1</td>
-<td align="right">2</td>
-<td align="right">21.0</td>
-<td align="right">110</td>
-<td align="right">21.93358</td>
-<td align="right">1.445757</td>
-</tr>
-<tr class="odd">
-<td>16</td>
-<td align="right">31</td>
-<td align="right">15.0</td>
-<td align="right">335</td>
-<td align="right">NA</td>
-<td align="right">NA</td>
-</tr>
-<tr class="even">
-<td>2</td>
-<td align="right">3</td>
-<td align="right">22.8</td>
-<td align="right">93</td>
-<td align="right">25.36161</td>
-<td align="right">1.401505</td>
-</tr>
-<tr class="odd">
-<td>13</td>
-<td align="right">26</td>
-<td align="right">27.3</td>
+<td>10</td>
+<td align="right">18</td>
+<td align="right">32.4</td>
 <td align="right">66</td>
-<td align="right">32.56568</td>
-<td align="right">2.395804</td>
+<td align="right">27.28707</td>
+<td align="right">0.9079373</td>
+</tr>
+<tr class="odd">
+<td>15</td>
+<td align="right">30</td>
+<td align="right">19.7</td>
+<td align="right">175</td>
+<td align="right">16.68050</td>
+<td align="right">0.6371232</td>
+</tr>
+<tr class="even">
+<td>4</td>
+<td align="right">9</td>
+<td align="right">22.8</td>
+<td align="right">95</td>
+<td align="right">21.70766</td>
+<td align="right">0.6938263</td>
+</tr>
+<tr class="odd">
+<td>12</td>
+<td align="right">21</td>
+<td align="right">21.5</td>
+<td align="right">97</td>
+<td align="right">21.39620</td>
+<td align="right">0.7001607</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div id="plot-2" class="section level3">
-<h3><span class="header-section-number">2.2.3</span> Plot</h3>
+<h3><span class="header-section-number">3.2.3</span> Plot</h3>
 <pre class="r"><code>fitted_model &lt;- model_loess %&gt;% 
   broom::augment() %&gt;% 
   as_tibble()
@@ -1016,13 +1039,13 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
 </div>
 </div>
 <div id="splines" class="section level2">
-<h2><span class="header-section-number">2.3</span> Splines</h2>
-<div id="fittrain-model-3" class="section level3">
-<h3><span class="header-section-number">2.3.1</span> Fit/train model</h3>
+<h2><span class="header-section-number">3.3</span> Splines</h2>
+<div id="fittrain-model-4" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Fit/train model</h3>
 <pre class="r"><code>model_spline &lt;- smooth.spline(x=mtcars_train$hp, y=mtcars_train$mpg, df = 4)
 
 # 1.a) Extract point-by-point info in tidy format
@@ -1043,39 +1066,39 @@ model_spline %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">175</td>
-<td align="right">19.7</td>
-<td align="right">1</td>
-<td align="right">16.88007</td>
-<td align="right">2.8199327</td>
-</tr>
-<tr class="even">
-<td align="right">180</td>
-<td align="right">15.2</td>
-<td align="right">1</td>
-<td align="right">16.77563</td>
-<td align="right">-1.5756261</td>
-</tr>
-<tr class="odd">
-<td align="right">180</td>
-<td align="right">17.3</td>
-<td align="right">1</td>
-<td align="right">16.77563</td>
-<td align="right">0.5243739</td>
-</tr>
-<tr class="even">
 <td align="right">150</td>
-<td align="right">15.2</td>
+<td align="right">15.5</td>
 <td align="right">1</td>
-<td align="right">17.53129</td>
-<td align="right">-2.3312877</td>
+<td align="right">17.42386</td>
+<td align="right">-1.9238600</td>
+</tr>
+<tr class="even">
+<td align="right">52</td>
+<td align="right">30.4</td>
+<td align="right">1</td>
+<td align="right">28.85336</td>
+<td align="right">1.5466406</td>
 </tr>
 <tr class="odd">
-<td align="right">245</td>
-<td align="right">14.3</td>
+<td align="right">105</td>
+<td align="right">18.1</td>
 <td align="right">1</td>
-<td align="right">14.43673</td>
-<td align="right">-0.1367315</td>
+<td align="right">21.17470</td>
+<td align="right">-3.0747032</td>
+</tr>
+<tr class="even">
+<td align="right">66</td>
+<td align="right">27.3</td>
+<td align="right">1</td>
+<td align="right">26.66150</td>
+<td align="right">0.6385012</td>
+</tr>
+<tr class="odd">
+<td align="right">335</td>
+<td align="right">15.0</td>
+<td align="right">1</td>
+<td align="right">14.82653</td>
+<td align="right">0.1734718</td>
 </tr>
 </tbody>
 </table>
@@ -1098,20 +1121,20 @@ model_spline %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">3.999666</td>
-<td align="right">0.0025159</td>
-<td align="right">14.71451</td>
-<td align="right">129.5929</td>
+<td align="right">3.99955</td>
+<td align="right">0.0029952</td>
+<td align="right">4.335081</td>
+<td align="right">36.62866</td>
 <td align="right">3</td>
-<td align="right">0.7110893</td>
-<td align="right">0.0025159</td>
+<td align="right">0.5467759</td>
+<td align="right">0.0029952</td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div id="predict-outcomes-for-test-data-3" class="section level3">
-<h3><span class="header-section-number">2.3.2</span> Predict outcomes for test data</h3>
+<h3><span class="header-section-number">3.3.2</span> Predict outcomes for test data</h3>
 <pre class="r"><code># 2. Make predictions on test data
 # Method 1:
 # -input: mtcars_test$hp is a vector
@@ -1126,7 +1149,7 @@ spline_fitted &lt;- spline_fitted %&gt;%
 y_hat &lt;- spline_fitted$.fitted</code></pre>
 </div>
 <div id="plot-3" class="section level3">
-<h3><span class="header-section-number">2.3.3</span> Plot</h3>
+<h3><span class="header-section-number">3.3.3</span> Plot</h3>
 <pre class="r"><code>fitted_model &lt;- model_spline %&gt;% 
   broom::augment() %&gt;% 
   as_tibble() %&gt;% 
@@ -1139,7 +1162,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
 </div>
 </div>
 </div>
