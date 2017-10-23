@@ -317,15 +317,88 @@ h1{font-weight: 400;}
 <div id="categorical-outcomes-geq-2-levels" class="section level1">
 <h1><span class="header-section-number">1</span> Categorical outcomes (<span class="math inline">\(\geq\)</span> 2 levels)</h1>
 <pre class="r"><code>library(tidyverse)
-train &lt;- iris %&gt;%
+iris &lt;- iris %&gt;%
   as_tibble() %&gt;%
   # Add ID column:
   mutate(ID = 1:n()) %&gt;% 
   select(ID, Species, Sepal.Length, Sepal.Width)</code></pre>
+<div id="classification-and-regression-trees" class="section level2">
+<h2><span class="header-section-number">1.1</span> Classification and regression trees</h2>
+<pre class="r"><code>library(rpart)
+model_formula &lt;- as.formula(Species ~ Sepal.Length + Sepal.Width)
+control &lt;- rpart.control(maxdepth = 3)
+model_CART &lt;- rpart(model_formula, data = iris, control=control)
+
+# Alas there is no broom functionality; this won&#39;t work
+# model_CART %&gt;% broom::tidy()
+# 
+# Use these instead, but they are not that helpful IMO
+# print(model_CART)
+# summary(model_CART)
+
+# Plot
+plot(model_CART, margin=0.25)
+text(model_CART, use.n = TRUE)
+title(&quot;Predicting iris species using sepal length &amp; width&quot;)
+box()</code></pre>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p>Where “Yes, go left. No, go right.” So for example, recall our outcome variable is a categorical variable with 3 levels: setosa, versicolor, and virginia.</p>
+<pre class="r"><code>iris %&gt;% 
+  filter(Sepal.Length &lt; 5.45, Sepal.Width &lt; 2.8) %&gt;% 
+  count(Species)</code></pre>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">Species</th>
+<th align="right">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">setosa</td>
+<td align="right">1</td>
+</tr>
+<tr class="even">
+<td align="left">versicolor</td>
+<td align="right">5</td>
+</tr>
+<tr class="odd">
+<td align="left">virginica</td>
+<td align="right">1</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>and</p>
+<pre class="r"><code>iris %&gt;% 
+  filter(Sepal.Length &gt;= 5.45, Sepal.Length &lt; 6.15, Sepal.Width &lt; 3.1) %&gt;% 
+  count(Species)</code></pre>
+<div class="kable-table">
+<table>
+<thead>
+<tr class="header">
+<th align="left">Species</th>
+<th align="right">n</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">versicolor</td>
+<td align="right">26</td>
+</tr>
+<tr class="even">
+<td align="left">virginica</td>
+<td align="right">10</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
 <div id="k-nearest-neighbors" class="section level2">
-<h2><span class="header-section-number">1.1</span> <span class="math inline">\(k\)</span>-nearest neighbors</h2>
+<h2><span class="header-section-number">1.2</span> <span class="math inline">\(k\)</span>-nearest neighbors</h2>
 <div id="fittrain-model" class="section level3">
-<h3><span class="header-section-number">1.1.1</span> Fit/train model</h3>
+<h3><span class="header-section-number">1.2.1</span> Fit/train model</h3>
 <pre class="r"><code>library(caret)
 library(MLmetrics)
 
@@ -334,7 +407,7 @@ model_formula &lt;- as.formula(Species ~ Sepal.Length + Sepal.Width)
 model_knn &lt;- caret::knn3(model_formula, data=iris, k = k)</code></pre>
 </div>
 <div id="get-fitted-probabilitiespredictions" class="section level3">
-<h3><span class="header-section-number">1.1.2</span> Get fitted probabilities/predictions</h3>
+<h3><span class="header-section-number">1.2.2</span> Get fitted probabilities/predictions</h3>
 <p><strong>Output 1:</strong> Get fitted probabilities</p>
 <pre class="r"><code>p_hat_matrix &lt;- model_knn %&gt;% 
   predict(newdata=iris, type=&quot;prob&quot;) %&gt;% 
@@ -356,28 +429,28 @@ p_hat_matrix %&gt;%
 <tbody>
 <tr class="odd">
 <td align="right">0</td>
-<td align="right">0.000</td>
-<td align="right">1.000</td>
-</tr>
-<tr class="even">
-<td align="right">1</td>
-<td align="right">0.000</td>
-<td align="right">0.000</td>
-</tr>
-<tr class="odd">
-<td align="right">0</td>
-<td align="right">1.000</td>
-<td align="right">0.000</td>
+<td align="right">0.6</td>
+<td align="right">0.4</td>
 </tr>
 <tr class="even">
 <td align="right">0</td>
-<td align="right">0.333</td>
-<td align="right">0.667</td>
+<td align="right">1.0</td>
+<td align="right">0.0</td>
+</tr>
+<tr class="odd">
+<td align="right">0</td>
+<td align="right">0.4</td>
+<td align="right">0.6</td>
+</tr>
+<tr class="even">
+<td align="right">1</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
 </tr>
 <tr class="odd">
 <td align="right">1</td>
-<td align="right">0.000</td>
-<td align="right">0.000</td>
+<td align="right">0.0</td>
+<td align="right">0.0</td>
 </tr>
 </tbody>
 </table>
@@ -392,12 +465,12 @@ MLmetrics::MultiLogLoss(y_true = iris$Species, y_pred = p_hat_matrix)</code></pr
 # Score/error
 MLmetrics::Accuracy(y_true = iris$Species, y_pred = y_hat)
 MLmetrics::ConfusionMatrix(y_true = iris$Species, y_pred = y_hat)</code></pre>
-<pre><code>## [1] 0.8333333</code></pre>
+<pre><code>## [1] 0.8533333</code></pre>
 <pre><code>##             y_pred
 ## y_true       setosa versicolor virginica
 ##   setosa         49          1         0
 ##   versicolor      0         39        11
-##   virginica       0         13        37</code></pre>
+##   virginica       0         10        40</code></pre>
 </div>
 </div>
 </div>
@@ -448,21 +521,21 @@ model_logistic %&gt;%
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="right">44.3913945</td>
-<td align="right">0.5046038</td>
-<td align="right">87.97278</td>
+<td align="right">44.0329697</td>
+<td align="right">0.5007408</td>
+<td align="right">87.93565</td>
 <td align="right">0</td>
-<td align="right">43.4097906</td>
-<td align="right">45.3878854</td>
+<td align="right">43.0588890</td>
+<td align="right">45.0218405</td>
 </tr>
 <tr class="even">
 <td align="left">height</td>
-<td align="right">-0.6608047</td>
-<td align="right">0.0074692</td>
-<td align="right">-88.47030</td>
+<td align="right">-0.6553189</td>
+<td align="right">0.0074099</td>
+<td align="right">-88.43862</td>
 <td align="right">0</td>
-<td align="right">-0.6755555</td>
-<td align="right">-0.6462754</td>
+<td align="right">-0.6699525</td>
+<td align="right">-0.6409051</td>
 </tr>
 </tbody>
 </table>
@@ -489,59 +562,59 @@ model_logistic %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">0</td>
-<td align="right">65</td>
-<td align="right">1.439086</td>
-<td align="right">0.0251976</td>
-<td align="right">-1.8176315</td>
-<td align="right">9.84e-05</td>
-<td align="right">0.8661346</td>
-<td align="right">0.0002075</td>
-<td align="right">-1.8177209</td>
+<td align="right">1</td>
+<td align="right">66</td>
+<td align="right">0.7819241</td>
+<td align="right">0.0202659</td>
+<td align="right">0.8680319</td>
+<td align="right">8.85e-05</td>
+<td align="right">0.8660989</td>
+<td align="right">2.02e-05</td>
+<td align="right">0.8680703</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
-<td align="right">64</td>
-<td align="right">2.099891</td>
-<td align="right">0.0311759</td>
-<td align="right">0.4806899</td>
-<td align="right">9.45e-05</td>
-<td align="right">0.8661938</td>
-<td align="right">0.0000058</td>
-<td align="right">0.4807126</td>
+<td align="right">67</td>
+<td align="right">0.1266053</td>
+<td align="right">0.0172202</td>
+<td align="right">1.1241413</td>
+<td align="right">7.38e-05</td>
+<td align="right">0.8660891</td>
+<td align="right">3.25e-05</td>
+<td align="right">1.1241828</td>
 </tr>
 <tr class="odd">
-<td align="right">0</td>
-<td align="right">72</td>
-<td align="right">-3.186547</td>
-<td align="right">0.0374163</td>
-<td align="right">-0.2845476</td>
-<td align="right">5.33e-05</td>
-<td align="right">0.8661967</td>
-<td align="right">0.0000011</td>
-<td align="right">-0.2845551</td>
+<td align="right">1</td>
+<td align="right">66</td>
+<td align="right">0.7819241</td>
+<td align="right">0.0202659</td>
+<td align="right">0.8680319</td>
+<td align="right">8.85e-05</td>
+<td align="right">0.8660989</td>
+<td align="right">2.02e-05</td>
+<td align="right">0.8680703</td>
 </tr>
 <tr class="even">
-<td align="right">1</td>
-<td align="right">61</td>
-<td align="right">4.082305</td>
-<td align="right">0.0515021</td>
-<td align="right">0.1829089</td>
-<td align="right">4.33e-05</td>
-<td align="right">0.8661976</td>
-<td align="right">0.0000004</td>
-<td align="right">0.1829129</td>
+<td align="right">0</td>
+<td align="right">66</td>
+<td align="right">0.7819241</td>
+<td align="right">0.0202659</td>
+<td align="right">-1.5222771</td>
+<td align="right">8.85e-05</td>
+<td align="right">0.8660688</td>
+<td align="right">9.67e-05</td>
+<td align="right">-1.5223444</td>
 </tr>
 <tr class="odd">
 <td align="right">0</td>
-<td align="right">73</td>
-<td align="right">-3.847352</td>
-<td align="right">0.0442220</td>
-<td align="right">-0.2054835</td>
-<td align="right">4.00e-05</td>
-<td align="right">0.8661974</td>
-<td align="right">0.0000004</td>
-<td align="right">-0.2054876</td>
+<td align="right">66</td>
+<td align="right">0.7819241</td>
+<td align="right">0.0202659</td>
+<td align="right">-1.5222771</td>
+<td align="right">8.85e-05</td>
+<td align="right">0.8660688</td>
+<td align="right">9.67e-05</td>
+<td align="right">-1.5223444</td>
 </tr>
 </tbody>
 </table>
@@ -564,12 +637,12 @@ model_logistic %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">40426.82</td>
+<td align="right">40454.53</td>
 <td align="right">29956</td>
-<td align="right">-11237.23</td>
-<td align="right">22478.47</td>
-<td align="right">22495.08</td>
-<td align="right">22474.47</td>
+<td align="right">-11235.03</td>
+<td align="right">22474.07</td>
+<td align="right">22490.68</td>
+<td align="right">22470.07</td>
 <td align="right">29955</td>
 </tr>
 </tbody>
@@ -606,49 +679,49 @@ model_logistic %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">36758</td>
-<td align="left">m</td>
-<td align="right">0</td>
-<td align="right">70</td>
-<td align="right">-1.864937</td>
-<td align="right">0.0249699</td>
-<td align="right">0.1341286</td>
-</tr>
-<tr class="even">
-<td align="right">52680</td>
-<td align="left">m</td>
-<td align="right">0</td>
-<td align="right">74</td>
-<td align="right">-4.508156</td>
-<td align="right">0.0512130</td>
-<td align="right">0.0108987</td>
-</tr>
-<tr class="odd">
-<td align="right">54198</td>
-<td align="left">f</td>
-<td align="right">1</td>
-<td align="right">64</td>
-<td align="right">2.099891</td>
-<td align="right">0.0311759</td>
-<td align="right">0.8908926</td>
-</tr>
-<tr class="even">
-<td align="right">927</td>
-<td align="left">m</td>
-<td align="right">0</td>
-<td align="right">72</td>
-<td align="right">-3.186547</td>
-<td align="right">0.0374163</td>
-<td align="right">0.0396751</td>
-</tr>
-<tr class="odd">
-<td align="right">52295</td>
+<td align="right">22750</td>
 <td align="left">m</td>
 <td align="right">0</td>
 <td align="right">71</td>
-<td align="right">-2.525742</td>
-<td align="right">0.0309184</td>
-<td align="right">0.0740732</td>
+<td align="right">-2.4946702</td>
+<td align="right">0.0306263</td>
+<td align="right">0.0762327</td>
+</tr>
+<tr class="even">
+<td align="right">3011</td>
+<td align="left">f</td>
+<td align="right">1</td>
+<td align="right">67</td>
+<td align="right">0.1266053</td>
+<td align="right">0.0172202</td>
+<td align="right">0.5316091</td>
+</tr>
+<tr class="odd">
+<td align="right">37141</td>
+<td align="left">m</td>
+<td align="right">0</td>
+<td align="right">67</td>
+<td align="right">0.1266053</td>
+<td align="right">0.0172202</td>
+<td align="right">0.5316091</td>
+</tr>
+<tr class="even">
+<td align="right">40500</td>
+<td align="left">m</td>
+<td align="right">0</td>
+<td align="right">67</td>
+<td align="right">0.1266053</td>
+<td align="right">0.0172202</td>
+<td align="right">0.5316091</td>
+</tr>
+<tr class="odd">
+<td align="right">11372</td>
+<td align="left">f</td>
+<td align="right">1</td>
+<td align="right">67</td>
+<td align="right">0.1266053</td>
+<td align="right">0.0172202</td>
+<td align="right">0.5316091</td>
 </tr>
 </tbody>
 </table>
@@ -669,7 +742,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=height, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=height, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;height (in inches)&quot;, y=&quot;Fitted log-odds of p_hat&quot;, title=&quot;Fitted log-odds of probability of being female vs height&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <pre class="r"><code># Convert back to probability space
 ggplot(NULL) +
   # Add observed binary y&#39;s, and put a little random jitter to the points
@@ -677,7 +750,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=height, y=p_hat), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=height, y=p_hat), col=&quot;red&quot;) +
   labs(x=&quot;height (in inches)&quot;, y=&quot;p_hat&quot;, title=&quot;Fitted probability of being female vs height&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-9-2.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-12-2.png" width="672" /></p>
 </div>
 <div id="ROC_curve" class="section level3">
 <h3><span class="header-section-number">2.1.4</span> ROC curve</h3>
@@ -694,11 +767,11 @@ perf &lt;- performance(pred, &quot;tpr&quot;,&quot;fpr&quot;)
 # This bit of code computes the Area Under the Curve
 auc &lt;- as.numeric(performance(pred,&quot;auc&quot;)@y.values)
 auc</code></pre>
-<pre><code>## [1] 0.9078867</code></pre>
+<pre><code>## [1] 0.9092085</code></pre>
 <pre class="r"><code># This bit of code prints it
 plot(perf, main=paste(&quot;Area Under the Curve =&quot;, round(auc, 3)))
 abline(c(0, 1), lty=2)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -742,21 +815,21 @@ model_lm %&gt;%
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="right">29.0321500</td>
-<td align="right">2.3236990</td>
-<td align="right">12.493937</td>
-<td align="right">0.0000000</td>
-<td align="right">24.0483112</td>
-<td align="right">34.015989</td>
+<td align="right">33.610211</td>
+<td align="right">1.7902598</td>
+<td align="right">18.773929</td>
+<td align="right">0.0e+00</td>
+<td align="right">29.7704853</td>
+<td align="right">37.4499360</td>
 </tr>
 <tr class="even">
 <td align="left">hp</td>
-<td align="right">-0.0585117</td>
-<td align="right">0.0127689</td>
-<td align="right">-4.582343</td>
-<td align="right">0.0004266</td>
-<td align="right">-0.0858983</td>
-<td align="right">-0.031125</td>
+<td align="right">-0.105647</td>
+<td align="right">0.0131571</td>
+<td align="right">-8.029685</td>
+<td align="right">1.3e-06</td>
+<td align="right">-0.1338661</td>
+<td align="right">-0.0774279</td>
 </tr>
 </tbody>
 </table>
@@ -783,59 +856,59 @@ model_lm %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">18.7</td>
-<td align="right">175</td>
-<td align="right">18.79261</td>
-<td align="right">0.9683632</td>
-<td align="right">-0.0926102</td>
-<td align="right">0.0634569</td>
-<td align="right">3.989163</td>
-<td align="right">0.0000210</td>
-<td align="right">-0.0248941</td>
-</tr>
-<tr class="even">
-<td align="right">14.7</td>
-<td align="right">230</td>
-<td align="right">15.57447</td>
-<td align="right">1.2641048</td>
-<td align="right">-0.8744691</td>
-<td align="right">0.1081354</td>
-<td align="right">3.980976</td>
-<td align="right">0.0035175</td>
-<td align="right">-0.2408774</td>
-</tr>
-<tr class="odd">
-<td align="right">21.4</td>
-<td align="right">110</td>
-<td align="right">22.59587</td>
-<td align="right">1.1954951</td>
-<td align="right">-1.1958678</td>
-<td align="right">0.0967158</td>
-<td align="right">3.973957</td>
-<td align="right">0.0057357</td>
-<td align="right">-0.3273196</td>
-</tr>
-<tr class="even">
-<td align="right">33.9</td>
-<td align="right">65</td>
-<td align="right">25.22889</td>
-<td align="right">1.6051608</td>
-<td align="right">8.6711077</td>
-<td align="right">0.1743569</td>
-<td align="right">2.984801</td>
-<td align="right">0.6506920</td>
-<td align="right">2.4824435</td>
-</tr>
-<tr class="odd">
 <td align="right">10.4</td>
 <td align="right">215</td>
-<td align="right">16.45214</td>
-<td align="right">1.1489429</td>
-<td align="right">-6.0521440</td>
-<td align="right">0.0893303</td>
-<td align="right">3.580526</td>
-<td align="right">0.1334958</td>
-<td align="right">-1.6497943</td>
+<td align="right">10.89611</td>
+<td align="right">1.3277138</td>
+<td align="right">-0.4961098</td>
+<td align="right">0.2632877</td>
+<td align="right">2.680441</td>
+<td align="right">0.0089162</td>
+<td align="right">-0.2233776</td>
+</tr>
+<tr class="even">
+<td align="right">21.5</td>
+<td align="right">97</td>
+<td align="right">23.36245</td>
+<td align="right">0.7569451</td>
+<td align="right">-1.8624535</td>
+<td align="right">0.0855757</td>
+<td align="right">2.630336</td>
+<td align="right">0.0265105</td>
+<td align="right">-0.7527008</td>
+</tr>
+<tr class="odd">
+<td align="right">32.4</td>
+<td align="right">66</td>
+<td align="right">26.63751</td>
+<td align="right">1.0295446</td>
+<td align="right">5.7624901</td>
+<td align="right">0.1583113</td>
+<td align="right">2.043451</td>
+<td align="right">0.5541418</td>
+<td align="right">2.4274218</td>
+</tr>
+<tr class="even">
+<td align="right">19.2</td>
+<td align="right">175</td>
+<td align="right">15.12199</td>
+<td align="right">0.9051990</td>
+<td align="right">4.0780109</td>
+<td align="right">0.1223798</td>
+<td align="right">2.398506</td>
+<td align="right">0.1973262</td>
+<td align="right">1.6823094</td>
+</tr>
+<tr class="odd">
+<td align="right">26.0</td>
+<td align="right">91</td>
+<td align="right">23.99634</td>
+<td align="right">0.8007853</td>
+<td align="right">2.0036646</td>
+<td align="right">0.0957753</td>
+<td align="right">2.620865</td>
+<td align="right">0.0351190</td>
+<td align="right">0.8143248</td>
 </tr>
 </tbody>
 </table>
@@ -862,16 +935,16 @@ model_lm %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">0.5999756</td>
-<td align="right">0.5714025</td>
-<td align="right">3.844139</td>
-<td align="right">20.99787</td>
-<td align="right">0.0004266</td>
+<td align="right">0.8216011</td>
+<td align="right">0.8088584</td>
+<td align="right">2.587553</td>
+<td align="right">64.47584</td>
+<td align="right">1.3e-06</td>
 <td align="right">2</td>
-<td align="right">-43.17956</td>
-<td align="right">92.35912</td>
-<td align="right">94.67688</td>
-<td align="right">206.8836</td>
+<td align="right">-36.84617</td>
+<td align="right">79.69233</td>
+<td align="right">82.0101</td>
+<td align="right">93.736</td>
 <td align="right">14</td>
 </tr>
 </tbody>
@@ -904,39 +977,39 @@ model_lm %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">9</td>
-<td align="right">22.8</td>
-<td align="right">95</td>
-<td align="right">23.47354</td>
-<td align="right">1.3184393</td>
+<td align="right">24</td>
+<td align="right">13.3</td>
+<td align="right">245</td>
+<td align="right">7.726700</td>
+<td align="right">1.6834280</td>
 </tr>
 <tr class="even">
-<td align="right">28</td>
-<td align="right">30.4</td>
-<td align="right">113</td>
-<td align="right">22.42033</td>
-<td align="right">1.1731147</td>
+<td align="right">29</td>
+<td align="right">15.8</td>
+<td align="right">264</td>
+<td align="right">5.719408</td>
+<td align="right">1.9166274</td>
 </tr>
 <tr class="odd">
-<td align="right">23</td>
-<td align="right">15.2</td>
-<td align="right">150</td>
-<td align="right">20.25540</td>
-<td align="right">0.9816887</td>
+<td align="right">1</td>
+<td align="right">21.0</td>
+<td align="right">110</td>
+<td align="right">21.989043</td>
+<td align="right">0.6839295</td>
 </tr>
 <tr class="even">
-<td align="right">3</td>
-<td align="right">22.8</td>
-<td align="right">93</td>
-<td align="right">23.59057</td>
-<td align="right">1.3360522</td>
+<td align="right">7</td>
+<td align="right">14.3</td>
+<td align="right">245</td>
+<td align="right">7.726700</td>
+<td align="right">1.6834280</td>
 </tr>
 <tr class="odd">
-<td align="right">32</td>
-<td align="right">21.4</td>
-<td align="right">109</td>
-<td align="right">22.65438</td>
-<td align="right">1.2031337</td>
+<td align="right">5</td>
+<td align="right">18.7</td>
+<td align="right">175</td>
+<td align="right">15.121989</td>
+<td align="right">0.9051990</td>
 </tr>
 </tbody>
 </table>
@@ -955,7 +1028,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
 </div>
 </div>
 <div id="loess" class="section level2">
@@ -983,39 +1056,39 @@ model_loess %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">18.1</td>
-<td align="right">105</td>
-<td align="right">21.77404</td>
-<td align="right">1.101349</td>
-<td align="right">-3.6740429</td>
+<td align="right">10.4</td>
+<td align="right">205</td>
+<td align="right">12.04835</td>
+<td align="right">1.387900</td>
+<td align="right">-1.6483521</td>
 </tr>
 <tr class="even">
-<td align="right">21.5</td>
-<td align="right">97</td>
-<td align="right">23.04444</td>
-<td align="right">1.045909</td>
-<td align="right">-1.5444423</td>
+<td align="right">19.2</td>
+<td align="right">175</td>
+<td align="right">15.72446</td>
+<td align="right">1.098283</td>
+<td align="right">3.4755385</td>
 </tr>
 <tr class="odd">
-<td align="right">27.3</td>
-<td align="right">66</td>
-<td align="right">30.10096</td>
-<td align="right">1.725572</td>
-<td align="right">-2.8009559</td>
+<td align="right">17.8</td>
+<td align="right">123</td>
+<td align="right">18.36751</td>
+<td align="right">1.368339</td>
+<td align="right">-0.5675075</td>
 </tr>
 <tr class="even">
-<td align="right">13.3</td>
-<td align="right">245</td>
-<td align="right">13.80644</td>
-<td align="right">1.254749</td>
-<td align="right">-0.5064446</td>
+<td align="right">10.4</td>
+<td align="right">215</td>
+<td align="right">10.49859</td>
+<td align="right">1.916707</td>
+<td align="right">-0.0985882</td>
 </tr>
 <tr class="odd">
-<td align="right">14.7</td>
-<td align="right">230</td>
-<td align="right">14.20138</td>
-<td align="right">1.148243</td>
-<td align="right">0.4986227</td>
+<td align="right">22.8</td>
+<td align="right">93</td>
+<td align="right">23.53099</td>
+<td align="right">0.969950</td>
+<td align="right">-0.7309946</td>
 </tr>
 </tbody>
 </table>
@@ -1047,7 +1120,23 @@ model_loess %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td>12</td>
+<td>13</td>
+<td align="right">28</td>
+<td align="right">30.4</td>
+<td align="right">113</td>
+<td align="right">20.17822</td>
+<td align="right">1.046019</td>
+</tr>
+<tr class="even">
+<td>7</td>
+<td align="right">12</td>
+<td align="right">16.4</td>
+<td align="right">180</td>
+<td align="right">15.22427</td>
+<td align="right">1.060126</td>
+</tr>
+<tr class="odd">
+<td>9</td>
 <td align="right">19</td>
 <td align="right">30.4</td>
 <td align="right">52</td>
@@ -1055,36 +1144,20 @@ model_loess %&gt;%
 <td align="right">NA</td>
 </tr>
 <tr class="even">
-<td>11</td>
-<td align="right">18</td>
-<td align="right">32.4</td>
-<td align="right">66</td>
-<td align="right">30.10096</td>
-<td align="right">1.725572</td>
-</tr>
-<tr class="odd">
-<td>7</td>
-<td align="right">11</td>
-<td align="right">17.8</td>
-<td align="right">123</td>
-<td align="right">19.62950</td>
-<td align="right">1.220056</td>
-</tr>
-<tr class="even">
-<td>6</td>
-<td align="right">9</td>
-<td align="right">22.8</td>
-<td align="right">95</td>
-<td align="right">23.40960</td>
-<td align="right">1.036388</td>
-</tr>
-<tr class="odd">
 <td>10</td>
-<td align="right">15</td>
-<td align="right">10.4</td>
-<td align="right">205</td>
-<td align="right">15.29931</td>
-<td align="right">1.133681</td>
+<td align="right">20</td>
+<td align="right">33.9</td>
+<td align="right">65</td>
+<td align="right">27.83185</td>
+<td align="right">1.364705</td>
+</tr>
+<tr class="odd">
+<td>14</td>
+<td align="right">29</td>
+<td align="right">15.8</td>
+<td align="right">264</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 </tbody>
 </table>
@@ -1104,7 +1177,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
 </div>
 </div>
 <div id="splines" class="section level2">
@@ -1131,39 +1204,39 @@ model_spline %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">65</td>
-<td align="right">33.9</td>
+<td align="right">123</td>
+<td align="right">19.2</td>
 <td align="right">1</td>
-<td align="right">28.94973</td>
-<td align="right">4.950267</td>
+<td align="right">19.29265</td>
+<td align="right">-0.0926514</td>
 </tr>
 <tr class="even">
-<td align="right">91</td>
-<td align="right">26.0</td>
+<td align="right">109</td>
+<td align="right">21.4</td>
 <td align="right">1</td>
-<td align="right">24.46025</td>
-<td align="right">1.539747</td>
+<td align="right">21.02622</td>
+<td align="right">0.3737799</td>
 </tr>
 <tr class="odd">
-<td align="right">264</td>
-<td align="right">15.8</td>
+<td align="right">205</td>
+<td align="right">10.4</td>
 <td align="right">1</td>
-<td align="right">14.10785</td>
-<td align="right">1.692146</td>
+<td align="right">12.11517</td>
+<td align="right">-1.7151720</td>
 </tr>
 <tr class="even">
-<td align="right">175</td>
-<td align="right">18.7</td>
+<td align="right">97</td>
+<td align="right">21.5</td>
 <td align="right">1</td>
-<td align="right">16.87251</td>
-<td align="right">1.827494</td>
+<td align="right">22.80564</td>
+<td align="right">-1.3056353</td>
 </tr>
 <tr class="odd">
 <td align="right">215</td>
 <td align="right">10.4</td>
 <td align="right">1</td>
-<td align="right">14.70134</td>
-<td align="right">-4.301337</td>
+<td align="right">10.55918</td>
+<td align="right">-0.1591779</td>
 </tr>
 </tbody>
 </table>
@@ -1186,13 +1259,13 @@ model_spline %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">3.999622</td>
-<td align="right">0.003219</td>
-<td align="right">10.43706</td>
-<td align="right">93.43943</td>
+<td align="right">4.000507</td>
+<td align="right">0.0033219</td>
+<td align="right">7.529327</td>
+<td align="right">51.56821</td>
 <td align="right">3</td>
-<td align="right">0.6874213</td>
-<td align="right">0.003219</td>
+<td align="right">0.7289801</td>
+<td align="right">0.0033219</td>
 </tr>
 </tbody>
 </table>
@@ -1227,7 +1300,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
 </div>
 </div>
 </div>

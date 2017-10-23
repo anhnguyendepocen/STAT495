@@ -62,7 +62,7 @@ rough topic outline:
         * ~~Regression for prediction~~
     1. Categorical outcomes i.e. classification
         * ~~Logistic regression for prediction + ROC curves~~
-        * k-Nearest Neighbors
+        * ~~k-Nearest Neighbors~~
         * Classification and regression trees (CART)
     1. Continuous outcome II
         * Regularization/shrinkage methods: Ridge regression and LASSO
@@ -108,6 +108,32 @@ Announcements:
 
 
 
+# 3.6 Classification and regression trees
+
+## Tue 10/24
+
+Announcements:
+
+* Quiz on podcast
+* Problem set pull request
+* Posted $k$-nearest neighbors to Quickstart 
+* Finish "multi-class log-loss"
+* Install `rpart` package
+
+
+## Chalk talk
+
+3.6
+
+
+
+
+***
+
+
+
+
+
 # Problem set 8 {#PS08}
 
 ## Information
@@ -138,31 +164,6 @@ following files should be modified/added:
 
 
 ***
-
-
-
-
-# 3.6 Classification and regression trees
-
-## Tue 10/24
-
-Announcements:
-
-* Quiz on podcast
-* Problem set pull request
-* Posted $k$-nearest neighbors to Quickstart 
-* Finish "multi-class log-loss"
-
-
-## Chalk talk
-
-3.6
-
-
-
-
-***
-
 
 
 

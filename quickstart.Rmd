@@ -24,12 +24,53 @@ set.seed(76)
 
 ```{r}
 library(tidyverse)
-train <- iris %>%
+iris <- iris %>%
   as_tibble() %>%
   # Add ID column:
   mutate(ID = 1:n()) %>% 
   select(ID, Species, Sepal.Length, Sepal.Width)
 ```
+
+## Classification and regression trees
+
+```{r}
+library(rpart)
+model_formula <- as.formula(Species ~ Sepal.Length + Sepal.Width)
+control <- rpart.control(maxdepth = 3)
+model_CART <- rpart(model_formula, data = iris, control=control)
+
+# Alas there is no broom functionality; this won't work
+# model_CART %>% broom::tidy()
+# 
+# Use these instead, but they are not that helpful IMO
+# print(model_CART)
+# summary(model_CART)
+
+# Plot
+plot(model_CART, margin=0.25)
+text(model_CART, use.n = TRUE)
+title("Predicting iris species using sepal length & width")
+box()
+```
+
+Where "Yes, go left. No, go right." So for example, recall our outcome variable
+is a categorical variable with 3 levels: setosa, versicolor, and virginia.
+
+```{r}
+iris %>% 
+  filter(Sepal.Length < 5.45, Sepal.Width < 2.8) %>% 
+  count(Species)
+```
+
+and
+
+```{r}
+iris %>% 
+  filter(Sepal.Length >= 5.45, Sepal.Length < 6.15, Sepal.Width < 3.1) %>% 
+  count(Species)
+```
+
+
 
 ## $k$-nearest neighbors
 
