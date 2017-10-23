@@ -261,10 +261,11 @@ grid.arrange(truth_plot, p_hat_plot, ncol=2, layout_matrix = layout)
 ## Chalk talk
 
 3.5 Multi-class log-loss function
-    + Used by [several Kaggle competitions](https://www.kaggle.com/wiki/LogLoss)
-    when outcome variable is categorical.
-    + Part of `MLmetrics` package to make it easier to compute notions of
-    "score"/"error". See [list](https://github.com/yanyachen/MLmetrics#mlmetrics).
+
+* Used by [several Kaggle competitions](https://www.kaggle.com/wiki/LogLoss)
+when outcome variable is categorical.
+* Part of `MLmetrics` package to make it easier to compute notions of
+"score"/"error". See [list](https://github.com/yanyachen/MLmetrics#mlmetrics).
 
 ## Code demo
 
