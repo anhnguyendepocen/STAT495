@@ -256,11 +256,15 @@ layout <- matrix(c(1,1,2,2,2), nrow=1)
 grid.arrange(truth_plot, p_hat_plot, ncol=2, layout_matrix = layout)
 ```
 
-<!--
+
+
 ## Chalk talk
 
-3.5 [Multi-class log-loss function](https://www.kaggle.com/wiki/LogLoss). Used
-by several Kaggle competitions when outcome variable is categorical.
+3.5 Multi-class log-loss function
+    + Used by [several Kaggle competitions](https://www.kaggle.com/wiki/LogLoss)
+    when outcome variable is categorical.
+    + Part of `MLmetrics` package to make it easier to compute notions of
+    "score"/"error". See [list](https://github.com/yanyachen/MLmetrics#mlmetrics).
 
 ## Code demo
 
@@ -269,10 +273,8 @@ library(MLmetrics)
 
 # Possible output 1: Majority rules vote winner ---------------------------
 iris$y_hat <- y_hat
-
 # Proportion correct:
 mean(iris$Species == iris$y_hat)
-
 # Specific breakdown of correct/incorrect (done two ways):
 ftable(iris$Species, iris$y_hat)
 # or
@@ -284,7 +286,7 @@ iris %>%
 # Possible output 2: Keep fitted probabilities ----------------------------
 MLmetrics::MultiLogLoss(y_true = iris$Species, y_pred = fitted_probs)
 ```
--->
+
 
 
 ***
