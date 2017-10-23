@@ -24,22 +24,11 @@ set.seed(76)
 
 ```{r}
 library(tidyverse)
-library(caret)
-library(MLmetrics)
-```
-
-```{r, cache=TRUE}
 train <- iris %>%
   as_tibble() %>%
   # Add ID column:
   mutate(ID = 1:n()) %>% 
   select(ID, Species, Sepal.Length, Sepal.Width)
-
-test <- expand.grid(
-  Sepal.Length = seq(3.3, 8.7, by=0.1),
-  Sepal.Width = seq(1, 5.4, by=0.1)
-  ) %>%
-  tbl_df()
 ```
 
 ## $k$-nearest neighbors
@@ -47,13 +36,51 @@ test <- expand.grid(
 ### Fit/train model
 
 ```{r}
+library(caret)
+library(MLmetrics)
 
+k <- 3
+model_formula <- as.formula(Species ~ Sepal.Length + Sepal.Width)
+model_knn <- caret::knn3(model_formula, data=iris, k = k)
 ```
 
+### Get fitted probabilities/predictions
 
+**Output 1:** Get fitted probabilities
 
+```{r}
+p_hat_matrix <- model_knn %>% 
+  predict(newdata=iris, type="prob") %>% 
+  round(3)
 
+# Look at a random sample of 5 of them
+p_hat_matrix %>% 
+  as_tibble() %>% 
+  sample_n(5)
 
+# Score/error
+MLmetrics::MultiLogLoss(y_true = iris$Species, y_pred = p_hat_matrix)
+```
+
+**Output 2:** Get explicit predictions y_hat based on fitted probabilities with
+ties broken at random.
+
+```{r, eval=FALSE}
+y_hat <- model_knn %>% 
+  predict(newdata=iris, type="class")
+
+# Score/error
+MLmetrics::Accuracy(y_true = iris$Species, y_pred = y_hat)
+MLmetrics::ConfusionMatrix(y_true = iris$Species, y_pred = y_hat)
+```
+```{r, echo=FALSE}
+y_hat <- model_knn %>% 
+  predict(newdata=iris, type="class")
+
+# Score/error
+MLmetrics::Accuracy(y_true = iris$Species, y_pred = y_hat)
+MLmetrics::ConfusionMatrix(y_true = iris$Species, y_pred = y_hat)
+```
 
 
 # Binary outcomes (2 levels)
@@ -62,9 +89,7 @@ test <- expand.grid(
 library(tidyverse)
 library(broom)
 library(okcupiddata)
-```
 
-```{r, cache=TRUE}
 profiles <- profiles %>%
   as_tibble() %>%
   # Create binary outcome variable y:

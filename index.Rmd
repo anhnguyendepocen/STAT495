@@ -104,14 +104,13 @@ Announcements:
 
 
 ***
-
+-->
 
 
 
 # Problem set 8 {#PS08}
 
 ## Information
-
 
 Important dates/times:
 
@@ -143,13 +142,16 @@ following files should be modified/added:
 
 
 
-# 3.6
+# 3.6 Classification and regression trees
 
 ## Tue 10/24
 
 Announcements:
 
 * Quiz on podcast
+* Problem set pull request
+* Posted $k$-nearest neighbors to Quickstart 
+* Finish "multi-class log-loss"
 
 
 ## Chalk talk
@@ -160,7 +162,7 @@ Announcements:
 
 
 ***
--->
+
 
 
 
@@ -208,14 +210,14 @@ model_knn <- caret::knn3(model_formula, data=iris, k = k)
 
 # Possible output 1: Majority rules vote winner ---------------------------
 y_hat <- model_knn %>% 
-  predict(newdata=iris, type=c("class"))
+  predict(newdata=iris, type="class")
 y_hat
 
 
 # Possible output 2: Keep fitted probabilities ----------------------------
 # In other words, don't hold the vote!
 p_hat_matrix <- model_knn %>% 
-  predict(newdata=iris, type=c("prob", "class")) %>% 
+  predict(newdata=iris, type="prob") %>% 
   round(3)
 View(p_hat_matrix)
 
@@ -273,19 +275,13 @@ when outcome variable is categorical.
 library(MLmetrics)
 
 # Possible output 1: Majority rules vote winner ---------------------------
-iris$y_hat <- y_hat
 # Proportion correct:
-mean(iris$Species == iris$y_hat)
-# Specific breakdown of correct/incorrect (done two ways):
-ftable(iris$Species, iris$y_hat)
-# or
-iris %>% 
-  group_by(Species, y_hat) %>% 
-  count() %>% 
-  mutate(correct = Species == y_hat)
+mean(iris$Species == y_hat)
+MLmetrics::Accuracy(y_true = iris$Species, y_pred = y_hat)
+MLmetrics::ConfusionMatrix(y_true = iris$Species, y_pred = y_hat)
 
 # Possible output 2: Keep fitted probabilities ----------------------------
-MLmetrics::MultiLogLoss(y_true = iris$Species, y_pred = fitted_probs)
+MLmetrics::MultiLogLoss(y_true = iris$Species, y_pred = p_hat_matrix)
 ```
 
 
