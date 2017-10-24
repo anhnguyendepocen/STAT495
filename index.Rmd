@@ -86,25 +86,31 @@ clicking the GitHub icon on the top-right of the nav bar.
 ***
 
 
-<!--
-# 3.7
+
+# 3.7 More CART
 
 ## Thu 10/26
 
 Announcements: 
 
-* 
+* How to encode non-ordinal categorical variables for use in CART: covert every
+level of categorical variable to its own ["binary dummy
+variable"](https://stackoverflow.com/questions/11952706/generate-a-dummy-variable).
+I didn't know this had a name: ["one-hot
+encoding"](https://www.quora.com/What-is-one-hot-encoding-and-when-is-it-used-in-data-science).
+
+<img border="1" src="images/One-Hot_Encoding_web.png" width="500">
 
 
 ## Chalk talk
 
-3.7
+3.7 More CART
 
 
 
 
 ***
--->
+
 
 
 
