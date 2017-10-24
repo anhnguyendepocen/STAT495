@@ -38,8 +38,8 @@ iris <- iris %>%
 ```{r}
 library(rpart)
 model_formula <- as.formula(Species ~ Sepal.Length + Sepal.Width)
-control <- rpart.control(maxdepth = 3)
-model_CART <- rpart(model_formula, data = iris, control=control)
+tree_parameters <- rpart.control(maxdepth = 3)
+model_CART <- rpart(model_formula, data = iris, control=tree_parameters)
 
 # Alas there is no broom functionality; this won't work
 # model_CART %>% broom::tidy()

@@ -328,8 +328,8 @@ iris &lt;- iris %&gt;%
 <h3><span class="header-section-number">1.1.1</span> Fit/train model</h3>
 <pre class="r"><code>library(rpart)
 model_formula &lt;- as.formula(Species ~ Sepal.Length + Sepal.Width)
-control &lt;- rpart.control(maxdepth = 3)
-model_CART &lt;- rpart(model_formula, data = iris, control=control)
+tree_parameters &lt;- rpart.control(maxdepth = 3)
+model_CART &lt;- rpart(model_formula, data = iris, control=tree_parameters)
 
 # Alas there is no broom functionality; this won&#39;t work
 # model_CART %&gt;% broom::tidy()

@@ -392,16 +392,16 @@ Announcements:
 <li>Quiz on podcast</li>
 <li>Problem set pull request</li>
 </ul></li>
+<li>Problem set 08 will involve a categorical outcome Kaggle competition. Posted later tonite.</li>
 <li>Finish knn
 <ul>
-<li>Posted knn to <a href="quickstart.html">Quickstart</a></li>
+<li>Posted knn to <a href="quickstart.html#12_(k)-nearest_neighbors">Quickstart</a></li>
 <li>Finish “multi-class log-loss”</li>
 </ul></li>
-<li>Classification and regression trees
+<li>New method: classification and regression trees (CART)
 <ul>
 <li>Install <code>rpart</code> package</li>
-<li>Classification when <span class="math inline">\(y\)</span> is categorical</li>
-<li>Regression when <span class="math inline">\(y\)</span> is numerical</li>
+<li>Posted CART to <a href="quickstart.html#11_classification_and_regression_trees">Quickstart</a></li>
 </ul></li>
 </ul>
 </div>
@@ -416,15 +416,14 @@ iris &lt;- iris %&gt;%
 
 library(rpart)
 model_formula &lt;- as.formula(Species ~ Sepal.Length + Sepal.Width)
-control &lt;- rpart.control(maxdepth = 3)
-model_CART &lt;- rpart(model_formula, data = iris, control=control)
+tree_parameters &lt;- rpart.control(maxdepth = 3)
+model_CART &lt;- rpart(model_formula, data = iris, control=tree_parameters)
 
 # Plot
 plot(model_CART, margin=0.25)
 text(model_CART, use.n = TRUE)
 title(&quot;Predicting iris species using sepal length &amp; width&quot;)
 box()</code></pre>
-<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" width="768" /></p>
 </div>
 <div id="chalk-talk" class="section level2">
 <h2>Chalk talk</h2>
@@ -438,40 +437,42 @@ box()</code></pre>
 <li>1/5/1 (setosa, versicolor, virginica)</li>
 <li>0/26/10</li>
 </ul></li>
-<li>Read the help file for <code>rpart.control</code> and play around with different arguments that control the shape of the tree in the <code>control</code> object above.</li>
-<li>Create a new numerical outcome variable <code>iris$is_setosa &lt;- as.numeric(iris$Species == &quot;setosa&quot;)</code> and interpret the resulting tree.</li>
+<li>Read the help file for <code>rpart.control</code> and play around with different arguments that control the shape of the tree in the <code>tree_parameters</code> object above.</li>
+<li>Create a new numerical outcome variable <code>iris$is_setosa &lt;- as.numeric(iris$Species == &quot;setosa&quot;)</code>, fit CART, and interpret the resulting tree.</li>
 </ol>
 <hr />
-</div>
-</div>
-<div id="PS08" class="section level1">
-<h1>Problem set 8</h1>
-<div id="information" class="section level2">
-<h2>Information</h2>
-<p>Important dates/times:</p>
-<ul>
-<li>Tue 10/24: Assigned.</li>
-<li>Tue 10/31 8:30am:
-<ul>
-<li>Pull request submission</li>
-</ul></li>
-<li>Wed 11/1 9am: Feedback delivered by Andrew.</li>
-<li>Thu 11/2 8:30am: (Optional) revisions due.</li>
-</ul>
-<p>Details:</p>
-<ul>
-<li>Teams: Individual</li>
-<li>Presentations: None</li>
-<li>Deliverables: One ready to submit <em>pull request</em> to the <a href="https://github.com/2017-09-Amherst-STAT495/PS08">PS08 repo</a>. At the very least, the following files should be modified/added:
-<ol style="list-style-type: decimal">
-<li><code>PS08.Rmd</code>: Source code</li>
-<li><code>PS08.html</code>: The output of <code>PS08.Rmd</code>.</li>
-<li><code>README.md</code>: Change <code>rudeboybert</code> in the URL to your GitHub ID so that both Andrew and I can open your <code>PS08.html</code> in a browser.</li>
-<li><code>submission.csv</code></li>
-<li><code>screen_shot.png</code> or <code>screen_shot.jpg</code>: A screenshot of your Kaggle ranking.</li>
-</ol></li>
-</ul>
-<hr />
+<!--
+# Problem set 8 {#PS08}
+
+## Information
+
+Important dates/times:
+
+* Tue 10/24: Assigned.
+* Tue 10/31 8:30am:
+    + Pull request submission
+* Wed 11/1 9am: Feedback delivered by Andrew.
+* Thu 11/2 8:30am: (Optional) revisions due.
+
+Details: 
+
+* Teams: Individual
+* Presentations: None
+* Deliverables: One ready to submit *pull request* to the [PS08
+repo](https://github.com/2017-09-Amherst-STAT495/PS08). At the very least, the
+following files should be modified/added:
+    1. `PS08.Rmd`: Source code
+    1. `PS08.html`: The output of `PS08.Rmd`.
+    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
+    both Andrew and I can open your `PS08.html` in a browser.
+    1. `submission.csv`
+    1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
+
+
+
+
+***
+-->
 </div>
 </div>
 <div id="more-k-nearest-neighbors" class="section level1">
@@ -665,44 +666,44 @@ iris %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="left">11</td>
-<td align="right">5.4</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="left">49</td>
-<td align="right">5.3</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="left">44</td>
+<td align="left">94</td>
 <td align="right">5.0</td>
-<td align="right">3.5</td>
-<td align="right">1.6</td>
-<td align="right">0.6</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="left">74</td>
-<td align="right">6.1</td>
-<td align="right">2.8</td>
-<td align="right">4.7</td>
-<td align="right">1.2</td>
+<td align="right">2.3</td>
+<td align="right">3.3</td>
+<td align="right">1.0</td>
 <td align="left">versicolor</td>
 </tr>
+<tr class="even">
+<td align="left">110</td>
+<td align="right">7.2</td>
+<td align="right">3.6</td>
+<td align="right">6.1</td>
+<td align="right">2.5</td>
+<td align="left">virginica</td>
+</tr>
 <tr class="odd">
-<td align="left">22</td>
-<td align="right">5.1</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.4</td>
+<td align="left">64</td>
+<td align="right">6.1</td>
+<td align="right">2.9</td>
+<td align="right">4.7</td>
+<td align="right">1.4</td>
+<td align="left">versicolor</td>
+</tr>
+<tr class="even">
+<td align="left">15</td>
+<td align="right">5.8</td>
+<td align="right">4.0</td>
+<td align="right">1.2</td>
+<td align="right">0.2</td>
 <td align="left">setosa</td>
+</tr>
+<tr class="odd">
+<td align="left">69</td>
+<td align="right">6.2</td>
+<td align="right">2.2</td>
+<td align="right">4.5</td>
+<td align="right">1.5</td>
+<td align="left">versicolor</td>
 </tr>
 </tbody>
 </table>
@@ -722,7 +723,7 @@ iris %&gt;%
 </div>
 <div id="PS07" class="section level1">
 <h1>Problem set 7</h1>
-<div id="information-1" class="section level2">
+<div id="information" class="section level2">
 <h2>Information</h2>
 <p><a href="https://www.kaggle.com/c/GiveMeSomeCredit/data"> <img border="0" alt="bike" src="images/credit.png" width="300"> </a></p>
 <p>Important dates/times:</p>
@@ -964,7 +965,7 @@ model_logistic %&gt;%
 </div>
 <div id="PS06" class="section level1">
 <h1>Problem set 6</h1>
-<div id="information-2" class="section level2">
+<div id="information-1" class="section level2">
 <h2>Information</h2>
 <p>Important dates/times:</p>
 <ul>
@@ -1064,7 +1065,7 @@ model_logistic %&gt;%
 </div>
 <div id="PS05" class="section level1">
 <h1>Problem set 5</h1>
-<div id="information-3" class="section level2">
+<div id="information-2" class="section level2">
 <h2>Information</h2>
 <p><em>Assigned on Tue 10/3, due on Wed 10/11 (Monday schedule) 9am at which point there will be synchronized pull requests.</em></p>
 <p><a href="https://www.kaggle.com/c/bike-sharing-demand"> <img border="0" alt="bike" src="images/bike.png" width="600"> </a></p>
@@ -1218,8 +1219,8 @@ delays_plot &lt;- ggplot(flights_sample, aes(x=dep_delay, y=arr_delay)) +
   geom_point()
 # Hover your mouse over the resulting plot
 ggplotly(delays_plot)</code></pre>
-<div id="57967b7a74cf" style="width:576px;height:324px;" class="plotly html-widget"></div>
-<script type="application/json" data-for="57967b7a74cf">{"x":{"data":[{"x":[1,0,-8,-5,25,-4,null,1,-4,-7,15,1,2,3,121,14,77,5,-5,-2,-4,-3,11,39,-5,57,-4,1,226,1,-6,null,-5,-5,57,19,-1,-6,0,33,-7,-5,20,-3,5,37,-1,94,2,-5,3,40,-4,-5,152,0,52,-6,-9,19,-5,10,26,-5,-7,129,31,-5,-4,-9,50,152,43,-7,8,63,39,94,-3,-7,9,-1,8,-4,46,1,5,-1,16,0,-7,-1,42,1,-1,-2,2,-4,-1,-4],"y":[-13,-4,-10,-5,8,7,null,-10,-23,-23,-14,-4,17,-4,103,17,62,4,-30,-38,-10,-9,-3,55,14,87,-2,-11,266,-20,3,null,-14,-18,60,18,-6,-24,-7,24,38,0,-5,-11,4,43,-34,51,-18,-27,10,11,-1,-10,166,-12,24,2,-44,1,-48,17,27,2,5,141,31,-11,-32,5,26,128,33,4,-24,65,90,86,3,-19,-4,-21,24,-31,42,97,-9,-23,13,-20,-10,39,12,-1,-22,-14,-9,0,30,-11],"text":["dep_delay:   1<br />arr_delay: -13","dep_delay:   0<br />arr_delay:  -4","dep_delay:  -8<br />arr_delay: -10","dep_delay:  -5<br />arr_delay:  -5","dep_delay:  25<br />arr_delay:   8","dep_delay:  -4<br />arr_delay:   7","dep_delay:  NA<br />arr_delay:  NA","dep_delay:   1<br />arr_delay: -10","dep_delay:  -4<br />arr_delay: -23","dep_delay:  -7<br />arr_delay: -23","dep_delay:  15<br />arr_delay: -14","dep_delay:   1<br />arr_delay:  -4","dep_delay:   2<br />arr_delay:  17","dep_delay:   3<br />arr_delay:  -4","dep_delay: 121<br />arr_delay: 103","dep_delay:  14<br />arr_delay:  17","dep_delay:  77<br />arr_delay:  62","dep_delay:   5<br />arr_delay:   4","dep_delay:  -5<br />arr_delay: -30","dep_delay:  -2<br />arr_delay: -38","dep_delay:  -4<br />arr_delay: -10","dep_delay:  -3<br />arr_delay:  -9","dep_delay:  11<br />arr_delay:  -3","dep_delay:  39<br />arr_delay:  55","dep_delay:  -5<br />arr_delay:  14","dep_delay:  57<br />arr_delay:  87","dep_delay:  -4<br />arr_delay:  -2","dep_delay:   1<br />arr_delay: -11","dep_delay: 226<br />arr_delay: 266","dep_delay:   1<br />arr_delay: -20","dep_delay:  -6<br />arr_delay:   3","dep_delay:  NA<br />arr_delay:  NA","dep_delay:  -5<br />arr_delay: -14","dep_delay:  -5<br />arr_delay: -18","dep_delay:  57<br />arr_delay:  60","dep_delay:  19<br />arr_delay:  18","dep_delay:  -1<br />arr_delay:  -6","dep_delay:  -6<br />arr_delay: -24","dep_delay:   0<br />arr_delay:  -7","dep_delay:  33<br />arr_delay:  24","dep_delay:  -7<br />arr_delay:  38","dep_delay:  -5<br />arr_delay:   0","dep_delay:  20<br />arr_delay:  -5","dep_delay:  -3<br />arr_delay: -11","dep_delay:   5<br />arr_delay:   4","dep_delay:  37<br />arr_delay:  43","dep_delay:  -1<br />arr_delay: -34","dep_delay:  94<br />arr_delay:  51","dep_delay:   2<br />arr_delay: -18","dep_delay:  -5<br />arr_delay: -27","dep_delay:   3<br />arr_delay:  10","dep_delay:  40<br />arr_delay:  11","dep_delay:  -4<br />arr_delay:  -1","dep_delay:  -5<br />arr_delay: -10","dep_delay: 152<br />arr_delay: 166","dep_delay:   0<br />arr_delay: -12","dep_delay:  52<br />arr_delay:  24","dep_delay:  -6<br />arr_delay:   2","dep_delay:  -9<br />arr_delay: -44","dep_delay:  19<br />arr_delay:   1","dep_delay:  -5<br />arr_delay: -48","dep_delay:  10<br />arr_delay:  17","dep_delay:  26<br />arr_delay:  27","dep_delay:  -5<br />arr_delay:   2","dep_delay:  -7<br />arr_delay:   5","dep_delay: 129<br />arr_delay: 141","dep_delay:  31<br />arr_delay:  31","dep_delay:  -5<br />arr_delay: -11","dep_delay:  -4<br />arr_delay: -32","dep_delay:  -9<br />arr_delay:   5","dep_delay:  50<br />arr_delay:  26","dep_delay: 152<br />arr_delay: 128","dep_delay:  43<br />arr_delay:  33","dep_delay:  -7<br />arr_delay:   4","dep_delay:   8<br />arr_delay: -24","dep_delay:  63<br />arr_delay:  65","dep_delay:  39<br />arr_delay:  90","dep_delay:  94<br />arr_delay:  86","dep_delay:  -3<br />arr_delay:   3","dep_delay:  -7<br />arr_delay: -19","dep_delay:   9<br />arr_delay:  -4","dep_delay:  -1<br />arr_delay: -21","dep_delay:   8<br />arr_delay:  24","dep_delay:  -4<br />arr_delay: -31","dep_delay:  46<br />arr_delay:  42","dep_delay:   1<br />arr_delay:  97","dep_delay:   5<br />arr_delay:  -9","dep_delay:  -1<br />arr_delay: -23","dep_delay:  16<br />arr_delay:  13","dep_delay:   0<br />arr_delay: -20","dep_delay:  -7<br />arr_delay: -10","dep_delay:  -1<br />arr_delay:  39","dep_delay:  42<br />arr_delay:  12","dep_delay:   1<br />arr_delay:  -1","dep_delay:  -1<br />arr_delay: -22","dep_delay:  -2<br />arr_delay: -14","dep_delay:   2<br />arr_delay:  -9","dep_delay:  -4<br />arr_delay:   0","dep_delay:  -1<br />arr_delay:  30","dep_delay:  -4<br />arr_delay: -11"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":28.98833079655,"r":7.30593607305936,"b":42.9426686960934,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-20.75,237.75],"ticktext":["0","50","100","150","200"],"tickvals":[0,50,100,150,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"dep_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-63.7,281.7],"ticktext":["0","100","200"],"tickvals":[0,100,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"arr_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","width":576,"height":324},"source":"A","attrs":{"5796172eb534":{"x":{},"y":{},"type":"ggplotly"}},"cur_data":"5796172eb534","visdat":{"5796172eb534":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
+<div id="59947c52a160" style="width:576px;height:324px;" class="plotly html-widget"></div>
+<script type="application/json" data-for="59947c52a160">{"x":{"data":[{"x":[1,0,-8,-5,25,-4,null,1,-4,-7,15,1,2,3,121,14,77,5,-5,-2,-4,-3,11,39,-5,57,-4,1,226,1,-6,null,-5,-5,57,19,-1,-6,0,33,-7,-5,20,-3,5,37,-1,94,2,-5,3,40,-4,-5,152,0,52,-6,-9,19,-5,10,26,-5,-7,129,31,-5,-4,-9,50,152,43,-7,8,63,39,94,-3,-7,9,-1,8,-4,46,1,5,-1,16,0,-7,-1,42,1,-1,-2,2,-4,-1,-4],"y":[-13,-4,-10,-5,8,7,null,-10,-23,-23,-14,-4,17,-4,103,17,62,4,-30,-38,-10,-9,-3,55,14,87,-2,-11,266,-20,3,null,-14,-18,60,18,-6,-24,-7,24,38,0,-5,-11,4,43,-34,51,-18,-27,10,11,-1,-10,166,-12,24,2,-44,1,-48,17,27,2,5,141,31,-11,-32,5,26,128,33,4,-24,65,90,86,3,-19,-4,-21,24,-31,42,97,-9,-23,13,-20,-10,39,12,-1,-22,-14,-9,0,30,-11],"text":["dep_delay:   1<br />arr_delay: -13","dep_delay:   0<br />arr_delay:  -4","dep_delay:  -8<br />arr_delay: -10","dep_delay:  -5<br />arr_delay:  -5","dep_delay:  25<br />arr_delay:   8","dep_delay:  -4<br />arr_delay:   7","dep_delay:  NA<br />arr_delay:  NA","dep_delay:   1<br />arr_delay: -10","dep_delay:  -4<br />arr_delay: -23","dep_delay:  -7<br />arr_delay: -23","dep_delay:  15<br />arr_delay: -14","dep_delay:   1<br />arr_delay:  -4","dep_delay:   2<br />arr_delay:  17","dep_delay:   3<br />arr_delay:  -4","dep_delay: 121<br />arr_delay: 103","dep_delay:  14<br />arr_delay:  17","dep_delay:  77<br />arr_delay:  62","dep_delay:   5<br />arr_delay:   4","dep_delay:  -5<br />arr_delay: -30","dep_delay:  -2<br />arr_delay: -38","dep_delay:  -4<br />arr_delay: -10","dep_delay:  -3<br />arr_delay:  -9","dep_delay:  11<br />arr_delay:  -3","dep_delay:  39<br />arr_delay:  55","dep_delay:  -5<br />arr_delay:  14","dep_delay:  57<br />arr_delay:  87","dep_delay:  -4<br />arr_delay:  -2","dep_delay:   1<br />arr_delay: -11","dep_delay: 226<br />arr_delay: 266","dep_delay:   1<br />arr_delay: -20","dep_delay:  -6<br />arr_delay:   3","dep_delay:  NA<br />arr_delay:  NA","dep_delay:  -5<br />arr_delay: -14","dep_delay:  -5<br />arr_delay: -18","dep_delay:  57<br />arr_delay:  60","dep_delay:  19<br />arr_delay:  18","dep_delay:  -1<br />arr_delay:  -6","dep_delay:  -6<br />arr_delay: -24","dep_delay:   0<br />arr_delay:  -7","dep_delay:  33<br />arr_delay:  24","dep_delay:  -7<br />arr_delay:  38","dep_delay:  -5<br />arr_delay:   0","dep_delay:  20<br />arr_delay:  -5","dep_delay:  -3<br />arr_delay: -11","dep_delay:   5<br />arr_delay:   4","dep_delay:  37<br />arr_delay:  43","dep_delay:  -1<br />arr_delay: -34","dep_delay:  94<br />arr_delay:  51","dep_delay:   2<br />arr_delay: -18","dep_delay:  -5<br />arr_delay: -27","dep_delay:   3<br />arr_delay:  10","dep_delay:  40<br />arr_delay:  11","dep_delay:  -4<br />arr_delay:  -1","dep_delay:  -5<br />arr_delay: -10","dep_delay: 152<br />arr_delay: 166","dep_delay:   0<br />arr_delay: -12","dep_delay:  52<br />arr_delay:  24","dep_delay:  -6<br />arr_delay:   2","dep_delay:  -9<br />arr_delay: -44","dep_delay:  19<br />arr_delay:   1","dep_delay:  -5<br />arr_delay: -48","dep_delay:  10<br />arr_delay:  17","dep_delay:  26<br />arr_delay:  27","dep_delay:  -5<br />arr_delay:   2","dep_delay:  -7<br />arr_delay:   5","dep_delay: 129<br />arr_delay: 141","dep_delay:  31<br />arr_delay:  31","dep_delay:  -5<br />arr_delay: -11","dep_delay:  -4<br />arr_delay: -32","dep_delay:  -9<br />arr_delay:   5","dep_delay:  50<br />arr_delay:  26","dep_delay: 152<br />arr_delay: 128","dep_delay:  43<br />arr_delay:  33","dep_delay:  -7<br />arr_delay:   4","dep_delay:   8<br />arr_delay: -24","dep_delay:  63<br />arr_delay:  65","dep_delay:  39<br />arr_delay:  90","dep_delay:  94<br />arr_delay:  86","dep_delay:  -3<br />arr_delay:   3","dep_delay:  -7<br />arr_delay: -19","dep_delay:   9<br />arr_delay:  -4","dep_delay:  -1<br />arr_delay: -21","dep_delay:   8<br />arr_delay:  24","dep_delay:  -4<br />arr_delay: -31","dep_delay:  46<br />arr_delay:  42","dep_delay:   1<br />arr_delay:  97","dep_delay:   5<br />arr_delay:  -9","dep_delay:  -1<br />arr_delay: -23","dep_delay:  16<br />arr_delay:  13","dep_delay:   0<br />arr_delay: -20","dep_delay:  -7<br />arr_delay: -10","dep_delay:  -1<br />arr_delay:  39","dep_delay:  42<br />arr_delay:  12","dep_delay:   1<br />arr_delay:  -1","dep_delay:  -1<br />arr_delay: -22","dep_delay:  -2<br />arr_delay: -14","dep_delay:   2<br />arr_delay:  -9","dep_delay:  -4<br />arr_delay:   0","dep_delay:  -1<br />arr_delay:  30","dep_delay:  -4<br />arr_delay: -11"],"type":"scatter","mode":"markers","marker":{"autocolorscale":false,"color":"rgba(0,0,0,1)","opacity":1,"size":5.66929133858268,"symbol":"circle","line":{"width":1.88976377952756,"color":"rgba(0,0,0,1)"}},"hoveron":"points","showlegend":false,"xaxis":"x","yaxis":"y","hoverinfo":"text","frame":null}],"layout":{"margin":{"t":28.98833079655,"r":7.30593607305936,"b":42.9426686960934,"l":43.1050228310502},"plot_bgcolor":"rgba(235,235,235,1)","paper_bgcolor":"rgba(255,255,255,1)","font":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"xaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-20.75,237.75],"ticktext":["0","50","100","150","200"],"tickvals":[0,50,100,150,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"y","title":"dep_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"yaxis":{"domain":[0,1],"type":"linear","autorange":false,"tickmode":"array","range":[-63.7,281.7],"ticktext":["0","100","200"],"tickvals":[0,100,200],"ticks":"outside","tickcolor":"rgba(51,51,51,1)","ticklen":3.65296803652968,"tickwidth":0.66417600664176,"showticklabels":true,"tickfont":{"color":"rgba(77,77,77,1)","family":"","size":11.689497716895},"tickangle":-0,"showline":false,"linecolor":null,"linewidth":0,"showgrid":true,"gridcolor":"rgba(255,255,255,1)","gridwidth":0.66417600664176,"zeroline":false,"anchor":"x","title":"arr_delay","titlefont":{"color":"rgba(0,0,0,1)","family":"","size":14.6118721461187},"hoverformat":".2f"},"shapes":[{"type":"rect","fillcolor":null,"line":{"color":null,"width":0,"linetype":[]},"yref":"paper","xref":"paper","x0":0,"x1":1,"y0":0,"y1":1}],"showlegend":false,"legend":{"bgcolor":"rgba(255,255,255,1)","bordercolor":"transparent","borderwidth":1.88976377952756,"font":{"color":"rgba(0,0,0,1)","family":"","size":11.689497716895}},"hovermode":"closest","width":576,"height":324},"source":"A","attrs":{"5994523883c3":{"x":{},"y":{},"type":"ggplotly"}},"cur_data":"5994523883c3","visdat":{"5994523883c3":["function (y) ","x"]},"config":{"modeBarButtonsToAdd":[{"name":"Collaborate","icon":{"width":1000,"ascent":500,"descent":-50,"path":"M487 375c7-10 9-23 5-36l-79-259c-3-12-11-23-22-31-11-8-22-12-35-12l-263 0c-15 0-29 5-43 15-13 10-23 23-28 37-5 13-5 25-1 37 0 0 0 3 1 7 1 5 1 8 1 11 0 2 0 4-1 6 0 3-1 5-1 6 1 2 2 4 3 6 1 2 2 4 4 6 2 3 4 5 5 7 5 7 9 16 13 26 4 10 7 19 9 26 0 2 0 5 0 9-1 4-1 6 0 8 0 2 2 5 4 8 3 3 5 5 5 7 4 6 8 15 12 26 4 11 7 19 7 26 1 1 0 4 0 9-1 4-1 7 0 8 1 2 3 5 6 8 4 4 6 6 6 7 4 5 8 13 13 24 4 11 7 20 7 28 1 1 0 4 0 7-1 3-1 6-1 7 0 2 1 4 3 6 1 1 3 4 5 6 2 3 3 5 5 6 1 2 3 5 4 9 2 3 3 7 5 10 1 3 2 6 4 10 2 4 4 7 6 9 2 3 4 5 7 7 3 2 7 3 11 3 3 0 8 0 13-1l0-1c7 2 12 2 14 2l218 0c14 0 25-5 32-16 8-10 10-23 6-37l-79-259c-7-22-13-37-20-43-7-7-19-10-37-10l-248 0c-5 0-9-2-11-5-2-3-2-7 0-12 4-13 18-20 41-20l264 0c5 0 10 2 16 5 5 3 8 6 10 11l85 282c2 5 2 10 2 17 7-3 13-7 17-13z m-304 0c-1-3-1-5 0-7 1-1 3-2 6-2l174 0c2 0 4 1 7 2 2 2 4 4 5 7l6 18c0 3 0 5-1 7-1 1-3 2-6 2l-173 0c-3 0-5-1-8-2-2-2-4-4-4-7z m-24-73c-1-3-1-5 0-7 2-2 3-2 6-2l174 0c2 0 5 0 7 2 3 2 4 4 5 7l6 18c1 2 0 5-1 6-1 2-3 3-5 3l-174 0c-3 0-5-1-7-3-3-1-4-4-5-6z"},"click":"function(gd) { \n        // is this being viewed in RStudio?\n        if (location.search == '?viewer_pane=1') {\n          alert('To learn about plotly for collaboration, visit:\\n https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html');\n        } else {\n          window.open('https://cpsievert.github.io/plotly_book/plot-ly-for-collaboration.html', '_blank');\n        }\n      }"}],"cloud":false},"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.2,"selected":{"opacity":1}},"base_url":"https://plot.ly"},"evals":["config.modeBarButtonsToAdd.0.click"],"jsHooks":{"render":[{"code":"function(el, x) { var ctConfig = crosstalk.var('plotlyCrosstalkOpts').set({\"on\":\"plotly_click\",\"persistent\":false,\"dynamic\":false,\"selectize\":false,\"opacityDim\":0.2,\"selected\":{\"opacity\":1}}); }","data":null}]}}</script>
 </div>
 <div id="chalk-talk-11" class="section level2">
 <h2>Chalk talk</h2>
@@ -1264,7 +1265,7 @@ mtcars %&gt;%
 </div>
 <div id="PS04" class="section level1">
 <h1>Problem set 4</h1>
-<div id="information-4" class="section level2">
+<div id="information-3" class="section level2">
 <h2>Information</h2>
 <p><em>Assigned on Tue 9/26, due on Tue 10/3 9am at which point there will be synchronized pull requests.</em></p>
 <p>You will fit your first model with multiple predictors!</p>
@@ -1562,7 +1563,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 </div>
 <div id="PS03" class="section level1">
 <h1>Problem set 3</h1>
-<div id="information-5" class="section level2">
+<div id="information-4" class="section level2">
 <h2>Information</h2>
 <p><em>Assigned on Thu 9/19, due on Tue 9/26 9am at which point there will be synchronized pull requests.</em></p>
 <center>
@@ -1762,7 +1763,7 @@ ggplot(flights_sample_train, aes(x=temp, y=dep_delay)) +
 </div>
 <div id="PS02" class="section level1">
 <h1>Problem set 2</h1>
-<div id="information-6" class="section level2">
+<div id="information-5" class="section level2">
 <h2>Information</h2>
 <p><em>Assigned on Thu 9/12, due on Tue 9/19 9am at which point there will be synchronized pull requests.</em></p>
 <p><a href="https://www.kaggle.com/c/sberbank-russian-housing-market"> <img border="0" alt="Sberbank" src="images/sberbank.png" width="600"> </a></p>
@@ -2052,7 +2053,7 @@ Teaching my students to separate systematic model component from irreducible err
 </div>
 <div id="PS01" class="section level1">
 <h1>Problem set 1</h1>
-<div id="information-7" class="section level2">
+<div id="information-6" class="section level2">
 <h2>Information</h2>
 <p><em>Assigned on Thu 9/7, due on Mon 9/11 9am.</em></p>
 <p><img src="https://www.kaggle.com/content/v/6e70930bb5cf/kaggle/img/logos/kaggle-logo-gray-300.png" alt="Drawing" style="width: 250px;"/></p>
@@ -2166,7 +2167,7 @@ View(submission)</code></pre>
 </div>
 <div id="problem-set-0" class="section level1">
 <h1>Problem set 0</h1>
-<div id="information-8" class="section level2">
+<div id="information-7" class="section level2">
 <h2>Information</h2>
 <p><em>Assigned on Tue 9/5, due on Thu 9/7 lecture time</em>.</p>
 <ul>

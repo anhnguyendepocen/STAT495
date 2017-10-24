@@ -117,18 +117,18 @@ Announcements:
 * Problem set stuff
     + Quiz on podcast
     + Problem set pull request
+* Problem set 08 will involve a categorical outcome Kaggle competition. Posted
+later tonite.
 * Finish knn
     + Posted knn to [Quickstart](quickstart.html#12_(k)-nearest_neighbors)
     + Finish "multi-class log-loss"
 * New method: classification and regression trees (CART)
     + Install `rpart` package
     + Posted CART to [Quickstart](quickstart.html#11_classification_and_regression_trees)
-    + Classification when $y$ is categorical
-    + Regression when $y$ is numerical
 
 ## Code demo
 
-```{r}
+```{r, eval=FALSE}
 library(tidyverse)
 iris <- iris %>%
   as_tibble() %>%
@@ -138,8 +138,8 @@ iris <- iris %>%
 
 library(rpart)
 model_formula <- as.formula(Species ~ Sepal.Length + Sepal.Width)
-control <- rpart.control(maxdepth = 3)
-model_CART <- rpart(model_formula, data = iris, control=control)
+tree_parameters <- rpart.control(maxdepth = 3)
+model_CART <- rpart(model_formula, data = iris, control=tree_parameters)
 
 # Plot
 plot(model_CART, margin=0.25)
@@ -155,6 +155,7 @@ box()
 
 
 
+
 ## Exercises
 
 1. Using a sequence of `dplyr` commands, follow the path of the tree and prove
@@ -162,8 +163,8 @@ to yourself that the values in the following nodes hold:
     + 1/5/1 (setosa, versicolor, virginica)
     + 0/26/10
 1. Read the help file for `rpart.control` and play around with different
-arguments that control the shape of the tree in the `control` object above.
-1. Create a new numerical outcome variable `iris$is_setosa <- as.numeric(iris$Species == "setosa")` and interpret the resulting tree.
+arguments that control the shape of the tree in the `tree_parameters` object above.
+1. Create a new numerical outcome variable `iris$is_setosa <- as.numeric(iris$Species == "setosa")`, fit CART, and interpret the resulting tree.
 
 
 
@@ -175,7 +176,7 @@ arguments that control the shape of the tree in the `control` object above.
 
 
 
-
+<!--
 # Problem set 8 {#PS08}
 
 ## Information
@@ -206,7 +207,7 @@ following files should be modified/added:
 
 
 ***
-
+-->
 
 
 
