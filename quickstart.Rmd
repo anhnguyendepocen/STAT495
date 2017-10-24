@@ -33,6 +33,8 @@ iris <- iris %>%
 
 ## Classification and regression trees
 
+### Fit/train model
+
 ```{r}
 library(rpart)
 model_formula <- as.formula(Species ~ Sepal.Length + Sepal.Width)
@@ -53,6 +55,7 @@ title("Predicting iris species using sepal length & width")
 box()
 ```
 
+<!--
 Where "Yes, go left. No, go right." So for example, recall our outcome variable
 is a categorical variable with 3 levels: setosa, versicolor, and virginia.
 
@@ -68,6 +71,45 @@ and
 iris %>% 
   filter(Sepal.Length >= 5.45, Sepal.Length < 6.15, Sepal.Width < 3.1) %>% 
   count(Species)
+```
+-->
+
+
+### Get fitted probabilities/predictions
+
+**Output 1:** Get fitted probabilities
+
+```{r}
+p_hat_matrix <- model_CART %>% 
+  predict(type = "prob", newdata = iris)
+
+# Look at a random sample of 5 of them
+p_hat_matrix %>% 
+  as_tibble() %>% 
+  sample_n(5)
+
+# Score/error
+MLmetrics::MultiLogLoss(y_true = iris$Species, y_pred = p_hat_matrix)
+```
+
+**Output 2:** Get explicit predictions y_hat based on fitted probabilities with
+ties broken at random.
+
+```{r, eval=FALSE}
+y_hat <- model_CART %>% 
+  predict(newdata=iris, type="class")
+
+# Score/error
+MLmetrics::Accuracy(y_true = iris$Species, y_pred = y_hat)
+MLmetrics::ConfusionMatrix(y_true = iris$Species, y_pred = y_hat)
+```
+```{r, echo=FALSE}
+y_hat <- model_CART %>% 
+  predict(newdata=iris, type="class")
+
+# Score/error
+MLmetrics::Accuracy(y_true = iris$Species, y_pred = y_hat)
+MLmetrics::ConfusionMatrix(y_true = iris$Species, y_pred = y_hat)
 ```
 
 

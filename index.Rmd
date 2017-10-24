@@ -114,16 +114,58 @@ Announcements:
 
 Announcements:
 
-* Quiz on podcast
-* Problem set pull request
-* Posted $k$-nearest neighbors to Quickstart 
-* Finish "multi-class log-loss"
-* Install `rpart` package
+* Problem set stuff
+    + Quiz on podcast
+    + Problem set pull request
+* Finish knn
+    + Posted knn to [Quickstart](quickstart.html#12_(k)-nearest_neighbors)
+    + Finish "multi-class log-loss"
+* New method: classification and regression trees (CART)
+    + Install `rpart` package
+    + Posted CART to [Quickstart](quickstart.html#11_classification_and_regression_trees)
+    + Classification when $y$ is categorical
+    + Regression when $y$ is numerical
+
+## Code demo
+
+```{r}
+library(tidyverse)
+iris <- iris %>%
+  as_tibble() %>%
+  # Add ID column:
+  mutate(ID = 1:n()) %>% 
+  select(ID, Species, Sepal.Length, Sepal.Width)
+
+library(rpart)
+model_formula <- as.formula(Species ~ Sepal.Length + Sepal.Width)
+control <- rpart.control(maxdepth = 3)
+model_CART <- rpart(model_formula, data = iris, control=control)
+
+# Plot
+plot(model_CART, margin=0.25)
+text(model_CART, use.n = TRUE)
+title("Predicting iris species using sepal length & width")
+box()
+```
 
 
 ## Chalk talk
 
-3.6
+3.6 Classification and regression trees (CART)
+
+
+
+## Exercises
+
+1. Using a sequence of `dplyr` commands, follow the path of the tree and prove
+to yourself that the values in the following nodes hold:
+    + 1/5/1 (setosa, versicolor, virginica)
+    + 0/26/10
+1. Read the help file for `rpart.control` and play around with different
+arguments that control the shape of the tree in the `control` object above.
+1. Create a new numerical outcome variable `iris$is_setosa <- as.numeric(iris$Species == "setosa")` and interpret the resulting tree.
+
+
 
 
 
@@ -186,6 +228,9 @@ Announcements:
 
 Play around with different $k = 1, \ldots, 150$:
 
+```{r, echo=FALSE}
+data("iris")
+```
 ```{r, eval=FALSE}
 library(tidyverse)
 library(caret)
