@@ -126,6 +126,24 @@ later tonite.
     + Install `rpart` package
     + Posted CART to [Quickstart](quickstart.html#11_classification_and_regression_trees)
 
+
+## Ethics discussion
+
+The wisdom of Dr Ian Malcolm, resident PITA mathematician and "chaos theoretician" in Jurassic Park! **Your scientists were so preoccupied with whether or not they could that they didn't stop to think if they should.**
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4PLvdmifDSk" frameborder="0" allowfullscreen></iframe>
+
+Great discussion!
+
+<blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">Great disc in STAT495 on ethics of <a href="https://twitter.com/hashtag/MachineLearning?src=hash&amp;ref_src=twsrc%5Etfw">#MachineLearning</a> based on <a href="https://twitter.com/mathbabedotorg?ref_src=twsrc%5Etfw">@mathbabedotorg</a>&#39;s <a href="https://twitter.com/hashtag/WeaponsOfMathDestruction?src=hash&amp;ref_src=twsrc%5Etfw">#WeaponsOfMathDestruction</a> <a href="https://t.co/xEk2zFQVeR">pic.twitter.com/xEk2zFQVeR</a></p>&mdash; Albert Y. Kim (@rudeboybert) <a href="https://twitter.com/rudeboybert/status/922876420321415168?ref_src=twsrc%5Etfw">October 24, 2017</a></blockquote>
+<script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>  
+
+
+Speaking of dinosaurs...
+
+<img border="1" src="images/ethics.jpg" width="400">
+
+
 ## Code demo
 
 ```{r, eval=FALSE}
