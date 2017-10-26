@@ -114,6 +114,38 @@ encoding"](https://www.quora.com/What-is-one-hot-encoding-and-when-is-it-used-in
 
 
 
+# Problem set 8 {#PS08}
+
+## Information
+
+Important dates/times:
+
+* Tue 10/26: Assigned.
+* Tue 10/31 8:30am:
+    + Pull request submission
+* Wed 11/1 9am: Feedback delivered by Andrew.
+* Thu 11/2 8:30am: (Optional) revisions due.
+
+Details: 
+
+* Teams: Individual
+* Presentations: None
+* Deliverables: One ready to submit *pull request* to the [PS08
+repo](https://github.com/2017-09-Amherst-STAT495/PS08). At the very least, the
+following files should be modified/added:
+    1. `PS08.R`: Source code
+    1. `firstname_lastname.png`: The saved graph
+
+<img border="1" src="images/Big_O_web.png" width="500">
+
+
+
+
+***
+
+
+
+
 # 3.6 Classification and regression trees
 
 ## Tue 10/24
@@ -198,40 +230,6 @@ arguments that control the shape of the tree in the `tree_parameters` object abo
 ***
 
 
-
-
-<!--
-# Problem set 8 {#PS08}
-
-## Information
-
-Important dates/times:
-
-* Tue 10/24: Assigned.
-* Tue 10/31 8:30am:
-    + Pull request submission
-* Wed 11/1 9am: Feedback delivered by Andrew.
-* Thu 11/2 8:30am: (Optional) revisions due.
-
-Details: 
-
-* Teams: Individual
-* Presentations: None
-* Deliverables: One ready to submit *pull request* to the [PS08
-repo](https://github.com/2017-09-Amherst-STAT495/PS08). At the very least, the
-following files should be modified/added:
-    1. `PS08.Rmd`: Source code
-    1. `PS08.html`: The output of `PS08.Rmd`.
-    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
-    both Andrew and I can open your `PS08.html` in a browser.
-    1. `submission.csv`
-    1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
-
-
-
-
-***
--->
 
 
 
