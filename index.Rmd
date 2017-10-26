@@ -66,13 +66,13 @@ rough topic outline:
         * Classification and regression trees (CART)
     1. Continuous outcome II
         * Regularization/shrinkage methods: Ridge regression and LASSO
+    1. Unsupervised learning (time permitting)
+        * k-Means Clustering
+        * Principal components analysis
     1. Other methods
         * Boosting and bagging
         * Random forests
-        * Neural nets
-    1. Unsupervised learning (time permitting)
-        * Principal components analysis
-        * k-Means Clustering
+        * Neural nets        
 * **Source code**: The code to build this webpage is accesible by
 clicking the GitHub icon on the top-right of the nav bar.
 
@@ -84,6 +84,96 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 
 ***
+
+
+
+# 2.8 (Continuous outcomes I) Bias-variance tradeoff
+
+## Thu 11/2
+
+Announcements: 
+
+* Review of [Problem Set 06](#PS06) on bias-variance tradeoff
+
+
+## Chalk talk
+
+
+
+
+
+
+***
+
+
+
+
+# Problem set 9 {#PS09}
+
+## Information
+
+$k$-means clustering problem set
+
+Important dates/times:
+
+* Tue 10/31: Assigned
+* Tue 11/7 8:30am: Pull request submission
+* Wed 11/8 9am: Feedback delivered by Andrew
+* Thu 11/9 8:30am: (Optional) revisions due
+* **Fri 11/10 4:30pm: Prof Ward's talk "Mathematics for $k$-means clustering and beyond" in Seeley Mudd 206. See abstract in [Lec 3.4](#knn)**
+
+Details: 
+
+
+
+
+
+***
+
+
+
+
+# 5.1 (Unsupervised learning) $k$-means clustering
+
+## Tue 10/31
+
+Announcements: 
+
+* 
+
+
+## Chalk talk
+
+5.1 $k$-means clustering
+
+
+
+
+
+***
+
+
+
+
+# 3.8 Finishing CART
+
+## Mon 10/30
+
+Announcements: 
+
+* 
+
+
+## Chalk talk
+
+3.8 Finishing CART
+
+
+
+
+
+***
+
 
 
 
@@ -120,6 +210,8 @@ encoding"](https://www.quora.com/What-is-one-hot-encoding-and-when-is-it-used-in
 # Problem set 8 {#PS08}
 
 ## Information
+
+You will (see Chalk Talk from Lec 3.7 on Thu 10/26)
 
 Important dates/times:
 
@@ -369,7 +461,7 @@ MLmetrics::MultiLogLoss(y_true = iris$Species, y_pred = p_hat_matrix)
 
 
 
-# 3.4 $k$-nearest neighbors
+# 3.4 $k$-nearest neighbors {#knn}
 
 ## Thu 10/19
 
