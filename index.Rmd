@@ -106,8 +106,7 @@ encoding"](https://www.quora.com/What-is-one-hot-encoding-and-when-is-it-used-in
 
 3.7 Runtime and space complexity
 
-
-
+<img border="1" src="images/Big_O_web.png" width="500">
 
 
 
@@ -140,7 +139,6 @@ following files should be modified/added:
     1. `PS08.R`: Source code
     1. `firstname_lastname.png`: The saved graph
 
-<img border="1" src="images/Big_O_web.png" width="500">
 
 ## Tips
 
