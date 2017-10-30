@@ -6,7 +6,9 @@ output: html_document
 runtime: shiny
 ---
 
-```{r setup, include=FALSE}
+The source `.Rmd` file for this Shiny app can be found [here]().
+
+```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(rpart)
 iris <- iris %>%
@@ -29,8 +31,8 @@ $$
 $$
 
 Let's set the tuning parameter $\alpha$ using the slider below, which is defined
-as `cp` in `rpart.control()`, and plot resulting tree. For example with
-`cp=0.01`
+as `cp` in `rpart.control()`, and plot resulting tree. For example using
+`cp=0.01`, which is the default value (see `?rpart.control`).
 
 ```{r, eval=FALSE}
 # Define tree
