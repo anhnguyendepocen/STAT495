@@ -31,15 +31,13 @@ $$
 $$
 
 where $|T|$ use the "cardinality" mathematical notation; it denotes the
-"complexity" of the tree as measured by the number of terminal nodes.
-
-Let's set the tuning parameter $\alpha$ using the slider below, which is defined
-as `cp` in `rpart.control()`, and plot resulting tree. For example using
-`cp=0.01`, which is the default value (see `?rpart.control`), the code is:
+"complexity" of the tree as measured by the number of terminal nodes. $\alpha$ 
+is represented by the argument `cp` in `rpart.control()`. For example using
+$\alpha$ = `cp=0.01`, which is the default value (see `?rpart.control`), the code is:
 
 ```{r, eval=FALSE}
 # Define tree
-tree_parameters <- rpart.control(cp=0.01)
+tree_parameters <- rpart.control(maxdepth = 3, cp=0.01)
 model_CART <- rpart(model_formula, data = iris, control=tree_parameters)
 
 # Plot
@@ -48,6 +46,11 @@ text(model_CART, use.n = TRUE)
 title("Predicting iris species using sepal length & width")
 box()
 ```
+
+
+## Varying the tuning parameter
+
+Let's vary the tuning parameter $\alpha$ using the slider below:
 
 ```{r, echo=FALSE}
 inputPanel(
@@ -59,7 +62,7 @@ inputPanel(
 ```{r, echo=FALSE}
 renderPlot({
   # Create tree
-  tree_parameters <- rpart.control(cp=input$cp)
+  tree_parameters <- rpart.control(maxdepth = 3, cp=input$cp)
   model_CART <- rpart(model_formula, data = iris, control=tree_parameters)
   
   # Plot

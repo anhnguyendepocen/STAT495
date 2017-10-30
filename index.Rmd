@@ -163,15 +163,10 @@ Announcements:
 
 * Take photo
 
-<!--
-* [Shiny app](https://rsconnect.amherst.edu/connect/#/apps/17/access)
--->
-
 
 ## Chalk talk
 
-3.8 Finishing CART
-
+3.8 Finishing CART + [Shiny app](https://rsconnect.amherst.edu/connect/#/apps/17/access)
 
 
 

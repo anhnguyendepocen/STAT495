@@ -5,8 +5,8 @@ account: aykim
 server: rsconnect.amherst.edu
 hostUrl: https://rsconnect.amherst.edu/__api__
 appId: 17
-bundleId: 38
+bundleId: 39
 url: https://rsconnect.amherst.edu:443/content/17/
-when: 1509367088.34951
+when: 1509367324.35353
 asMultiple: FALSE
 asStatic: FALSE
