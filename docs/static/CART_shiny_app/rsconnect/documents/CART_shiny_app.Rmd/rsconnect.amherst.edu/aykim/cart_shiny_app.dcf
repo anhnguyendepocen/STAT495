@@ -1,0 +1,12 @@
+name: cart_shiny_app
+title: CART_shiny_app
+username: aykim
+account: aykim
+server: rsconnect.amherst.edu
+hostUrl: https://rsconnect.amherst.edu/__api__
+appId: 17
+bundleId: 38
+url: https://rsconnect.amherst.edu:443/content/17/
+when: 1509367088.34951
+asMultiple: FALSE
+asStatic: FALSE

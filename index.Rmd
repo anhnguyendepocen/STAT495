@@ -163,6 +163,10 @@ Announcements:
 
 * Take photo
 
+<!--
+* [Shiny app](https://rsconnect.amherst.edu/connect/#/apps/17/access)
+-->
+
 
 ## Chalk talk
 

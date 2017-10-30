@@ -1,14 +1,14 @@
 ---
-title: "CART Complexity Tuning"
+title: "CART tuning parameter"
 author: "Albert Y. Kim"
 date: "2017-10-30"
 output: html_document
 runtime: shiny
 ---
 
-The source `.Rmd` file for this Shiny app can be found [here]().
+The source `.Rmd` file for this Shiny app can be found [here](https://github.com/rudeboybert/STAT495/blob/master/static/CART_shiny_app/CART_shiny_app.Rmd).
 
-```{r}
+```{r, message=FALSE, warning=FALSE}
 library(tidyverse)
 library(rpart)
 iris <- iris %>%
@@ -30,9 +30,12 @@ $$
 \sum_{m=1}^{|T|}\sum_{x_i \in R_m} \left(y_i - \widehat{y}_{R_m}\right)^2 + \alpha |T|
 $$
 
+where $|T|$ use the "cardinality" mathematical notation; it denotes the
+"complexity" of the tree as measured by the number of terminal nodes.
+
 Let's set the tuning parameter $\alpha$ using the slider below, which is defined
 as `cp` in `rpart.control()`, and plot resulting tree. For example using
-`cp=0.01`, which is the default value (see `?rpart.control`).
+`cp=0.01`, which is the default value (see `?rpart.control`), the code is:
 
 ```{r, eval=FALSE}
 # Define tree
@@ -48,7 +51,7 @@ box()
 
 ```{r, echo=FALSE}
 inputPanel(
-  sliderInput("cp", label = "Tuning parameter alpha:", min = 0, max = 0.5, value = 0.01, step = 0.001)
+  sliderInput("cp", label = "Tuning parameter alpha:", min = 0, max = 0.5, value = 0.1, step = 0.001)
 )
 ```
 
