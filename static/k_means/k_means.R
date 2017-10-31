@@ -79,6 +79,28 @@ digits %>%
   select(label, cluster) %>% 
   View()
 
+# group label 4
+digits %>% 
+  filter(cluster == 1) %>% 
+  count(label)
+
+
 
 
 # Based on these results, which clusters are the "purest"?
+
+
+# Cluster "4" has to be 0, slam dunk
+digits %>% 
+  filter(cluster == 4) %>% 
+  count(label)
+
+# Cluster "10" is probably 6
+digits %>% 
+  filter(cluster == 10) %>% 
+  count(label)
+
+# Cluster "1" is what?
+digits %>% 
+  filter(cluster == 1) %>% 
+  count(label)

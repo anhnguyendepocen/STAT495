@@ -146,7 +146,8 @@ Announcements:
 
 5.1 $k$-means clustering
 
-
+* [Slide deck](static/k_means/k_means.pdf) visualizing algorithm in $p=2$ space. 
+*
 
 
 
