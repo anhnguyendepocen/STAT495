@@ -155,8 +155,10 @@ Famous [MNIST handwritten digit data](https://en.wikipedia.org/wiki/MNIST_databa
 </a>
 
 
-Using the `k_means.R` available [here](), we can generate the following plot based
-on our $k=10$ k-means clustering results:
+Using the `k_means.R` code available
+[here](https://github.com/rudeboybert/STAT495/blob/master/static/k_means/k_means.R),
+we can generate the following plot based on our $k=10$ k-means clustering
+results:
 
 <img border="1" src="images/digits.png" width="500">
 
@@ -164,23 +166,30 @@ So we have the following rough mapping:
 
 * Cluster 1: Must be 1's
 * Cluster 2: Must be 6's
-* Cluster 3: Must be 8's
+* Cluster 3: Must be 8's, altho not as forcefully sure.
 * Cluster 4: Likely 7's, but seems to be conflated with 4's and 9's
-* Cluster 5: Must be 5's
+* Cluster 5: Must be 0's
 * Cluster 6: Must be 3's
 * Cluster 7: Must be 2's
-* Cluster 8: Must be 1's. Again? Isn't that Cluster 1?
+* Cluster 8: Must be 1's. Again? Isn't Cluster 1 also 1's?
 * Cluster 9: Must be 0's.
 * Cluster 10: Could be 4's, 7's, and 9's again!
 
 Remember:
 
-* We are not modeling $\widehat{y} = \widehat{\mbox{digit}}$ a fitted digit
-prediction, as we are doing unsupervised learning. In fact, no where in our
-analyses is the information embedded in the human-tagged `label` variable being
-used. In practice, you should be using this information!
-* Certain true digits cluster themselves very nicely: 1 (twice), 6, 2, 8, 0 (twice)
-* Note how the 4's, 7's, and 9's aren't that clear. 
+* The "Cluster" numbers 1-10 have no relationship with the actual digits 0-9;
+these are merely the categorical labels used to indicate the clusters/groups. We
+could've just as acceptibly had cluster labels A-J.
+* Given the random nature of the initiation of kmc, these results could differ
+between different runs of the algorithm.
+* We are not modeling a fitted digit prediction $\widehat{y} =
+\widehat{\mbox{digit}}$  as we are doing unsupervised learning. In fact, no
+where in our analyses is the information embedded in the human-tagged `label`
+variable being used. In serious prediction situation, you would use this information.
+* Certain true digits cluster themselves very nicely: 1 (twice), 6, 2, 8, 0
+(twice). What cluster corresponds to the 5's?
+* Note how the 4's, 7's, and 9's aren't that clear given their similarity when
+written.
 
 
 
