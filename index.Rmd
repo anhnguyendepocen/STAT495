@@ -122,7 +122,6 @@ Important dates/times:
 * Thu 11/9 8:30am: (Optional) revisions due
 * **Fri 11/10 4:30pm: Prof Ward's talk "Mathematics for $k$-means clustering and beyond" in Seeley Mudd 206. See abstract in [Lec 3.4](#knn)**
 
-Details: 
 
 
 
@@ -139,15 +138,54 @@ Details:
 
 Announcements: 
 
-* 
-
-
 ## Chalk talk
 
 5.1 $k$-means clustering
 
-* [Slide deck](static/k_means/k_means.pdf) visualizing algorithm in $p=2$ space. 
-*
+* [Slide deck](static/k_means/k_means.pdf) visualizing $k$-means clustering
+algorithm in $p=2$ space.
+
+
+## Data for today
+
+Famous [MNIST handwritten digit data](https://en.wikipedia.org/wiki/MNIST_database), available on [Kaggle](https://www.kaggle.com/c/digit-recognizer).
+
+<a href="https://www.kaggle.com/c/digit-recognizer">
+<img border="1" src="images/MNIST_digits.png" width="500">
+</a>
+
+
+Using the `k_means.R` available [here](), we can generate the following plot based
+on our $k=10$ k-means clustering results:
+
+<img border="1" src="images/digits.png" width="500">
+
+So we have the following rough mapping:
+
+* Cluster 1: Must be 1's
+* Cluster 2: Must be 6's
+* Cluster 3: Must be 8's
+* Cluster 4: Likely 7's, but seems to be conflated with 4's and 9's
+* Cluster 5: Must be 5's
+* Cluster 6: Must be 3's
+* Cluster 7: Must be 2's
+* Cluster 8: Must be 1's. Again? Isn't that Cluster 1?
+* Cluster 9: Must be 0's.
+* Cluster 10: Could be 4's, 7's, and 9's again!
+
+Remember:
+
+* We are not modeling $\widehat{y} = \widehat{\mbox{digit}}$ a fitted digit
+prediction, as we are doing unsupervised learning. In fact, no where in our
+analyses is the information embedded in the human-tagged `label` variable being
+used. In practice, you should be using this information!
+* Certain true digits cluster themselves very nicely: 1 (twice), 6, 2, 8, 0 (twice)
+* Note how the 4's, 7's, and 9's aren't that clear. 
+
+
+
+
+
 
 
 

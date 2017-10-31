@@ -5,7 +5,7 @@ digits_orig <- read_csv("~/Downloads/train.csv")
 
 # Only consider subset of all training data
 digits <- digits_orig %>% 
-  sample_n(1000)
+  sample_n(10000)
 
 # See how data is formatted
 digits %>% 
@@ -37,17 +37,16 @@ plot_digit <- function(digits_data, rownumber){
     coord_flip() +
     labs(title=paste("True digit =", digits_data$label[rownumber])) + 
     guides(fill=FALSE) +
-    theme(axis.title.x=element_blank(),
-          axis.text.x=element_blank(),
-          axis.ticks.x=element_blank(),
-          axis.title.y=element_blank(),
-          axis.text.y=element_blank(),
-          axis.ticks.y=element_blank())
+    theme(axis.title.x = element_blank(),
+          axis.text.x = element_blank(),
+          axis.ticks.x = element_blank(),
+          axis.title.y = element_blank(),
+          axis.text.y = element_blank(),
+          axis.ticks.y = element_blank())
 }
 
 # Plot
 plot_digit(digits, 815)
-
 
 
 
@@ -56,8 +55,10 @@ plot_digit(digits, 815)
 train <- digits %>% 
   select(-label)
 
-# k-means clustering
+# k-means clustering. we set the seed value to get replicable results.
 k <- 10
+set.seed(76)
+# Why 76? # https://www.youtube.com/watch?v=xjJ7FheCkCU
 results <- kmeans(train, k, nstart = 20)
 
 # These are the group labels. But do these labels correspond to the digits 0
@@ -85,22 +86,14 @@ digits %>%
   count(label)
 
 
-
-
 # Based on these results, which clusters are the "purest"?
-
-
-# Cluster "4" has to be 0, slam dunk
 digits %>% 
-  filter(cluster == 4) %>% 
-  count(label)
+  mutate(label=as.factor(label), cluster=as.factor(cluster)) %>% 
+  group_by(label, cluster) %>% 
+  summarize(n=n()) %>% 
+  ggplot(aes(x=cluster, y=label, fill=n)) +
+  geom_tile() +
+  scale_fill_gradient(low = "white", high = "black") +
+  labs( x="Assigned cluster", y="True digit",fill="Count", title="Cluster vs true digit") 
+ggsave("images/digits.pdf", width=16/1.5, height=16/1.5)
 
-# Cluster "10" is probably 6
-digits %>% 
-  filter(cluster == 10) %>% 
-  count(label)
-
-# Cluster "1" is what?
-digits %>% 
-  filter(cluster == 1) %>% 
-  count(label)
