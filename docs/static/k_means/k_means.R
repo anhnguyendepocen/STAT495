@@ -94,6 +94,7 @@ digits %>%
   ggplot(aes(x=cluster, y=label, fill=n)) +
   geom_tile() +
   scale_fill_gradient(low = "white", high = "black") +
-  labs(x="Assigned cluster", y="True digit",fill="Count", title="Cluster vs true digit") 
+  labs(x="(Assigned) cluster", y="True digit",fill="Count", title="(Assigned) cluster vs true digit") +
+  theme_classic()
 ggsave("images/digits.png", width=16/2.5, height=16/2.5)
 
