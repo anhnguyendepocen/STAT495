@@ -22,12 +22,18 @@ h1{font-weight: 400;}
     + **Office hours**: M 1:00-4:00 and W 2:00-5:00 in ~~Converse Hall 316~~ Seeley Mudd 208 (conference room in lounge), or by appointment. 
     Late changes to office hours will be posted on Slack.
     + **StatFellow Office Hours**: Andrew Kim (`akim17` on Slack): M 6:00-8:00pm in Seeley Mudd 205.
+    + **Extra office hours**: For bouncing ideas for final project. In Frost Cafe
+        + Fri 11/3 1:30-3:30pm
+        + Tue 11/7 1:30-3pm
+        + Thu 11/9 1:30-3pm
+        + Tue 11/14 1:30-3pm
+        + Fri 11/17 9-11am
 * **Important dates:**
-    + Midterm I: Thu 10/5
+    + ~~Midterm I: Thu 10/5~~
     + Midterm II: Thu 11/9
     + Midterm III: Thu 12/21 9:00 a.m. Chapin Hall 201
-    + 
-
+    + Final project presentations (random order TBA): Thu 12/7, Mon 12/11, and Tue 12/12
+    + Final projects due Fri 12/22 5pm
 
 ***
 
@@ -177,6 +183,52 @@ place to hold your group peers accountable for their work.
     12/20 at noon. Completion of this survey is worth 10% of your individual
     final project grade.
     
+
+**Numerical outcome variables:**
+
+|Competition                                       |URL                                                                    |
+|:-------------------------------------------------|:----------------------------------------------------------------------|
+|House Prices: Advanced Regression Techniques      |<https://www.kaggle.com/c/house-prices-advanced-regression-techniques> |
+|Allstate Claims Severity                          |<https://www.kaggle.com/c/allstate-claims-severity>                    |
+|AMS Solar Energy Prediction                       |<https://www.kaggle.com/c/ams-2014-solar-energy-prediction-contest>    |
+|Africa Soil Property Prediction Challenge         |<https://www.kaggle.com/c/afsis-soil-properties>                       |
+|Bike Sharing Demand                               |<https://www.kaggle.com/c/bike-sharing-demand/data>                    |
+|Display Advertising Challenge                     |<https://www.kaggle.com/c/criteo-display-ad-challenge>                 |
+|Don't Overfit                                     |<https://www.kaggle.com/c/overfitting#description>                     |
+|ECML/PKDD 15: Taxi Trip Time Prediction (II)      |<https://www.kaggle.com/c/pkdd-15-taxi-trip-time-prediction-ii>        |
+|Grupo Bimbo Inventory Demand                      |<https://www.kaggle.com/c/grupo-bimbo-inventory-demand/data>           |
+|how did it rain? II                               |<https://www.kaggle.com/c/how-much-did-it-rain-ii>                     |
+|Loan Default Prediction - Imperial College London |<https://www.kaggle.com/c/loan-default-prediction/data>                |
+|Predict HIV Progression                           |<https://www.kaggle.com/c/hivprogression#description>                  |
+|The Hewlett Foundation: Automated Essay Scoring   |<https://www.kaggle.com/c/asap-aes#evaluation>                         |
+|Two Sigma Connect: Rental Listing Inquiries       |<https://www.kaggle.com/c/two-sigma-connect-rental-listing-inquiries>  |
+|Two Sigma Financial Modeling Challenge            |<https://www.kaggle.com/c/two-sigma-financial-modeling/data>           |
+|World Cup 2010                                    |<https://www.kaggle.com/c/worldcup2010>                                |
+
+
+**Categorical outcome variables:**
+
+|Competition                                    |URL                                                                   |
+|:----------------------------------------------|:---------------------------------------------------------------------|
+|March Machine Learning Mania 2017              |<https://www.kaggle.com/c/march-machine-learning-mania-2017>          |
+|San Francisco Crime Classification             |<https://www.kaggle.com/c/sf-crime>                                   |
+|AirBnb New User Bookings                       |<https://www.kaggle.com/c/airbnb-recruiting-new-user-bookings>        |
+|Kobe Bryant Shot Selection                     |<https://www.kaggle.com/c/kobe-bryant-shot-selection>                 |
+|Shelter Animal Outcomes                        |<https://www.kaggle.com/c/shelter-animal-outcomes/data>               |
+|Accelerometer Biometric Competition            |<https://www.kaggle.com/c/accelerometer-biometric-competition/data>   |
+|Credit Card Fraud Detection                    |<https://www.kaggle.com/dalpozz/creditcardfraud>                      |
+|Expedia Hotel Recommendations                  |<https://www.kaggle.com/c/expedia-hotel-recommendations>              |
+|Facebook V: predicting check ins               |<https://www.kaggle.com/c/facebook-v-predicting-check-ins/data>       |
+|Give Me Some Credit                            |<https://www.kaggle.com/c/GiveMeSomeCredit>                           |
+|Intel & MobileODT Cervical Cancer Screening    |<https://www.kaggle.com/c/intel-mobileodt-cervical-cancer-screening>  |
+|Iris Species                                   |<https://www.kaggle.com/uciml/iris>                                   |
+|Leaf Classification                            |<https://www.kaggle.com/c/leaf-classification>                        |
+|Personality Prediction Based on Twitter Stream |<https://www.kaggle.com/c/twitter-personality-prediction#description> |
+|Predict Closed Questions on Stack Overflow     |<https://www.kaggle.com/c/predict-closed-questions-on-stack-overflow> |
+|Quora Question Pairs                           |<https://www.kaggle.com/c/quora-question-pairs>                       |
+|The Allen AI Science Challenge                 |<https://www.kaggle.com/c/the-allen-ai-science-challenge#evaluation>  |
+|World Cup 2010                                 |<https://www.kaggle.com/c/worldcup2010>                               |
+
 
 
 
