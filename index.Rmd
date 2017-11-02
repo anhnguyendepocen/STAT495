@@ -111,17 +111,27 @@ Announcements:
 
 ## Information
 
-$k$-means clustering problem set
+$k$-means clustering
 
 Important dates/times:
 
-* Tue 10/31: Assigned
+* Tue 11/1: Assigned
 * Tue 11/7 8:30am: Pull request submission
 * Wed 11/8 9am: Feedback delivered by Andrew
 * Thu 11/9 8:30am: (Optional) revisions due
-* **Fri 11/10 4:30pm: Prof Ward's talk "Mathematics for $k$-means clustering and beyond" in Seeley Mudd 206. See abstract in [Lec 3.4](#knn)**
+* Fri 11/10 4:30pm: Prof Ward's talk "Mathematics for $k$-means clustering and beyond" in Seeley Mudd 206. See abstract in [Lec 3.4](#knn)
 
+Details: 
 
+* Teams: Individual
+* Presentations: None
+* Deliverables: One ready to submit *pull request* to the [PS09
+repo](https://github.com/2017-09-Amherst-STAT495/PS09). At the very least, the
+following files should be modified/added:
+    1. `PS09.Rmd`: Source code
+    1. `PS09.html`: The output of `PS07.Rmd`.
+    1. `README.md`: Change `rudeboybert` in the URL to your GitHub ID so that
+    both Andrew and I can open your `PS09.html` in a browser.
 
 
 
