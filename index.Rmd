@@ -96,7 +96,6 @@ Announcements:
 * Review of [Problem Set 06](#PS06) on bias-variance tradeoff
 
 
-## Chalk talk
 
 
 
@@ -976,6 +975,10 @@ following files should be modified/added:
 
 ## Example solutions
 
+Open the following:
+
+* [Handout](static/generate_splines_bias_variance_handout/plots.pdf) on bias-variance tradeoff
+* [Example solutions](http://htmlpreview.github.io/?https://raw.githubusercontent.com/2017-09-Amherst-STAT495/PS06/master/PS06_solutions.html)
 
 
 ***
