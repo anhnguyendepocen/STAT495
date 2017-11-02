@@ -60,19 +60,19 @@ rough topic outline:
     1. ~~Continuous outcomes I~~
         * ~~LOESS smoother~~
         * ~~Regression for prediction~~
-    1. Categorical outcomes i.e. classification
+    1. ~~Categorical outcomes i.e. classification~~
         * ~~Logistic regression for prediction + ROC curves~~
         * ~~k-Nearest Neighbors~~
-        * Classification and regression trees (CART)
+        * ~~Classification and regression trees (CART)~~
     1. Continuous outcome II
         * Regularization/shrinkage methods: Ridge regression and LASSO
     1. Unsupervised learning (time permitting)
-        * k-Means Clustering
+        * ~~k-Means Clustering~~
         * Principal components analysis
-    1. Other methods
-        * Boosting and bagging
-        * Random forests
-        * Neural nets        
+    1. ~~Other methods~~
+        * ~~Boosting and bagging~~
+        * ~~Random forests~~
+        * ~~Neural nets~~        
 * **Source code**: The code to build this webpage is accesible by
 clicking the GitHub icon on the top-right of the nav bar.
 
