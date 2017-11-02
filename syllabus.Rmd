@@ -26,7 +26,7 @@ h1{font-weight: 400;}
     + Midterm I: Thu 10/5
     + Midterm II: Thu 11/9
     + Midterm III: Thu 12/21 9:00 a.m. Chapin Hall 201
-
+    + 
 
 
 ***
@@ -158,28 +158,25 @@ place to hold your group peers accountable for their work.
 
 **Deliverables**:
 
+* ASAP: A Slack DM including all your team members, myself, and Andrew indicating who your team leader is.
 * On Thu 12/7, Mon 12/11, and Tue 12/12: in-class presentations.
-* On due date, an `.Rmd` file that
-    1. Is completely reproducible and easy for a new user to pick up and
-    understand and replicate. New users include: other people, future you, and
-    especially me!
-    1. Loads all data
-    1. Has an exploratory data analysis (EDA)
-    1. Shows your work
-    1. Creates a submission CSV file
-* On due date, a two-page max summary PDF of your thinking:
-    1. All the approaches you tried.
-    1. An easy-to-read description of what went into your ultimate submission.
-    1. What went well, what when wrong, and what you learned.
-    1. Examples
-        + [Team A](static/report_A.pdf)
-        + [Team G](static/report_G.pdf)
-        + [Team J](static/report_J.pdf)
+* On due date Fri 12/22 5pm
+    1. A `README.md` file that's been updated.
+    1. An `Final_Project.Rmd` file that is completely reproducible and easy for
+    a new user to pick up and understand and replicate. New users include: other
+    people, future you, and especially me!
+    1. A two-page max summary PDF of your thinking:
+        1. All the approaches you tried.
+        1. An easy-to-read description of what went into your ultimate submission.
+        1. What went well, what when wrong, and what you learned.
+        1. Examples
+            + [Team A](static/report_A.pdf)
+            + [Team G](static/report_G.pdf)
+            + [Team J](static/report_J.pdf)
+    1. A completed Google Forms exit survey that will be posted here on Wed
+    12/20 at noon. Completion of this survey is worth 10% of your individual
+    final project grade.
     
-
-
-
-
 
 
 
