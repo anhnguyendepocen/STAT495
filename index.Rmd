@@ -87,6 +87,24 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 
 
+# Midterm II review
+
+## Mon 11/6
+
+Announcements: 
+
+* Solutions to [Problem Set 07](#PS07) on ROC curves posted. In particular, read
+the "Comparison" subsection of "Build binary classifier".
+
+
+
+
+***
+
+
+
+
+
 # 2.8 (Continuous outcomes I) Bias-variance tradeoff
 
 ## Thu 11/2
@@ -94,11 +112,6 @@ clicking the GitHub icon on the top-right of the nav bar.
 Announcements: 
 
 * Review of [Problem Set 06](#PS06) on bias-variance tradeoff
-
-
-
-
-
 
 
 
@@ -654,7 +667,12 @@ following files should be modified/added:
     1. `submission.csv`
     1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your Kaggle ranking.
 
+## Example solutions
 
+Open the following:
+
+* [Example solutions](http://htmlpreview.github.io/?https://raw.githubusercontent.com/2017-09-Amherst-STAT495/PS07/master/PS07_albert.html). In particular, read the [Comparison](http://htmlpreview.github.io/?https://raw.githubusercontent.com/2017-09-Amherst-STAT495/PS07/master/PS07_albert.html#comparison) section.
+* [`.Rmd` source code](https://github.com/2017-09-Amherst-STAT495/PS07/blob/master/PS07_albert.Rmd). Click on "Raw" button and save to `.Rmd` in your `PS07` folder/RStudio project. Note: this takes a long time to Knit because of the "Extra" section at the end; comment this code out if you want to knit for yourself.
 
 
 
@@ -989,6 +1007,7 @@ Open the following:
 
 * [Handout](static/generate_splines_bias_variance_handout/plots.pdf) on bias-variance tradeoff
 * [Example solutions](http://htmlpreview.github.io/?https://raw.githubusercontent.com/2017-09-Amherst-STAT495/PS06/master/PS06_solutions.html)
+* [`.Rmd` source code](https://github.com/2017-09-Amherst-STAT495/PS06/blob/master/PS06_solutions.Rmd). Click on "Raw" button and save to `.Rmd` in your `PS06` folder/RStudio project. Note: this takes a long time to Knit because of the "Extra" section at the end; comment this code out if you want to knit for yourself.
 
 
 ***
@@ -1241,7 +1260,7 @@ grid.arrange(plot1, plot2, plot3, plot4, nrow=2)
 
 
 
-# 2.5 Feedback on PS03 + Midterm I Review
+# 2.5 Feedback on PS03 + Midterm I review
 
 ## Mon 10/2
 
