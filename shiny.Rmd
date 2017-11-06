@@ -1,0 +1,28 @@
+---
+title: "Shiny Apps"
+output:
+  html_document:
+    number_sections: yes
+    toc: yes
+    toc_depth: 2
+    toc_float:
+      collapsed: no
+---
+
+<style>
+h1{font-weight: 400;}
+</style>
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE)
+set.seed(76)
+# knitr::purl("quickstart.Rmd", output = "quickstart.R", documentation=1)
+```
+
+
+List of Shiny apps seen so far:
+
+<!--* [LASSO](https://beta.rstudioconnect.com/connect/#/apps/2692/access) (coming up)-->
+* [Classification and regression trees](https://rsconnect.amherst.edu/connect/#/apps/17/access)
+* [k-nearest neighbors](https://rsconnect.amherst.edu/connect/#/apps/14/)
+* [ROC curves](https://rsconnect.amherst.edu/connect/#/apps/13/)

@@ -95,14 +95,14 @@ Announcements:
 
 * Please note the extra office hours at Frost Cafe in the syllabus.
 * No problem set assigned this week. After Thursday work on your projects and
-comps proposals.
-* I need to know your Final Project groups ASAP. Team leader please create a 
-team DM with myself and Andrew.
+comps proposals (Due Wed 11/15).
+* I need to know your Final Project groups ASAP. If you haven't already, team
+leader please create a team DM with myself and Andrew.
 * Solutions to [Problem Set 07](#PS07) on ROC curves posted. In particular, read
 the "Comparison" subsection of "Build binary classifier".
-* Handed back quiz on "Weapons of Math Destruction" podcast from PS07. Two most chosen
-examples from podcast were 1) recidivism/criminal justice system 2) teacher
-evalutions.
+* Handed back quiz on "Weapons of Math Destruction" podcast from PS07. Two most
+chosen examples from podcast were 1) recidivism/criminal justice system 2)
+teacher evalutions.
 
 
 ## Chalk talk
