@@ -93,19 +93,22 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 Announcements: 
 
+* Please note the extra office hours at Frost Cafe in the syllabus.
+* No problem set assigned this week. After Thursday work on your projects and
+comps proposals.
+* I need to know your Final Project groups ASAP. Team leader please create a 
+team DM with myself and Andrew.
 * Solutions to [Problem Set 07](#PS07) on ROC curves posted. In particular, read
 the "Comparison" subsection of "Build binary classifier".
 * Handed back quiz on "Weapons of Math Destruction" podcast from PS07. Two most chosen
 examples from podcast were 1) recidivism/criminal justice system 2) teacher
 evalutions.
 
-<!--
-Some related material:
-    1. Why does recidivism matter? See [Netflix's 13th](https://www.netflix.com/title/80091741) for one viewpoint.
-    1. Teacher evaluations:
-        a) A randomized controlled trial where they randomly assign gender? Small sample size, but the results are still depressing. [Best Way for Professors to Get Good Student Evaluations? Be Male.](http://www.slate.com/blogs/xx_factor/2014/12/09/gender_bias_in_student_evaluations_professors_of_online_courses_who_present.html)
-        a) Relatedly, as high-minded as we faculty like to think we are: [Professors Are Prejudiced, Too](https://www.nytimes.com/2014/05/11/opinion/sunday/professors-are-prejudiced-too.html)
---> 
+
+## Chalk talk
+
+Midterm II review.
+
 
 ***
 
