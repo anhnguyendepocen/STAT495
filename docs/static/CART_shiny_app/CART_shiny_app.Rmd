@@ -59,6 +59,10 @@ inputPanel(
 ```
 
 
+Notice how the actual splits at each fork don't change, but rather only the
+depth of the tree changes for different values of the "knob" $\alpha$ AKA the
+tuning parameter that controls the complexity of the model. 
+
 ```{r, echo=FALSE}
 renderPlot({
   # Create tree

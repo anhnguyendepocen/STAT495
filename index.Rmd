@@ -87,6 +87,28 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 
 
+# 4.1 Intro to regularization
+
+## Tue 11/7
+
+Announcements: 
+
+* Don't forget to look at the flash cards I handed out while studying!
+
+
+## Chalk talk
+
+* 4.1 Regularization
+* Look at LASSO shiny app on Shiny Apps page
+
+
+
+***
+
+
+
+
+
 # Midterm II review
 
 ## Mon 11/6

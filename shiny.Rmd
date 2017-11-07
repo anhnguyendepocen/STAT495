@@ -22,7 +22,7 @@ set.seed(76)
 
 List of Shiny apps seen so far:
 
-<!--* [LASSO](https://beta.rstudioconnect.com/connect/#/apps/2692/access) (coming up)-->
+* [LASSO](https://beta.rstudioconnect.com/connect/#/apps/2692/access)
 * [Classification and regression trees](https://rsconnect.amherst.edu/connect/#/apps/17/access)
 * [k-nearest neighbors](https://rsconnect.amherst.edu/connect/#/apps/14/)
 * [ROC curves](https://rsconnect.amherst.edu/connect/#/apps/13/)
