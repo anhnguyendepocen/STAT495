@@ -65,8 +65,8 @@ rough topic outline:
         * ~~k-Nearest Neighbors~~
         * ~~Classification and regression trees (CART)~~
     1. Continuous outcome II
-        * Regularization/shrinkage methods: Ridge regression and LASSO
-    1. Unsupervised learning (time permitting)
+        * Regularization/shrinkage methods: LASSO and ridge regression
+    1. Unsupervised learning
         * ~~k-Means Clustering~~
         * Principal components analysis
     1. ~~Other methods~~
@@ -77,9 +77,24 @@ rough topic outline:
 clicking the GitHub icon on the top-right of the nav bar.
 
 
-<!--
-* Quiz on interpreting beta coefficients
--->
+
+
+***
+
+
+
+# 5.2 Principal components analysis
+
+## Thu 11/16
+
+Announcements: 
+
+* 
+
+
+## Chalk talk
+
+* 5.2 Principal components analysis
 
 
 
@@ -87,7 +102,72 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 
 
-# 4.1 Intro to regularization
+# 4.3 Ridge regression
+
+## Tue 11/14
+
+Announcements: 
+
+* 
+
+
+## Chalk talk
+
+* 4.3 Ridge regression
+
+
+
+***
+
+
+
+# Problem set 10 {#PS10}
+
+## Information
+
+Important dates/times:
+
+* Tue 11/14: Assigned.
+* Tue 11/28 8:30am: Pull request submission
+* Wed 11/29 9am: Feedback delivered by Andrew.
+* Thu 11/30 8:30am: (Optional) revisions due.
+
+Details: 
+
+* Teams: Individual
+* Presentations: None
+* Deliverables: One ready to submit *pull request* to the [PS10
+repo](https://github.com/2017-09-Amherst-STAT495/PS10). At the very least, the
+following files should be modified/added:
+
+
+
+***
+
+
+
+# 4.2 More on LASSO regularization
+
+## Mon 11/13
+
+Announcements: 
+
+* Final week of lectures based on new topics; See [lecture outline](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true).
+* Project groups are set: Random presentation order set today.
+* Go over Midterm II
+
+
+## Chalk talk
+
+* 4.2 More on LASSO regularization
+
+
+
+***
+
+
+
+# 4.1 Intro to LASSO regularization
 
 ## Tue 11/7
 
@@ -104,8 +184,6 @@ Announcements:
 
 
 ***
-
-
 
 
 
@@ -132,9 +210,8 @@ teacher evalutions.
 Midterm II review.
 
 
+
 ***
-
-
 
 
 
@@ -149,7 +226,6 @@ Announcements:
 
 
 ***
-
 
 
 
@@ -181,9 +257,7 @@ following files should be modified/added:
 
 
 
-
 ***
-
 
 
 
@@ -248,13 +322,7 @@ written.
 
 
 
-
-
-
-
-
 ***
-
 
 
 
@@ -273,9 +341,7 @@ Announcements:
 
 
 
-
 ***
-
 
 
 
