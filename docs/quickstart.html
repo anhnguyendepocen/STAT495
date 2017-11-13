@@ -320,16 +320,15 @@ h1{font-weight: 400;}
 <div id="regularization" class="section level1">
 <h1><span class="header-section-number">1</span> Regularization</h1>
 <pre class="r"><code>library(tidyverse)
-credit &lt;- read_csv(&quot;http://www-bcf.usc.edu/~gareth/ISL/Credit.csv&quot;) %&gt;%
-  mutate(ID=1:n()) %&gt;% 
-  select(ID, everything())</code></pre>
+credit &lt;- read_csv(&quot;http://www-bcf.usc.edu/~gareth/ISL/Credit.csv&quot;) %&gt;% 
+  select(-X1)</code></pre>
 <div id="lasso" class="section level2">
 <h2><span class="header-section-number">1.1</span> LASSO</h2>
 <div id="fittrain-model" class="section level3">
 <h3><span class="header-section-number">1.1.1</span> Fit/train model</h3>
-<pre class="r"><code># Load packages and wrapper functions. Note understanding the internal workings
-# of the wrapper functions is not required. If you&#39;re curious why all this is
-# needed: https://github.com/tidyverse/broom/issues/226
+<pre class="r"><code># Load packages and wrapper function. Note understanding the internal workings
+# of this wrapper function is not required. If you&#39;re curious why all this is
+# needed though: https://github.com/tidyverse/broom/issues/226
 library(glmnet)
 get_LASSO_coefficients &lt;- function(LASSO_fit){
   coeff_values &lt;- LASSO_fit %&gt;% 
@@ -342,106 +341,98 @@ get_LASSO_coefficients &lt;- function(LASSO_fit){
   return(coeff_values)
 }
 
-# Define model formula:
+# 1. Define model formula
 model_formula &lt;- as.formula(&quot;Balance ~ Income + Limit + Rating + Student + Cards + Age + Education + Married&quot;)
 
-# Define &quot;model matrix&quot;: Note that
+# 2. Define &quot;model matrix&quot;
+# Note that:
 # -This function conveniently converts all categorical outcomes to numerical
 # ones using &quot;one-hot encoding&quot; as defined in the flashcard for Lec 3.7.
 # -We also remove the first column corresponding to the intercept
 predictor_matrix &lt;- model.matrix(model_formula, data = credit)[, -1]
 
-# Define values of tuning/complexity parameter lambda. Note:
-# -They increase at an exponential rate in powers of 10
+# 3. Define values of tuning/complexity parameter lambda
+# Note: we set them to increase at an exponential rate in powers of 10
 lambda_inputs &lt;- 10^seq(-2, 10, length = 100)
 
-# Fit the model using glmnet. Note:
-# -Setting alpha=1 corresponds to LASSO.
-# -Here we manually specify the lambda values to use. If we didn&#39;t set 
-# lambda = lambda_inputs, glmnet() would choose default values.
-LASSO_fit &lt;- glmnet(x=predictor_matrix, y=credit$Balance, alpha = 1, lambda = lambda_inputs)</code></pre>
+# 4. Fit the model using glmnet
+# Note:
+# -Setting alpha=1 corresponds to LASSO, while setting alpha=0 corresponds to
+# ridge regression
+# -Here we manually specify the lambda values to use. If we didn&#39;t set lambda =
+# lambda_inputs, glmnet() would choose default values.
+LASSO_fit &lt;- glmnet(x=predictor_matrix, y=credit$Balance, alpha = 1, lambda = lambda_inputs)
+
+# 5. Get beta-hat coefficients for ALL values of knob/tuning parameter lambda
+LASSO_coefficients &lt;- get_LASSO_coefficients(LASSO_fit)</code></pre>
 </div>
 <div id="coefficients-analysis" class="section level3">
 <h3><span class="header-section-number">1.1.2</span> Coefficients analysis</h3>
-<p>For each predictor and each value of lambda_inputs, let’s look at the <span class="math inline">\(\widehat{\beta}\)</span>:</p>
-<pre class="r"><code>LASSO_coefficients &lt;- get_LASSO_coefficients(LASSO_fit)
-ggplot(LASSO_coefficients, aes(x=lambda, y=estimate, col=term)) +
+<p>For each value of the <span class="math inline">\(\lambda\)</span> tuning parameter contained in the <code>lambda_inputs</code> vector we specified above, let’s look at all the <span class="math inline">\(\widehat{\beta}\)</span> coefficients:</p>
+<pre class="r"><code>ggplot(LASSO_coefficients, aes(x=lambda, y=estimate, col=term)) +
   geom_line() +
-  labs(x=&quot;lambda&quot;, y=&quot;beta-hat estimate&quot;)</code></pre>
+  labs(x=&quot;lambda&quot;, y=&quot;beta-hat coefficient estimate&quot;)</code></pre>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
 <p>There are two problems with this plot:</p>
 <ol style="list-style-type: decimal">
 <li>We’re not interested in the value of the intercept, since this is left out of complexity penalization. So let’s ignore this.</li>
-<li>The values of <span class="math inline">\(\lambda\)</span> on the x-axis are difficult to see, so let’s rescale the x-axis to be on a log-10 scale:</li>
+<li>The values of <span class="math inline">\(\lambda\)</span> on the x-axis are difficult to see, so let’s rescale the x-axis to be on a <span class="math inline">\(\log10\)</span> scale:</li>
 </ol>
 <pre class="r"><code>plot_LASSO_coefficients &lt;- LASSO_coefficients %&gt;% 
   filter(term != &quot;(Intercept)&quot;) %&gt;% 
   ggplot(aes(x=lambda, y=estimate, col=term)) +
   geom_line() +
   scale_x_log10() +
-  labs(x=&quot;lambda (log10-scale)&quot;, y=&quot;beta-hat estimate&quot;)
+  labs(x=&quot;lambda (log10-scale)&quot;, y=&quot;beta-hat coefficient estimate&quot;,
+       title=&quot;LASSO regularized coefficient for each lambda value&quot;)
 plot_LASSO_coefficients</code></pre>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-4-1.png" width="672" /></p>
 </div>
 <div id="crossvalidation" class="section level3">
 <h3><span class="header-section-number">1.1.3</span> Crossvalidation</h3>
-<p>Easy! Just add <code>cv.</code> to previous <code>glmnet()</code> call. Also, let’s pull out the</p>
+<p>How do we do crossvalidation to find the optimal value <span class="math inline">\(\lambda^*\)</span> of <span class="math inline">\(\lambda\)</span> that yields the <span class="math inline">\(\widehat{\beta}\)</span>’s for the predictive model that in turn yields the lowest MSE? Easy! Just add <code>cv.</code> to previous <code>glmnet()</code> call. Let’s pull out the</p>
 <ul>
-<li>Value of <span class="math inline">\(\lambda\)</span> corresponding to the minimal MSE</li>
-<li>Value of <span class="math inline">\(\lambda\)</span> corresponding to the simplest model within one standard error of minimal MSE</li>
+<li>Value <span class="math inline">\(\lambda^*\)</span> corresponding to the minimal MSE (red line in plot below)</li>
+<li>Value of <span class="math inline">\(\lambda^*_{1SE}\)</span> corresponding to the simplest model within one standard error of minimal MSE (blue line in plot below)</li>
 </ul>
-<pre class="r"><code>LASSO_CV &lt;- cv.glmnet(x=predictor_matrix, y=credit$Balance, alpha = 1, lambda = lambda_inputs)
+<pre class="r"><code>LASSO_CV &lt;- cv.glmnet(x=predictor_matrix, y=credit$Balance, alpha=1, lambda=lambda_inputs)
 
 # Optimal lambdas
-lambda_optimal &lt;- LASSO_CV$lambda.min
-lambda_optimal_one_SE &lt;- LASSO_CV$lambda.1se</code></pre>
-<p>Let’s plot the result in base R. Note that we are plotting <span class="math inline">\(\log(\lambda)\)</span> on x-axis instead of <span class="math inline">\(\lambda\)</span> on a <span class="math inline">\(\log10\)</span>-scale like above.</p>
+lambda_star &lt;- LASSO_CV$lambda.min
+lambda_star_1SE &lt;- LASSO_CV$lambda.1se</code></pre>
+<p>Let’s plot the result in base R. Note that here we are plotting <span class="math inline">\(\log(\lambda)\)</span> on the x-axis instead of <span class="math inline">\(\lambda\)</span> on a <span class="math inline">\(\log10\)</span>-scale like we did in the earlier plot “LASSO regularized coefficient for each lambda value”.</p>
 <pre class="r"><code>plot(LASSO_CV)
-abline(v=log(lambda_optimal), col=&quot;red&quot;)
-abline(v=log(lambda_optimal_one_SE), col=&quot;blue&quot;)</code></pre>
+abline(v=log(lambda_star), col=&quot;red&quot;)
+abline(v=log(lambda_star_1SE), col=&quot;blue&quot;)</code></pre>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-6-1.png" width="672" /></p>
-<p>What does this mean in terms of the values of the <span class="math inline">\(\widehat{beta}\)</span>’s?</p>
+<p>What does this mean in terms of the values of the <span class="math inline">\(\widehat{\beta}\)</span>’s? Let’s revisit the earlier plot “LASSO regularized coefficient for each lambda value” but plot the two <span class="math inline">\(\lambda\)</span> values with red and blue lines again.</p>
 <pre class="r"><code>plot_LASSO_coefficients &lt;- plot_LASSO_coefficients +
-  geom_vline(xintercept = lambda_optimal, col=&quot;red&quot;, alpha=0.4, linetype=&quot;dashed&quot;) +
-  geom_vline(xintercept = lambda_optimal_one_SE, col=&quot;blue&quot;, alpha=0.4, linetype=&quot;dashed&quot;)
+  geom_vline(xintercept = lambda_star, col=&quot;red&quot;, alpha=0.4, linetype=&quot;dashed&quot;) +
+  geom_vline(xintercept = lambda_star_1SE, col=&quot;blue&quot;, alpha=0.4, linetype=&quot;dashed&quot;)
 plot_LASSO_coefficients</code></pre>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-7-1.png" width="672" /></p>
+<p>Let’s zoom-in for a closer look:</p>
+<pre class="r"><code>plot_LASSO_coefficients +
+  coord_cartesian(xlim=c(1, 1000), ylim=c(-1, 1))</code></pre>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<p>Notice the order in which the <span class="math inline">\(\widehat{\beta}\)</span>’s drop to 0, from first to last:</p>
+<ol style="list-style-type: decimal">
+<li>Education</li>
+<li>Whether or not they are married</li>
+<li>Age</li>
+<li><h1 id="of-cards"><span class="header-section-number">1.1.3</span> of cards</h1></li>
+<li>Income</li>
+<li>Whether or not they are a student</li>
+<li>Credit limit</li>
+<li>Rating</li>
+</ol>
 </div>
 <div id="predict-outcomes-for-test-data" class="section level3">
 <h3><span class="header-section-number">1.1.4</span> Predict outcomes for test data</h3>
-<p>Let’s use the value of <span class="math inline">\(\lambda\)</span> corresponding to the simplest model within one standard error of minimal MSE for our predictions.</p>
-<pre class="r"><code>y_hat &lt;- predict(LASSO_fit, newx=predictor_matrix, s=lambda_optimal_one_SE) %&gt;% 
-  as.vector()</code></pre>
-</div>
-<div id="rescale-predictors-work-in-progress" class="section level3">
-<h3><span class="header-section-number">1.1.5</span> Rescale predictors (Work in progress)</h3>
-<pre class="r"><code>normalize &lt;- function(x){(x-mean(x))/(sd(x))}
-credit_rescaled &lt;- credit %&gt;% 
-  mutate_if(is.numeric, normalize)
-
-model_formula &lt;- as.formula(&quot;Balance ~ Income + Limit + Rating + Student + Cards + Age + Education + Married&quot;)
-predictor_matrix &lt;- model.matrix(model_formula, data = credit_rescaled)[, -1]
-lambda_inputs &lt;- 10^seq(-2, 10, length = 100)
-LASSO_fit &lt;- glmnet(x=predictor_matrix, y=credit_rescaled$Balance, alpha = 1, lambda = lambda_inputs)
-LASSO_coefficients &lt;- get_LASSO_coefficients(LASSO_fit)
-
-LASSO_CV &lt;- cv.glmnet(x=predictor_matrix, y=credit_rescaled$Balance, alpha = 1, lambda = lambda_inputs)
-
-# Optimal lambdas
-lambda_optimal &lt;- LASSO_CV$lambda.min
-lambda_optimal_one_SE &lt;- LASSO_CV$lambda.1se
-
-
-plot_LASSO_coefficients &lt;- LASSO_coefficients %&gt;% 
-  filter(term != &quot;(Intercept)&quot;) %&gt;% 
-  ggplot(aes(x=lambda, y=estimate, col=term)) +
-  geom_line() +
-  scale_x_log10() +
-  labs(x=&quot;lambda (log10-scale)&quot;, y=&quot;beta-hat estimate (for rescaled numerical predictors)&quot;)
-plot_LASSO_coefficients +
-  geom_vline(xintercept = lambda_optimal, col=&quot;red&quot;, alpha=0.4, linetype=&quot;dashed&quot;) +
-  geom_vline(xintercept = lambda_optimal_one_SE, col=&quot;blue&quot;, alpha=0.4, linetype=&quot;dashed&quot;) +
-  coord_cartesian(xlim=c(min(lambda_inputs), 1))</code></pre>
+<p>Let’s use the optimal <span class="math inline">\(\lambda^*\)</span> corresponding to the simplest model within one standard error of minimal MSE for our predictions by setting <code>s=lambda_star_1SE</code> (BTW <code>s</code> is a horrible name for a function argument):</p>
+<pre class="r"><code>y_hat &lt;- predict(LASSO_fit, newx=predictor_matrix, s=lambda_star_1SE) %&gt;% 
+  as.vector()
+hist(y_hat)</code></pre>
 <p><img src="quickstart_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
 </div>
 </div>
@@ -475,7 +466,7 @@ plot(model_CART, margin=0.25)
 text(model_CART, use.n = TRUE)
 title(&quot;Predicting iris species using sepal length &amp; width&quot;)
 box()</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-12-1.png" width="672" /></p>
 <!--
 Where "Yes, go left. No, go right." So for example, recall our outcome variable
 is a categorical variable with 3 levels: setosa, versicolor, and virginia.
@@ -537,16 +528,6 @@ p_hat_matrix %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">0.0000000</td>
-<td align="right">0.2909091</td>
-<td align="right">0.7090909</td>
-</tr>
-<tr class="even">
-<td align="right">0.0000000</td>
-<td align="right">0.2909091</td>
-<td align="right">0.7090909</td>
-</tr>
-<tr class="odd">
 <td align="right">0.9777778</td>
 <td align="right">0.0222222</td>
 <td align="right">0.0000000</td>
@@ -557,9 +538,19 @@ p_hat_matrix %&gt;%
 <td align="right">0.0000000</td>
 </tr>
 <tr class="odd">
+<td align="right">0.0000000</td>
+<td align="right">0.2909091</td>
+<td align="right">0.7090909</td>
+</tr>
+<tr class="even">
 <td align="right">0.9777778</td>
 <td align="right">0.0222222</td>
 <td align="right">0.0000000</td>
+</tr>
+<tr class="odd">
+<td align="right">0.0000000</td>
+<td align="right">0.2909091</td>
+<td align="right">0.7090909</td>
 </tr>
 </tbody>
 </table>
@@ -615,29 +606,29 @@ p_hat_matrix %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">0</td>
-<td align="right">0.600</td>
-<td align="right">0.400</td>
+<td align="right">1</td>
+<td align="right">0.000</td>
+<td align="right">0.000</td>
 </tr>
 <tr class="even">
 <td align="right">0</td>
-<td align="right">0.800</td>
-<td align="right">0.200</td>
+<td align="right">0.667</td>
+<td align="right">0.333</td>
 </tr>
 <tr class="odd">
-<td align="right">0</td>
-<td align="right">0.250</td>
-<td align="right">0.750</td>
+<td align="right">1</td>
+<td align="right">0.000</td>
+<td align="right">0.000</td>
 </tr>
 <tr class="even">
+<td align="right">0</td>
+<td align="right">0.500</td>
+<td align="right">0.500</td>
+</tr>
+<tr class="odd">
 <td align="right">0</td>
 <td align="right">0.333</td>
 <td align="right">0.667</td>
-</tr>
-<tr class="odd">
-<td align="right">0</td>
-<td align="right">0.400</td>
-<td align="right">0.600</td>
 </tr>
 </tbody>
 </table>
@@ -652,12 +643,12 @@ MLmetrics::MultiLogLoss(y_true = iris$Species, y_pred = p_hat_matrix)</code></pr
 # Score/error
 MLmetrics::Accuracy(y_true = iris$Species, y_pred = y_hat)
 MLmetrics::ConfusionMatrix(y_true = iris$Species, y_pred = y_hat)</code></pre>
-<pre><code>## [1] 0.8533333</code></pre>
+<pre><code>## [1] 0.8466667</code></pre>
 <pre><code>##             y_pred
 ## y_true       setosa versicolor virginica
-##   setosa         50          0         0
-##   versicolor      0         40        10
-##   virginica       0         12        38</code></pre>
+##   setosa         49          1         0
+##   versicolor      0         39        11
+##   virginica       0         11        39</code></pre>
 </div>
 </div>
 </div>
@@ -708,21 +699,21 @@ model_logistic %&gt;%
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="right">44.1995968</td>
-<td align="right">0.5029148</td>
-<td align="right">87.88685</td>
+<td align="right">43.8455294</td>
+<td align="right">0.4992462</td>
+<td align="right">87.82346</td>
 <td align="right">0</td>
-<td align="right">43.2212884</td>
-<td align="right">45.1927626</td>
+<td align="right">42.8743150</td>
+<td align="right">44.8314071</td>
 </tr>
 <tr class="even">
 <td align="left">height</td>
-<td align="right">-0.6581598</td>
-<td align="right">0.0074459</td>
-<td align="right">-88.39193</td>
+<td align="right">-0.6529378</td>
+<td align="right">0.0073919</td>
+<td align="right">-88.33173</td>
 <td align="right">0</td>
-<td align="right">-0.6728647</td>
-<td align="right">-0.6436759</td>
+<td align="right">-0.6675353</td>
+<td align="right">-0.6385584</td>
 </tr>
 </tbody>
 </table>
@@ -750,58 +741,58 @@ model_logistic %&gt;%
 <tbody>
 <tr class="odd">
 <td align="right">0</td>
-<td align="right">71</td>
-<td align="right">-2.529750</td>
-<td align="right">0.0309484</td>
-<td align="right">-0.3915704</td>
-<td align="right">6.55e-05</td>
-<td align="right">0.8661200</td>
-<td align="right">0.0000026</td>
-<td align="right">-0.3915833</td>
-</tr>
-<tr class="even">
-<td align="right">0</td>
-<td align="right">69</td>
-<td align="right">-1.213431</td>
-<td align="right">0.0201110</td>
-<td align="right">-0.7213732</td>
-<td align="right">7.14e-05</td>
-<td align="right">0.8661129</td>
-<td align="right">0.0000106</td>
-<td align="right">-0.7213990</td>
-</tr>
-<tr class="odd">
-<td align="right">0</td>
-<td align="right">69</td>
-<td align="right">-1.213431</td>
-<td align="right">0.0201110</td>
-<td align="right">-0.7213732</td>
-<td align="right">7.14e-05</td>
-<td align="right">0.8661129</td>
-<td align="right">0.0000106</td>
-<td align="right">-0.7213990</td>
+<td align="right">72</td>
+<td align="right">-3.1659896</td>
+<td align="right">0.0371978</td>
+<td align="right">-0.2874278</td>
+<td align="right">5.37e-05</td>
+<td align="right">0.8692054</td>
+<td align="right">1.10e-06</td>
+<td align="right">-0.2874355</td>
 </tr>
 <tr class="even">
 <td align="right">1</td>
-<td align="right">64</td>
-<td align="right">2.077368</td>
-<td align="right">0.0310086</td>
-<td align="right">0.4858263</td>
-<td align="right">9.51e-05</td>
-<td align="right">0.8661184</td>
-<td align="right">0.0000060</td>
-<td align="right">0.4858494</td>
+<td align="right">61</td>
+<td align="right">4.0163258</td>
+<td align="right">0.0508749</td>
+<td align="right">0.1889901</td>
+<td align="right">4.50e-05</td>
+<td align="right">0.8692063</td>
+<td align="right">4.00e-07</td>
+<td align="right">0.1889944</td>
+</tr>
+<tr class="odd">
+<td align="right">1</td>
+<td align="right">65</td>
+<td align="right">1.4045747</td>
+<td align="right">0.0249060</td>
+<td align="right">0.6625920</td>
+<td align="right">9.82e-05</td>
+<td align="right">0.8691985</td>
+<td align="right">1.21e-05</td>
+<td align="right">0.6626246</td>
+</tr>
+<tr class="even">
+<td align="right">0</td>
+<td align="right">73</td>
+<td align="right">-3.8189274</td>
+<td align="right">0.0439300</td>
+<td align="right">-0.2083932</td>
+<td align="right">4.06e-05</td>
+<td align="right">0.8692061</td>
+<td align="right">4.00e-07</td>
+<td align="right">-0.2083975</td>
 </tr>
 <tr class="odd">
 <td align="right">0</td>
-<td align="right">65</td>
-<td align="right">1.419209</td>
-<td align="right">0.0250669</td>
-<td align="right">-1.8087872</td>
-<td align="right">9.86e-05</td>
-<td align="right">0.8660599</td>
-<td align="right">0.0002037</td>
-<td align="right">-1.8088763</td>
+<td align="right">67</td>
+<td align="right">0.0986992</td>
+<td align="right">0.0170884</td>
+<td align="right">-1.2196016</td>
+<td align="right">7.28e-05</td>
+<td align="right">0.8691784</td>
+<td align="right">4.02e-05</td>
+<td align="right">-1.2196460</td>
 </tr>
 </tbody>
 </table>
@@ -824,12 +815,12 @@ model_logistic %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">40402.68</td>
+<td align="right">40417.51</td>
 <td align="right">29956</td>
-<td align="right">-11235.28</td>
-<td align="right">22474.56</td>
-<td align="right">22491.18</td>
-<td align="right">22470.56</td>
+<td align="right">-11315.43</td>
+<td align="right">22634.87</td>
+<td align="right">22651.48</td>
+<td align="right">22630.87</td>
 <td align="right">29955</td>
 </tr>
 </tbody>
@@ -866,49 +857,49 @@ model_logistic %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">55352</td>
-<td align="left">f</td>
-<td align="right">1</td>
-<td align="right">61</td>
-<td align="right">4.0518480</td>
-<td align="right">0.0512483</td>
-<td align="right">0.9829070</td>
+<td align="right">474</td>
+<td align="left">m</td>
+<td align="right">0</td>
+<td align="right">70</td>
+<td align="right">-1.860114</td>
+<td align="right">0.0248831</td>
+<td align="right">0.1346898</td>
 </tr>
 <tr class="even">
-<td align="right">5715</td>
-<td align="left">m</td>
-<td align="right">0</td>
-<td align="right">71</td>
-<td align="right">-2.5297502</td>
-<td align="right">0.0309484</td>
-<td align="right">0.0737987</td>
-</tr>
-<tr class="odd">
-<td align="right">7000</td>
+<td align="right">53621</td>
 <td align="left">f</td>
 <td align="right">1</td>
-<td align="right">69</td>
-<td align="right">-1.2134305</td>
-<td align="right">0.0201110</td>
-<td align="right">0.2290946</td>
-</tr>
-<tr class="even">
-<td align="right">16727</td>
-<td align="left">m</td>
-<td align="right">0</td>
-<td align="right">69</td>
-<td align="right">-1.2134305</td>
-<td align="right">0.0201110</td>
-<td align="right">0.2290946</td>
+<td align="right">63</td>
+<td align="right">2.710450</td>
+<td align="right">0.0372253</td>
+<td align="right">0.9376405</td>
 </tr>
 <tr class="odd">
-<td align="right">39357</td>
+<td align="right">25333</td>
+<td align="left">f</td>
+<td align="right">1</td>
+<td align="right">64</td>
+<td align="right">2.057513</td>
+<td align="right">0.0307957</td>
+<td align="right">0.8867045</td>
+</tr>
+<tr class="even">
+<td align="right">28793</td>
 <td align="left">m</td>
 <td align="right">0</td>
-<td align="right">68</td>
-<td align="right">-0.5552707</td>
-<td align="right">0.0171494</td>
-<td align="right">0.3646424</td>
+<td align="right">70</td>
+<td align="right">-1.860114</td>
+<td align="right">0.0248831</td>
+<td align="right">0.1346898</td>
+</tr>
+<tr class="odd">
+<td align="right">26958</td>
+<td align="left">f</td>
+<td align="right">1</td>
+<td align="right">65</td>
+<td align="right">1.404575</td>
+<td align="right">0.0249060</td>
+<td align="right">0.8029088</td>
 </tr>
 </tbody>
 </table>
@@ -929,7 +920,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=height, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=height, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;height (in inches)&quot;, y=&quot;Fitted log-odds of p_hat&quot;, title=&quot;Fitted log-odds of probability of being female vs height&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
 <pre class="r"><code># Convert back to probability space
 ggplot(NULL) +
   # Add observed binary y&#39;s, and put a little random jitter to the points
@@ -937,7 +928,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=height, y=p_hat), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=height, y=p_hat), col=&quot;red&quot;) +
   labs(x=&quot;height (in inches)&quot;, y=&quot;p_hat&quot;, title=&quot;Fitted probability of being female vs height&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-24-2.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-25-2.png" width="672" /></p>
 </div>
 <div id="ROC_curve" class="section level3">
 <h3><span class="header-section-number">3.1.4</span> ROC curve</h3>
@@ -954,11 +945,11 @@ perf &lt;- performance(pred, &quot;tpr&quot;,&quot;fpr&quot;)
 # This bit of code computes the Area Under the Curve
 auc &lt;- as.numeric(performance(pred,&quot;auc&quot;)@y.values)
 auc</code></pre>
-<pre><code>## [1] 0.9086801</code></pre>
+<pre><code>## [1] 0.9078789</code></pre>
 <pre class="r"><code># This bit of code prints it
 plot(perf, main=paste(&quot;Area Under the Curve =&quot;, round(auc, 3)))
 abline(c(0, 1), lty=2)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-26-1.png" width="672" /></p>
 </div>
 </div>
 </div>
@@ -1215,7 +1206,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-29-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
 </div>
 </div>
 <div id="loess" class="section level2">
@@ -1364,7 +1355,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-32-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
 </div>
 </div>
 <div id="splines" class="section level2">
@@ -1487,7 +1478,7 @@ ggplot(NULL) +
   geom_line(data=fitted_model, aes(x=hp, y=.fitted), col=&quot;blue&quot;) +
   geom_point(data=predictions, aes(x=hp, y=.fitted), col=&quot;red&quot;) +
   labs(x=&quot;Horse power&quot;, y=&quot;Miles per gallon&quot;)</code></pre>
-<p><img src="quickstart_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
+<p><img src="quickstart_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
 </div>
 </div>
 </div>

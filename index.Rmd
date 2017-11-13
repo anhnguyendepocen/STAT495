@@ -108,7 +108,7 @@ Announcements:
 
 Announcements: 
 
-* 
+* `glmnet` package [vignette](https://web.stanford.edu/~hastie/glmnet/glmnet_alpha.html). In particular, note that we can do LASSO for linear, logisitic, and poisson regression. Note that for logistic/poisson regression, the model is fit in log-odds/log(outcome) space, so you need to convert back to original observation space using inverse-logit/exp.
 
 
 ## Chalk talk

@@ -16,7 +16,6 @@ h1{font-weight: 400;}
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, message=FALSE, warning = FALSE)
 set.seed(76)
-# knitr::purl("quickstart.Rmd", output = "quickstart.R", documentation=1)
 ```
 
 
@@ -25,9 +24,8 @@ set.seed(76)
 
 ```{r}
 library(tidyverse)
-credit <- read_csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv") %>%
-  mutate(ID=1:n()) %>% 
-  select(ID, everything())
+credit <- read_csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv") %>% 
+  select(-X1)
 ```
 
 ## LASSO
@@ -35,9 +33,9 @@ credit <- read_csv("http://www-bcf.usc.edu/~gareth/ISL/Credit.csv") %>%
 ### Fit/train model
 
 ```{r}
-# Load packages and wrapper functions. Note understanding the internal workings
-# of the wrapper functions is not required. If you're curious why all this is
-# needed: https://github.com/tidyverse/broom/issues/226
+# Load packages and wrapper function. Note understanding the internal workings
+# of this wrapper function is not required. If you're curious why all this is
+# needed though: https://github.com/tidyverse/broom/issues/226
 library(glmnet)
 get_LASSO_coefficients <- function(LASSO_fit){
   coeff_values <- LASSO_fit %>% 
@@ -50,36 +48,42 @@ get_LASSO_coefficients <- function(LASSO_fit){
   return(coeff_values)
 }
 
-# Define model formula:
+# 1. Define model formula
 model_formula <- as.formula("Balance ~ Income + Limit + Rating + Student + Cards + Age + Education + Married")
 
-# Define "model matrix": Note that
+# 2. Define "model matrix"
+# Note that:
 # -This function conveniently converts all categorical outcomes to numerical
 # ones using "one-hot encoding" as defined in the flashcard for Lec 3.7.
 # -We also remove the first column corresponding to the intercept
 predictor_matrix <- model.matrix(model_formula, data = credit)[, -1]
 
-# Define values of tuning/complexity parameter lambda. Note:
-# -They increase at an exponential rate in powers of 10
+# 3. Define values of tuning/complexity parameter lambda
+# Note: we set them to increase at an exponential rate in powers of 10
 lambda_inputs <- 10^seq(-2, 10, length = 100)
 
-# Fit the model using glmnet. Note:
-# -Setting alpha=1 corresponds to LASSO.
-# -Here we manually specify the lambda values to use. If we didn't set 
-# lambda = lambda_inputs, glmnet() would choose default values.
+# 4. Fit the model using glmnet
+# Note:
+# -Setting alpha=1 corresponds to LASSO, while setting alpha=0 corresponds to
+# ridge regression
+# -Here we manually specify the lambda values to use. If we didn't set lambda =
+# lambda_inputs, glmnet() would choose default values.
 LASSO_fit <- glmnet(x=predictor_matrix, y=credit$Balance, alpha = 1, lambda = lambda_inputs)
+
+# 5. Get beta-hat coefficients for ALL values of knob/tuning parameter lambda
+LASSO_coefficients <- get_LASSO_coefficients(LASSO_fit)
 ```
 
 
 ### Coefficients analysis
 
-For each predictor and each value of lambda_inputs, let's look at the $\widehat{\beta}$:
+For each value of the $\lambda$ tuning parameter contained in the `lambda_inputs`
+vector we specified above, let's look at all the $\widehat{\beta}$ coefficients:
 
 ```{r}
-LASSO_coefficients <- get_LASSO_coefficients(LASSO_fit)
 ggplot(LASSO_coefficients, aes(x=lambda, y=estimate, col=term)) +
   geom_line() +
-  labs(x="lambda", y="beta-hat estimate")
+  labs(x="lambda", y="beta-hat coefficient estimate")
 ```
 
 There are two problems with this plot:
@@ -87,7 +91,7 @@ There are two problems with this plot:
 1. We're not interested in the value of the intercept, since this is left out
 of complexity penalization. So let's ignore this.
 1. The values of $\lambda$ on the x-axis are difficult to see, so let's rescale
-the x-axis to be on a log-10 scale:
+the x-axis to be on a $\log10$ scale:
 
 ```{r}
 plot_LASSO_coefficients <- LASSO_coefficients %>% 
@@ -95,86 +99,125 @@ plot_LASSO_coefficients <- LASSO_coefficients %>%
   ggplot(aes(x=lambda, y=estimate, col=term)) +
   geom_line() +
   scale_x_log10() +
-  labs(x="lambda (log10-scale)", y="beta-hat estimate")
+  labs(x="lambda (log10-scale)", y="beta-hat coefficient estimate",
+       title="LASSO regularized coefficient for each lambda value")
 plot_LASSO_coefficients
 ```
 
 
 ### Crossvalidation
 
-Easy! Just add `cv.` to previous `glmnet()` call. Also, let's pull out the
+How do we do crossvalidation to find the optimal value $\lambda^*$ of $\lambda$
+that yields the $\widehat{\beta}$'s for the predictive model that in turn yields the
+lowest MSE? Easy! Just add `cv.` to previous `glmnet()` call. Let's pull out the
 
-* Value of $\lambda$ corresponding to the minimal MSE
-* Value of $\lambda$ corresponding to the simplest model within one standard error of minimal MSE
+* Value $\lambda^*$ corresponding to the minimal MSE (red line in plot below)
+* Value of $\lambda^*_{1SE}$ corresponding to the simplest model within one
+standard error of minimal MSE (blue line in plot below)
 
 ```{r}
-LASSO_CV <- cv.glmnet(x=predictor_matrix, y=credit$Balance, alpha = 1, lambda = lambda_inputs)
+LASSO_CV <- cv.glmnet(x=predictor_matrix, y=credit$Balance, alpha=1, lambda=lambda_inputs)
 
 # Optimal lambdas
-lambda_optimal <- LASSO_CV$lambda.min
-lambda_optimal_one_SE <- LASSO_CV$lambda.1se
+lambda_star <- LASSO_CV$lambda.min
+lambda_star_1SE <- LASSO_CV$lambda.1se
 ```
 
-Let's plot the result in base R. Note that we are plotting $\log(\lambda)$ on x-axis instead of $\lambda$ on a $\log10$-scale like above.
+Let's plot the result in base R. Note that here we are plotting $\log(\lambda)$
+on the x-axis instead of $\lambda$ on a $\log10$-scale like we did in the earlier
+plot "LASSO regularized coefficient for each lambda value".
 
 ```{r}
 plot(LASSO_CV)
-abline(v=log(lambda_optimal), col="red")
-abline(v=log(lambda_optimal_one_SE), col="blue")
+abline(v=log(lambda_star), col="red")
+abline(v=log(lambda_star_1SE), col="blue")
 ```
 
-What does this mean in terms of the values of the $\widehat{beta}$'s?
+What does this mean in terms of the values of the $\widehat{\beta}$'s? Let's revisit
+the earlier plot "LASSO regularized coefficient for each lambda value" but plot the 
+two $\lambda$ values with red and blue lines again.
 
 ```{r}
 plot_LASSO_coefficients <- plot_LASSO_coefficients +
-  geom_vline(xintercept = lambda_optimal, col="red", alpha=0.4, linetype="dashed") +
-  geom_vline(xintercept = lambda_optimal_one_SE, col="blue", alpha=0.4, linetype="dashed")
+  geom_vline(xintercept = lambda_star, col="red", alpha=0.4, linetype="dashed") +
+  geom_vline(xintercept = lambda_star_1SE, col="blue", alpha=0.4, linetype="dashed")
 plot_LASSO_coefficients
 ```
+
+Let's zoom-in for a closer look:
+
+```{r}
+plot_LASSO_coefficients +
+  coord_cartesian(xlim=c(1, 1000), ylim=c(-1, 1))
+```
+
+Notice the order in which the $\widehat{\beta}$'s drop to 0, from first to last:
+
+1. Education
+1. Whether or not they are married
+1. Age
+1. # of cards
+1. Income
+1. Whether or not they are a student
+1. Credit limit
+1. Rating
 
 
 
 
 ### Predict outcomes for test data
 
-Let's use the value of $\lambda$ corresponding to the simplest model within one standard error of minimal MSE for our predictions.
+Let's use the optimal $\lambda^*$ corresponding to the simplest model within one standard error of minimal MSE for our predictions by setting `s=lambda_star_1SE` (BTW `s` is a horrible name for a function argument):
 
 ```{r}
-y_hat <- predict(LASSO_fit, newx=predictor_matrix, s=lambda_optimal_one_SE) %>% 
+y_hat <- predict(LASSO_fit, newx=predictor_matrix, s=lambda_star_1SE) %>% 
   as.vector()
+hist(y_hat)
 ```
 
 
-### Rescale predictors (Work in progress)
 
-```{r}
-normalize <- function(x){(x-mean(x))/(sd(x))}
-credit_rescaled <- credit %>% 
-  mutate_if(is.numeric, normalize)
-
-model_formula <- as.formula("Balance ~ Income + Limit + Rating + Student + Cards + Age + Education + Married")
-predictor_matrix <- model.matrix(model_formula, data = credit_rescaled)[, -1]
-lambda_inputs <- 10^seq(-2, 10, length = 100)
-LASSO_fit <- glmnet(x=predictor_matrix, y=credit_rescaled$Balance, alpha = 1, lambda = lambda_inputs)
-LASSO_coefficients <- get_LASSO_coefficients(LASSO_fit)
-
-LASSO_CV <- cv.glmnet(x=predictor_matrix, y=credit_rescaled$Balance, alpha = 1, lambda = lambda_inputs)
-
-# Optimal lambdas
-lambda_optimal <- LASSO_CV$lambda.min
-lambda_optimal_one_SE <- LASSO_CV$lambda.1se
-
-
-plot_LASSO_coefficients <- LASSO_coefficients %>% 
-  filter(term != "(Intercept)") %>% 
-  ggplot(aes(x=lambda, y=estimate, col=term)) +
-  geom_line() +
-  scale_x_log10() +
-  labs(x="lambda (log10-scale)", y="beta-hat estimate (for rescaled numerical predictors)")
-plot_LASSO_coefficients +
-  geom_vline(xintercept = lambda_optimal, col="red", alpha=0.4, linetype="dashed") +
-  geom_vline(xintercept = lambda_optimal_one_SE, col="blue", alpha=0.4, linetype="dashed") +
-  coord_cartesian(xlim=c(min(lambda_inputs), 1))
+```{r, echo=FALSE}
+# compute_z_score <- function(x){
+#   z <- (x-mean(x))/sd(x)
+#   return(z)
+# }
+# 
+# # Convert all numerical variables to z-scores:
+# credit_rescaled <- credit %>%
+#   mutate_if(is.numeric, compute_z_score)
+# 
+# # 1. Define model formula
+# model_formula <- as.formula("Balance ~ Income + Limit + Rating + Student + Cards + Age + Education + Married")
+# # 2. Define "model matrix"
+# predictor_matrix <- model.matrix(model_formula, data = credit_rescaled)[, -1]
+# # 3. Define values of tuning/complexity parameter lambda
+# lambda_inputs <- 10^seq(-2, 10, length = 100)
+# # 4. Fit the model using glmnet
+# LASSO_fit <- glmnet(x=predictor_matrix, y=credit_rescaled$Balance, alpha=1, lambda=lambda_inputs)
+# # 5. Get beta-hat coefficients for ALL values of knob/tuning parameter lambda
+# LASSO_coefficients <- get_LASSO_coefficients(LASSO_fit)
+# 
+# # 1. Run crossvalidation
+# LASSO_CV <- cv.glmnet(x=predictor_matrix, y=credit_rescaled$Balance, alpha=1, lambda=lambda_inputs)
+# # 2. Get optimal lambdas
+# lambda_star <- LASSO_CV$lambda.min
+# lambda_star_1SE <- LASSO_CV$lambda.1se
+# # 3. Plot optimal 
+# plot(LASSO_CV)
+# abline(v=log(lambda_star), col="red")
+# abline(v=log(lambda_star_1SE), col="blue")
+# 
+# # A lot going on!
+# LASSO_coefficients %>%
+#   filter(term != "(Intercept)") %>%
+#   ggplot(aes(x=lambda, y=estimate, col=term)) +
+#   geom_line() +
+#   scale_x_log10() +
+#   coord_cartesian(xlim=c(min(lambda_inputs), 1)) +
+#   labs(x="lambda (log10-scale)", y="beta-hat estimate (for rescaled numerical predictors)") +
+#   geom_vline(xintercept = lambda_star, col="red", alpha=0.4, linetype="dashed") +
+#   geom_vline(xintercept = lambda_star_1SE, col="blue", alpha=0.4, linetype="dashed")
 ```
 
 
