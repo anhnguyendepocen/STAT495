@@ -152,14 +152,17 @@ following files should be modified/added:
 
 Announcements: 
 
-* Final week of lectures based on new topics; See [lecture outline](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true).
-* Project groups are set: Random presentation order set today.
 * Go over Midterm II
+* Final week of lectures based on new topics; See [lecture outline](https://docs.google.com/spreadsheets/d/e/2PACX-1vSoT25RqvzJrr563nky-ANl_EiM39NruG2fkH8fykFxMwk8JXILo5AbdEKtJabcBQ2QM41ab4MDe7Ab/pubhtml?gid=1289440669&single=true).
+* Project groups are set:
+    + Presentation order set today: See top of [Syllabus](syllabus.html)
+    + Guidelines for presentation set in "Deliverables" section of final project description in syllabus.
+
 
 
 ## Chalk talk
 
-* 4.2 More on LASSO regularization
+* 4.2 More on LASSO regularization: What's on Quickstart guide
 
 
 

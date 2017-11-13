@@ -32,8 +32,19 @@ h1{font-weight: 400;}
     + ~~Midterm I: Thu 10/5~~
     + Midterm II: Thu 11/9
     + Midterm III: Thu 12/21 9:00 a.m. Chapin Hall 201
-    + Final project presentations (random order TBA): Thu 12/7, Mon 12/11, and Tue 12/12
+    + Final project presentations (see order below): Thu 12/7, Mon 12/11, and Tue 12/12
     + Final projects due Fri 12/22 5pm
+    
+|Name      |Final project group |Order |
+|:---------|:-------------------|:-----|
+|Brendan, Leonard, Vickie   |C                   |Th 1  |
+|Meron, Tasheena, Wayne     |D                   |Th 2  |
+|Abbas, Caleb, Kiryu     |F                   |Th 3  |
+|Christien, Harrison, Meredith |H                   |Mon 1 |
+|Brenna, Sara    |G                   |Mon 2 |
+|Anthony, Jenn, Pei   |E                   |Tue 1 |
+|Jeff, Luke      |B                   |Tue 2 |
+|Jonathan, Sarah, Tim  |A                   |Tue 3 |
 
 ***
 
@@ -165,7 +176,14 @@ place to hold your group peers accountable for their work.
 **Deliverables**:
 
 * ASAP: A Slack DM including all your team members, myself, and Andrew indicating who your team leader is.
-* On Thu 12/7, Mon 12/11, and Tue 12/12: in-class presentations.
+* On Thu 12/7, Mon 12/11, and Tue 12/12: in-class presentations. See top of syllabus for group order
+    + Should be minimum 17m and maximum 22m of content and allow for 3m for questions.
+    + Please email me link/pdf/PPT beforehand
+    + Any format you like, but keep in mind:
+        + People can only absorb a finite amount of information in a talk.
+        + Try to take a "less is more" approach to content. i.e. for the same amount of information conveyed, try to use less ink.
+        + Visualizations/tables with not too many sig.figs are great in this regard.
+        + Just remember you are "marketing/selling your ideas".
 * On due date Fri 12/22 5pm
     1. A `README.md` file that's been updated.
     1. An `Final_Project.Rmd` file that is completely reproducible and easy for
