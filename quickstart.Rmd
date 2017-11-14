@@ -156,7 +156,7 @@ Notice the order in which the $\widehat{\beta}$'s drop to 0, from first to last:
 1. Education
 1. Whether or not they are married
 1. Age
-1. # of cards
+1. Number of cards
 1. Income
 1. Whether or not they are a student
 1. Credit limit

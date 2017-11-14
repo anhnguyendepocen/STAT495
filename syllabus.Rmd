@@ -38,12 +38,12 @@ h1{font-weight: 400;}
 |Name      |Final project group |Order |
 |:---------|:-------------------|:-----|
 |Brendan, Leonard, Vickie   |C                   |Th 1  |
-|Meron, Tasheena, Wayne     |D                   |Th 2  |
+|Meron, Wayne     |D                   |Th 2  |
 |Abbas, Caleb, Kiryu     |F                   |Th 3  |
 |Christien, Harrison, Meredith |H                   |Mon 1 |
 |Brenna, Sara    |G                   |Mon 2 |
 |Anthony, Jenn, Pei   |E                   |Tue 1 |
-|Jeff, Luke      |B                   |Tue 2 |
+|Jeff, Luke, Tasheena      |B                   |Tue 2 |
 |Jonathan, Sarah, Tim  |A                   |Tue 3 |
 
 ***
