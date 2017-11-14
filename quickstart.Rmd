@@ -153,14 +153,14 @@ plot_LASSO_coefficients +
 
 Notice the order in which the $\widehat{\beta}$'s drop to 0, from first to last:
 
-1. Education
-1. Whether or not they are married
-1. Age
-1. Number of cards
-1. Income
-1. Whether or not they are a student
-1. Credit limit
-1. Rating
+1. Education (olive green)
+1. Whether or not they are married (smurf blue)
+1. Age (red)
+1. Number of cards (gold)
+1. Income (green)
+1. Whether or not they are a student (pink)
+1. Credit limit (teal)
+1. Rating (light purple)
 
 
 

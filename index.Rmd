@@ -102,25 +102,6 @@ Announcements:
 
 
 
-# 4.3 Ridge regression
-
-## Tue 11/14
-
-Announcements: 
-
-* `glmnet` package [vignette](https://web.stanford.edu/~hastie/glmnet/glmnet_alpha.html). In particular, note that we can do LASSO for linear, logisitic, and poisson regression. Note that for logistic/poisson regression, the model is fit in log-odds/log(outcome) space, so you need to convert back to original observation space using inverse-logit/exp.
-
-
-## Chalk talk
-
-* 4.3 Ridge regression
-
-
-
-***
-
-
-
 # Problem set 10 {#PS10}
 
 ## Information
@@ -150,6 +131,22 @@ following files should be modified/added: At the very least, the following files
 
 
 
+***
+
+
+
+# 4.3 Ridge regression
+
+## Tue 11/14
+
+Announcements: 
+
+* `glmnet` package [vignette](https://web.stanford.edu/~hastie/glmnet/glmnet_alpha.html). In particular, note that we can do LASSO for linear, logisitic, and poisson regression. Note that for logistic/poisson regression, the model is fit in log-odds/log(outcome) space, so you need to convert back to original observation space using inverse-logit/exp.
+* How did I write out `model_formula` for PS10? `names(train) %>% dput() %>% paste(collapse=" + ")` and then pared it down!
+
+## Chalk talk
+
+* 4.3 Ridge regression
 
 
 
