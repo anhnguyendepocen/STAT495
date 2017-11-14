@@ -65,7 +65,7 @@ rough topic outline:
         * ~~k-Nearest Neighbors~~
         * ~~Classification and regression trees (CART)~~
     1. Continuous outcome II
-        * Regularization/shrinkage methods: LASSO and ridge regression
+        * ~~Regularization/shrinkage methods: LASSO and ridge regression~~
     1. Unsupervised learning
         * ~~k-Means Clustering~~
         * Principal components analysis
@@ -95,7 +95,8 @@ Announcements:
 ## Chalk talk
 
 * 5.2 Principal components analysis
-
+    + [PCA unpacked](static/PCA.html)
+    + [`PCA.Rmd`](static/PCA.Rmd) source code
 
 
 ***
