@@ -132,13 +132,24 @@ Important dates/times:
 * Wed 11/29 9am: Feedback delivered by Andrew.
 * Thu 11/30 8:30am: (Optional) revisions due.
 
-Details: 
+<a href="https://www.kaggle.com/c/sberbank-russian-housing-market">
+<img border="0" alt="Sberbank" src="images/sberbank.png" width="600">
+</a>
+
+You will enter the [Sberbank Russian Housing Market](https://www.kaggle.com/c/sberbank-russian-housing-market) Kaggle competition and fit a spline model to predict the outcome variable `price_doc`: the sale price of a piece of real estate. The data has been pre-downloaded and included in the [PS10 repo](https://github.com/2017-09-Amherst-STAT495/PS10) in the course GitHub Organization.
 
 * Teams: Individual
 * Presentations: None
 * Deliverables: One ready to submit *pull request* to the [PS10
 repo](https://github.com/2017-09-Amherst-STAT495/PS10). At the very least, the
-following files should be modified/added:
+following files should be modified/added: At the very least, the following files should be modified/added:
+    1. `PS10.Rmd`: This should
+    1. `PS10.html`: The output of `PS10.Rmd`. This will be the presentation file for a randomly chosen set of groups on Tue 9/19.
+    1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your version of `PS10.html` in a browser on Tuesday morning.
+    1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your two Kaggle scores. You should be able to read both at same time from "My submissions" tab
+
+
+
 
 
 
