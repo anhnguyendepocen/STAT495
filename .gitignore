@@ -7,3 +7,4 @@ _site/*
 *_cache/
 *.DS_Store
 *_files/*
+faces.csv

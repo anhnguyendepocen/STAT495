@@ -90,13 +90,18 @@ clicking the GitHub icon on the top-right of the nav bar.
 Announcements: 
 
 * (Tomorrow) Friday 11/17 9-11am Extra Office Hours in Frost Café cancelled. If you would like to bounce ideas for your final projects one last time before break, DM me on Slack and we'll set something up for Thursday afternoon.
-
+* Install `raster` package.
 
 ## Chalk talk
 
 * 5.2 Principal components analysis
-    + [PCA unpacked](static/PCA.html)
-    + [`PCA.Rmd`](static/PCA.Rmd) source code
+
+Files:
+
+* [PCA example](static/PCA/PCA.html) [(source code)](static/PCA/PCA.Rmd)
+* Download
+    + [facial image data](static/PCA/faces.csv.zip)
+    + [code](static/PCA/PCA.R)
 
 
 ***
