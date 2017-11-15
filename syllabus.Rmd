@@ -27,10 +27,10 @@ h1{font-weight: 400;}
         + Tue 11/7 1:30-3pm
         + Thu 11/9 1:30-3pm
         + Tue 11/14 1:30-3pm
-        + Fri 11/17 9-11am
+        + ~~Fri 11/17 9-11am~~
 * **Important dates:**
     + ~~Midterm I: Thu 10/5~~
-    + Midterm II: Thu 11/9
+    + ~~Midterm II: Thu 11/9~~
     + Midterm III: Thu 12/21 9:00 a.m. Chapin Hall 201
     + Final project presentations (see order below): Thu 12/7, Mon 12/11, and Tue 12/12
     + Final projects due Fri 12/22 5pm
