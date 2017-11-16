@@ -99,12 +99,12 @@ Announcements:
 Files:
 
 * [PCA example](static/PCA/PCA.html). Download [(source code)](static/PCA/PCA.Rmd)
-
-<!--
 * Download
     + [Facial image data](static/PCA/faces.csv.zip) (shout out to Prof. Daniel Scharstein at Middlebury College for this data)
     + [Code](static/PCA/PCA.R)
--->
+
+
+
 
 ***
 
