@@ -25,7 +25,7 @@ pca <- prcomp(faces, center = FALSE)
 # Set the number of principal components to use (out of a possible 1024) and
 # let's continue to focus on the 53rd image
 num_pc <- 1
-picture_number <- 53
+picture_number <- 200
 
 # Run lines 31 thru 44:
 par(mfrow=c(1,2))
@@ -51,6 +51,9 @@ compressed[picture_number,] %>%
 # When is num_pc high enought? Let's compute the proportion of the total 
 # variance of the original 1024 dimensions explained:
 faces_recentered <- apply(faces, 2, function(x){x-mean(x)})
+eigen <- cov(faces_recentered) %>%
+  as.matrix() %>%
+  eigen()
 Gamma <- eigen$vectors
 Y <- faces_recentered %*% Gamma
 var_Y <- cov(Y) %>% diag()
