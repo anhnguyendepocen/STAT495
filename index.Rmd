@@ -64,7 +64,7 @@ rough topic outline:
         * ~~Logistic regression for prediction + ROC curves~~
         * ~~k-Nearest Neighbors~~
         * ~~Classification and regression trees (CART)~~
-    1. Continuous outcome II
+    1. ~~Continuous outcome II~~
         * ~~Regularization/shrinkage methods: LASSO and ridge regression~~
     1. Unsupervised learning
         * ~~k-Means Clustering~~
