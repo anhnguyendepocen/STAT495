@@ -463,9 +463,9 @@ with `library(tidyverse)`
 
 ## Example solutions
 
-Using the [example solutions code](https://github.com/2017-09-Amherst-STAT495/PS08/blob/master/PS08_solutions.R) (click on "Raw" button and save to `.R` file in your `PS08` folder/RStudio project), we get the image below. Surprising! Things looks linear in `n` the training set size i.e. $O(n)$, and not $O(n^2)$ as I would've guessed. What are some explanations of the computational complexity of `knn`? What does [stack exchange](https://stats.stackexchange.com/questions/219655/k-nn-computational-complexity) have to say?
+Using the [example solutions code](https://github.com/2017-09-Amherst-STAT495/PS08/blob/master/PS08_solutions.R) (click on "Raw" button and save to `.R` file in your `PS08` folder/RStudio project), we get the image below. What are some explanations of the computational complexity of `knn`? What does [stack exchange](https://stats.stackexchange.com/questions/219655/k-nn-computational-complexity) have to say?
 
-<img border="0" alt="runtime" src="https://github.com/2017-09-Amherst-STAT495/PS08/raw/master/solutions_mcpherson.png" width="600">
+<img border="0" alt="runtime" src="https://github.com/2017-09-Amherst-STAT495/PS08/raw/master/solutions_mcpherson.png" width="700">
 
 
 
