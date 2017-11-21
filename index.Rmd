@@ -68,7 +68,7 @@ rough topic outline:
         * ~~Regularization/shrinkage methods: LASSO and ridge regression~~
     1. Unsupervised learning
         * ~~k-Means Clustering~~
-        * Principal components analysis
+        * ~~Principal components analysis~~
     1. ~~Other methods~~
         * ~~Boosting and bagging~~
         * ~~Random forests~~
@@ -80,6 +80,31 @@ clicking the GitHub icon on the top-right of the nav bar.
 
 
 ***
+
+
+
+# Final topics
+
+Remaining lectures and announcements: 
+
+* Mon 11/27: Speaking anxiety workshop
+    + Submit PS10 anytime before Tue 11/28 8:30am
+    + Solutions to [Problem Set 08](#PS08) and [Problem Set 09](#PS09) posted
+* Tue 11/28: Speech organization & audience engagement workshop
+* Thu 11/30: No lecture
+* Mon 12/4: No lecture
+* Tue 12/5: Midterm III review
+* Thu 12/7: Final presentations (See [syllabus](syllabus.html) for order)
+* Mon 12/11: Final presentations
+* Tue 12/12: Final presentations
+
+
+
+
+
+
+***
+
 
 
 
@@ -275,6 +300,11 @@ following files should be modified/added:
     both Andrew and I can open your `PS09.html` in a browser.
 
 
+## Example solutions
+
+* [Example solutions](http://htmlpreview.github.io/?https://raw.githubusercontent.com/2017-09-Amherst-STAT495/PS09/master/PS09_solutions.html)
+* [`.Rmd` source code](https://github.com/2017-09-Amherst-STAT495/PS09/blob/master/PS09_solutions.Rmd). Click on "Raw" button and save to `.Rmd` in your `PS09` folder/RStudio project.
+
 
 ***
 
@@ -426,6 +456,15 @@ with `library(tidyverse)`
 
 <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">read.csv vs read_csv. Thank you <a href="https://twitter.com/hashtag/tidyverse?src=hash&amp;ref_src=twsrc%5Etfw">#tidyverse</a> for giving me back 180 seconds of my life to waste on social media <a href="https://twitter.com/hashtag/rstats?src=hash&amp;ref_src=twsrc%5Etfw">#rstats</a> <a href="https://t.co/OZxqEVbckZ">pic.twitter.com/OZxqEVbckZ</a></p>&mdash; Albert Y. Kim (@rudeboybert) <a href="https://twitter.com/rudeboybert/status/923555017109450752?ref_src=twsrc%5Etfw">October 26, 2017</a></blockquote>
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+
+## Example solutions
+
+* [Example solutions code](https://github.com/2017-09-Amherst-STAT495/PS08/blob/master/PS08_solutions.R). Click on "Raw" button and save to `.R` file in your `PS08` folder/RStudio project.
+* [Example graphical output](https://github.com/2017-09-Amherst-STAT495/PS08/blob/master/solutions_mcpherson.png)
+
+
+
 
 
 
