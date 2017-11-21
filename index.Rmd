@@ -52,27 +52,24 @@ sample(class) %>% matrix(nrow=2) %>% tbl_df() %>% knitr::kable()
 
 * **Lecture numbering**: The lectures are numbered according to the following
 rough topic outline:
-    1. ~~Background~~
-        * ~~Intro to modeling~~ 
-        * ~~Simple case with univariate predictors to start: splines~~
-        * ~~Sampling/resampling, out-of-sample prediction, crossvalidation~~
-        * ~~Bias-variance tradeoff~~
-    1. ~~Continuous outcomes I~~
-        * ~~LOESS smoother~~
-        * ~~Regression for prediction~~
-    1. ~~Categorical outcomes i.e. classification~~
-        * ~~Logistic regression for prediction + ROC curves~~
-        * ~~k-Nearest Neighbors~~
-        * ~~Classification and regression trees (CART)~~
-    1. ~~Continuous outcome II~~
-        * ~~Regularization/shrinkage methods: LASSO and ridge regression~~
+    1. Background
+        * Intro to modeling 
+        * Simple case with univariate predictors to start: splines
+        * Sampling/resampling, out-of-sample prediction, crossvalidation
+        * Bias-variance tradeoff
+    1. Continuous outcomes I
+        * LOESS smoother
+        * Regression for prediction
+    1. Categorical outcomes i.e. classification
+        * Logistic regression for prediction + ROC curves
+        * k-Nearest Neighbors
+        * Classification and regression trees (CART)
+    1. Continuous outcome II
+        * Regularization/shrinkage methods: LASSO and ridge regression
     1. Unsupervised learning
-        * ~~k-Means Clustering~~
-        * ~~Principal components analysis~~
-    1. ~~Other methods~~
-        * ~~Boosting and bagging~~
-        * ~~Random forests~~
-        * ~~Neural nets~~        
+        * k-Means Clustering
+        * Principal components analysis
+    1. ~~Other methods: Boosting and bagging, random forests, neural nets~~        
 * **Source code**: The code to build this webpage is accesible by
 clicking the GitHub icon on the top-right of the nav bar.
 
@@ -161,6 +158,12 @@ following files should be modified/added: At the very least, the following files
     1. `PS10.html`: The output of `PS10.Rmd`. This will be the presentation file for a randomly chosen set of groups on Tue 9/19.
     1. `README.md`: Change `rudeboybert` in the URL to the GitHub ID of the team leader so that you can open your version of `PS10.html` in a browser on Tuesday morning.
     1. `screen_shot.png` or `screen_shot.jpg`: A screenshot of your two Kaggle scores. You should be able to read both at same time from "My submissions" tab
+
+
+## Example solutions
+
+* [Example solutions](http://htmlpreview.github.io/?https://raw.githubusercontent.com/2017-09-Amherst-STAT495/PS10/master/PS10_solutions.html)
+* [`.Rmd` source code](https://github.com/2017-09-Amherst-STAT495/PS10/blob/master/PS10_solutions.Rmd). Click on "Raw" button and save to `.Rmd` in your `PS10` folder/RStudio project.
 
 
 
