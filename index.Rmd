@@ -85,9 +85,13 @@ clicking the GitHub icon on the top-right of the nav bar.
 Remaining lectures and announcements: 
 
 * Mon 11/27: Speaking anxiety workshop
-    + Submit PS10 anytime before Tue 11/28 8:30am
     + Solutions to [Problem Set 08](#PS08) and [Problem Set 09](#PS09) posted
+    + **Susan Daniels' [sgdaniels@amherst.edu](mailto:sgdaniels@amherst.edu) three keys to speaking anxiety management**:
+        1. Belly breathing: don't breathe from the chest!
+        1. Root yourself: plant both feet in the ground and connect
+        1. Shake it out!
 * Tue 11/28: Speech organization & audience engagement workshop
+    + Submit PS10 anytime before Tue 11/28 8:30am
 * Thu 11/30: No lecture
 * Mon 12/4: No lecture
 * Tue 12/5: Midterm III review
