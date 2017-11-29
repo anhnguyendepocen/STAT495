@@ -19,6 +19,35 @@ set.seed(76)
 ```
 
 
+# Unsupervised learning
+
+```{r}
+library(tidyverse)
+# No outcome variable for unsupervised learning:
+iris_predictors <- iris %>% 
+  select(-Species)
+```
+
+
+## $k$-means clustering
+
+```{r}
+k <- 2
+
+# Fit kmc
+k_means_results <- kmeans(iris_predictors, centers=k)
+
+# Assign each of 150 rows to one of k clusters
+clusters <- k_means_results$cluster
+
+# Get cluster centers and add cluster number column
+cluster_centers <- k_means_results$centers %>% 
+  as_tibble() %>% 
+  mutate(cluster = 1:k) %>% 
+  select(cluster, everything())
+```
+
+
 
 # Regularization
 
