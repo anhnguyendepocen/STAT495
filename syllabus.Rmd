@@ -174,8 +174,8 @@ place to hold your group peers accountable for their work.
 
 **Deliverables**:
 
-* ASAP: A Slack DM including all your team members, myself, and Andrew indicating who your team leader is.
-* On Thu 12/7, Mon 12/11, and Tue 12/12: in-class presentations. See top of syllabus for group order
+1. ~~ASAP: A Slack DM including all your team members, myself, and Andrew indicating who your team leader is.~~
+1. On Thu 12/7, Mon 12/11, and Tue 12/12: in-class presentations. See top of syllabus for group order
     + Should be minimum 17m and maximum 22m of content and allow for 3m for questions.
     + Please email me link/pdf/PPT beforehand
     + Any format you like, but keep in mind:
@@ -184,7 +184,7 @@ place to hold your group peers accountable for their work.
         + Visualizations/tables with not too many sig.figs are great in this regard.
         + Just remember you are "marketing/selling your ideas".
     + A print-out of this [evaluation rubric](https://docs.google.com/document/d/15hBornZ7JIeC3vhzddyC7_w15nc48A_zPPleUglnei8/edit?usp=sharing) will be handed out to all of you for each group so that you may evaluate your peers. After all presentations are done, I will return these to all groups. 
-* On due date Fri 12/22 5pm
+1. On due date Fri 12/22 5pm
     1. A `README.md` file that's been updated.
     1. An `Final_Project.Rmd` file that is completely reproducible and easy for
     a new user to pick up and understand and replicate. New users include: other
