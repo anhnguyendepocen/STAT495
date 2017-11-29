@@ -183,6 +183,7 @@ place to hold your group peers accountable for their work.
         + Try to take a "less is more" approach to content. i.e. for the same amount of information conveyed, try to use less ink.
         + Visualizations/tables with not too many sig.figs are great in this regard.
         + Just remember you are "marketing/selling your ideas".
+    + A print-out of this [evaluation rubric](https://docs.google.com/document/d/15hBornZ7JIeC3vhzddyC7_w15nc48A_zPPleUglnei8/edit?usp=sharing) will be handed out to all of you for each group so that you may evaluate your peers. After all presentations are done, I will return these to all groups. 
 * On due date Fri 12/22 5pm
     1. A `README.md` file that's been updated.
     1. An `Final_Project.Rmd` file that is completely reproducible and easy for
