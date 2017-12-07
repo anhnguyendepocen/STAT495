@@ -177,7 +177,7 @@ place to hold your group peers accountable for their work.
 1. ~~ASAP: A Slack DM including all your team members, myself, and Andrew indicating who your team leader is.~~
 1. On Thu 12/7, Mon 12/11, and Tue 12/12: in-class presentations. See top of syllabus for group order
     + Should be minimum 17m and maximum 22m of content and allow for 3m for questions.
-    + Please email me link/pdf/PPT beforehand
+    + Please ~~email~~ Slack your project group DM a link/pdf/PPT beforehand
     + Any format you like, but keep in mind:
         + People can only absorb a finite amount of information in a talk.
         + Try to take a "less is more" approach to content. i.e. for the same amount of information conveyed, try to use less ink.
