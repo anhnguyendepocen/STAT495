@@ -23,8 +23,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-1.1/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -34,12 +34,10 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs) {
-  hljs.configure({languages: []});
-  hljs.initHighlightingOnLoad();
-  if (document.readyState && document.readyState === "complete") {
-    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
-  }
+if (window.hljs && document.readyState && document.readyState === "complete") {
+   window.setTimeout(function() {
+      hljs.initHighlighting();
+   }, 0);
 }
 </script>
 
@@ -1018,21 +1016,21 @@ model_lm %&gt;%
 <tbody>
 <tr class="odd">
 <td align="left">(Intercept)</td>
-<td align="right">27.7294969</td>
-<td align="right">1.9378897</td>
-<td align="right">14.309120</td>
+<td align="right">30.2964300</td>
+<td align="right">2.5040385</td>
+<td align="right">12.099027</td>
 <td align="right">0.0000000</td>
-<td align="right">23.573137</td>
-<td align="right">31.8858569</td>
+<td align="right">24.925801</td>
+<td align="right">35.6670585</td>
 </tr>
 <tr class="even">
 <td align="left">hp</td>
-<td align="right">-0.0541887</td>
-<td align="right">0.0104576</td>
-<td align="right">-5.181744</td>
-<td align="right">0.0001392</td>
-<td align="right">-0.076618</td>
-<td align="right">-0.0317593</td>
+<td align="right">-0.0742247</td>
+<td align="right">0.0166484</td>
+<td align="right">-4.458377</td>
+<td align="right">0.0005406</td>
+<td align="right">-0.109932</td>
+<td align="right">-0.0385175</td>
 </tr>
 </tbody>
 </table>
@@ -1059,59 +1057,59 @@ model_lm %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
+<td align="right">18.1</td>
+<td align="right">105</td>
+<td align="right">22.50283</td>
+<td align="right">1.146942</td>
+<td align="right">-4.4028322</td>
+<td align="right">0.0805688</td>
+<td align="right">3.995185</td>
+<td align="right">0.0565778</td>
+<td align="right">-1.1363559</td>
+</tr>
+<tr class="even">
+<td align="right">21.5</td>
+<td align="right">97</td>
+<td align="right">23.09663</td>
+<td align="right">1.215688</td>
+<td align="right">-1.5966301</td>
+<td align="right">0.0905165</td>
+<td align="right">4.167459</td>
+<td align="right">0.0085428</td>
+<td align="right">-0.4143323</td>
+</tr>
+<tr class="odd">
+<td align="right">21.0</td>
+<td align="right">110</td>
+<td align="right">22.13171</td>
+<td align="right">1.109946</td>
+<td align="right">-1.1317085</td>
+<td align="right">0.0754548</td>
+<td align="right">4.180522</td>
+<td align="right">0.0034622</td>
+<td align="right">-0.2912811</td>
+</tr>
+<tr class="even">
 <td align="right">13.3</td>
 <td align="right">245</td>
-<td align="right">14.453275</td>
-<td align="right">1.1255937</td>
-<td align="right">-1.153275</td>
-<td align="right">0.1248485</td>
-<td align="right">3.288114</td>
-<td align="right">0.0106825</td>
-<td align="right">-0.3869914</td>
-</tr>
-<tr class="even">
-<td align="right">15.2</td>
-<td align="right">150</td>
-<td align="right">19.601198</td>
-<td align="right">0.8206518</td>
-<td align="right">-4.401198</td>
-<td align="right">0.0663648</td>
-<td align="right">3.054937</td>
-<td align="right">0.0726634</td>
-<td align="right">-1.4298562</td>
+<td align="right">12.11137</td>
+<td align="right">2.053301</td>
+<td align="right">1.1886316</td>
+<td align="right">0.2582194</td>
+<td align="right">4.175741</td>
+<td align="right">0.0203042</td>
+<td align="right">0.3415477</td>
 </tr>
 <tr class="odd">
-<td align="right">19.7</td>
-<td align="right">175</td>
-<td align="right">18.246481</td>
-<td align="right">0.7989171</td>
-<td align="right">1.453519</td>
-<td align="right">0.0628961</td>
-<td align="right">3.279508</td>
-<td align="right">0.0074555</td>
-<td align="right">0.4713428</td>
-</tr>
-<tr class="even">
-<td align="right">16.4</td>
-<td align="right">180</td>
-<td align="right">17.975538</td>
-<td align="right">0.8047563</td>
-<td align="right">-1.575538</td>
-<td align="right">0.0638188</td>
-<td align="right">3.274849</td>
-<td align="right">0.0089059</td>
-<td align="right">-0.5111625</td>
-</tr>
-<tr class="odd">
-<td align="right">15.0</td>
-<td align="right">335</td>
-<td align="right">9.576296</td>
-<td align="right">1.9105202</td>
-<td align="right">5.423705</td>
-<td align="right">0.3596859</td>
-<td align="right">2.719318</td>
-<td align="right">1.2715092</td>
-<td align="right">2.1276959</td>
+<td align="right">21.4</td>
+<td align="right">109</td>
+<td align="right">22.20593</td>
+<td align="right">1.116947</td>
+<td align="right">-0.8059332</td>
+<td align="right">0.0764097</td>
+<td align="right">4.186792</td>
+<td align="right">0.0017817</td>
+<td align="right">-0.2075397</td>
 </tr>
 </tbody>
 </table>
@@ -1138,16 +1136,16 @@ model_lm %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">0.6572867</td>
-<td align="right">0.6328072</td>
-<td align="right">3.18559</td>
-<td align="right">26.85047</td>
-<td align="right">0.0001392</td>
+<td align="right">0.5867418</td>
+<td align="right">0.5572233</td>
+<td align="right">4.040714</td>
+<td align="right">19.87712</td>
+<td align="right">0.0005406</td>
 <td align="right">2</td>
-<td align="right">-40.17297</td>
-<td align="right">86.34593</td>
-<td align="right">88.6637</td>
-<td align="right">142.0718</td>
+<td align="right">-43.97751</td>
+<td align="right">93.95502</td>
+<td align="right">96.27278</td>
+<td align="right">228.5832</td>
 <td align="right">14</td>
 </tr>
 </tbody>
@@ -1180,39 +1178,39 @@ model_lm %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">22</td>
-<td align="right">15.5</td>
-<td align="right">150</td>
-<td align="right">19.60120</td>
-<td align="right">0.8206518</td>
+<td align="right">12</td>
+<td align="right">16.4</td>
+<td align="right">180</td>
+<td align="right">16.93598</td>
+<td align="right">1.232135</td>
 </tr>
 <tr class="even">
+<td align="right">20</td>
+<td align="right">33.9</td>
+<td align="right">65</td>
+<td align="right">25.47182</td>
+<td align="right">1.575549</td>
+</tr>
+<tr class="odd">
 <td align="right">17</td>
 <td align="right">14.7</td>
 <td align="right">230</td>
-<td align="right">15.26610</td>
-<td align="right">1.0207928</td>
-</tr>
-<tr class="odd">
-<td align="right">21</td>
-<td align="right">21.5</td>
-<td align="right">97</td>
-<td align="right">22.47320</td>
-<td align="right">1.0955345</td>
+<td align="right">13.22474</td>
+<td align="right">1.839994</td>
 </tr>
 <tr class="even">
-<td align="right">25</td>
-<td align="right">19.2</td>
-<td align="right">175</td>
-<td align="right">18.24648</td>
-<td align="right">0.7989171</td>
+<td align="right">26</td>
+<td align="right">27.3</td>
+<td align="right">66</td>
+<td align="right">25.39760</td>
+<td align="right">1.562810</td>
 </tr>
 <tr class="odd">
-<td align="right">5</td>
-<td align="right">18.7</td>
-<td align="right">175</td>
-<td align="right">18.24648</td>
-<td align="right">0.7989171</td>
+<td align="right">13</td>
+<td align="right">17.3</td>
+<td align="right">180</td>
+<td align="right">16.93598</td>
+<td align="right">1.232135</td>
 </tr>
 </tbody>
 </table>
@@ -1259,39 +1257,39 @@ model_loess %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">15.2</td>
-<td align="right">180</td>
-<td align="right">15.78049</td>
-<td align="right">1.002655</td>
-<td align="right">-0.5804873</td>
+<td align="right">18.1</td>
+<td align="right">105</td>
+<td align="right">22.09245</td>
+<td align="right">1.298544</td>
+<td align="right">-3.9924525</td>
 </tr>
 <tr class="even">
 <td align="right">21.0</td>
 <td align="right">110</td>
-<td align="right">21.48413</td>
-<td align="right">1.060093</td>
-<td align="right">-0.4841343</td>
+<td align="right">21.58466</td>
+<td align="right">1.350948</td>
+<td align="right">-0.5846595</td>
 </tr>
 <tr class="odd">
-<td align="right">19.7</td>
-<td align="right">175</td>
-<td align="right">16.13477</td>
-<td align="right">1.009120</td>
-<td align="right">3.5652343</td>
+<td align="right">17.8</td>
+<td align="right">123</td>
+<td align="right">20.47980</td>
+<td align="right">1.528522</td>
+<td align="right">-2.6797976</td>
 </tr>
 <tr class="even">
 <td align="right">15.8</td>
 <td align="right">264</td>
-<td align="right">13.74400</td>
-<td align="right">1.125115</td>
-<td align="right">2.0559987</td>
+<td align="right">15.02972</td>
+<td align="right">3.332440</td>
+<td align="right">0.7702800</td>
 </tr>
 <tr class="odd">
 <td align="right">13.3</td>
 <td align="right">245</td>
-<td align="right">13.82568</td>
-<td align="right">1.080595</td>
-<td align="right">-0.5256779</td>
+<td align="right">13.22910</td>
+<td align="right">2.147024</td>
+<td align="right">0.0709048</td>
 </tr>
 </tbody>
 </table>
@@ -1323,44 +1321,44 @@ model_loess %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td>2</td>
-<td align="right">3</td>
-<td align="right">22.8</td>
-<td align="right">93</td>
-<td align="right">23.33460</td>
-<td align="right">0.9831676</td>
+<td>12</td>
+<td align="right">23</td>
+<td align="right">15.2</td>
+<td align="right">150</td>
+<td align="right">17.79721</td>
+<td align="right">1.753536</td>
 </tr>
 <tr class="even">
-<td>12</td>
-<td align="right">21</td>
-<td align="right">21.5</td>
-<td align="right">97</td>
-<td align="right">22.87784</td>
-<td align="right">0.9977631</td>
+<td>16</td>
+<td align="right">31</td>
+<td align="right">15.0</td>
+<td align="right">335</td>
+<td align="right">NA</td>
+<td align="right">NA</td>
 </tr>
 <tr class="odd">
 <td>14</td>
-<td align="right">25</td>
-<td align="right">19.2</td>
-<td align="right">175</td>
-<td align="right">16.13477</td>
-<td align="right">1.0091201</td>
+<td align="right">27</td>
+<td align="right">26.0</td>
+<td align="right">91</td>
+<td align="right">23.71588</td>
+<td align="right">1.301098</td>
 </tr>
 <tr class="even">
-<td>7</td>
-<td align="right">11</td>
-<td align="right">17.8</td>
-<td align="right">123</td>
-<td align="right">20.20623</td>
-<td align="right">1.0452946</td>
+<td>11</td>
+<td align="right">22</td>
+<td align="right">15.5</td>
+<td align="right">150</td>
+<td align="right">17.79721</td>
+<td align="right">1.753536</td>
 </tr>
 <tr class="odd">
-<td>15</td>
-<td align="right">26</td>
-<td align="right">27.3</td>
-<td align="right">66</td>
-<td align="right">26.76795</td>
-<td align="right">1.2654461</td>
+<td>8</td>
+<td align="right">17</td>
+<td align="right">14.7</td>
+<td align="right">230</td>
+<td align="right">12.60759</td>
+<td align="right">1.907651</td>
 </tr>
 </tbody>
 </table>
@@ -1407,39 +1405,39 @@ model_spline %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">175</td>
-<td align="right">19.7</td>
+<td align="right">110</td>
+<td align="right">21.4</td>
 <td align="right">1</td>
-<td align="right">16.29987</td>
-<td align="right">3.4001258</td>
+<td align="right">21.72091</td>
+<td align="right">-0.3209140</td>
 </tr>
 <tr class="even">
-<td align="right">335</td>
-<td align="right">15.0</td>
+<td align="right">66</td>
+<td align="right">32.4</td>
 <td align="right">1</td>
-<td align="right">14.82376</td>
-<td align="right">0.1762427</td>
+<td align="right">27.21990</td>
+<td align="right">5.1801012</td>
 </tr>
 <tr class="odd">
+<td align="right">175</td>
+<td align="right">19.2</td>
+<td align="right">1</td>
+<td align="right">15.65045</td>
+<td align="right">3.5495538</td>
+</tr>
+<tr class="even">
 <td align="right">215</td>
 <td align="right">10.4</td>
 <td align="right">1</td>
-<td align="right">14.32804</td>
-<td align="right">-3.9280400</td>
-</tr>
-<tr class="even">
-<td align="right">180</td>
-<td align="right">17.3</td>
-<td align="right">1</td>
-<td align="right">15.99953</td>
-<td align="right">1.3004708</td>
+<td align="right">12.54493</td>
+<td align="right">-2.1449285</td>
 </tr>
 <tr class="odd">
-<td align="right">180</td>
-<td align="right">15.2</td>
+<td align="right">93</td>
+<td align="right">22.8</td>
 <td align="right">1</td>
-<td align="right">15.99953</td>
-<td align="right">-0.7995292</td>
+<td align="right">23.57121</td>
+<td align="right">-0.7712054</td>
 </tr>
 </tbody>
 </table>
@@ -1462,13 +1460,13 @@ model_spline %&gt;%
 </thead>
 <tbody>
 <tr class="odd">
-<td align="right">4.000186</td>
-<td align="right">0.003345</td>
-<td align="right">6.487542</td>
-<td align="right">55.58607</td>
+<td align="right">3.999623</td>
+<td align="right">0.0026455</td>
+<td align="right">19.23894</td>
+<td align="right">173.0547</td>
 <td align="right">3</td>
-<td align="right">0.5607651</td>
-<td align="right">0.003345</td>
+<td align="right">0.7524318</td>
+<td align="right">0.0026455</td>
 </tr>
 </tbody>
 </table>

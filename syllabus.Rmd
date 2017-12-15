@@ -18,20 +18,21 @@ h1{font-weight: 400;}
 * **Instructor:** [Albert Y. Kim](https://rudeboybert.rbind.io/) - Lecturer of Statistics
 * **~~Email:~~ Slack team**: <a target="_blank" class="page-link" href="https://stat495-fall-2017.slack.com/">stat495-fall-2017.slack.com</a>. I will respond to ~~emails~~ Slack messages within 24h, but not during weekends. Please only Slack me with administrative and briefer questions as I prefer having more substantive conversations in person.
 * **Meeting locations/times:**
-    + **Lectures**: M 9:00-9:50 and Tu/Th 8:30-9:50 in Merrill Science Center 131.
-    + **Office hours**: M 1:00-4:00 and W 2:00-5:00 in ~~Converse Hall 316~~ Seeley Mudd 208 (conference room in lounge), or by appointment. 
-    Late changes to office hours will be posted on Slack.
-    + **StatFellow Office Hours**: Andrew Kim (`akim17` on Slack): M 6:00-8:00pm in Seeley Mudd 205.
-    + **Extra office hours**: For bouncing ideas for final project. In Frost Cafe
-        + Fri 11/3 1:30-3:30pm
-        + Tue 11/7 1:30-3pm
-        + Thu 11/9 1:30-3pm
-        + Tue 11/14 1:30-3pm
+    + ~~**Lectures**: M 9:00-9:50 and Tu/Th 8:30-9:50 in Merrill Science Center 131~~.
+    + ~~**Office hours**: M 1:00-4:00 and W 2:00-5:00 in Converse Hall 316 Seeley Mudd 208 (conference room in lounge), or by appointment. 
+    Late changes to office hours will be posted on Slack.~~
+    + ~~**StatFellow Office Hours**: Andrew Kim (`akim17` on Slack): M 6:00-8:00pm in Seeley Mudd 205.~~
+    + ~~**Extra office hours**: For bouncing ideas for final project. In Frost Cafe~~
+        + ~~Fri 11/3 1:30-3:30pm, Tue 11/7 1:30-3pm, Thu 11/9 1:30-3pm, and Tue 11/14 1:30-3pm~~
+    + **Exam week office hours**
+        + Tue 12/19 9am-12pm in SMudd 208
+        + Thu 12/21 2pm-5pm in SMudd 208
 * **Important dates:**
     + ~~Midterm I: Thu 10/5~~
     + ~~Midterm II: Thu 11/9~~
+    + ~~Final project presentations (see order below): Thu 12/7, Mon 12/11, and Tue 12/12~~
+    + Exit survey posted Wed 12/20 noon
     + Midterm III: Thu 12/21 9:00 a.m. Chapin Hall 201
-    + Final project presentations (see order below): Thu 12/7, Mon 12/11, and Tue 12/12
     + Final projects due Fri 12/22 5pm
     
 |Name      |Final project group |Order |
@@ -175,15 +176,19 @@ place to hold your group peers accountable for their work.
 **Deliverables**:
 
 1. ~~ASAP: A Slack DM including all your team members, myself, and Andrew indicating who your team leader is.~~
-1. On Thu 12/7, Mon 12/11, and Tue 12/12: in-class presentations. See top of syllabus for group order
-    + Should be minimum 17m and maximum 22m of content and allow for 3m for questions.
-    + Please ~~email~~ Slack your project group DM a link/pdf/PPT beforehand
-    + Any format you like, but keep in mind:
-        + People can only absorb a finite amount of information in a talk.
-        + Try to take a "less is more" approach to content. i.e. for the same amount of information conveyed, try to use less ink.
-        + Visualizations/tables with not too many sig.figs are great in this regard.
-        + Just remember you are "marketing/selling your ideas".
-    + A print-out of this [evaluation rubric](https://docs.google.com/document/d/15hBornZ7JIeC3vhzddyC7_w15nc48A_zPPleUglnei8/edit?usp=sharing) will be handed out to all of you for each group so that you may evaluate your peers. After all presentations are done, I will return these to all groups. 
+1. ~~On Thu 12/7, Mon 12/11, and Tue 12/12: in-class presentations. See top of syllabus for group order~~
+    + ~~Should be minimum 17m and maximum 22m of content and allow for 3m for questions.~~
+    + ~~Please email Slack your project group DM a link/pdf/PPT beforehand~~
+    + ~~Any format you like, but keep in mind:~~
+        + ~~People can only absorb a finite amount of information in a talk.~~
+        + ~~Try to take a "less is more" approach to content. i.e. for the same amount of information conveyed, try to use less ink.~~
+        + ~~Visualizations/tables with not too many sig.figs are great in this regard.~~
+        + ~~Just remember you are "marketing/selling your ideas".~~
+    + ~~A print-out of this [evaluation
+    rubric](https://docs.google.com/document/d/15hBornZ7JIeC3vhzddyC7_w15nc48A_zPPleUglnei8/edit?usp=sharing)
+    will be handed out to all of you for each group so that you may evaluate
+    your peers. After all presentations are done, I will return these to all
+    groups.~~
 1. On due date Fri 12/22 5pm
     1. A `README.md` file that's been updated.
     1. An `Final_Project.Rmd` file that is completely reproducible and easy for
