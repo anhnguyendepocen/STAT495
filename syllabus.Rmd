@@ -26,6 +26,7 @@ h1{font-weight: 400;}
         + ~~Fri 11/3 1:30-3:30pm, Tue 11/7 1:30-3pm, Thu 11/9 1:30-3pm, and Tue 11/14 1:30-3pm~~
     + **Exam week office hours**
         + Tue 12/19 9am-12pm in SMudd 208
+        + Wed 12/20 3pm-5pm in SMudd 208
         + Thu 12/21 2pm-5pm in SMudd 208
 * **Important dates:**
     + ~~Midterm I: Thu 10/5~~
