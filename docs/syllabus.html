@@ -23,8 +23,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
-<link href="site_libs/highlightjs-1.1/textmate.css" rel="stylesheet" />
-<script src="site_libs/highlightjs-1.1/highlight.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-4.5.0/css/font-awesome.min.css" rel="stylesheet" />
 
 <style type="text/css">code{white-space: pre;}</style>
@@ -34,10 +34,12 @@
   }
 </style>
 <script type="text/javascript">
-if (window.hljs && document.readyState && document.readyState === "complete") {
-   window.setTimeout(function() {
-      hljs.initHighlighting();
-   }, 0);
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
 }
 </script>
 
@@ -344,7 +346,7 @@ h1{font-weight: 400;}
 <li><del>Midterm I: Thu 10/5</del></li>
 <li><del>Midterm II: Thu 11/9</del></li>
 <li><del>Final project presentations (see order below): Thu 12/7, Mon 12/11, and Tue 12/12</del></li>
-<li>Exit survey posted Wed 12/20 noon</li>
+<li>Exit survey will be posted <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJ6XM-PyP7lKGRb1ZglRhBQUp5sTjra6k5L59fzJUg9Xs6vw/viewform">here</a> by Wed 12/20 noon. This due at the same time as your final project submission.</li>
 <li>Midterm III: Thu 12/21 9:00 a.m. Chapin Hall 201</li>
 <li>Final projects due Fri 12/22 5pm</li>
 </ul></li>
@@ -548,7 +550,7 @@ h1{font-weight: 400;}
 <li><a href="static/report_J.pdf">Team J</a></li>
 </ul></li>
 </ol></li>
-<li>A completed Google Forms exit survey that will be posted here on Wed 12/20 at noon. Completion of this survey is worth 10% of your individual final project grade.</li>
+<li>A completed Google Forms exit survey that will be posted <a href="https://docs.google.com/forms/d/e/1FAIpQLSdJ6XM-PyP7lKGRb1ZglRhBQUp5sTjra6k5L59fzJUg9Xs6vw/viewform">here</a> by Wed 12/20 at noon. Completion of this survey is worth 10% of your individual final project grade.</li>
 </ol></li>
 </ol>
 <p><strong>Numerical outcome variables:</strong></p>

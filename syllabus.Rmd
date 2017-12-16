@@ -32,7 +32,7 @@ h1{font-weight: 400;}
     + ~~Midterm I: Thu 10/5~~
     + ~~Midterm II: Thu 11/9~~
     + ~~Final project presentations (see order below): Thu 12/7, Mon 12/11, and Tue 12/12~~
-    + Exit survey posted Wed 12/20 noon
+    + Exit survey will be posted [here](https://docs.google.com/forms/d/e/1FAIpQLSdJ6XM-PyP7lKGRb1ZglRhBQUp5sTjra6k5L59fzJUg9Xs6vw/viewform) by Wed 12/20 noon. This due at the same time as your final project submission.
     + Midterm III: Thu 12/21 9:00 a.m. Chapin Hall 201
     + Final projects due Fri 12/22 5pm
     
@@ -203,7 +203,7 @@ place to hold your group peers accountable for their work.
             + [Team A](static/report_A.pdf)
             + [Team G](static/report_G.pdf)
             + [Team J](static/report_J.pdf)
-    1. A completed Google Forms exit survey that will be posted here on Wed
+    1. A completed Google Forms exit survey that will be posted [here](https://docs.google.com/forms/d/e/1FAIpQLSdJ6XM-PyP7lKGRb1ZglRhBQUp5sTjra6k5L59fzJUg9Xs6vw/viewform) by Wed
     12/20 at noon. Completion of this survey is worth 10% of your individual
     final project grade.
     
